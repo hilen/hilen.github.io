@@ -1,0 +1,476 @@
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+    
+<head>
+    <meta http-equiv="Content-Type" content="text/html" charset="UTF-8" >
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="generator" content="Hilen&#39;s Blog">
+    <title>Reveal 1.6.3 和 Reveal Loader - Hilen&#39;s Blog</title>
+    <meta name="author" content="Hilen">
+    
+        <link rel="icon" href="/assets/images/favicon.png">
+    
+    
+    <meta name="description" content="前几天我在越狱手机上的装 Reveal Loader，手机也越狱了，版本也对了。但是每次重启都是白苹果，那明晃晃的白苹果，就快闪瞎了我的28k 钛合金🐶眼，开始怀疑是手机系统版本和越狱不兼容导致的的问题，于是差点就要重新刷机。但是想想还是没有刷，因为太麻烦，很耽误时间。然后….哈哈，卖个关子，最后成功运行了，在这里记录一下。
+准备工作
+一台已越狱的 iPhone 手机 ，可以从这里找到越狱信息和">
+<meta property="og:type" content="blog">
+<meta property="og:title" content="Reveal 1.6.3 和 Reveal Loader">
+<meta property="og:url" content="http://hilen.github.io/2015/12/01/Reveal-Loader/index.html">
+<meta property="og:site_name" content="Hilen's Blog">
+<meta property="og:description" content="前几天我在越狱手机上的装 Reveal Loader，手机也越狱了，版本也对了。但是每次重启都是白苹果，那明晃晃的白苹果，就快闪瞎了我的28k 钛合金🐶眼，开始怀疑是手机系统版本和越狱不兼容导致的的问题，于是差点就要重新刷机。但是想想还是没有刷，因为太麻烦，很耽误时间。然后….哈哈，卖个关子，最后成功运行了，在这里记录一下。
+准备工作
+一台已越狱的 iPhone 手机 ，可以从这里找到越狱信息和">
+<meta property="og:image" content="http://ww3.sinaimg.cn/large/6a011e49gw1eyk3r7s8rvj21520rgwma.jpg">
+<meta property="og:updated_time" content="2015-12-02T03:20:25.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Reveal 1.6.3 和 Reveal Loader">
+<meta name="twitter:description" content="前几天我在越狱手机上的装 Reveal Loader，手机也越狱了，版本也对了。但是每次重启都是白苹果，那明晃晃的白苹果，就快闪瞎了我的28k 钛合金🐶眼，开始怀疑是手机系统版本和越狱不兼容导致的的问题，于是差点就要重新刷机。但是想想还是没有刷，因为太麻烦，很耽误时间。然后….哈哈，卖个关子，最后成功运行了，在这里记录一下。
+准备工作
+一台已越狱的 iPhone 手机 ，可以从这里找到越狱信息和">
+    
+    
+    
+        <meta property="og:image" content="/assets/images/Kenny.jpg"/>
+    
+    
+    
+    
+    <!--STYLES-->
+    <link rel="stylesheet" href="/assets/css/style.min.css" type="text/css">
+    <!--STYLES END-->
+    
+    <script type="text/javascript">
+        var _gaq = _gaq || [];
+        _gaq.push(['_setAccount', 'UA-69700708-1']);
+        _gaq.push(['_trackPageview']);
+        (function() {
+            var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+            var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+        })();
+    </script>
+
+</head>
+
+    <body>
+        <div id="blog">
+            <header id="header" data-behavior="3">
+    <i id="btn-open-sidebar" class="fa fa-lg fa-bars"></i>
+    <h1 class="header-title">
+        <a class="header-title-link" href="/ ">Hilen&#39;s Blog</a>
+    </h1>
+    
+        
+            <a  class="header-right-icon st-search-show-outputs"
+                href="/#search">
+        
+                <i class="fa fa-lg fa-search"></i>
+            </a>
+    
+</header>
+            <nav id="sidebar" data-behavior="3">
+    
+        <div class="sidebar-profile">
+            <a href="/#about">
+                
+                    <img class="sidebar-profile-picture" src="/assets/images/Kenny.jpg"/>
+                
+            </a>
+            <span class="sidebar-profile-name">Hilen</span>
+        </div>
+    
+    
+        <ul class="sidebar-buttons">
+        
+            <li class="sidebar-button">
+                
+                    <a  class="sidebar-button-link "
+                         href="/ "
+                        
+                    >
+                
+                    <i class="sidebar-button-icon fa fa-lg fa-home"></i>
+                    <span class="sidebar-button-desc">Home</span>
+                </a>
+        </li>
+        
+            <li class="sidebar-button">
+                
+                    <a  class="sidebar-button-link "
+                         href="/all-categories"
+                        
+                    >
+                
+                    <i class="sidebar-button-icon fa fa-lg fa-bookmark"></i>
+                    <span class="sidebar-button-desc">Categories</span>
+                </a>
+        </li>
+        
+            <li class="sidebar-button">
+                
+                    <a  class="sidebar-button-link "
+                         href="/all-tags"
+                        
+                    >
+                
+                    <i class="sidebar-button-icon fa fa-lg fa-tags"></i>
+                    <span class="sidebar-button-desc">Tags</span>
+                </a>
+        </li>
+        
+            <li class="sidebar-button">
+                
+                    <a  class="sidebar-button-link "
+                         href="/all-archives"
+                        
+                    >
+                
+                    <i class="sidebar-button-icon fa fa-lg fa-bars"></i>
+                    <span class="sidebar-button-desc">Archive</span>
+                </a>
+        </li>
+        
+            <li class="sidebar-button">
+                
+                    <a  class="sidebar-button-link st-search-show-outputs"
+                         href="/#search"
+                        
+                    >
+                
+                    <i class="sidebar-button-icon fa fa-lg fa-search"></i>
+                    <span class="sidebar-button-desc">Search</span>
+                </a>
+        </li>
+        
+            <li class="sidebar-button">
+                
+                    <a  class="sidebar-button-link "
+                         href="/about"
+                        
+                    >
+                
+                    <i class="sidebar-button-icon fa fa-lg fa-info-circle"></i>
+                    <span class="sidebar-button-desc">About</span>
+                </a>
+        </li>
+        
+    </ul>
+    
+        <ul class="sidebar-buttons">
+        
+            <li class="sidebar-button">
+                
+                    <a  class="sidebar-button-link " href="https://github.com/hilen" target="_blank">
+                
+                    <i class="sidebar-button-icon fa fa-lg fa-github-square"></i>
+                    <span class="sidebar-button-desc">GitHub</span>
+                </a>
+        </li>
+        
+    </ul>
+    
+</nav>
+
+            
+            <div id="main" data-behavior="3"
+                 class="
+                        hasCoverMetaIn
+                        ">
+                
+<article class="post" itemscope itemType="http://schema.org/BlogPosting">
+    
+    
+        <div class="post-header main-content-wrap text-left">
+    
+        <h1 class="post-title" itemprop="headline">
+            Reveal 1.6.3 和 Reveal Loader
+        </h1>
+    
+    <div class="post-meta">
+    <time itemprop="datePublished" content="Tue Dec 01 2015 11:24:32 GMT+0800">
+	
+		    12月 01, 2015
+    	
+    </time>
+    
+        <span>in </span>
+        
+    <a class="category-link" href="/categories/iOS/">iOS</a>
+
+
+    
+</div>
+</div>
+    
+    <div class="post-content markdown" itemprop="articleBody">
+        <div class="main-content-wrap">
+            <p>前几天我在越狱手机上的装 Reveal Loader，手机也越狱了，版本也对了。但是每次重启都是白苹果，那明晃晃的白苹果，就快闪瞎了我的<br>28k 钛合金🐶眼，开始怀疑是手机系统版本和越狱不兼容导致的的问题，于是差点就要重新刷机。但是想<br>想还是没有刷，因为太麻烦，很耽误时间。然后….哈哈，卖个关子，最后成功运行了，在这里记录一下。</p>
+<h1 id="准备工作">准备工作</h1><ol>
+<li>一台已越狱的 iPhone 手机 ，可以从<a href="http://jailbreak.25pp.com/ios/" target="_blank" rel="external">这里</a>找到越狱信息和工具，（我的设备是：iPhone 5，iOS8.1.3）</li>
+<li><a href="http://revealapp.com/" target="_blank" rel="external">Reveal App</a>，（我的版本号是 1.6.3，请支持正版 XD ）</li>
+</ol>
+<h1 id="开始">开始</h1><h3 id="Step1">Step1</h3><p>在 Cydia 应用商店里面找到 OpenSSL ，然后安装。</p>
+<h3 id="Step2">Step2</h3><ol>
+<li>使用 OpenSSL 连接你的越狱设备。</li>
+<li>终端里输入：ssh root@192.168.1.123 (IP 地址请在设备里的 Wi-Fi 信息里找到)</li>
+<li>输入密码<code>alpine</code>（OpenSSL 的默认密码），确认设备已链接，可以访问设备里的文件目录。</li>
+</ol>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">注意：手机和电脑必须在同一个 Wi-Fi 网络环境下，</span><br></pre></td></tr></table></figure>
+<h3 id="Step3">Step3</h3><p>打开 <code>Reveal-&gt;Help-&gt;Show Reveal Library in Finder</code>，会有两个文件， <code>libReveal.dylib</code> 和 <code>Reveal.framework</code></p>
+<p>然后重新打开一个终端界面，不要连接 OpenSSL ，确认后执行以下命令：</p>
+<figure class="highlight crystal"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">scp /<span class="constant">Applications</span>/<span class="constant">Reveal</span>.app/<span class="constant">Contents</span>/<span class="constant">SharedSupport</span>/iOS-<span class="constant">Libraries</span>/libReveal.dylib root<span class="variable">@192</span>.<span class="number">168.1</span>.<span class="number">123</span><span class="symbol">:/Library/MobileSubstrate/DynamicLibraries/</span></span><br><span class="line"></span><br><span class="line">scp /<span class="constant">Applications</span>/<span class="constant">Reveal</span>.app/<span class="constant">Contents</span>/<span class="constant">SharedSupport</span>/iOS-<span class="constant">Libraries</span>/<span class="constant">Reveal</span>.framework root<span class="variable">@192</span>.<span class="number">168.1</span>.<span class="number">123</span><span class="symbol">:/System/Library/Frameworks/</span></span><br><span class="line"></span><br><span class="line">这两步主要是把 <span class="constant">Reveal</span> 的核心文件存放在手机内</span><br></pre></td></tr></table></figure>
+<p>好的，网上有一种方法是把 plist 文件也写入 <code>DynamicLibraries</code> 文件夹内，但是这种过于麻烦。我就没这么干，接下来呢，我就在 Cydia 应用商店里面找到 Reveal Loader ，然后安装，重启设备，然后成功重启设备啦，哈哈，马上就可以掀开各大 App 的底裤看个遍了！结果死机白苹果了！！！苹果了，果了。。</p>
+<p>喂，慢着，不要急，也不要慌。看下一步</p>
+<h3 id="Step4（重要）">Step4（重要）</h3><p>白苹果了是吧？请按住 home 键和锁屏键，等待设备重新启动，启动的一瞬间按住<code>音量 + 键</code>，坚持大概 20 秒。恭喜你，手机复活了！</p>
+<p>接下来用 OpenSSL 连接手机，删除原来的<code>libReveal.dylib</code> 和 <code>Reveal.framework</code>两个文件，并且删除 <code>Reveal Loader</code>，这时发现手机可以重新启动了。所以原因也许是这些文件造成的。</p>
+<p>重复 Step3，拷贝<code>libReveal.dylib</code> 和 <code>Reveal.framework</code>到设备内，接下来在你的 Mac 文本内。把刚才闲麻烦的步骤重复一下，也就是那个 <code>plist 文件</code>，内容如下，可以随便写一个不存在的 bundle。命名为 <code>libReveal.plist</code>，然后放在桌面上<br><figure class="highlight clojure"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="collection">&#123; </span><br><span class="line">    Filter = <span class="collection">&#123; </span><br><span class="line">        Bundles = <span class="list">(</span><br><span class="line">        	<span class="string">"com.hilen.yourapp"</span><span class="comment">;</span></span><br><span class="line">        )</span><span class="comment">;</span></span><br><span class="line">&#125;</span></span></span><br></pre></td></tr></table></figure></p>
+<p>打开终端，执行</p>
+<figure class="highlight crystal"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">scp /<span class="constant">Users</span>/hilen/<span class="constant">Desktop</span>/libReveal.plist root<span class="variable">@192</span>.<span class="number">168.1</span>.<span class="number">123</span><span class="symbol">:/Library/MobileSubstrate/DynamicLibraries/</span></span><br></pre></td></tr></table></figure>
+<p>然后去安装<code>Reveal Loader</code>，重启设备。OK，你可以浏览其他 App 的内容了。<br>以下是 App Store 的预览，Enjoy</p>
+<p><img src="http://ww3.sinaimg.cn/large/6a011e49gw1eyk3r7s8rvj21520rgwma.jpg" alt=""></p>
+
+            
+                
+
+            
+        </div>
+    </div>
+    <div class="post-footer main-content-wrap">
+        
+            <div class="post-footer-tags">
+                <span class="text-color-light text-small">TAGGED IN</span><br/>
+                
+    <a class="tag tag--primary tag--small t-link" href="/tags/Jailbreak/">Jailbreak</a> <a class="tag tag--primary tag--small t-link" href="/tags/Reveal-Loader/">Reveal Loader</a> <a class="tag tag--primary tag--small t-link" href="/tags/iOS/">iOS</a>
+
+            </div>
+        
+        <div class="post-actions-wrap">
+    <nav>
+        <ul class="post-actions post-action-nav">
+            <li class="post-action">
+                
+                    <a class="post-action-btn btn btn--disabled">
+                
+                    <i class="fa fa-angle-left"></i>
+                    <span class="hide-xs hide-sm text-small icon-ml">PREVIOUS</span>
+                </a>
+            </li>
+            <li class="post-action">
+                
+                    <a class="post-action-btn btn btn--default tooltip--top" href="/2015/11/04/Instagram-iOS-App-Libraries/" data-tooltip="Instagram iOS App Libraries">
+                
+                    <span class="hide-xs hide-sm text-small icon-mr">NEXT</span>
+                    <i class="fa fa-angle-right"></i>
+                </a>
+            </li>
+        </ul>
+    </nav>
+    <ul class="post-actions post-action-share">
+        <li class="post-action hide-lg hide-md hide-sm">
+            <a class="post-action-btn btn btn--default btn-open-shareoptions"  href="#btn-open-shareoptions">
+                <i class="fa fa-share-alt"></i>
+            </a>
+        </li>
+        <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" data-tooltip="分享至Google+" href="https://plus.google.com/share?url=http://hilen.github.io/2015/12/01/Reveal-Loader/">
+                <i class="fa fa-google-plus"></i>
+            </a>
+        </li>
+       
+        <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" data-tooltip="分享至Twitter" href="https://twitter.com/intent/tweet?text=http://hilen.github.io/2015/12/01/Reveal-Loader/">
+                <i class="fa fa-twitter"></i>
+            </a>
+        </li>
+
+         <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" data-tooltip="分享至新浪微博" href="http://www.jiathis.com/send/?webid=tsina&amp;appkey=&amp;uid=1850331&amp;url=http://hilen.github.io/2015/12/01/Reveal-Loader/&amp;title=Reveal 1.6.3 和 Reveal Loader">
+                <i class="fa fa-weibo"></i>
+            </a>
+        </li>
+
+        
+            <li class="post-action">
+                <a class="post-action-btn btn btn--default" href="#disqus_thread">
+                    <i class="fa fa-comment-o"></i>
+                </a>
+            </li>
+        
+        <li class="post-action">
+            
+                <a class="post-action-btn btn btn--default" href="#">
+            
+                <i class="fa fa-list"></i>
+            </a>
+        </li>
+    </ul>
+</div>
+
+
+        
+            <div id="disqus_thread">
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+        
+    </div>
+</article>
+
+
+
+                <footer id="footer" class="main-content-wrap">
+    <span class="copyrights">
+        Copyrights &copy; 2015 Hilen. All Rights Reserved.
+    </span>
+</footer>
+
+            </div>
+            
+                <div id="bottom-bar" class="post-bottom-bar" data-behavior="3">
+                    <div class="post-actions-wrap">
+    <nav>
+        <ul class="post-actions post-action-nav">
+            <li class="post-action">
+                
+                    <a class="post-action-btn btn btn--disabled">
+                
+                    <i class="fa fa-angle-left"></i>
+                    <span class="hide-xs hide-sm text-small icon-ml">PREVIOUS</span>
+                </a>
+            </li>
+            <li class="post-action">
+                
+                    <a class="post-action-btn btn btn--default tooltip--top" href="/2015/11/04/Instagram-iOS-App-Libraries/" data-tooltip="Instagram iOS App Libraries">
+                
+                    <span class="hide-xs hide-sm text-small icon-mr">NEXT</span>
+                    <i class="fa fa-angle-right"></i>
+                </a>
+            </li>
+        </ul>
+    </nav>
+    <ul class="post-actions post-action-share">
+        <li class="post-action hide-lg hide-md hide-sm">
+            <a class="post-action-btn btn btn--default btn-open-shareoptions"  href="#btn-open-shareoptions">
+                <i class="fa fa-share-alt"></i>
+            </a>
+        </li>
+        <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" data-tooltip="分享至Google+" href="https://plus.google.com/share?url=http://hilen.github.io/2015/12/01/Reveal-Loader/">
+                <i class="fa fa-google-plus"></i>
+            </a>
+        </li>
+       
+        <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" data-tooltip="分享至Twitter" href="https://twitter.com/intent/tweet?text=http://hilen.github.io/2015/12/01/Reveal-Loader/">
+                <i class="fa fa-twitter"></i>
+            </a>
+        </li>
+
+         <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" data-tooltip="分享至新浪微博" href="http://www.jiathis.com/send/?webid=tsina&amp;appkey=&amp;uid=1850331&amp;url=http://hilen.github.io/2015/12/01/Reveal-Loader/&amp;title=Reveal 1.6.3 和 Reveal Loader">
+                <i class="fa fa-weibo"></i>
+            </a>
+        </li>
+
+        
+            <li class="post-action">
+                <a class="post-action-btn btn btn--default" href="#disqus_thread">
+                    <i class="fa fa-comment-o"></i>
+                </a>
+            </li>
+        
+        <li class="post-action">
+            
+                <a class="post-action-btn btn btn--default" href="#">
+            
+                <i class="fa fa-list"></i>
+            </a>
+        </li>
+    </ul>
+</div>
+
+
+                </div>
+                <div id="share-options-bar" class="share-options-bar" data-behavior="3">
+    <ul class="share-options">
+        <li class="share-option">
+            <a class="share-option-btn" target="new" href="https://plus.google.com/share?url=http://hilen.github.io/2015/12/01/Reveal-Loader/">
+                <i class="fa fa-google-plus"></i><span class="">Share on Google Plus</span>
+            </a>
+        </li>
+        <li class="share-option">
+            <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://hilen.github.io/2015/12/01/Reveal-Loader/">
+                <i class="fa fa-facebook-official"></i><span>Share on Facebook</span>
+            </a>
+        </li>
+        <li class="share-option">
+            <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=http://hilen.github.io/2015/12/01/Reveal-Loader/">
+                <i class="fa fa-twitter"></i><span>Share on Twitter</span>
+            </a>
+        </li>
+    </ul>
+</div>
+<div id="share-options-mask" class="share-options-mask"></div>
+            
+        </div>
+        <div id="about">
+    <div id="about-card">
+        <div id="about-btn-close">
+            <i class="fa fa-remove"></i>
+        </div>
+        
+            <img id="about-card-picture" src="/assets/images/Kenny.jpg"/>
+        
+            <h4 id="about-card-name">Hilen</h4>
+        
+            <h5 id="about-card-bio"><p>Lok-Tar，Ogar</p>
+</h5>
+        
+        
+            <h5 id="about-card-job">
+                <i class="fa fa-briefcase"></i>
+                <br/>
+                <p>iOS Developer</p>
+
+            </h5>
+        
+        
+            <h5 id="about-card-location">
+                <i class="fa fa-map-marker"></i>
+                <br/>
+                Beijing
+            </h5>
+        
+    </div>
+</div>
+
+        <div id="cover" style="background-image:url('http://ww1.sinaimg.cn/large/6a011e49gw1exov3pew4vj21kw13z1cn.jpg');"></div>
+    </body>
+    <!--SCRIPTS-->
+<script src="/assets/js/script.min.js" type="text/javascript"></script>
+<!--SCRIPTS END-->
+
+    <script type="text/javascript">
+        var disqus_shortname = 'Hilen';
+        (function() {
+            var dsq = document.createElement('script');
+            dsq.type = 'text/javascript';
+            dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+    </script>
+
+
+    <script type="text/javascript">
+        (function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
+                (w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
+            e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
+        })(window,document,'script','//s.swiftypecdn.com/install/v2/st.js','_st');
+
+        _st('install','ssa7wCs6pXHR7ScR_zs3','2.0.0');
+    </script>
+
+
+</html>

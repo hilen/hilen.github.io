@@ -6,7 +6,7 @@
     <meta http-equiv="Content-Type" content="text/html" charset="UTF-8" >
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="generator" content="Hilen&#39;s Blog">
-    <title>归档: 2015/10 - Hilen&#39;s Blog</title>
+    <title>标签: iOS reverse - Hilen&#39;s Blog</title>
     <meta name="author" content="Hilen">
     
     
@@ -16,7 +16,7 @@
     <meta name="description" content="Lok-Tar，Ogar">
 <meta property="og:type" content="blog">
 <meta property="og:title" content="Hilen's Blog">
-<meta property="og:url" content="http://hilen.github.io/archives/2015/10/index.html">
+<meta property="og:url" content="http://hilen.github.io/tags/iOS-reverse/index.html">
 <meta property="og:site_name" content="Hilen's Blog">
 <meta property="og:description" content="Lok-Tar，Ogar">
 <meta name="twitter:card" content="summary">
@@ -218,39 +218,60 @@
             <div class="postShorten-header">
                 <h1 class="postShorten-title" itemprop="headline">
                     
-                        <a class="link-unstyled" href="/2015/10/09/hello-world/">
-                            Hello World
+                        <a class="link-unstyled" href="/2015/12/01/Reveal-Loader/">
+                            Reveal 1.6.3 和 Reveal Loader
                         </a>
                     
                 </h1>
                 <div class="postShorten-meta">
-    <time itemprop="datePublished" content="Fri Oct 09 2015 16:50:01 GMT+0800">
+    <time itemprop="datePublished" content="Tue Dec 01 2015 11:24:32 GMT+0800">
 	
-		    10月 09, 2015
+		    12月 01, 2015
     	
     </time>
+    
+        <span>发布在 </span>
+        
+    <a class="category-link" href="/categories/iOS/">iOS</a>
+
+
     
 </div>
             </div>
             
             
                 <div class="postShorten-content" itemprop="articleBody">
-                    <p>Welcome to <a href="http://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="http://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="http://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
-<p>More info: <a href="http://hexo.io/docs/writing.html" target="_blank" rel="external">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="http://hexo.io/docs/server.html" target="_blank" rel="external">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="http://hexo.io/docs/generating.html" target="_blank" rel="external">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="http://hexo.io/docs/deployment.html" target="_blank" rel="external">Deployment</a></p>
+                    <p>前几天我在越狱手机上的装 Reveal Loader，手机也越狱了，版本也对了。但是每次重启都是白苹果，那明晃晃的白苹果，就快闪瞎了我的<br>28k 钛合金🐶眼，开始怀疑是手机系统版本和越狱不兼容导致的的问题，于是差点就要重新刷机。但是想<br>想还是没有刷，因为太麻烦，很耽误时间。然后….哈哈，卖个关子，最后成功运行了，在这里记录一下。</p>
+<h1 id="准备工作"><a href="#准备工作" class="headerlink" title="准备工作"></a>准备工作</h1><ol>
+<li>一台已越狱的 iPhone 手机 ，可以从<a href="http://jailbreak.25pp.com/ios/" target="_blank" rel="external">这里</a>找到越狱信息和工具，（我的设备是：iPhone 5，iOS8.1.3）</li>
+<li><a href="http://revealapp.com/" target="_blank" rel="external">Reveal App</a>，（我的版本号是 1.6.3，请支持正版 XD ）</li>
+</ol>
+<h1 id="开始-1-2-3-都是坑，可以选择直接看-4"><a href="#开始-1-2-3-都是坑，可以选择直接看-4" class="headerlink" title="开始(1,2,3 都是坑，可以选择直接看 4)"></a>开始(1,2,3 都是坑，可以选择直接看 4)</h1><h3 id="Step1"><a href="#Step1" class="headerlink" title="Step1"></a>Step1</h3><p>在 Cydia 应用商店里面找到 OpenSSH ，然后安装。</p>
+<h3 id="Step2"><a href="#Step2" class="headerlink" title="Step2"></a>Step2</h3><ol>
+<li>使用 OpenSSH 连接你的越狱设备。</li>
+<li>终端里输入：ssh root@192.168.1.123 (IP 地址请在设备里的 Wi-Fi 信息里找到)</li>
+<li>输入密码<code>alpine</code>（OpenSSL 的默认密码），确认设备已链接，可以访问设备里的文件目录。</li>
+</ol>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">注意：手机和电脑必须在同一个 Wi-Fi 网络环境下，</span><br></pre></td></tr></table></figure>
+<h3 id="Step3"><a href="#Step3" class="headerlink" title="Step3"></a>Step3</h3><p>打开 <code>Reveal-&gt;Help-&gt;Show Reveal Library in Finder</code>，会有两个文件， <code>libReveal.dylib</code> 和 <code>Reveal.framework</code> 拷贝一下路径</p>
+<p>然后重新打开一个终端界面，不要连接 OpenSSL ，确认后执行以下命令：</p>
+<figure class="highlight elixir"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">scp /<span class="constant">Applications/Reveal.</span>app/<span class="constant">Contents/SharedSupport/</span>iOS-<span class="constant">Libraries/</span>libReveal.dylib root<span class="variable">@192</span>.<span class="number">168.1</span>.<span class="number">123</span><span class="symbol">:/Library/MobileSubstrate/DynamicLibraries/</span></span><br><span class="line"></span><br><span class="line">scp -r /<span class="constant">Applications/Reveal.</span>app/<span class="constant">Contents/SharedSupport/</span>iOS-<span class="constant">Libraries/Reveal.</span>framework root<span class="variable">@192</span>.<span class="number">168.1</span>.<span class="number">123</span><span class="symbol">:/System/Library/Frameworks/</span></span><br><span class="line"></span><br><span class="line">scp /<span class="constant">Applications/Reveal.</span>app/<span class="constant">Contents/SharedSupport/</span>iOS-<span class="constant">Libraries/</span>libReveal.dylib root<span class="variable">@172</span>.<span class="number">17.66</span>.<span class="number">29</span><span class="symbol">:/Library/RHRevealLoader/</span></span><br><span class="line"></span><br><span class="line">这三步主要是把 <span class="constant">Reveal </span>的核心文件存放在手机内</span><br></pre></td></tr></table></figure>
+<p>好的，网上有一种方法是把 plist 文件也写入 <code>DynamicLibraries</code> 文件夹内，但是这种过于麻烦。我就没这么干，接下来呢，我就在 Cydia 应用商店里面找到 Reveal Loader ，然后安装，重启设备，然后成功重启设备啦，哈哈，马上就可以掀开各大 App 的底裤看个遍了！结果死机白苹果了！！！苹果了，果了。。</p>
+<p>喂，慢着，不要急，也不要慌。看下一步</p>
+<h3 id="Step4（重要）"><a href="#Step4（重要）" class="headerlink" title="Step4（重要）"></a>Step4（重要）</h3><p>白苹果了是吧？请按住 home 键和锁屏键，等待设备重新启动，启动的一瞬间按住<code>音量 + 键</code>，坚持大概 20 秒。恭喜你，手机复活了！</p>
+<p>接下来用 OpenSSH 连接手机，删除原来的<code>libReveal.dylib</code> 和 <code>Reveal.framework</code>两个文件，并且删除 <code>Reveal Loader</code>，这时发现手机可以重新启动了。所以原因也许是这些文件造成的。</p>
+<p>重复 Step3，拷贝<code>libReveal.dylib</code> 和 <code>Reveal.framework</code>到设备内，接下来在你的 Mac 文本内。把刚才闲麻烦的步骤重复一下，也就是那个 <code>plist 文件</code>，内容如下，可以随便写一个不存在的 bundle。命名为 <code>libReveal.plist</code>，然后放在桌面上<br><figure class="highlight clojure"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="collection">&#123; </span><br><span class="line">    Filter = <span class="collection">&#123; </span><br><span class="line">        Bundles = <span class="list">(</span><br><span class="line">        	<span class="string">"com.hilen.yourapp"</span><span class="comment">;</span></span><br><span class="line">        )</span><span class="comment">;</span></span><br><span class="line">&#125;</span></span></span><br></pre></td></tr></table></figure></p>
+<p>打开终端，执行</p>
+<figure class="highlight elixir"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">scp /<span class="constant">Users/</span>hilen/<span class="constant">Desktop/</span>libReveal.plist root<span class="variable">@192</span>.<span class="number">168.1</span>.<span class="number">123</span><span class="symbol">:/Library/MobileSubstrate/DynamicLibraries/</span></span><br></pre></td></tr></table></figure>
+<p>然后去安装<code>Reveal Loader</code>，重启设备。OK，你可以浏览其他 App 的内容了。<br>以下是 App Store 的预览，Enjoy</p>
+<p><img src="http://ww3.sinaimg.cn/large/6a011e49gw1eyk3r7s8rvj21520rgwma.jpg" alt=""></p>
 
                     
                         
                     
                     
                         <p>
-                            <a href="/2015/10/09/hello-world/#post-footer" class="postShorten-excerpt_link link">
+                            <a href="/2015/12/01/Reveal-Loader/#post-footer" class="postShorten-excerpt_link link">
                                 注释和共享
                             </a>
                         </p>
@@ -270,7 +291,6 @@
 </div>
 
 </section>
-
 
 
                 <footer id="footer" class="main-content-wrap">

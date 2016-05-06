@@ -6,7 +6,7 @@
     <meta http-equiv="Content-Type" content="text/html" charset="UTF-8" >
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="generator" content="Hilen&#39;s Blog">
-    <title>使用 Dropbox 来同步 sublime 的配置 - Hilen&#39;s Blog</title>
+    <title>使用 Dropbox 来同步 Sublime 的配置 - Hilen&#39;s Blog</title>
     <meta name="author" content="Hilen">
     
     
@@ -15,13 +15,13 @@
     
     <meta name="description" content="原文链接：http://thoughtfulweb.com/thoughts/on/use-a-dropbox-account-to-synchronise-your-sublime-text-2-settings">
 <meta property="og:type" content="blog">
-<meta property="og:title" content="使用 Dropbox 来同步 sublime 的配置">
+<meta property="og:title" content="使用 Dropbox 来同步 Sublime 的配置">
 <meta property="og:url" content="http://hilen.github.io/2016/05/06/Use-Dropbox-synchronise-sublime/index.html">
 <meta property="og:site_name" content="Hilen's Blog">
 <meta property="og:description" content="原文链接：http://thoughtfulweb.com/thoughts/on/use-a-dropbox-account-to-synchronise-your-sublime-text-2-settings">
-<meta property="og:updated_time" content="2016-05-06T11:06:29.000Z">
+<meta property="og:updated_time" content="2016-05-06T23:57:47.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="使用 Dropbox 来同步 sublime 的配置">
+<meta name="twitter:title" content="使用 Dropbox 来同步 Sublime 的配置">
 <meta name="twitter:description" content="原文链接：http://thoughtfulweb.com/thoughts/on/use-a-dropbox-account-to-synchronise-your-sublime-text-2-settings">
     
     
@@ -208,7 +208,7 @@
         <div class="post-header main-content-wrap text-left">
     
         <h1 class="post-title" itemprop="headline">
-            使用 Dropbox 来同步 sublime 的配置
+            使用 Dropbox 来同步 Sublime 的配置
         </h1>
     
     <div class="post-meta">
@@ -238,7 +238,13 @@
 <h3 id="Step-4"><a href="#Step-4" class="headerlink" title="Step 4"></a>Step 4</h3><p>打开你的终端，<code>cd ~/Library/Application\ Support/Sublime\ Text\ 2/</code> 然后 <code>ls -l</code>查看一下文件夹目录下都有哪些目录。如果第三步你是剪切的话，只会看到 <code>Backup</code> 和 <code>Settings</code> 两个文件夹。</p>
 <h3 id="Step-5"><a href="#Step-5" class="headerlink" title="Step 5"></a>Step 5</h3><p>创建软连接<br>命令行进入目录<code>cd ~/Library/Application\ Support/Sublime\ Text\ 2/</code><br>然后执行：<br><figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">ln -s <span class="regexp">~/Dropbox/</span>Apps<span class="regexp">/Sublime/</span>Packages ./Packages</span><br><span class="line">ln -s <span class="regexp">~/Dropbox/</span>Apps<span class="regexp">/Sublime/</span>Installed\ Packages ./Installed\ Packages</span><br><span class="line">ln -s <span class="regexp">~/Dropbox/</span>Apps<span class="regexp">/Sublime/</span>Pristine\ Packages ./Pristine\ Packages</span><br></pre></td></tr></table></figure></p>
 <p>好了，OK 了</p>
-<p>Enjoy!</p>
+<p>Enjoy! </p>
+<hr>
+<p>#####阅读更多</p>
+<ul>
+<li><a href="https://packagecontrol.io/docs/syncing" target="_blank" rel="external">https://packagecontrol.io/docs/syncing</a></li>
+<li><a href="https://gist.github.com/ijy/7399688" target="_blank" rel="external">My Sublime Text 3 setup</a></li>
+</ul>
 
             
         </div>

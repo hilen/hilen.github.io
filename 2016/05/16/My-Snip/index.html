@@ -6,23 +6,23 @@
     <meta http-equiv="Content-Type" content="text/html" charset="UTF-8" >
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="generator" content="Hilen&#39;s Blog">
-    <title>使用 Dropbox 来同步 Sublime 的配置 - Hilen&#39;s Blog</title>
+    <title>日常随手记 - Hilen&#39;s Blog</title>
     <meta name="author" content="Hilen">
     
     
         <link rel="icon" href="http://hilen.github.io/assets/images/favicon.png">
     
     
-    <meta name="description" content="原文链接：http://thoughtfulweb.com/thoughts/on/use-a-dropbox-account-to-synchronise-your-sublime-text-2-settings">
+    <meta name="description" content=" gem 安装和卸载Uninstall: sudo gem uninstall cocoapods -v 0.39.0Install: sudo gem install -n /usr/local/bin cocoapods -v 0.39.0">
 <meta property="og:type" content="blog">
-<meta property="og:title" content="使用 Dropbox 来同步 Sublime 的配置">
-<meta property="og:url" content="http://hilen.github.io/2016/05/06/Use-Dropbox-synchronise-sublime/index.html">
+<meta property="og:title" content="日常随手记">
+<meta property="og:url" content="http://hilen.github.io/2016/05/16/My-Snip/index.html">
 <meta property="og:site_name" content="Hilen's Blog">
-<meta property="og:description" content="原文链接：http://thoughtfulweb.com/thoughts/on/use-a-dropbox-account-to-synchronise-your-sublime-text-2-settings">
-<meta property="og:updated_time" content="2016-05-06T23:59:02.000Z">
+<meta property="og:description" content=" gem 安装和卸载Uninstall: sudo gem uninstall cocoapods -v 0.39.0Install: sudo gem install -n /usr/local/bin cocoapods -v 0.39.0">
+<meta property="og:updated_time" content="2016-05-24T06:37:00.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="使用 Dropbox 来同步 Sublime 的配置">
-<meta name="twitter:description" content="原文链接：http://thoughtfulweb.com/thoughts/on/use-a-dropbox-account-to-synchronise-your-sublime-text-2-settings">
+<meta name="twitter:title" content="日常随手记">
+<meta name="twitter:description" content=" gem 安装和卸载Uninstall: sudo gem uninstall cocoapods -v 0.39.0Install: sudo gem install -n /usr/local/bin cocoapods -v 0.39.0">
     
     
         
@@ -208,13 +208,13 @@
         <div class="post-header main-content-wrap text-left">
     
         <h1 class="post-title" itemprop="headline">
-            使用 Dropbox 来同步 Sublime 的配置
+            日常随手记
         </h1>
     
     <div class="post-meta">
-    <time itemprop="datePublished" content="Fri May 06 2016 18:11:35 GMT+0800">
+    <time itemprop="datePublished" content="Mon May 16 2016 14:11:35 GMT+0800">
 	
-		    5月 06, 2016
+		    5月 16, 2016
     	
     </time>
     
@@ -229,21 +229,24 @@
     
     <div class="post-content markdown" itemprop="articleBody">
         <div class="main-content-wrap">
-            <p>原文链接：<a href="http://thoughtfulweb.com/thoughts/on/use-a-dropbox-account-to-synchronise-your-sublime-text-2-settings" target="_blank" rel="external">http://thoughtfulweb.com/thoughts/on/use-a-dropbox-account-to-synchronise-your-sublime-text-2-settings</a></p>
-<a id="more"></a>
-<h2 id="使用-Dropbox-账户同步你的-Sublime-Text-2-设置"><a href="#使用-Dropbox-账户同步你的-Sublime-Text-2-设置" class="headerlink" title="使用 Dropbox 账户同步你的 Sublime Text 2 设置"></a>使用 Dropbox 账户同步你的 Sublime Text 2 设置</h2><p>假设你已经有一个 Dropbox 的帐户，如果没有的话。去这里 <a href="https://www.dropbox.com/" target="_blank" rel="external">https://www.dropbox.com/</a>申请一个就好。</p>
-<h3 id="Step-1"><a href="#Step-1" class="headerlink" title="Step 1"></a>Step 1</h3><p>在你本机电脑上的的 Dropbox 目录下创建一个名为<code>Apps</code>的文件夹，然后在<code>Apps</code>文件夹内创建一个名为<code>Sublime</code>的文件夹。(文件夹名随便)</p>
-<h3 id="Step-2"><a href="#Step-2" class="headerlink" title="Step 2"></a>Step 2</h3><p>如果你的<code>Sublime Text 2</code>正在运行，关掉它</p>
-<h3 id="Step-3"><a href="#Step-3" class="headerlink" title="Step 3"></a>Step 3</h3><p>终端执行:<code>cd /Applications/Sublime\ Text\ 2.app/Contents/MacOS/</code> 可以看到名为<br><code>Installed Packages</code>,<code>Packages</code>,<code>Pristine Packages</code>的三个文件夹，然后把这几个文件夹剪切到<code>~/Dropbox/Apps/sublime</code> 文件夹下</p>
-<h3 id="Step-4"><a href="#Step-4" class="headerlink" title="Step 4"></a>Step 4</h3><p>打开你的终端，<code>cd ~/Library/Application\ Support/Sublime\ Text\ 2/</code> 然后 <code>ls -l</code>查看一下文件夹目录下都有哪些目录。如果第三步你是剪切的话，只会看到 <code>Backup</code> 和 <code>Settings</code> 两个文件夹。</p>
-<h3 id="Step-5"><a href="#Step-5" class="headerlink" title="Step 5"></a>Step 5</h3><p>创建软连接<br>命令行进入目录<code>cd ~/Library/Application\ Support/Sublime\ Text\ 2/</code><br>然后执行：<br><figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">ln -s <span class="regexp">~/Dropbox/</span>Apps<span class="regexp">/Sublime/</span>Packages ./Packages</span><br><span class="line">ln -s <span class="regexp">~/Dropbox/</span>Apps<span class="regexp">/Sublime/</span>Installed\ Packages ./Installed\ Packages</span><br><span class="line">ln -s <span class="regexp">~/Dropbox/</span>Apps<span class="regexp">/Sublime/</span>Pristine\ Packages ./Pristine\ Packages</span><br></pre></td></tr></table></figure></p>
-<p>好了，OK 了</p>
-<p>Enjoy! </p>
+            <h2 id="-gem-安装和卸载"><a href="#-gem-安装和卸载" class="headerlink" title=" gem 安装和卸载"></a> gem 安装和卸载</h2><p>Uninstall: sudo gem uninstall cocoapods -v 0.39.0<br>Install: sudo gem install -n /usr/local/bin cocoapods -v 0.39.0<br><a id="more"></a></p>
 <hr>
-<h5 id="阅读更多"><a href="#阅读更多" class="headerlink" title="阅读更多"></a>阅读更多</h5><ul>
-<li><a href="https://packagecontrol.io/docs/syncing" target="_blank" rel="external">https://packagecontrol.io/docs/syncing</a></li>
-<li><a href="https://gist.github.com/ijy/7399688" target="_blank" rel="external">My Sublime Text 3 setup</a></li>
+<h2 id="-Mac-下多个-SSH-Key-配置方法"><a href="#-Mac-下多个-SSH-Key-配置方法" class="headerlink" title=" Mac 下多个 SSH Key 配置方法"></a> Mac 下多个 SSH Key 配置方法</h2><h5 id="1-配置-git-user-name，-user-email"><a href="#1-配置-git-user-name，-user-email" class="headerlink" title="1.配置 git user.name， user.email"></a>1.配置 git user.name， user.email</h5><figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git config  user<span class="class">.name</span> <span class="string">"hilen"</span></span><br><span class="line">git config  user<span class="class">.email</span> <span class="string">"hilenkz@gmail.com"</span></span><br></pre></td></tr></table></figure>
+<h5 id="2-生成-SSH-Key"><a href="#2-生成-SSH-Key" class="headerlink" title="2. 生成 SSH Key"></a>2. 生成 SSH Key</h5><p>打开终端，并输入 <code>ssh-keygen -t rsa -C &quot;hilenkz@gmail.com&quot; -f hilen_rsa</code></p>
+<figure class="highlight haml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">解释：</span><br><span class="line">-<span class="ruby"><span class="constant">C</span> <span class="symbol">:</span> 邮箱地址</span><br><span class="line"></span>-<span class="ruby">f <span class="symbol">:</span> 文件名</span></span><br></pre></td></tr></table></figure>
+<p>上面的 hilen_rsa 就是文件名，这时 ~/.ssh 目录下会多出 hilen_rsa 和 hilen_rsa.pub 两个文件， hilen_rsa.pub 里保存的就是我们要使用的key。</p>
+<h5 id="3-配置-SSH-config-文件"><a href="#3-配置-SSH-config-文件" class="headerlink" title="3.配置 SSH config 文件"></a>3.配置 SSH config 文件</h5><p>打开　~/.ssh/config （如果没有就创建一个）<br><figure class="highlight crmsh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># GitHub</span></span><br><span class="line">Host www.github.com</span><br><span class="line">    HostName github.com</span><br><span class="line">    IdentityFile ~/.ssh/hilen_rsa</span><br><span class="line">    PreferredAuthentications publickey</span><br><span class="line">    <span class="keyword">User</span> <span class="title">hilen</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># bitbucket</span></span><br><span class="line">Host bitbucket.org</span><br><span class="line">    HostName bitbucket.org</span><br><span class="line">    IdentityFile ~/.ssh/hilen_rsa</span><br><span class="line">    PreferredAuthentications publickey</span><br><span class="line">    <span class="keyword">User</span> <span class="title">hilen</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># xxx</span></span><br><span class="line">Host xxx.com</span><br><span class="line">    HostName xxx.com</span><br><span class="line">    IdentityFile ~/.ssh/id_rsa</span><br><span class="line">    PreferredAuthentications publickey</span><br><span class="line">    <span class="keyword">User</span> <span class="title">hilenlai</span></span><br></pre></td></tr></table></figure></p>
+<p>在 <code>config</code> 文件内输入你自己的配置</p>
+<h5 id="4-查看配置是否生效"><a href="#4-查看配置是否生效" class="headerlink" title="4.查看配置是否生效"></a>4.查看配置是否生效</h5><p>终端内输入： <code>ssh-add -l</code><br><figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">2048</span> <span class="constant">SHA256</span><span class="symbol">:P2Pj1zuBnN+ncKcZA0zN+wIpcTLC2DG2DYnkTl3nkdM</span> hilen_rsa (<span class="constant">RSA</span>)</span><br><span class="line"><span class="number">4096</span> <span class="constant">SHA256</span><span class="symbol">:jpPlCXfUBf/sILsu98M0NYtFy7OJ8BSrBRCh+vyw38U</span> id_rsa (<span class="constant">RSA</span>)</span><br></pre></td></tr></table></figure></p>
+<p>查看是否在 SSH 列表内，如果不在，执行：<code>ssh-add ~/.ssh/hilen_rsa</code></p>
+<h5 id="5-测试-SSH-Key-是否配置成功"><a href="#5-测试-SSH-Key-是否配置成功" class="headerlink" title="5.测试 SSH Key 是否配置成功"></a>5.测试 SSH Key 是否配置成功</h5><p>终端：<code>ssh -T git@github.com</code><br><figure class="highlight applescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Hi Hilen! You've successfully authenticated, <span class="keyword">but</span> GitHub <span class="keyword">does</span> <span class="keyword">not</span> provide shell access.</span><br></pre></td></tr></table></figure></p>
+<p>证明成功了</p>
+<h5 id="6-复制你的-publickey"><a href="#6-复制你的-publickey" class="headerlink" title="6.复制你的 publickey"></a>6.复制你的 publickey</h5><p><code>pbcopy &lt; ~/.ssh/hilen_rsa.pub</code> 复制这个 key, 粘贴到你要的位置。</p>
+<p>OK done</p>
+<h2 id="reference"><a href="#reference" class="headerlink" title="reference"></a>reference</h2><ul>
+<li><a href="http://stackoverflow.com/questions/3225862/multiple-github-accounts-ssh-config" target="_blank" rel="external">Multiple GitHub Accounts &amp; SSH Config</a></li>
 </ul>
+<hr>
 
             
         </div>
@@ -262,7 +265,7 @@
         <ul class="post-actions post-action-nav">
             <li class="post-action">
                 
-                    <a class="post-action-btn btn btn--default tooltip--top" href="/2016/05/16/My-Snip/"  data-tooltip="日常随手记">
+                    <a class="post-action-btn btn btn--disabled">
                 
                     <i class="fa fa-angle-left"></i>
                     <span class="hide-xs hide-sm text-small icon-ml">上一篇</span>
@@ -270,7 +273,7 @@
             </li>
             <li class="post-action">
                 
-                    <a class="post-action-btn btn btn--default tooltip--top" href="/2016/05/06/iOS-Device-Types/" data-tooltip="iOS Device Types">
+                    <a class="post-action-btn btn btn--default tooltip--top" href="/2016/05/06/Use-Dropbox-synchronise-sublime/" data-tooltip="使用 Dropbox 来同步 Sublime 的配置">
                 
                     <span class="hide-xs hide-sm text-small icon-mr">下一篇</span>
                     <i class="fa fa-angle-right"></i>
@@ -285,17 +288,17 @@
             </a>
         </li>
         <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=http://hilen.github.io/2016/05/06/Use-Dropbox-synchronise-sublime/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=http://hilen.github.io/2016/05/16/My-Snip/">
                 <i class="fa fa-google-plus"></i>
             </a>
         </li>
         <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://hilen.github.io/2016/05/06/Use-Dropbox-synchronise-sublime/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://hilen.github.io/2016/05/16/My-Snip/">
                 <i class="fa fa-facebook-official"></i>
             </a>
         </li>
         <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=http://hilen.github.io/2016/05/06/Use-Dropbox-synchronise-sublime/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=http://hilen.github.io/2016/05/16/My-Snip/">
                 <i class="fa fa-twitter"></i>
             </a>
         </li>
@@ -343,7 +346,7 @@
         <ul class="post-actions post-action-nav">
             <li class="post-action">
                 
-                    <a class="post-action-btn btn btn--default tooltip--top" href="/2016/05/16/My-Snip/"  data-tooltip="日常随手记">
+                    <a class="post-action-btn btn btn--disabled">
                 
                     <i class="fa fa-angle-left"></i>
                     <span class="hide-xs hide-sm text-small icon-ml">上一篇</span>
@@ -351,7 +354,7 @@
             </li>
             <li class="post-action">
                 
-                    <a class="post-action-btn btn btn--default tooltip--top" href="/2016/05/06/iOS-Device-Types/" data-tooltip="iOS Device Types">
+                    <a class="post-action-btn btn btn--default tooltip--top" href="/2016/05/06/Use-Dropbox-synchronise-sublime/" data-tooltip="使用 Dropbox 来同步 Sublime 的配置">
                 
                     <span class="hide-xs hide-sm text-small icon-mr">下一篇</span>
                     <i class="fa fa-angle-right"></i>
@@ -366,17 +369,17 @@
             </a>
         </li>
         <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=http://hilen.github.io/2016/05/06/Use-Dropbox-synchronise-sublime/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=http://hilen.github.io/2016/05/16/My-Snip/">
                 <i class="fa fa-google-plus"></i>
             </a>
         </li>
         <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://hilen.github.io/2016/05/06/Use-Dropbox-synchronise-sublime/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://hilen.github.io/2016/05/16/My-Snip/">
                 <i class="fa fa-facebook-official"></i>
             </a>
         </li>
         <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=http://hilen.github.io/2016/05/06/Use-Dropbox-synchronise-sublime/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=http://hilen.github.io/2016/05/16/My-Snip/">
                 <i class="fa fa-twitter"></i>
             </a>
         </li>
@@ -402,17 +405,17 @@
                 <div id="share-options-bar" class="share-options-bar" data-behavior="1">
     <ul class="share-options">
         <li class="share-option">
-            <a class="share-option-btn" target="new" href="https://plus.google.com/share?url=http://hilen.github.io/2016/05/06/Use-Dropbox-synchronise-sublime/">
+            <a class="share-option-btn" target="new" href="https://plus.google.com/share?url=http://hilen.github.io/2016/05/16/My-Snip/">
                 <i class="fa fa-google-plus"></i><span class="">分享到 Google+</span>
             </a>
         </li>
         <li class="share-option">
-            <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://hilen.github.io/2016/05/06/Use-Dropbox-synchronise-sublime/">
+            <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://hilen.github.io/2016/05/16/My-Snip/">
                 <i class="fa fa-facebook-official"></i><span>分享到 Facebook</span>
             </a>
         </li>
         <li class="share-option">
-            <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=http://hilen.github.io/2016/05/06/Use-Dropbox-synchronise-sublime/">
+            <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=http://hilen.github.io/2016/05/16/My-Snip/">
                 <i class="fa fa-twitter"></i><span>分享到 Twitter</span>
             </a>
         </li>
@@ -469,9 +472,9 @@
     
         <script>
              var disqus_config = function () {
-                 this.page.url = 'http://hilen.github.io/2016/05/06/Use-Dropbox-synchronise-sublime/';
+                 this.page.url = 'http://hilen.github.io/2016/05/16/My-Snip/';
                  
-                    this.page.identifier = '2016/05/06/Use-Dropbox-synchronise-sublime/';
+                    this.page.identifier = '2016/05/16/My-Snip/';
                                   
              };
             (function() {

@@ -278,6 +278,12 @@
             
                 <div class="postShorten-excerpt" itemprop="articleBody">
                     <p>在日常的 iOS 开发中，我们经常会使用到不同的网络环境切换问题，比如：</p>
+<ul>
+<li>QA 需要你给出一个带有环境切换的功能的安装文件</li>
+<li>App Store 需要你上传面向用户环境的 Release 的安装文件</li>
+<li>灰度测试的时候又需要你给出带有个别功能的安装文件</li>
+</ul>
+<p>面对以上需求，也许你会针对不同的包给出不同的宏定义，比如 <code>#define QA_TEST</code> ,<code>#define APP_STORE</code>, <code>#define GRAY_TEST</code>，然后针对不同的宏定义在里面进行不同的参数修改。但是如果各个业务方来频繁的找你，也许手动的修改这些文件会让你崩溃。</p>
                     
                         <a href="/2016/05/16/configuration-scheme/" class="postShorten-excerpt_link link">
                             阅读全文

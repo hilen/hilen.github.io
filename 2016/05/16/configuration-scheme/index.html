@@ -15,20 +15,38 @@
         <link rel="icon" href="http://hilen.github.io/assets/images/favicon.png">
     
     
-    <meta name="description" content="在日常的 iOS 开发中，我们经常会使用到不同的网络环境切换问题，比如：">
+    <meta name="description" content="在日常的 iOS 开发中，我们经常会使用到不同的网络环境切换问题，比如：
+
+QA 需要你给出一个带有环境切换的功能的安装文件
+App Store 需要你上传面向用户环境的 Release 的安装文件
+灰度测试的时候又需要你给出带有个别功能的安装文件
+
+面对以上需求，也许你会针对不同的包给出不同的宏定义，比如 #define QA_TEST ,#define APP_STORE, #define G">
 <meta property="og:type" content="blog">
 <meta property="og:title" content="iOS Build Configuration + Scheme 的使用">
 <meta property="og:url" content="http://hilen.github.io/2016/05/16/configuration-scheme/index.html">
 <meta property="og:site_name" content="Hilen's Blog">
-<meta property="og:description" content="在日常的 iOS 开发中，我们经常会使用到不同的网络环境切换问题，比如：">
+<meta property="og:description" content="在日常的 iOS 开发中，我们经常会使用到不同的网络环境切换问题，比如：
+
+QA 需要你给出一个带有环境切换的功能的安装文件
+App Store 需要你上传面向用户环境的 Release 的安装文件
+灰度测试的时候又需要你给出带有个别功能的安装文件
+
+面对以上需求，也许你会针对不同的包给出不同的宏定义，比如 #define QA_TEST ,#define APP_STORE, #define G">
 <meta property="og:image" content="http://ww1.sinaimg.cn/large/6a011e49gw1f67fm00645j21j80iin0b.jpg">
 <meta property="og:image" content="http://ww1.sinaimg.cn/large/6a011e49gw1f67fm00645j21j80iin0b.jpg">
 <meta property="og:image" content="http://ww1.sinaimg.cn/large/6a011e49gw1f67fqfa7zej21kw0usdo5.jpg">
 <meta property="og:image" content="http://ww1.sinaimg.cn/large/6a011e49gw1f67fr9d270j21kw0us0x9.jpg">
-<meta property="og:updated_time" content="2016-07-27T06:22:50.000Z">
+<meta property="og:updated_time" content="2016-08-10T08:48:38.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="iOS Build Configuration + Scheme 的使用">
-<meta name="twitter:description" content="在日常的 iOS 开发中，我们经常会使用到不同的网络环境切换问题，比如：">
+<meta name="twitter:description" content="在日常的 iOS 开发中，我们经常会使用到不同的网络环境切换问题，比如：
+
+QA 需要你给出一个带有环境切换的功能的安装文件
+App Store 需要你上传面向用户环境的 Release 的安装文件
+灰度测试的时候又需要你给出带有个别功能的安装文件
+
+面对以上需求，也许你会针对不同的包给出不同的宏定义，比如 #define QA_TEST ,#define APP_STORE, #define G">
     
     
         
@@ -236,13 +254,13 @@
     <div class="post-content markdown" itemprop="articleBody">
         <div class="main-content-wrap">
             <p>在日常的 iOS 开发中，我们经常会使用到不同的网络环境切换问题，比如：</p>
-<a id="more"></a>
 <ul>
 <li>QA 需要你给出一个带有环境切换的功能的安装文件</li>
 <li>App Store 需要你上传面向用户环境的 Release 的安装文件</li>
 <li>灰度测试的时候又需要你给出带有个别功能的安装文件</li>
 </ul>
 <p>面对以上需求，也许你会针对不同的包给出不同的宏定义，比如 <code>#define QA_TEST</code> ,<code>#define APP_STORE</code>, <code>#define GRAY_TEST</code>，然后针对不同的宏定义在里面进行不同的参数修改。但是如果各个业务方来频繁的找你，也许手动的修改这些文件会让你崩溃。</p>
+<a id="more"></a>
 <p>接下来提供一个解决方案，专门针对这种不同的环境或编译需求使用的无侵入，无修改，无痛的三无解决方案。名字叫：Build Configuration + Scheme</p>
 <p>关于 <a href="https://developer.apple.com/library/ios/recipes/xcode_help-project_editor/Articles/BasingBuildConfigurationsonConfigurationFiles.html" target="_blank" rel="external">Build Configuration</a> 的官方解释。<br>关于 <a href="https://developer.apple.com/library/ios/recipes/xcode_help-scheme_editor/Articles/SchemeDialog.html#//apple_ref/doc/uid/TP40010402-CH1-SW1" target="_blank" rel="external">Scheme</a> 的官方解释。</p>
 <p>接下来的步骤可以实现上面所描述的功能。</p>

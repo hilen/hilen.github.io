@@ -21,7 +21,7 @@ CocoaPods 的安装和卸载Uninstall: sudo gem uninstall cocoapods -v 0.39.0Ins
 <meta property="og:site_name" content="Hilen's Blog">
 <meta property="og:description" content="&amp;lt;!-- toc --&amp;gt;
 CocoaPods 的安装和卸载Uninstall: sudo gem uninstall cocoapods -v 0.39.0Install: sudo gem install -n /usr/local/bin cocoapods -v 0.39.0">
-<meta property="og:updated_time" content="2016-07-22T09:07:57.000Z">
+<meta property="og:updated_time" content="2016-08-17T03:28:10.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="日常随手记">
 <meta name="twitter:description" content="&amp;lt;!-- toc --&amp;gt;
@@ -232,8 +232,19 @@ CocoaPods 的安装和卸载Uninstall: sudo gem uninstall cocoapods -v 0.39.0Ins
     
     <div class="post-content markdown" itemprop="articleBody">
         <div class="main-content-wrap">
-            <h1 id="table-of-contents">目录</h1><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#CocoaPods-的安装和卸载"><span class="toc-text">CocoaPods 的安装和卸载</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Mac-下多个-SSH-Key-配置方法"><span class="toc-text">Mac 下多个 SSH Key 配置方法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#iTerm-的快捷键使用"><span class="toc-text">iTerm 的快捷键使用</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Git-Log-的优雅写法"><span class="toc-text">Git Log 的优雅写法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#iOS-的注释可以写的内容"><span class="toc-text">iOS 的注释可以写的内容</span></a></li></ol>
+            <h1 id="table-of-contents">目录</h1><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#CocoaPods-的安装和卸载"><span class="toc-text">CocoaPods 的安装和卸载</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#LLDB-和-Chisel-调试"><span class="toc-text">LLDB 和 Chisel 调试</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Mac-下多个-SSH-Key-配置方法"><span class="toc-text">Mac 下多个 SSH Key 配置方法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#iTerm-的快捷键使用"><span class="toc-text">iTerm 的快捷键使用</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Git-Log-的优雅写法"><span class="toc-text">Git Log 的优雅写法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#iOS-的注释可以写的内容"><span class="toc-text">iOS 的注释可以写的内容</span></a></li></ol>
 <h2 id="CocoaPods-的安装和卸载"><a href="#CocoaPods-的安装和卸载" class="headerlink" title="CocoaPods 的安装和卸载"></a>CocoaPods 的安装和卸载</h2><p>Uninstall: sudo gem uninstall cocoapods -v 0.39.0<br>Install: sudo gem install -n /usr/local/bin cocoapods -v 0.39.0<br><a id="more"></a></p>
+<hr>
+<h2 id="LLDB-和-Chisel-调试"><a href="#LLDB-和-Chisel-调试" class="headerlink" title="LLDB 和 Chisel 调试"></a>LLDB 和 Chisel 调试</h2><p>Reference：</p>
+<ul>
+<li><a href="http://www.starfelix.com/blog/2014/03/17/lldbdiao-shi-ming-ling-chu-tan/" target="_blank" rel="external">LLDB调试命令初探</a></li>
+<li><a href="http://www.jianshu.com/p/e89af3e9a8d7" target="_blank" rel="external">小笨狼与LLDB的故事</a></li>
+<li><a href="http://southpeak.github.io/blog/2015/01/25/tool-lldb/" target="_blank" rel="external">LLDB调试器使用简介</a></li>
+<li><a href="https://gist.github.com/ryanchang/a2f738f0c3cc6fbd71fa" target="_blank" rel="external">LLDB Cheat Sheet</a></li>
+<li><a href="https://blog.cnbluebox.com/blog/2015/03/05/chisel/" target="_blank" rel="external">Chisel-LLDB命令插件，让调试更Easy</a></li>
+<li><a href="https://github.com/facebook/chisel/blob/master/README.md" target="_blank" rel="external">chisel/README.md at master · facebook/chisel</a></li>
+<li><a href="https://objccn.io/issue-19-2/" target="_blank" rel="external">ObjC 中国 - 与调试器共舞 - LLDB 的华尔兹</a></li>
+</ul>
 <hr>
 <h2 id="Mac-下多个-SSH-Key-配置方法"><a href="#Mac-下多个-SSH-Key-配置方法" class="headerlink" title="Mac 下多个 SSH Key 配置方法"></a>Mac 下多个 SSH Key 配置方法</h2><p>【1】配置 git user.name， user.email<br><figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git config  user<span class="class">.name</span> <span class="string">"hilen"</span></span><br><span class="line">git config  user<span class="class">.email</span> <span class="string">"hilenkz@gmail.com"</span></span><br></pre></td></tr></table></figure></p>
 <p>【2】生成 SSH Key<br>打开终端，并输入 <code>ssh-keygen -t rsa -C &quot;hilenkz@gmail.com&quot; -f hilen_rsa</code></p>

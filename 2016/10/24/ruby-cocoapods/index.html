@@ -6,23 +6,23 @@
     <meta http-equiv="Content-Type" content="text/html" charset="UTF-8" >
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="generator" content="Hilen&#39;s Blog">
-    <title>Instagram iOS App Libraries - Hilen&#39;s Blog</title>
+    <title>macOS Sierra 安装 rbenv 管理器 和 CocoaPods - Hilen&#39;s Blog</title>
     <meta name="author" content="Hilen">
     
     
         <link rel="icon" href="http://hilen.github.io/assets/images/favicon.png">
     
     
-    <meta name="description" content="表格内容是 Instagram iOS App 所用到的第三方库，具体协议内容可以在 https://instagram.com/about/legal/libraries/ 找到。">
+    <meta name="description" content="CocoaPods 是 iOS 日常开发所使用的包管理器，它把 Rails 里的 Gem 带进了 macOS 中，让 iOS 和 macOS 管理自己的第三方依赖。接下来介绍几个概念：rbenv：管理 Ruby 版本的内容。还有 rvm 的管理工具，但笔者接下来的安装步骤使用的是 rbenv">
 <meta property="og:type" content="blog">
-<meta property="og:title" content="Instagram iOS App Libraries">
-<meta property="og:url" content="http://hilen.github.io/2015/11/04/Instagram-iOS-App-Libraries/index.html">
+<meta property="og:title" content="macOS Sierra 安装 rbenv 管理器 和 CocoaPods">
+<meta property="og:url" content="http://hilen.github.io/2016/10/24/ruby-cocoapods/index.html">
 <meta property="og:site_name" content="Hilen's Blog">
-<meta property="og:description" content="表格内容是 Instagram iOS App 所用到的第三方库，具体协议内容可以在 https://instagram.com/about/legal/libraries/ 找到。">
-<meta property="og:updated_time" content="2016-05-06T15:07:07.000Z">
+<meta property="og:description" content="CocoaPods 是 iOS 日常开发所使用的包管理器，它把 Rails 里的 Gem 带进了 macOS 中，让 iOS 和 macOS 管理自己的第三方依赖。接下来介绍几个概念：rbenv：管理 Ruby 版本的内容。还有 rvm 的管理工具，但笔者接下来的安装步骤使用的是 rbenv">
+<meta property="og:updated_time" content="2016-10-24T09:48:15.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Instagram iOS App Libraries">
-<meta name="twitter:description" content="表格内容是 Instagram iOS App 所用到的第三方库，具体协议内容可以在 https://instagram.com/about/legal/libraries/ 找到。">
+<meta name="twitter:title" content="macOS Sierra 安装 rbenv 管理器 和 CocoaPods">
+<meta name="twitter:description" content="CocoaPods 是 iOS 日常开发所使用的包管理器，它把 Rails 里的 Gem 带进了 macOS 中，让 iOS 和 macOS 管理自己的第三方依赖。接下来介绍几个概念：rbenv：管理 Ruby 版本的内容。还有 rvm 的管理工具，但笔者接下来的安装步骤使用的是 rbenv">
     
     
         
@@ -208,19 +208,19 @@
         <div class="post-header main-content-wrap text-left">
     
         <h1 class="post-title" itemprop="headline">
-            Instagram iOS App Libraries
+            macOS Sierra 安装 rbenv 管理器 和 CocoaPods
         </h1>
     
     <div class="post-meta">
-    <time itemprop="datePublished" content="Wed Nov 04 2015 11:24:32 GMT+0800">
+    <time itemprop="datePublished" content="Mon Oct 24 2016 17:25:07 GMT+0800">
 	
-		    11月 04, 2015
+		    10月 24, 2016
     	
     </time>
     
         <span>发布在 </span>
         
-    <a class="category-link" href="/categories/Objective-C/">Objective-C</a>
+    <a class="category-link" href="/categories/iOS/">iOS</a>
 
 
     
@@ -229,138 +229,39 @@
     
     <div class="post-content markdown" itemprop="articleBody">
         <div class="main-content-wrap">
-            <p>表格内容是 Instagram iOS App 所用到的第三方库，具体协议内容可以在 <a href="https://instagram.com/about/legal/libraries/" target="_blank" rel="external">https://instagram.com/about/legal/libraries/</a> 找到。</p>
-<a id="more"></a>
-<table>
-<thead>
-<tr>
-<th>名称</th>
-<th>描述</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><a href="https://github.com/AFNetworking/AFNetworking" target="_blank" rel="external">AFNetworking</a></td>
-<td>这个不用介绍了把</td>
-</tr>
-<tr>
-<td><a href="https://github.com/arashpayan/appirater" target="_blank" rel="external">Appirater</a></td>
-<td>提醒用户评价 App 的组件</td>
-</tr>
-<tr>
-<td><a href="https://github.com/tonymillion/Reachability" target="_blank" rel="external">Apple Reachability</a></td>
-<td>判断网络状态</td>
-</tr>
-<tr>
-<td><a href="https://developer.apple.com/library/ios/samplecode/AVCam/Introduction/Intro.html" target="_blank" rel="external">AVCamCaptureManager</a></td>
-<td>用来录制视频</td>
-</tr>
-<tr>
-<td><a href="http://www.boost.org/users/license.html" target="_blank" rel="external">Boost</a></td>
-<td>Boost 库是为 C++ 语言标准库提供扩展的一些 C++ 程序库的总称。</td>
-</tr>
-<tr>
-<td><a href="https://github.com/cocojoe/CCNode-Screenshot" target="_blank" rel="external">CCNode-Screenshot</a></td>
-<td>截屏组件</td>
-</tr>
-<tr>
-<td><a href="https://github.com/robbiehanson/CocoaHTTPServer" target="_blank" rel="external">CocoaHTTPServer</a></td>
-<td>可以在 Mac OS X 或iOS应用内嵌入 Server</td>
-</tr>
-<tr>
-<td><a href="https://github.com/CocoaLumberjack/CocoaLumberjack" target="_blank" rel="external">CocoaLumberjack</a></td>
-<td>一个快速、简单,但很强大的日志框架,用于 Mac OS X 和 iOS 系统</td>
-</tr>
-<tr>
-<td><a href="http://www.cocoawithlove.com/2009/06/base64-encoding-options-on-mac-and.html" target="_blank" rel="external">cocoawithlove-Base64</a></td>
-<td>使用 base64 对 data 进行编码</td>
-</tr>
-<tr>
-<td><a href="https://code.google.com/p/echo-library/" target="_blank" rel="external">ColorTracking</a></td>
-<td>看标题吧</td>
-</tr>
-<tr>
-<td><a href="https://github.com/josephstein/Flickr-OAuth-iOS" target="_blank" rel="external">Flickr-OAuth-iOS</a></td>
-<td>这个开源的iOS库允许你的 Flickr 集成到你的 iOS 应用程序</td>
-</tr>
-<tr>
-<td><a href="https://developer.apple.com/library/ios/samplecode/GLTextureAtlas/Introduction/Intro.html" target="_blank" rel="external">GLTextureAtlas</a></td>
-<td>官方 demo 展示用 texture atlas 和 OpenGL ES 渲染多个具有不同的纹理的对象</td>
-</tr>
-<tr>
-<td><a href="https://github.com/jlamarche/iOS-OpenGLES-Stuff" target="_blank" rel="external">iOS-OpenGLES-Stuff</a></td>
-<td>OpenGL ES 编程的 iOS 实例</td>
-</tr>
-<tr>
-<td><a href="https://github.com/erica/iOS-5-Cookbook" target="_blank" rel="external">ios5-cookbook</a></td>
-<td><a href="http://book.douban.com/subject/3238699/" target="_blank" rel="external">这本iOS5开发教程的源码</a></td>
-</tr>
-<tr>
-<td><a href="https://github.com/johnezang/JSONKit" target="_blank" rel="external">JSONKit</a></td>
-<td>Objective-C 的JSON的解析库</td>
-</tr>
-<tr>
-<td><a href="https://github.com/lxcid/LXReorderableCollectionViewFlowLayout" target="_blank" rel="external">LXReorderableCollectionViewFlowLayout</a></td>
-<td>UICollectionViewFlowLayout 的扩展，支持重新排序</td>
-</tr>
-<tr>
-<td><a href="https://github.com/kirbyt/KTOneFingerRotationGestureRecognizer" target="_blank" rel="external">KTOneFingerRotationGestureRecognizer</a></td>
-<td>实现了自定义的 UIGestureRecognizer 用于实现单手指旋转操作，同时会跟踪手指的移动</td>
-</tr>
-<tr>
-<td><a href="https://github.com/jdg/MBProgressHUD" target="_blank" rel="external">MBProgressHUD</a></td>
-<td>很多种样式的提示框</td>
-</tr>
-<tr>
-<td><a href="https://developer.apple.com/library/ios/samplecode/oalTouch/Listings/Classes_MyOpenALSupport_c.html" target="_blank" rel="external">MyOpenALSupport</a></td>
-<td>OpenAL</td>
-</tr>
-<tr>
-<td><a href="http://www.cocoanetics.com/2010/05/nsnotifications-and-background-threads/" target="_blank" rel="external">NSNotifications and Background Threads</a></td>
-<td>NSNotifications and Background Threads</td>
-</tr>
-<tr>
-<td><a href="https://github.com/mwaterfall/MWFeedParser" target="_blank" rel="external">NSString+XMLEntitites</a></td>
-<td>解析 XML，文件在链接的 Class 内</td>
-</tr>
-<tr>
-<td><a href="https://github.com/jdg/oauthconsumer" target="_blank" rel="external">oauthconsumer</a></td>
-<td>iOS OAuth consumer</td>
-</tr>
-<tr>
-<td><a href="https://github.com/kazuho/picojson" target="_blank" rel="external">picojson</a></td>
-<td>C++ 的JSON解析库</td>
-</tr>
-<tr>
-<td><a href="https://www.plcrashreporter.org/" target="_blank" rel="external">PLCrashReporter</a></td>
-<td>可以记录应用crash的框架</td>
-</tr>
-<tr>
-<td><a href="https://github.com/mikeho/QSUtilities/" target="_blank" rel="external">QSUtilities</a></td>
-<td>提供一些常用功能的库（字符串清理，网络接入等）</td>
-</tr>
-<tr>
-<td><a href="https://github.com/ldandersen/scifihifi-iphone" target="_blank" rel="external">scifihifi-iphone</a></td>
-<td>Keychain安全保存用户密码</td>
-</tr>
-<tr>
-<td><a href="https://github.com/square/SocketRocket" target="_blank" rel="external">SocketRocket</a></td>
-<td>一个 WebSocket 的第三方库</td>
-</tr>
-<tr>
-<td><a href="http://soundswitch.codeplex.com/" target="_blank" rel="external">soundswitch</a></td>
-<td>切换播放设备库（声卡）</td>
-</tr>
-<tr>
-<td><a href="https://github.com/xissburg/XBImageFilters" target="_blank" rel="external">XBImageFilters</a></td>
-<td>使用OpenGL ES 2 来快速处理各种图片效果</td>
-</tr>
-<tr>
-<td><a href="https://github.com/zhangxigithub/ZXTools" target="_blank" rel="external">zxtools</a></td>
-<td>各种工具类</td>
-</tr>
-</tbody>
-</table>
+            <p>CocoaPods 是 iOS 日常开发所使用的包管理器，它把 Rails 里的 Gem 带进了 macOS 中，让 iOS 和 macOS 管理自己的第三方依赖。<br>接下来介绍几个概念：<br><code>rbenv</code>：管理 Ruby 版本的内容。还有 <code>rvm</code> 的管理工具，但笔者接下来的安装步骤使用的是 rbenv<br><a id="more"></a><br><code>rails</code>：著名开发框架。详细看 <a href="http://guides.ruby-china.org/" target="_blank" rel="external">http://guides.ruby-china.org/</a><br><code>bundle</code>：是 rails 框架里面安装 Gemfile 指定的各种库的工具。在配置文件 gemfile 里说明你的应用依赖哪些第三方包，他自动帮你下载安装多个包，并且会下载这些包依赖的包<br><code>gem</code>：是 ruby 的其中一个“程序”叫 RubyGems，在终端使用的 gem 命令，是指通过 RubyGems 管理 Gem 包<br><code>pod</code>：是 CocoaPods 的管理 iOS 的第三方库工具</p>
+<p>解析来介绍一下具体的 CocoaPods 安装流程，首先你需要一台 Mac [doge]</p>
+<h2 id="基于-rbenv-来安装-CocoaPods"><a href="#基于-rbenv-来安装-CocoaPods" class="headerlink" title="基于 rbenv 来安装 CocoaPods"></a>基于 rbenv 来安装 CocoaPods</h2><ol>
+<li><p>安装 <a href="http://brew.sh/index_zh-cn.html" target="_blank" rel="external">brew</a>：<code>$ /usr/bin/ruby -e &quot;$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)&quot;</code></p>
+</li>
+<li><p>安装 <a href="https://github.com/rbenv/rbenv" target="_blank" rel="external">rbenv</a>：<code>$ brew install rbenv</code></p>
+</li>
+<li><p>安装 <a href="https://github.com/rbenv/ruby-build" target="_blank" rel="external">ruby-build</a>：<code>$ git clone https://github.com/rbenv/ruby-build.git ~/.rbenv/plugins/ruby-build</code></p>
+</li>
+<li><p>安装 <a href="https://ruby-china.org/wiki/ruby-mirror" target="_blank" rel="external">ruby-china 镜像</a>：<code>$ git clone https://github.com/andorchen/rbenv-china-mirror.git ~/.rbenv/plugins/rbenv-china-mirror</code></p>
+</li>
+<li><p>使用 rbenv 安装 ruby 版本：<code>$ rbenv install 2.2.3</code>。你可以选择安装自己需要的版本。</p>
+<p>然后在 ~/.zsh_rc 里添加：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># rbenv init 需要</span></span><br><span class="line"><span class="built_in">export</span> PATH=<span class="string">"<span class="variable">$HOME</span>/.rbenv/bin:<span class="variable">$PATH</span>"</span></span><br><span class="line"><span class="built_in">eval</span> <span class="string">"<span class="variable">$(rbenv init -)</span>"</span></span><br></pre></td></tr></table></figure>
+<p>注意是 bash 用户是在 ~/.bashrc 里, zsh 用户是 ~/.zshrc ，然后重启终端</p>
+</li>
+<li><p>设置全局的 ruby 版本：<code>$ rbenv global 2.2.3</code></p>
+</li>
+<li>去掉原生的 gem 源，替换为 ruby-china 源： <code>$ gem sources --add https://gems.ruby-china.org/ --remove https://rubygems.org/</code></li>
+<li><p>更新 gem 版本：<code>$ gem update --system</code></p>
+</li>
+<li><p>安装所需要的 CocoaPods 版本：<code>$ gem install cocoapods -v 1.1.0</code>, 不要用 sudo。系统大约会给你安装 20 个左右 gems，都是 cocoapods 所依赖的内容</p>
+</li>
+<li><p><code>$ which pod</code> 得到信息是： <code>/Users/yourusername/.rbenv/shims/pod</code></p>
+</li>
+<li><p>安装 bundler：<code>$ gem install bundler</code></p>
+</li>
+</ol>
+<p>Enjoy.</p>
+<p>Reference：</p>
+<ul>
+<li><a href="https://ruby-china.org/wiki/rbenv-guide" target="_blank" rel="external">https://ruby-china.org/wiki/rbenv-guide</a></li>
+</ul>
 
             
         </div>
@@ -370,7 +271,7 @@
             <div class="post-footer-tags">
                 <span class="text-color-light text-small">标签</span><br/>
                 
-    <a class="tag tag--primary tag--small t-link" href="/tags/Vendor/">Vendor</a>
+    <a class="tag tag--primary tag--small t-link" href="/tags/Ruby/">Ruby</a> <a class="tag tag--primary tag--small t-link" href="/tags/iOS/">iOS</a> <a class="tag tag--primary tag--small t-link" href="/tags/rbenv/">rbenv</a>
 
             </div>
         
@@ -379,7 +280,7 @@
         <ul class="post-actions post-action-nav">
             <li class="post-action">
                 
-                    <a class="post-action-btn btn btn--default tooltip--top" href="/2015/12/01/Reveal-Loader/"  data-tooltip="Reveal 1.6.3 和 Reveal Loader">
+                    <a class="post-action-btn btn btn--disabled">
                 
                     <i class="fa fa-angle-left"></i>
                     <span class="hide-xs hide-sm text-small icon-ml">上一篇</span>
@@ -387,7 +288,7 @@
             </li>
             <li class="post-action">
                 
-                    <a class="post-action-btn btn btn--default tooltip--top" href="/2015/11/04/hello-world/" data-tooltip="Hello World">
+                    <a class="post-action-btn btn btn--default tooltip--top" href="/2016/10/12/sublime-config/" data-tooltip="Sublime Text 3 配置">
                 
                     <span class="hide-xs hide-sm text-small icon-mr">下一篇</span>
                     <i class="fa fa-angle-right"></i>
@@ -402,17 +303,17 @@
             </a>
         </li>
         <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=http://hilen.github.io/2015/11/04/Instagram-iOS-App-Libraries/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=http://hilen.github.io/2016/10/24/ruby-cocoapods/">
                 <i class="fa fa-google-plus"></i>
             </a>
         </li>
         <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://hilen.github.io/2015/11/04/Instagram-iOS-App-Libraries/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://hilen.github.io/2016/10/24/ruby-cocoapods/">
                 <i class="fa fa-facebook-official"></i>
             </a>
         </li>
         <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=http://hilen.github.io/2015/11/04/Instagram-iOS-App-Libraries/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=http://hilen.github.io/2016/10/24/ruby-cocoapods/">
                 <i class="fa fa-twitter"></i>
             </a>
         </li>
@@ -460,7 +361,7 @@
         <ul class="post-actions post-action-nav">
             <li class="post-action">
                 
-                    <a class="post-action-btn btn btn--default tooltip--top" href="/2015/12/01/Reveal-Loader/"  data-tooltip="Reveal 1.6.3 和 Reveal Loader">
+                    <a class="post-action-btn btn btn--disabled">
                 
                     <i class="fa fa-angle-left"></i>
                     <span class="hide-xs hide-sm text-small icon-ml">上一篇</span>
@@ -468,7 +369,7 @@
             </li>
             <li class="post-action">
                 
-                    <a class="post-action-btn btn btn--default tooltip--top" href="/2015/11/04/hello-world/" data-tooltip="Hello World">
+                    <a class="post-action-btn btn btn--default tooltip--top" href="/2016/10/12/sublime-config/" data-tooltip="Sublime Text 3 配置">
                 
                     <span class="hide-xs hide-sm text-small icon-mr">下一篇</span>
                     <i class="fa fa-angle-right"></i>
@@ -483,17 +384,17 @@
             </a>
         </li>
         <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=http://hilen.github.io/2015/11/04/Instagram-iOS-App-Libraries/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=http://hilen.github.io/2016/10/24/ruby-cocoapods/">
                 <i class="fa fa-google-plus"></i>
             </a>
         </li>
         <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://hilen.github.io/2015/11/04/Instagram-iOS-App-Libraries/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://hilen.github.io/2016/10/24/ruby-cocoapods/">
                 <i class="fa fa-facebook-official"></i>
             </a>
         </li>
         <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=http://hilen.github.io/2015/11/04/Instagram-iOS-App-Libraries/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=http://hilen.github.io/2016/10/24/ruby-cocoapods/">
                 <i class="fa fa-twitter"></i>
             </a>
         </li>
@@ -519,17 +420,17 @@
                 <div id="share-options-bar" class="share-options-bar" data-behavior="1">
     <ul class="share-options">
         <li class="share-option">
-            <a class="share-option-btn" target="new" href="https://plus.google.com/share?url=http://hilen.github.io/2015/11/04/Instagram-iOS-App-Libraries/">
+            <a class="share-option-btn" target="new" href="https://plus.google.com/share?url=http://hilen.github.io/2016/10/24/ruby-cocoapods/">
                 <i class="fa fa-google-plus"></i><span class="">分享到 Google+</span>
             </a>
         </li>
         <li class="share-option">
-            <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://hilen.github.io/2015/11/04/Instagram-iOS-App-Libraries/">
+            <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://hilen.github.io/2016/10/24/ruby-cocoapods/">
                 <i class="fa fa-facebook-official"></i><span>分享到 Facebook</span>
             </a>
         </li>
         <li class="share-option">
-            <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=http://hilen.github.io/2015/11/04/Instagram-iOS-App-Libraries/">
+            <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=http://hilen.github.io/2016/10/24/ruby-cocoapods/">
                 <i class="fa fa-twitter"></i><span>分享到 Twitter</span>
             </a>
         </li>
@@ -586,9 +487,9 @@
     
         <script>
              var disqus_config = function () {
-                 this.page.url = 'http://hilen.github.io/2015/11/04/Instagram-iOS-App-Libraries/';
+                 this.page.url = 'http://hilen.github.io/2016/10/24/ruby-cocoapods/';
                  
-                    this.page.identifier = '2015/11/04/Instagram-iOS-App-Libraries/';
+                    this.page.identifier = '2016/10/24/ruby-cocoapods/';
                                   
              };
             (function() {

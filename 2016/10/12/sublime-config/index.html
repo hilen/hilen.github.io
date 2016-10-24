@@ -6,25 +6,26 @@
     <meta http-equiv="Content-Type" content="text/html" charset="UTF-8" >
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="generator" content="Hilen&#39;s Blog">
-    <title>WWDC 2016 - Hilen&#39;s Blog</title>
+    <title>Sublime Text 3 配置 - Hilen&#39;s Blog</title>
     <meta name="author" content="Hilen">
     
-        <meta name="keywords" content="WWDC">
+        <meta name="keywords" content="Sublime Text">
     
     
         <link rel="icon" href="http://hilen.github.io/assets/images/favicon.png">
     
     
-    <meta name="description" content="Hilen 的博客">
+    <meta name="description" content="安装从 https://www.sublimetext.com/3 下载并且拖拽到 Application 文件夹内。">
 <meta property="og:type" content="blog">
-<meta property="og:title" content="WWDC 2016">
-<meta property="og:url" content="http://hilen.github.io/2016/07/26/WWDC-2016/index.html">
+<meta property="og:title" content="Sublime Text 3 配置">
+<meta property="og:url" content="http://hilen.github.io/2016/10/12/sublime-config/index.html">
 <meta property="og:site_name" content="Hilen's Blog">
-<meta property="og:description" content="Hilen 的博客">
-<meta property="og:updated_time" content="2016-07-27T03:47:03.000Z">
+<meta property="og:description" content="安装从 https://www.sublimetext.com/3 下载并且拖拽到 Application 文件夹内。">
+<meta property="og:image" content="http://ww1.sinaimg.cn/large/6a011e49gw1f8paq3el2uj21ao104agz.jpg">
+<meta property="og:updated_time" content="2016-10-24T09:52:33.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="WWDC 2016">
-<meta name="twitter:description" content="Hilen 的博客">
+<meta name="twitter:title" content="Sublime Text 3 配置">
+<meta name="twitter:description" content="安装从 https://www.sublimetext.com/3 下载并且拖拽到 Application 文件夹内。">
     
     
         
@@ -210,19 +211,19 @@
         <div class="post-header main-content-wrap text-left">
     
         <h1 class="post-title" itemprop="headline">
-            WWDC 2016
+            Sublime Text 3 配置
         </h1>
     
     <div class="post-meta">
-    <time itemprop="datePublished" content="Tue Jul 26 2016 16:01:53 GMT+0800">
+    <time itemprop="datePublished" content="Wed Oct 12 2016 10:37:29 GMT+0800">
 	
-		    7月 26, 2016
+		    10月 12, 2016
     	
     </time>
     
         <span>发布在 </span>
         
-    <a class="category-link" href="/categories/iOS/">iOS</a>
+    <a class="category-link" href="/categories/tutorial/">tutorial</a>
 
 
     
@@ -231,7 +232,27 @@
     
     <div class="post-content markdown" itemprop="articleBody">
         <div class="main-content-wrap">
-            
+            <h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><p>从 <a href="https://www.sublimetext.com/3" target="_blank" rel="external">https://www.sublimetext.com/3</a> 下载并且拖拽到 <code>Application</code> 文件夹内。</p>
+<a id="more"></a>
+<p>Sublime Text 比较强大的就是它的插件了，那么这里就要提到 <code>Package Control</code> 这个插件管理包了。<br>安装方法： 使用 <code>Ctrl + ` </code> 快捷键或者通过 <code>View -&gt; Show Console</code> 菜单打开命令行。然后输入</p>
+<figure class="highlight livecodeserver"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">import urllib.request,os,hashlib; h = <span class="string">'df21e130d211cfc94d9b0905775a7c0f'</span> + <span class="string">'1e3d39e33b79698005270310898eea76'</span>; pf = <span class="string">'Package Control.sublime-package'</span>; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); <span class="keyword">by</span> = urllib.request.urlopen( <span class="string">'http://packagecontrol.io/'</span> + pf.<span class="built_in">replace</span>(<span class="string">' '</span>, <span class="string">'%20'</span>)).<span class="built_in">read</span>(); dh = hashlib.sha256(<span class="keyword">by</span>).hexdigest(); print(<span class="string">'Error validating download (got %s instead of %s), please try manual install'</span> % (dh, h)) <span class="keyword">if</span> dh != h <span class="keyword">else</span> <span class="built_in">open</span>(os.path.join( ipp, pf), <span class="string">'wb'</span> ).<span class="built_in">write</span>(<span class="keyword">by</span>)</span><br></pre></td></tr></table></figure>
+<p>以上内容在 <a href="https://packagecontrol.io/installation" target="_blank" rel="external">https://packagecontrol.io/installation</a> 可以找到，最好以官方为准。</p>
+<p>使用打开 <code>⌘ + shift + p</code>  打开，你会看到这样一个界面。那么恭喜你，安装成功。<br><img src="http://ww1.sinaimg.cn/large/6a011e49gw1f8paq3el2uj21ao104agz.jpg" alt=""></p>
+<h2 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h2><figure class="highlight elixir"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">	<span class="regexp">//</span> 代码提示</span><br><span class="line">	<span class="string">"auto_complete"</span><span class="symbol">:</span> <span class="keyword">true</span>,</span><br><span class="line"></span><br><span class="line">	<span class="regexp">//</span> 设置光标闪动方式,<span class="string">"smooth"</span>, <span class="string">"phase"</span>, <span class="string">"blink"</span>, <span class="string">"wide"</span>,<span class="string">"solid"</span>.</span><br><span class="line">	<span class="string">"caret_style"</span><span class="symbol">:</span> <span class="string">"wide"</span>,</span><br><span class="line"></span><br><span class="line">	<span class="string">"default_encoding"</span><span class="symbol">:</span> <span class="string">"UTF-8"</span>,</span><br><span class="line"></span><br><span class="line">	<span class="regexp">//</span> 每一行结束的时候用什么字符做终止符</span><br><span class="line">	<span class="string">"default_line_ending"</span><span class="symbol">:</span> <span class="string">"system"</span>,</span><br><span class="line"></span><br><span class="line">	<span class="string">"default_new_file_syntax"</span><span class="symbol">:</span> <span class="string">"Packages/Text/Objective-C.tmLanguage"</span>,</span><br><span class="line"></span><br><span class="line">	<span class="regexp">//</span> 是否显示代码折叠按钮</span><br><span class="line">	<span class="string">"fold_buttons"</span><span class="symbol">:</span> <span class="keyword">true</span>,</span><br><span class="line"></span><br><span class="line">	<span class="string">"font_face"</span><span class="symbol">:</span> <span class="string">"Monaco"</span>,</span><br><span class="line">	<span class="string">"font_size"</span><span class="symbol">:</span> <span class="number">16.0</span>,</span><br><span class="line">	<span class="string">"ignored_packages"</span><span class="symbol">:</span></span><br><span class="line">	[</span><br><span class="line">		<span class="string">"Vintage"</span></span><br><span class="line">	],</span><br><span class="line">	<span class="string">"highlight_line"</span><span class="symbol">:</span> <span class="keyword">true</span>,</span><br><span class="line">   <span class="string">"highlight_modified_tabs"</span><span class="symbol">:</span> <span class="keyword">true</span>,</span><br><span class="line">	<span class="string">"line_numbers"</span><span class="symbol">:</span> <span class="keyword">true</span>,</span><br><span class="line">	<span class="string">"line_padding_bottom"</span><span class="symbol">:</span> <span class="number">1</span>,</span><br><span class="line">	<span class="string">"line_padding_top"</span><span class="symbol">:</span> <span class="number">1</span>,</span><br><span class="line"></span><br><span class="line">	<span class="string">"soda_folder_icons"</span><span class="symbol">:</span> <span class="keyword">true</span>,</span><br><span class="line"></span><br><span class="line">	<span class="string">"tab_size"</span><span class="symbol">:</span> <span class="number">4</span>,</span><br><span class="line"></span><br><span class="line">	<span class="regexp">//</span>主题相关</span><br><span class="line">	<span class="string">"theme"</span><span class="symbol">:</span> <span class="string">"Soda Dark 3.sublime-theme"</span>,</span><br><span class="line"></span><br><span class="line">	<span class="regexp">//</span> 为<span class="keyword">true</span>时，保存文件时会删除每行结束后多余的空格</span><br><span class="line">	<span class="string">"trim_trailing_white_space_on_save"</span><span class="symbol">:</span> <span class="keyword">true</span>,</span><br><span class="line"></span><br><span class="line">	<span class="string">"use_current_file_syntax"</span><span class="symbol">:</span> <span class="keyword">true</span>,</span><br><span class="line"></span><br><span class="line">	<span class="string">"word_wrap"</span><span class="symbol">:</span> <span class="keyword">true</span>,</span><br><span class="line"></span><br><span class="line">	<span class="string">"update_check"</span><span class="symbol">:</span> <span class="keyword">false</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="主题"><a href="#主题" class="headerlink" title="主题"></a>主题</h2><ul>
+<li><a href="https://github.com/buymeasoda/soda-theme" target="_blank" rel="external">Soda</a></li>
+</ul>
+<h2 id="插件"><a href="#插件" class="headerlink" title="插件"></a>插件</h2><ul>
+<li><a href="https://github.com/SublimeText-Markdown/MarkdownEditing" target="_blank" rel="external">Markdown</a></li>
+<li><a href="https://github.com/aziz/PlainTasks" target="_blank" rel="external">PlainTasks:</a></li>
+<li><a href="https://github.com/titoBouzout/SideBarEnhancements" target="_blank" rel="external">SideBarEnhancements</a></li>
+<li><a href="https://github.com/revolunet/sublimetext-markdown-preview" target="_blank" rel="external">Markdown Preview</a></li>
+<li><a href="https://github.com/SublimeCodeIntel/SublimeCodeIntel" target="_blank" rel="external">代码提示插件 SublimeCodeIntel</a></li>
+</ul>
+<h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><ul>
+<li><a href="http://www.cnblogs.com/manfredHu/p/4941307.html" target="_blank" rel="external">SublimeText3常用快捷键和优秀插件（亲测） - manfredHu - 博客园</a></li>
+</ul>
+
             
         </div>
     </div>
@@ -240,7 +261,7 @@
             <div class="post-footer-tags">
                 <span class="text-color-light text-small">标签</span><br/>
                 
-    <a class="tag tag--primary tag--small t-link" href="/tags/iOS/">iOS</a>
+    <a class="tag tag--primary tag--small t-link" href="/tags/tutorial/">tutorial</a>
 
             </div>
         
@@ -249,7 +270,7 @@
         <ul class="post-actions post-action-nav">
             <li class="post-action">
                 
-                    <a class="post-action-btn btn btn--default tooltip--top" href="/2016/08/10/mantle-extension/"  data-tooltip="Mantle 的增强">
+                    <a class="post-action-btn btn btn--default tooltip--top" href="/2016/10/24/ruby-cocoapods/"  data-tooltip="macOS Sierra 安装 rbenv 管理器 和 CocoaPods">
                 
                     <i class="fa fa-angle-left"></i>
                     <span class="hide-xs hide-sm text-small icon-ml">上一篇</span>
@@ -257,7 +278,7 @@
             </li>
             <li class="post-action">
                 
-                    <a class="post-action-btn btn btn--default tooltip--top" href="/2016/05/16/tranquilpeak-theme-tutorial/" data-tooltip="Tranquilpeak 主题的使用方法">
+                    <a class="post-action-btn btn btn--default tooltip--top" href="/2016/08/10/mantle-extension/" data-tooltip="Mantle 的增强">
                 
                     <span class="hide-xs hide-sm text-small icon-mr">下一篇</span>
                     <i class="fa fa-angle-right"></i>
@@ -272,17 +293,17 @@
             </a>
         </li>
         <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=http://hilen.github.io/2016/07/26/WWDC-2016/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=http://hilen.github.io/2016/10/12/sublime-config/">
                 <i class="fa fa-google-plus"></i>
             </a>
         </li>
         <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://hilen.github.io/2016/07/26/WWDC-2016/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://hilen.github.io/2016/10/12/sublime-config/">
                 <i class="fa fa-facebook-official"></i>
             </a>
         </li>
         <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=http://hilen.github.io/2016/07/26/WWDC-2016/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=http://hilen.github.io/2016/10/12/sublime-config/">
                 <i class="fa fa-twitter"></i>
             </a>
         </li>
@@ -330,7 +351,7 @@
         <ul class="post-actions post-action-nav">
             <li class="post-action">
                 
-                    <a class="post-action-btn btn btn--default tooltip--top" href="/2016/08/10/mantle-extension/"  data-tooltip="Mantle 的增强">
+                    <a class="post-action-btn btn btn--default tooltip--top" href="/2016/10/24/ruby-cocoapods/"  data-tooltip="macOS Sierra 安装 rbenv 管理器 和 CocoaPods">
                 
                     <i class="fa fa-angle-left"></i>
                     <span class="hide-xs hide-sm text-small icon-ml">上一篇</span>
@@ -338,7 +359,7 @@
             </li>
             <li class="post-action">
                 
-                    <a class="post-action-btn btn btn--default tooltip--top" href="/2016/05/16/tranquilpeak-theme-tutorial/" data-tooltip="Tranquilpeak 主题的使用方法">
+                    <a class="post-action-btn btn btn--default tooltip--top" href="/2016/08/10/mantle-extension/" data-tooltip="Mantle 的增强">
                 
                     <span class="hide-xs hide-sm text-small icon-mr">下一篇</span>
                     <i class="fa fa-angle-right"></i>
@@ -353,17 +374,17 @@
             </a>
         </li>
         <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=http://hilen.github.io/2016/07/26/WWDC-2016/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=http://hilen.github.io/2016/10/12/sublime-config/">
                 <i class="fa fa-google-plus"></i>
             </a>
         </li>
         <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://hilen.github.io/2016/07/26/WWDC-2016/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://hilen.github.io/2016/10/12/sublime-config/">
                 <i class="fa fa-facebook-official"></i>
             </a>
         </li>
         <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=http://hilen.github.io/2016/07/26/WWDC-2016/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=http://hilen.github.io/2016/10/12/sublime-config/">
                 <i class="fa fa-twitter"></i>
             </a>
         </li>
@@ -389,17 +410,17 @@
                 <div id="share-options-bar" class="share-options-bar" data-behavior="1">
     <ul class="share-options">
         <li class="share-option">
-            <a class="share-option-btn" target="new" href="https://plus.google.com/share?url=http://hilen.github.io/2016/07/26/WWDC-2016/">
+            <a class="share-option-btn" target="new" href="https://plus.google.com/share?url=http://hilen.github.io/2016/10/12/sublime-config/">
                 <i class="fa fa-google-plus"></i><span class="">分享到 Google+</span>
             </a>
         </li>
         <li class="share-option">
-            <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://hilen.github.io/2016/07/26/WWDC-2016/">
+            <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://hilen.github.io/2016/10/12/sublime-config/">
                 <i class="fa fa-facebook-official"></i><span>分享到 Facebook</span>
             </a>
         </li>
         <li class="share-option">
-            <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=http://hilen.github.io/2016/07/26/WWDC-2016/">
+            <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=http://hilen.github.io/2016/10/12/sublime-config/">
                 <i class="fa fa-twitter"></i><span>分享到 Twitter</span>
             </a>
         </li>
@@ -456,9 +477,9 @@
     
         <script>
              var disqus_config = function () {
-                 this.page.url = 'http://hilen.github.io/2016/07/26/WWDC-2016/';
+                 this.page.url = 'http://hilen.github.io/2016/10/12/sublime-config/';
                  
-                    this.page.identifier = '2016/07/26/WWDC-2016/';
+                    this.page.identifier = '2016/10/12/sublime-config/';
                                   
              };
             (function() {

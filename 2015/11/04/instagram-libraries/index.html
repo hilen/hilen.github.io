@@ -6,29 +6,23 @@
     <meta http-equiv="Content-Type" content="text/html" charset="UTF-8" >
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="generator" content="Hilen&#39;s Blog">
-    <title>iOS Build Configuration + Scheme 的使用 - Hilen&#39;s Blog</title>
+    <title>Instagram iOS App Libraries - Hilen&#39;s Blog</title>
     <meta name="author" content="Hilen">
-    
-        <meta name="keywords" content="Build Configuration,Scheme">
     
     
         <link rel="icon" href="http://hilen.github.io/assets/images/favicon.png">
     
     
-    <meta name="description" content="在日常的 iOS 开发中，我们经常会使用到不同的网络环境切换问题，比如：">
+    <meta name="description" content="表格内容是 Instagram iOS App 所用到的第三方库，具体协议内容可以在 https://instagram.com/about/legal/libraries/ 找到。">
 <meta property="og:type" content="blog">
-<meta property="og:title" content="iOS Build Configuration + Scheme 的使用">
-<meta property="og:url" content="http://hilen.github.io/2016/05/16/configuration-scheme/index.html">
+<meta property="og:title" content="Instagram iOS App Libraries">
+<meta property="og:url" content="http://hilen.github.io/2015/11/04/instagram-libraries/index.html">
 <meta property="og:site_name" content="Hilen's Blog">
-<meta property="og:description" content="在日常的 iOS 开发中，我们经常会使用到不同的网络环境切换问题，比如：">
-<meta property="og:image" content="http://ww1.sinaimg.cn/large/6a011e49gw1f67fm00645j21j80iin0b.jpg">
-<meta property="og:image" content="http://ww1.sinaimg.cn/large/6a011e49gw1f67fm00645j21j80iin0b.jpg">
-<meta property="og:image" content="http://ww1.sinaimg.cn/large/6a011e49gw1f67fqfa7zej21kw0usdo5.jpg">
-<meta property="og:image" content="http://ww1.sinaimg.cn/large/6a011e49gw1f67fr9d270j21kw0us0x9.jpg">
-<meta property="og:updated_time" content="2016-10-24T09:54:19.000Z">
+<meta property="og:description" content="表格内容是 Instagram iOS App 所用到的第三方库，具体协议内容可以在 https://instagram.com/about/legal/libraries/ 找到。">
+<meta property="og:updated_time" content="2016-05-06T15:07:07.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="iOS Build Configuration + Scheme 的使用">
-<meta name="twitter:description" content="在日常的 iOS 开发中，我们经常会使用到不同的网络环境切换问题，比如：">
+<meta name="twitter:title" content="Instagram iOS App Libraries">
+<meta name="twitter:description" content="表格内容是 Instagram iOS App 所用到的第三方库，具体协议内容可以在 https://instagram.com/about/legal/libraries/ 找到。">
     
     
         
@@ -214,19 +208,19 @@
         <div class="post-header main-content-wrap text-left">
     
         <h1 class="post-title" itemprop="headline">
-            iOS Build Configuration + Scheme 的使用
+            Instagram iOS App Libraries
         </h1>
     
     <div class="post-meta">
-    <time itemprop="datePublished" content="Mon May 16 2016 14:11:35 GMT+0800">
+    <time itemprop="datePublished" content="Wed Nov 04 2015 11:24:32 GMT+0800">
 	
-		    5月 16, 2016
+		    11月 04, 2015
     	
     </time>
     
         <span>发布在 </span>
         
-    <a class="category-link" href="/categories/iOS/">iOS</a>
+    <a class="category-link" href="/categories/Objective-C/">Objective-C</a>
 
 
     
@@ -235,28 +229,138 @@
     
     <div class="post-content markdown" itemprop="articleBody">
         <div class="main-content-wrap">
-            <p>在日常的 iOS 开发中，我们经常会使用到不同的网络环境切换问题，比如：</p>
+            <p>表格内容是 Instagram iOS App 所用到的第三方库，具体协议内容可以在 <a href="https://instagram.com/about/legal/libraries/" target="_blank" rel="external">https://instagram.com/about/legal/libraries/</a> 找到。</p>
 <a id="more"></a>
-<ul>
-<li>QA 需要你给出一个带有环境切换的功能的安装文件</li>
-<li>App Store 需要你上传面向用户环境的 Release 的安装文件</li>
-<li>灰度测试的时候又需要你给出带有个别功能的安装文件</li>
-</ul>
-<p>面对以上需求，也许你会针对不同的包给出不同的宏定义，比如 <code>#define QA_TEST</code> ,<code>#define APP_STORE</code>, <code>#define GRAY_TEST</code>，然后针对不同的宏定义在里面进行不同的参数修改。但是如果各个业务方来频繁的找你，也许手动的修改这些文件会让你崩溃。</p>
-<p>接下来提供一个解决方案，专门针对这种不同的环境或编译需求使用的无侵入，无修改，无痛的三无解决方案。名字叫：Build Configuration + Scheme</p>
-<p>关于 <a href="https://developer.apple.com/library/ios/recipes/xcode_help-project_editor/Articles/BasingBuildConfigurationsonConfigurationFiles.html" target="_blank" rel="external">Build Configuration</a> 的官方解释。<br>关于 <a href="https://developer.apple.com/library/ios/recipes/xcode_help-scheme_editor/Articles/SchemeDialog.html#//apple_ref/doc/uid/TP40010402-CH1-SW1" target="_blank" rel="external">Scheme</a> 的官方解释。</p>
-<p>接下来的步骤可以实现上面所描述的功能。</p>
-<h3 id="1-添加不同的-Configuration"><a href="#1-添加不同的-Configuration" class="headerlink" title="1. 添加不同的 Configuration"></a>1. 添加不同的 Configuration</h3><p>在 Project -&gt; Info -&gt; Configuration 里，复制一个<br><div class="figure nocaption" style="width:100%;"><a class="fancybox" href="http://ww1.sinaimg.cn/large/6a011e49gw1f67fm00645j21j80iin0b.jpg" title="" data-fancybox-group="" target="_blank" rel="external"><img class="fig-img" src="http://ww1.sinaimg.cn/large/6a011e49gw1f67fm00645j21j80iin0b.jpg" style="width:100%;height:100%;" alt=""></a></div></p>
-<h3 id="2-设置-Preprocessor-Macros"><a href="#2-设置-Preprocessor-Macros" class="headerlink" title="2. 设置 Preprocessor Macros"></a>2. 设置 Preprocessor Macros</h3><p>在 Target -&gt; Build Settings -&gt; Preprocessor Macros 里添加自己的宏，比如你可以这样：<br><div class="figure right" style="width:100%;"><a class="fancybox" href="http://ww1.sinaimg.cn/large/6a011e49gw1f67fm00645j21j80iin0b.jpg" title="" data-fancybox-group="" target="_blank" rel="external"><img class="fig-img" src="http://ww1.sinaimg.cn/large/6a011e49gw1f67fm00645j21j80iin0b.jpg" style="width:100%;height:100%;" alt=""></a></div><div style="clear:both;"></div></p>
-<h3 id="3-可以畅快的使用了"><a href="#3-可以畅快的使用了" class="headerlink" title="3. 可以畅快的使用了"></a>3. 可以畅快的使用了</h3><p>接下来在你的代码中可以随便使用了</p>
-<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="preprocessor">#ifdef DEBUG</span></span><br><span class="line">    <span class="built_in">NSLog</span>(<span class="string">@"Debug"</span>);</span><br><span class="line"><span class="preprocessor">##endif</span></span><br><span class="line"></span><br><span class="line"><span class="preprocessor">#ifdef TEST</span></span><br><span class="line">    <span class="built_in">NSLog</span>(<span class="string">@"Test"</span>);</span><br><span class="line"><span class="preprocessor">##endif</span></span><br></pre></td></tr></table></figure>
-<div class="figure right" style="width:100%;"><a class="fancybox" href="http://ww1.sinaimg.cn/large/6a011e49gw1f67fqfa7zej21kw0usdo5.jpg" title="" data-fancybox-group="" target="_blank" rel="external"><img class="fig-img" src="http://ww1.sinaimg.cn/large/6a011e49gw1f67fqfa7zej21kw0usdo5.jpg" style="width:100%;height:100%;" alt=""></a></div><div style="clear:both;"></div>
-<h3 id="4-选择你要的-Scheme"><a href="#4-选择你要的-Scheme" class="headerlink" title="4. 选择你要的 Scheme"></a>4. 选择你要的 Scheme</h3><div class="figure right" style="width:100%;"><a class="fancybox" href="http://ww1.sinaimg.cn/large/6a011e49gw1f67fr9d270j21kw0us0x9.jpg" title="" data-fancybox-group="" target="_blank" rel="external"><img class="fig-img" src="http://ww1.sinaimg.cn/large/6a011e49gw1f67fr9d270j21kw0us0x9.jpg" style="width:100%;height:100%;" alt=""></a></div><div style="clear:both;"></div>
-<p>Enjoy</p>
-<p>Reference：</p>
-<ul>
-<li><a href="https://developer.apple.com/library/ios/recipes/xcode_help-project_editor/Articles/BasingBuildConfigurationsonConfigurationFiles.html" target="_blank" rel="external">https://developer.apple.com/library/ios/recipes/xcode_help-project_editor/Articles/BasingBuildConfigurationsonConfigurationFiles.html</a></li>
-</ul>
+<table>
+<thead>
+<tr>
+<th>名称</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="https://github.com/AFNetworking/AFNetworking" target="_blank" rel="external">AFNetworking</a></td>
+<td>这个不用介绍了把</td>
+</tr>
+<tr>
+<td><a href="https://github.com/arashpayan/appirater" target="_blank" rel="external">Appirater</a></td>
+<td>提醒用户评价 App 的组件</td>
+</tr>
+<tr>
+<td><a href="https://github.com/tonymillion/Reachability" target="_blank" rel="external">Apple Reachability</a></td>
+<td>判断网络状态</td>
+</tr>
+<tr>
+<td><a href="https://developer.apple.com/library/ios/samplecode/AVCam/Introduction/Intro.html" target="_blank" rel="external">AVCamCaptureManager</a></td>
+<td>用来录制视频</td>
+</tr>
+<tr>
+<td><a href="http://www.boost.org/users/license.html" target="_blank" rel="external">Boost</a></td>
+<td>Boost 库是为 C++ 语言标准库提供扩展的一些 C++ 程序库的总称。</td>
+</tr>
+<tr>
+<td><a href="https://github.com/cocojoe/CCNode-Screenshot" target="_blank" rel="external">CCNode-Screenshot</a></td>
+<td>截屏组件</td>
+</tr>
+<tr>
+<td><a href="https://github.com/robbiehanson/CocoaHTTPServer" target="_blank" rel="external">CocoaHTTPServer</a></td>
+<td>可以在 Mac OS X 或iOS应用内嵌入 Server</td>
+</tr>
+<tr>
+<td><a href="https://github.com/CocoaLumberjack/CocoaLumberjack" target="_blank" rel="external">CocoaLumberjack</a></td>
+<td>一个快速、简单,但很强大的日志框架,用于 Mac OS X 和 iOS 系统</td>
+</tr>
+<tr>
+<td><a href="http://www.cocoawithlove.com/2009/06/base64-encoding-options-on-mac-and.html" target="_blank" rel="external">cocoawithlove-Base64</a></td>
+<td>使用 base64 对 data 进行编码</td>
+</tr>
+<tr>
+<td><a href="https://code.google.com/p/echo-library/" target="_blank" rel="external">ColorTracking</a></td>
+<td>看标题吧</td>
+</tr>
+<tr>
+<td><a href="https://github.com/josephstein/Flickr-OAuth-iOS" target="_blank" rel="external">Flickr-OAuth-iOS</a></td>
+<td>这个开源的iOS库允许你的 Flickr 集成到你的 iOS 应用程序</td>
+</tr>
+<tr>
+<td><a href="https://developer.apple.com/library/ios/samplecode/GLTextureAtlas/Introduction/Intro.html" target="_blank" rel="external">GLTextureAtlas</a></td>
+<td>官方 demo 展示用 texture atlas 和 OpenGL ES 渲染多个具有不同的纹理的对象</td>
+</tr>
+<tr>
+<td><a href="https://github.com/jlamarche/iOS-OpenGLES-Stuff" target="_blank" rel="external">iOS-OpenGLES-Stuff</a></td>
+<td>OpenGL ES 编程的 iOS 实例</td>
+</tr>
+<tr>
+<td><a href="https://github.com/erica/iOS-5-Cookbook" target="_blank" rel="external">ios5-cookbook</a></td>
+<td><a href="http://book.douban.com/subject/3238699/" target="_blank" rel="external">这本iOS5开发教程的源码</a></td>
+</tr>
+<tr>
+<td><a href="https://github.com/johnezang/JSONKit" target="_blank" rel="external">JSONKit</a></td>
+<td>Objective-C 的JSON的解析库</td>
+</tr>
+<tr>
+<td><a href="https://github.com/lxcid/LXReorderableCollectionViewFlowLayout" target="_blank" rel="external">LXReorderableCollectionViewFlowLayout</a></td>
+<td>UICollectionViewFlowLayout 的扩展，支持重新排序</td>
+</tr>
+<tr>
+<td><a href="https://github.com/kirbyt/KTOneFingerRotationGestureRecognizer" target="_blank" rel="external">KTOneFingerRotationGestureRecognizer</a></td>
+<td>实现了自定义的 UIGestureRecognizer 用于实现单手指旋转操作，同时会跟踪手指的移动</td>
+</tr>
+<tr>
+<td><a href="https://github.com/jdg/MBProgressHUD" target="_blank" rel="external">MBProgressHUD</a></td>
+<td>很多种样式的提示框</td>
+</tr>
+<tr>
+<td><a href="https://developer.apple.com/library/ios/samplecode/oalTouch/Listings/Classes_MyOpenALSupport_c.html" target="_blank" rel="external">MyOpenALSupport</a></td>
+<td>OpenAL</td>
+</tr>
+<tr>
+<td><a href="http://www.cocoanetics.com/2010/05/nsnotifications-and-background-threads/" target="_blank" rel="external">NSNotifications and Background Threads</a></td>
+<td>NSNotifications and Background Threads</td>
+</tr>
+<tr>
+<td><a href="https://github.com/mwaterfall/MWFeedParser" target="_blank" rel="external">NSString+XMLEntitites</a></td>
+<td>解析 XML，文件在链接的 Class 内</td>
+</tr>
+<tr>
+<td><a href="https://github.com/jdg/oauthconsumer" target="_blank" rel="external">oauthconsumer</a></td>
+<td>iOS OAuth consumer</td>
+</tr>
+<tr>
+<td><a href="https://github.com/kazuho/picojson" target="_blank" rel="external">picojson</a></td>
+<td>C++ 的JSON解析库</td>
+</tr>
+<tr>
+<td><a href="https://www.plcrashreporter.org/" target="_blank" rel="external">PLCrashReporter</a></td>
+<td>可以记录应用crash的框架</td>
+</tr>
+<tr>
+<td><a href="https://github.com/mikeho/QSUtilities/" target="_blank" rel="external">QSUtilities</a></td>
+<td>提供一些常用功能的库（字符串清理，网络接入等）</td>
+</tr>
+<tr>
+<td><a href="https://github.com/ldandersen/scifihifi-iphone" target="_blank" rel="external">scifihifi-iphone</a></td>
+<td>Keychain安全保存用户密码</td>
+</tr>
+<tr>
+<td><a href="https://github.com/square/SocketRocket" target="_blank" rel="external">SocketRocket</a></td>
+<td>一个 WebSocket 的第三方库</td>
+</tr>
+<tr>
+<td><a href="http://soundswitch.codeplex.com/" target="_blank" rel="external">soundswitch</a></td>
+<td>切换播放设备库（声卡）</td>
+</tr>
+<tr>
+<td><a href="https://github.com/xissburg/XBImageFilters" target="_blank" rel="external">XBImageFilters</a></td>
+<td>使用OpenGL ES 2 来快速处理各种图片效果</td>
+</tr>
+<tr>
+<td><a href="https://github.com/zhangxigithub/ZXTools" target="_blank" rel="external">zxtools</a></td>
+<td>各种工具类</td>
+</tr>
+</tbody>
+</table>
 
             
         </div>
@@ -266,7 +370,7 @@
             <div class="post-footer-tags">
                 <span class="text-color-light text-small">标签</span><br/>
                 
-    <a class="tag tag--primary tag--small t-link" href="/tags/iOS/">iOS</a> <a class="tag tag--primary tag--small t-link" href="/tags/tutorial/">tutorial</a>
+    <a class="tag tag--primary tag--small t-link" href="/tags/Vendor/">Vendor</a>
 
             </div>
         
@@ -275,7 +379,7 @@
         <ul class="post-actions post-action-nav">
             <li class="post-action">
                 
-                    <a class="post-action-btn btn btn--default tooltip--top" href="/2016/08/10/mantle-extension/"  data-tooltip="Mantle 的增强">
+                    <a class="post-action-btn btn btn--default tooltip--top" href="/2015/12/01/reveal-loader/"  data-tooltip="Reveal 1.6.3 和 Reveal Loader">
                 
                     <i class="fa fa-angle-left"></i>
                     <span class="hide-xs hide-sm text-small icon-ml">上一篇</span>
@@ -283,7 +387,7 @@
             </li>
             <li class="post-action">
                 
-                    <a class="post-action-btn btn btn--default tooltip--top" href="/2016/05/16/tranquilpeak-theme-tutorial/" data-tooltip="Tranquilpeak 主题的使用方法">
+                    <a class="post-action-btn btn btn--default tooltip--top" href="/2015/11/04/hello-world/" data-tooltip="Hello World">
                 
                     <span class="hide-xs hide-sm text-small icon-mr">下一篇</span>
                     <i class="fa fa-angle-right"></i>
@@ -298,17 +402,17 @@
             </a>
         </li>
         <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=http://hilen.github.io/2016/05/16/configuration-scheme/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=http://hilen.github.io/2015/11/04/instagram-libraries/">
                 <i class="fa fa-google-plus"></i>
             </a>
         </li>
         <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://hilen.github.io/2016/05/16/configuration-scheme/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://hilen.github.io/2015/11/04/instagram-libraries/">
                 <i class="fa fa-facebook-official"></i>
             </a>
         </li>
         <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=http://hilen.github.io/2016/05/16/configuration-scheme/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=http://hilen.github.io/2015/11/04/instagram-libraries/">
                 <i class="fa fa-twitter"></i>
             </a>
         </li>
@@ -356,7 +460,7 @@
         <ul class="post-actions post-action-nav">
             <li class="post-action">
                 
-                    <a class="post-action-btn btn btn--default tooltip--top" href="/2016/08/10/mantle-extension/"  data-tooltip="Mantle 的增强">
+                    <a class="post-action-btn btn btn--default tooltip--top" href="/2015/12/01/reveal-loader/"  data-tooltip="Reveal 1.6.3 和 Reveal Loader">
                 
                     <i class="fa fa-angle-left"></i>
                     <span class="hide-xs hide-sm text-small icon-ml">上一篇</span>
@@ -364,7 +468,7 @@
             </li>
             <li class="post-action">
                 
-                    <a class="post-action-btn btn btn--default tooltip--top" href="/2016/05/16/tranquilpeak-theme-tutorial/" data-tooltip="Tranquilpeak 主题的使用方法">
+                    <a class="post-action-btn btn btn--default tooltip--top" href="/2015/11/04/hello-world/" data-tooltip="Hello World">
                 
                     <span class="hide-xs hide-sm text-small icon-mr">下一篇</span>
                     <i class="fa fa-angle-right"></i>
@@ -379,17 +483,17 @@
             </a>
         </li>
         <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=http://hilen.github.io/2016/05/16/configuration-scheme/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=http://hilen.github.io/2015/11/04/instagram-libraries/">
                 <i class="fa fa-google-plus"></i>
             </a>
         </li>
         <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://hilen.github.io/2016/05/16/configuration-scheme/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://hilen.github.io/2015/11/04/instagram-libraries/">
                 <i class="fa fa-facebook-official"></i>
             </a>
         </li>
         <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=http://hilen.github.io/2016/05/16/configuration-scheme/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=http://hilen.github.io/2015/11/04/instagram-libraries/">
                 <i class="fa fa-twitter"></i>
             </a>
         </li>
@@ -415,17 +519,17 @@
                 <div id="share-options-bar" class="share-options-bar" data-behavior="1">
     <ul class="share-options">
         <li class="share-option">
-            <a class="share-option-btn" target="new" href="https://plus.google.com/share?url=http://hilen.github.io/2016/05/16/configuration-scheme/">
+            <a class="share-option-btn" target="new" href="https://plus.google.com/share?url=http://hilen.github.io/2015/11/04/instagram-libraries/">
                 <i class="fa fa-google-plus"></i><span class="">分享到 Google+</span>
             </a>
         </li>
         <li class="share-option">
-            <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://hilen.github.io/2016/05/16/configuration-scheme/">
+            <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://hilen.github.io/2015/11/04/instagram-libraries/">
                 <i class="fa fa-facebook-official"></i><span>分享到 Facebook</span>
             </a>
         </li>
         <li class="share-option">
-            <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=http://hilen.github.io/2016/05/16/configuration-scheme/">
+            <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=http://hilen.github.io/2015/11/04/instagram-libraries/">
                 <i class="fa fa-twitter"></i><span>分享到 Twitter</span>
             </a>
         </li>
@@ -482,9 +586,9 @@
     
         <script>
              var disqus_config = function () {
-                 this.page.url = 'http://hilen.github.io/2016/05/16/configuration-scheme/';
+                 this.page.url = 'http://hilen.github.io/2015/11/04/instagram-libraries/';
                  
-                    this.page.identifier = '2016/05/16/configuration-scheme/';
+                    this.page.identifier = '2015/11/04/instagram-libraries/';
                                   
              };
             (function() {

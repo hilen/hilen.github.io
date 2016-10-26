@@ -13,16 +13,16 @@
         <link rel="icon" href="http://hilen.github.io/assets/images/favicon.png">
     
     
-    <meta name="description" content="CocoaPods 是 iOS 日常开发所使用的包管理器，它把 Rails 里的 Gem 带进了 macOS 中，让 iOS 和 macOS 管理自己的第三方依赖。接下来介绍几个概念：rbenv：管理 Ruby 版本的内容。还有 rvm 的管理工具，但笔者接下来的安装步骤使用的是 rbenv">
+    <meta name="description" content="CocoaPods 是 iOS 日常开发所使用的包管理器，它把 Rails 里的 Gem 带进了 macOS 中，让 iOS 和 macOS 管理自己的第三方依赖。接下来介绍几个概念：rbenv：管理 Ruby 版本的内容">
 <meta property="og:type" content="blog">
 <meta property="og:title" content="macOS Sierra 安装 rbenv 管理器 和 CocoaPods">
 <meta property="og:url" content="http://hilen.github.io/2016/10/24/ruby-cocoapods/index.html">
 <meta property="og:site_name" content="Hilen's Blog">
-<meta property="og:description" content="CocoaPods 是 iOS 日常开发所使用的包管理器，它把 Rails 里的 Gem 带进了 macOS 中，让 iOS 和 macOS 管理自己的第三方依赖。接下来介绍几个概念：rbenv：管理 Ruby 版本的内容。还有 rvm 的管理工具，但笔者接下来的安装步骤使用的是 rbenv">
-<meta property="og:updated_time" content="2016-10-24T09:48:15.000Z">
+<meta property="og:description" content="CocoaPods 是 iOS 日常开发所使用的包管理器，它把 Rails 里的 Gem 带进了 macOS 中，让 iOS 和 macOS 管理自己的第三方依赖。接下来介绍几个概念：rbenv：管理 Ruby 版本的内容">
+<meta property="og:updated_time" content="2016-10-26T08:45:39.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="macOS Sierra 安装 rbenv 管理器 和 CocoaPods">
-<meta name="twitter:description" content="CocoaPods 是 iOS 日常开发所使用的包管理器，它把 Rails 里的 Gem 带进了 macOS 中，让 iOS 和 macOS 管理自己的第三方依赖。接下来介绍几个概念：rbenv：管理 Ruby 版本的内容。还有 rvm 的管理工具，但笔者接下来的安装步骤使用的是 rbenv">
+<meta name="twitter:description" content="CocoaPods 是 iOS 日常开发所使用的包管理器，它把 Rails 里的 Gem 带进了 macOS 中，让 iOS 和 macOS 管理自己的第三方依赖。接下来介绍几个概念：rbenv：管理 Ruby 版本的内容">
     
     
         
@@ -229,8 +229,8 @@
     
     <div class="post-content markdown" itemprop="articleBody">
         <div class="main-content-wrap">
-            <p>CocoaPods 是 iOS 日常开发所使用的包管理器，它把 Rails 里的 Gem 带进了 macOS 中，让 iOS 和 macOS 管理自己的第三方依赖。<br>接下来介绍几个概念：<br><code>rbenv</code>：管理 Ruby 版本的内容。还有 <code>rvm</code> 的管理工具，但笔者接下来的安装步骤使用的是 rbenv<br><a id="more"></a><br><code>rails</code>：著名开发框架。详细看 <a href="http://guides.ruby-china.org/" target="_blank" rel="external">http://guides.ruby-china.org/</a><br><code>bundle</code>：是 rails 框架里面安装 Gemfile 指定的各种库的工具。在配置文件 gemfile 里说明你的应用依赖哪些第三方包，他自动帮你下载安装多个包，并且会下载这些包依赖的包<br><code>gem</code>：是 ruby 的其中一个“程序”叫 RubyGems，在终端使用的 gem 命令，是指通过 RubyGems 管理 Gem 包<br><code>pod</code>：是 CocoaPods 的管理 iOS 的第三方库工具</p>
-<p>解析来介绍一下具体的 CocoaPods 安装流程，首先你需要一台 Mac [doge]</p>
+            <p>CocoaPods 是 iOS 日常开发所使用的包管理器，它把 Rails 里的 Gem 带进了 macOS 中，让 iOS 和 macOS 管理自己的第三方依赖。<br>接下来介绍几个概念：<br><code>rbenv</code>：管理 Ruby 版本的内容<br><a id="more"></a><code>rails</code>：著名开发框架。详细看 <a href="http://guides.ruby-china.org/" target="_blank" rel="external">http://guides.ruby-china.org/</a><br><code>bundle</code>：是 rails 框架里面安装 Gemfile 指定的各种库的工具。在配置文件 gemfile 里说明你的应用依赖哪些第三方包，他自动帮你下载安装多个包，并且会下载这些包依赖的包<br><code>gem</code>：是 ruby 的其中一个“程序”叫 RubyGems，在终端使用的 gem 命令，是指通过 RubyGems 管理 Gem 包<br><code>pod</code>：是 CocoaPods 的管理 iOS 的第三方库工具</p>
+<p>接下来介绍一下具体的 CocoaPods 安装流程，首先你需要一台 Mac [doge]</p>
 <h2 id="基于-rbenv-来安装-CocoaPods"><a href="#基于-rbenv-来安装-CocoaPods" class="headerlink" title="基于 rbenv 来安装 CocoaPods"></a>基于 rbenv 来安装 CocoaPods</h2><ol>
 <li><p>安装 <a href="http://brew.sh/index_zh-cn.html" target="_blank" rel="external">brew</a>：<code>$ /usr/bin/ruby -e &quot;$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)&quot;</code></p>
 </li>
@@ -252,16 +252,20 @@
 </li>
 <li><p>安装所需要的 CocoaPods 版本：<code>$ gem install cocoapods -v 1.1.0</code>, 不要用 sudo。系统大约会给你安装 20 个左右 gems，都是 cocoapods 所依赖的内容</p>
 </li>
-<li><p><code>$ which pod</code> 得到信息是： <code>/Users/yourusername/.rbenv/shims/pod</code></p>
+<li><p><code>$ which pod</code> 得到信息是： <code>$ /Users/yourusername/.rbenv/shims/pod</code></p>
 </li>
 <li><p>安装 bundler：<code>$ gem install bundler</code></p>
 </li>
 </ol>
-<p>Enjoy.</p>
+<h2 id="首次使用的速度问题"><a href="#首次使用的速度问题" class="headerlink" title="首次使用的速度问题"></a>首次使用的速度问题</h2><p>当你运行 <code>pod setup</code> 的时候可能会看到这样的信息：<br><figure class="highlight crmsh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">[Enchanting] pod setup</span><br><span class="line">Setting up CocoaPods <span class="keyword">master</span> <span class="title">repo</span></span><br><span class="line">[!] /usr/bin/git <span class="keyword">clone</span> <span class="title">https</span>://github.com/CocoaPods/Specs.git <span class="keyword">master</span> <span class="title">--depth</span>=<span class="number">1</span></span><br><span class="line"></span><br><span class="line">Cloning into '<span class="literal">master</span>'...</span><br><span class="line">fatal: unable to access 'https://github.com/CocoaPods/Specs.git/': transfer closed with outstanding <span class="operator">read</span> data remaining</span><br></pre></td></tr></table></figure></p>
+<p>原因是：master 的 podspec 文件都托管在 <a href="https://github.com/CocoaPods/Specs" target="_blank" rel="external">https://github.com/CocoaPods/Specs</a> 上面。<br>当执行 pod setup 或者 pod install 的时候，CocoaPods 自动把托管在 github 上的文件下载到本地的 ~/.cocoapods/repos 目录下，但是因为这个索引文件非常大，所以第一次更新时非常慢。</p>
+<p>解决办法（默认你已经有了 shadowsocks）<br>挂代理：<code>git config --global http.https://github.com.proxy socks5://127.0.0.1:1080</code><br>取消代理：<code>git config --global --unset http.https://github.com.proxy</code><br>然后再进行 <code>pod setup</code>，这次速度就会快很多<br>其余的办法暂时不介绍了，因为都要手动的去更新 CocoaPods 的库，所以这里推荐挂代理的更新办法。</p>
+<p>另外当运行 Xcode 的时候，可能会报 ruby 相关的错误。因为当前 macOS Sierra 使用的是 oh-my-zsh 的命令终端管理，但是 Xcode 本身跑的是 .bash 而非 .zshrc 里的内容。所以需要加上下面这句话，使得 Xcode 在运行的时候跑的是 local 的Ruby 环境，也就是 /Users/youruser/.rbenv/shims/ruby 下的版本。打开 <code>~/.bash_profile</code>，添加下面这行：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">export</span> PATH=<span class="string">"<span class="variable">$HOME</span>/.rbenv/shims:<span class="variable">$HOME</span>/.rbenv/bin:<span class="variable">$PATH</span>"</span></span><br></pre></td></tr></table></figure></p>
 <p>Reference：</p>
 <ul>
 <li><a href="https://ruby-china.org/wiki/rbenv-guide" target="_blank" rel="external">https://ruby-china.org/wiki/rbenv-guide</a></li>
 </ul>
+<p>Enjoy.</p>
 
             
         </div>

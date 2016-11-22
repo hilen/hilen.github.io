@@ -3,7 +3,7 @@
 <html lang="zh-cn">
     
 <head>
-    <meta http-equiv="Content-Type" content="text/html" charset="UTF-8" >
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="generator" content="Hilen&#39;s Blog">
     <title>Mantle 的增强 - Hilen&#39;s Blog</title>
@@ -35,7 +35,7 @@
     
     
     <!--STYLES-->
-    <link rel="stylesheet" href="/assets/css/style-27vrduj1jopliavvnzi7ibndpmbvg7lzo4a2uswrsi4m5vwauf2qi8s1v3or.min.css" type="text/css">
+    <link rel="stylesheet" href="/assets/css/style-yrst5vo1nxaxbp2g3v9na2wg1lixlpr3ghbjdvskeixmu79deycecx3rh4bt.min.css" type="text/css">
     <!--STYLES END-->
     
     <script type="text/javascript">
@@ -63,18 +63,18 @@
         
     
 
-<header id="header" data-behavior="1">
+<header id="header" data-behavior="2">
     <i id="btn-open-sidebar" class="fa fa-lg fa-bars"></i>
-    <h1 class="header-title">
+    <div class="header-title">
         <a class="header-title-link" href="/ ">Hilen&#39;s Blog</a>
-    </h1>
+    </div>
     
         
             <a  class="header-right-picture "
                 href="/#about">
         
         
-            <img class="header-picture" src="http://ww1.sinaimg.cn/large/6a011e49jw1f1e87gcr14j20ks0ksdgr.jpg"/>
+            <img class="header-picture" src="http://ww1.sinaimg.cn/large/6a011e49jw1f1e87gcr14j20ks0ksdgr.jpg" alt="作者的图片"/>
         
         </a>
     
@@ -87,118 +87,124 @@
         
     
 
-<nav id="sidebar" data-behavior="1">
-    
-        <div class="sidebar-profile">
-            <a href="/#about">
-                    <img class="sidebar-profile-picture" src="http://ww1.sinaimg.cn/large/6a011e49jw1f1e87gcr14j20ks0ksdgr.jpg"/>
-            </a>
-            <span class="sidebar-profile-name">Hilen</span>
-        </div>
-    
-    
-        <ul class="sidebar-buttons">
+<nav id="sidebar" data-behavior="2">
+    <div class="sidebar-container">
         
-            <li class="sidebar-button">
-                
-                    <a  class="sidebar-button-link "
-                         href="/ "
-                        
-                    >
-                
-                    <i class="sidebar-button-icon fa fa-lg fa-home"></i>
-                    <span class="sidebar-button-desc">首页</span>
+            <div class="sidebar-profile">
+                <a href="/#about">
+                    <img class="sidebar-profile-picture" src="http://ww1.sinaimg.cn/large/6a011e49jw1f1e87gcr14j20ks0ksdgr.jpg" alt="作者的图片"/>
                 </a>
-        </li>
+                <h4 class="sidebar-profile-name">Hilen</h4>
+                
+                    <h5 class="sidebar-profile-bio"><p>author.bio</p>
+</h5>
+                
+            </div>
         
-            <li class="sidebar-button">
-                
-                    <a  class="sidebar-button-link "
-                         href="/all-categories"
-                        
-                    >
-                
-                    <i class="sidebar-button-icon fa fa-lg fa-bookmark"></i>
-                    <span class="sidebar-button-desc">分类</span>
-                </a>
-        </li>
         
-            <li class="sidebar-button">
-                
-                    <a  class="sidebar-button-link "
-                         href="/all-tags"
-                        
-                    >
-                
-                    <i class="sidebar-button-icon fa fa-lg fa-tags"></i>
-                    <span class="sidebar-button-desc">标签</span>
-                </a>
-        </li>
+            <ul class="sidebar-buttons">
+            
+                <li class="sidebar-button">
+                    
+                        <a  class="sidebar-button-link "
+                             href="/ "
+                            
+                        >
+                    
+                        <i class="sidebar-button-icon fa fa-lg fa-home"></i>
+                        <span class="sidebar-button-desc">首页</span>
+                    </a>
+            </li>
+            
+                <li class="sidebar-button">
+                    
+                        <a  class="sidebar-button-link "
+                             href="/all-categories"
+                            
+                        >
+                    
+                        <i class="sidebar-button-icon fa fa-lg fa-bookmark"></i>
+                        <span class="sidebar-button-desc">分类</span>
+                    </a>
+            </li>
+            
+                <li class="sidebar-button">
+                    
+                        <a  class="sidebar-button-link "
+                             href="/all-tags"
+                            
+                        >
+                    
+                        <i class="sidebar-button-icon fa fa-lg fa-tags"></i>
+                        <span class="sidebar-button-desc">标签</span>
+                    </a>
+            </li>
+            
+                <li class="sidebar-button">
+                    
+                        <a  class="sidebar-button-link "
+                             href="/all-archives"
+                            
+                        >
+                    
+                        <i class="sidebar-button-icon fa fa-lg fa-archive"></i>
+                        <span class="sidebar-button-desc">归档</span>
+                    </a>
+            </li>
+            
+                <li class="sidebar-button">
+                    
+                        <a  class="sidebar-button-link open-algolia-search"
+                             href="/#search"
+                            
+                        >
+                    
+                        <i class="sidebar-button-icon fa fa-lg fa-search"></i>
+                        <span class="sidebar-button-desc">搜索</span>
+                    </a>
+            </li>
+            
+                <li class="sidebar-button">
+                    
+                        <a  class="sidebar-button-link "
+                             href="/#about"
+                            
+                        >
+                    
+                        <i class="sidebar-button-icon fa fa-lg fa-question"></i>
+                        <span class="sidebar-button-desc">关于</span>
+                    </a>
+            </li>
+            
+        </ul>
         
-            <li class="sidebar-button">
-                
-                    <a  class="sidebar-button-link "
-                         href="/all-archives"
-                        
-                    >
-                
-                    <i class="sidebar-button-icon fa fa-lg fa-archive"></i>
-                    <span class="sidebar-button-desc">归档</span>
-                </a>
-        </li>
+            <ul class="sidebar-buttons">
+            
+                <li class="sidebar-button">
+                    
+                        <a  class="sidebar-button-link " href="https://github.com/hilen" target="_blank">
+                    
+                        <i class="sidebar-button-icon fa fa-lg fa-github"></i>
+                        <span class="sidebar-button-desc">GitHub</span>
+                    </a>
+            </li>
+            
+                <li class="sidebar-button">
+                    
+                        <a  class="sidebar-button-link " href="mailto:hilenkz@gmail.com" target="_blank">
+                    
+                        <i class="sidebar-button-icon fa fa-lg fa-envelope-o"></i>
+                        <span class="sidebar-button-desc">邮箱</span>
+                    </a>
+            </li>
+            
+        </ul>
         
-            <li class="sidebar-button">
-                
-                    <a  class="sidebar-button-link st-search-show-outputs"
-                         href="/#search"
-                        
-                    >
-                
-                    <i class="sidebar-button-icon fa fa-lg fa-search"></i>
-                    <span class="sidebar-button-desc">搜索</span>
-                </a>
-        </li>
-        
-            <li class="sidebar-button">
-                
-                    <a  class="sidebar-button-link "
-                         href="/#about"
-                        
-                    >
-                
-                    <i class="sidebar-button-icon fa fa-lg fa-question"></i>
-                    <span class="sidebar-button-desc">关于</span>
-                </a>
-        </li>
-        
-    </ul>
-    
-        <ul class="sidebar-buttons">
-        
-            <li class="sidebar-button">
-                
-                    <a  class="sidebar-button-link " href="https://github.com/hilen" target="_blank">
-                
-                    <i class="sidebar-button-icon fa fa-lg fa-github"></i>
-                    <span class="sidebar-button-desc">GitHub</span>
-                </a>
-        </li>
-        
-            <li class="sidebar-button">
-                
-                    <a  class="sidebar-button-link " href="mailto:hilenkz@gmail.com" target="_blank">
-                
-                    <i class="sidebar-button-icon fa fa-lg fa-envelope-o"></i>
-                    <span class="sidebar-button-desc">邮箱</span>
-                </a>
-        </li>
-        
-    </ul>
-    
+    </div>
 </nav>
 
             
-            <div id="main" data-behavior="1"
+            <div id="main" data-behavior="2"
                  class="
                         hasCoverMetaIn
                         ">
@@ -213,7 +219,7 @@
         </h1>
     
     <div class="post-meta">
-    <time itemprop="datePublished" content="Wed Aug 10 2016 15:11:35 GMT+0800">
+    <time itemprop="datePublished" datetime="2016-08-10T15:11:35+08:00">
 	
 		    8月 10, 2016
     	
@@ -226,6 +232,7 @@
 
     
 </div>
+
 </div>
     
     <div class="post-content markdown" itemprop="articleBody">
@@ -247,15 +254,15 @@
 <h3 id="Mantle-的使用和源码增强"><a href="#Mantle-的使用和源码增强" class="headerlink" title="Mantle 的使用和源码增强"></a>Mantle 的使用和源码增强</h3><p>那么每个类库都有它的特点，这里我介绍下 Mantle。<br>使用 Mantle 来写 Model 的时候是这样的：</p>
 <figure class="codeblock codeblock--tabbed"><figcaption><span>example</span><ul class="tabs"><li class="tab active">objc</li></ul></figcaption><div class="tabs-content"><figure class="highlight objc" style="display: block;"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">@interface</span> <span class="title">TSTestMantleModel</span> : <span class="title">MTLModel</span>&lt;<span class="title">MTLJSONSerializing</span>&gt;</span></span><br><span class="line"><span class="keyword">@property</span> (<span class="keyword">nonatomic</span>, <span class="keyword">copy</span>) <span class="built_in">NSNumber</span> *messageUnreadNumber;</span><br><span class="line"><span class="keyword">@property</span> (<span class="keyword">nonatomic</span>, <span class="keyword">copy</span>) <span class="built_in">NSString</span> *userId;</span><br><span class="line"><span class="keyword">@property</span> (<span class="keyword">nonatomic</span>, <span class="keyword">copy</span>) <span class="built_in">NSNumber</span> *fromType;</span><br><span class="line"><span class="keyword">@property</span> (<span class="keyword">nonatomic</span>, <span class="keyword">copy</span>) <span class="built_in">NSURL</span> *avatarURL;</span><br><span class="line"><span class="keyword">@property</span> (<span class="keyword">nonatomic</span>, <span class="keyword">copy</span>) <span class="built_in">NSString</span> *receiveUserid;</span><br><span class="line"><span class="keyword">@property</span> (<span class="keyword">nonatomic</span>, <span class="keyword">copy</span>) <span class="built_in">NSString</span> *sendUserid;</span><br><span class="line"><span class="keyword">@property</span> (<span class="keyword">nonatomic</span>, <span class="keyword">copy</span>) <span class="built_in">NSDate</span> *timestamp;</span><br><span class="line"><span class="keyword">@end</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">@implementation</span> <span class="title">TSTestMantleModel</span></span></span><br><span class="line">+ (<span class="built_in">NSDictionary</span> *)JSONKeyPathsByPropertyKey {</span><br><span class="line">    <span class="keyword">return</span> @{<span class="string">@"messageUnreadNumber"</span>: <span class="string">@"message_unread_num"</span>,</span><br><span class="line">             <span class="string">@"userId"</span>: <span class="string">@"userid"</span>,</span><br><span class="line">             <span class="string">@"avatarURL"</span>: <span class="string">@"avatar_url"</span>,</span><br><span class="line">             <span class="string">@"fromType"</span>: <span class="string">@"meesage_from_type"</span>,</span><br><span class="line">             <span class="string">@"receiveUserid"</span>: <span class="string">@"last_message.receive_userid"</span>,</span><br><span class="line">             <span class="string">@"sendUserid"</span>: <span class="string">@"last_message.send_userid"</span>,</span><br><span class="line">             <span class="string">@"timestamp"</span>: <span class="string">@"timestamp"</span>};</span><br><span class="line">}</span><br><span class="line"><span class="keyword">@end</span></span><br></pre></td></tr></tbody></table></figure></div></figure>
 <p>这时候当我们使用 Mantle 原生框架的时候，也许你可能会发现针对 <code>response.json</code> 这个数据，依然会出现 crash 问题。比如这样的：</p>
-<figure class="codeblock codeblock--tabbed"><figcaption><span>example</span><ul class="tabs"><li class="tab active">objc</li></ul></figcaption><div class="tabs-content"><figure class="highlight objc" style="display: block;"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">2016</span><span class="number">-08</span><span class="number">-17</span> <span class="number">13</span>:<span class="number">49</span>:<span class="number">56.557</span> MantleExtension[<span class="number">55337</span>:<span class="number">10042976</span>] error is:Error Domain=MTLTransformerErrorHandlingErrorDomain Code=<span class="number">1</span> <span class="string">"Value did not match expected type"</span> UserInfo={MTLTransformerErrorHandlingInputValueErrorKey=<span class="number">3277</span>, <span class="built_in">NSLocalizedDescription</span>=Value did not match expected type, <span class="built_in">NSLocalizedFailureReason</span>=Expected <span class="number">3277</span> to be of class <span class="built_in">NSString</span> but got __<span class="built_in">NSCFNumber</span>}</span><br><span class="line"><span class="number">2016</span><span class="number">-08</span><span class="number">-17</span> <span class="number">13</span>:<span class="number">49</span>:<span class="number">56.558</span> MantleExtension[<span class="number">55337</span>:<span class="number">10042976</span>] error is:Error Domain=MTLTransformerErrorHandlingErrorDomain Code=<span class="number">1</span> <span class="string">"Could not convert string to URL"</span> UserInfo={MTLTransformerErrorHandlingInputValueErrorKey=(</span><br><span class="line">), <span class="built_in">NSLocalizedDescription</span>=Could not convert string to URL, <span class="built_in">NSLocalizedFailureReason</span>=Expected an <span class="built_in">NSString</span>, got: (</span><br><span class="line">).}</span><br><span class="line"><span class="number">2016</span><span class="number">-08</span><span class="number">-17</span> <span class="number">13</span>:<span class="number">49</span>:<span class="number">56.558</span> MantleExtension[<span class="number">55337</span>:<span class="number">10042976</span>] error is:Error Domain=MTLTransformerErrorHandlingErrorDomain Code=<span class="number">1</span> <span class="string">"Value did not match expected type"</span> UserInfo={MTLTransformerErrorHandlingInputValueErrorKey=<span class="number">719</span>, <span class="built_in">NSLocalizedDescription</span>=Value did not match expected type, <span class="built_in">NSLocalizedFailureReason</span>=Expected <span class="number">719</span> to be of class <span class="built_in">NSString</span> but got __<span class="built_in">NSCFNumber</span>}</span><br><span class="line"><span class="number">2016</span><span class="number">-08</span><span class="number">-17</span> <span class="number">13</span>:<span class="number">49</span>:<span class="number">56.561</span> MantleExtension[<span class="number">55337</span>:<span class="number">10042976</span>] error is:Error Domain=MTLTransformerErrorHandlingErrorDomain Code=<span class="number">1</span> <span class="string">"Value did not match expected type"</span> UserInfo={MTLTransformerErrorHandlingInputValueErrorKey=&lt;<span class="built_in">CFArray</span> <span class="number">0x7f9ddc128c40</span> [<span class="number">0x101625a40</span>]&gt;{type = immutable, count = <span class="number">1</span>, values = (</span><br><span class="line">  <span class="number">0</span> : &lt;<span class="built_in">CFNumber</span> <span class="number">0xb00000000000c113</span> [<span class="number">0x101625a40</span>]&gt;{value = +<span class="number">3089</span>, type = k<span class="built_in">CFNumberSInt64Type</span>}</span><br><span class="line">)}, <span class="built_in">NSLocalizedDescription</span>=Value did not match expected type, <span class="built_in">NSLocalizedFailureReason</span>=Expected (</span><br><span class="line">    <span class="number">3089</span></span><br><span class="line">) to be of class <span class="built_in">NSString</span> but got __<span class="built_in">NSCFArray</span>}</span><br></pre></td></tr></tbody></table></figure></div></figure>
+<figure class="codeblock codeblock--tabbed"><figcaption><span>example</span><ul class="tabs"><li class="tab active">objc</li></ul></figcaption><div class="tabs-content"><figure class="highlight objc" style="display: block;"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">2016</span><span class="number">-08</span><span class="number">-17</span> <span class="number">13</span>:<span class="number">49</span>:<span class="number">56.557</span> MantleExtension[<span class="number">55337</span>:<span class="number">10042976</span>] error is:Error Domain=<span class="built_in">MTLTransformerErrorHandlingErrorDomain</span> Code=<span class="number">1</span> <span class="string">"Value did not match expected type"</span> UserInfo={<span class="built_in">MTLTransformerErrorHandlingInputValueErrorKey</span>=<span class="number">3277</span>, <span class="built_in">NSLocalizedDescription</span>=Value did not match expected type, <span class="built_in">NSLocalizedFailureReason</span>=Expected <span class="number">3277</span> to be of <span class="keyword">class</span> <span class="built_in">NSString</span> but got __NSCFNumber}</span><br><span class="line"><span class="number">2016</span><span class="number">-08</span><span class="number">-17</span> <span class="number">13</span>:<span class="number">49</span>:<span class="number">56.558</span> MantleExtension[<span class="number">55337</span>:<span class="number">10042976</span>] error is:Error Domain=<span class="built_in">MTLTransformerErrorHandlingErrorDomain</span> Code=<span class="number">1</span> <span class="string">"Could not convert string to URL"</span> UserInfo={<span class="built_in">MTLTransformerErrorHandlingInputValueErrorKey</span>=(</span><br><span class="line">), <span class="built_in">NSLocalizedDescription</span>=Could not convert string to URL, <span class="built_in">NSLocalizedFailureReason</span>=Expected an <span class="built_in">NSString</span>, got: (</span><br><span class="line">).}</span><br><span class="line"><span class="number">2016</span><span class="number">-08</span><span class="number">-17</span> <span class="number">13</span>:<span class="number">49</span>:<span class="number">56.558</span> MantleExtension[<span class="number">55337</span>:<span class="number">10042976</span>] error is:Error Domain=<span class="built_in">MTLTransformerErrorHandlingErrorDomain</span> Code=<span class="number">1</span> <span class="string">"Value did not match expected type"</span> UserInfo={<span class="built_in">MTLTransformerErrorHandlingInputValueErrorKey</span>=<span class="number">719</span>, <span class="built_in">NSLocalizedDescription</span>=Value did not match expected type, <span class="built_in">NSLocalizedFailureReason</span>=Expected <span class="number">719</span> to be of <span class="keyword">class</span> <span class="built_in">NSString</span> but got __NSCFNumber}</span><br><span class="line"><span class="number">2016</span><span class="number">-08</span><span class="number">-17</span> <span class="number">13</span>:<span class="number">49</span>:<span class="number">56.561</span> MantleExtension[<span class="number">55337</span>:<span class="number">10042976</span>] error is:Error Domain=<span class="built_in">MTLTransformerErrorHandlingErrorDomain</span> Code=<span class="number">1</span> <span class="string">"Value did not match expected type"</span> UserInfo={<span class="built_in">MTLTransformerErrorHandlingInputValueErrorKey</span>=&lt;<span class="built_in">CFArray</span> <span class="number">0x7f9ddc128c40</span> [<span class="number">0x101625a40</span>]&gt;{type = immutable, count = <span class="number">1</span>, values = (</span><br><span class="line">  <span class="number">0</span> : &lt;<span class="built_in">CFNumber</span> <span class="number">0xb00000000000c113</span> [<span class="number">0x101625a40</span>]&gt;{value = +<span class="number">3089</span>, type = kCFNumberSInt64Type}</span><br><span class="line">)}, <span class="built_in">NSLocalizedDescription</span>=Value did not match expected type, <span class="built_in">NSLocalizedFailureReason</span>=Expected (</span><br><span class="line">    <span class="number">3089</span></span><br><span class="line">) to be of <span class="keyword">class</span> <span class="built_in">NSString</span> but got __NSCFArray}</span><br></pre></td></tr></tbody></table></figure></div></figure>
 <p>以上出现的 crash 是因为我们所定义的 Model 的类型和服务端返回数据的赋值数据的类型对应不上，那么我们可能需要做一层转换。 所以针对 ``这个字段，也许我们会加一段这样的代码：</p>
-<figure class="codeblock codeblock--tabbed"><figcaption><span>example</span><ul class="tabs"><li class="tab active">objc</li></ul></figcaption><div class="tabs-content"><figure class="highlight objc" style="display: block;"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">+ (<span class="built_in">NSValueTransformer</span> *)messageUnreadNumberJSONTransformer　{</span><br><span class="line">    <span class="keyword">return</span> [MTLValueTransformer transformerUsingForwardBlock:^<span class="keyword">id</span>(<span class="built_in">NSNumber</span> *count, <span class="built_in">BOOL</span> *success, <span class="built_in">NSError</span> *__autoreleasing *error) {</span><br><span class="line">        <span class="keyword">if</span> ([count isKindOfClass:[<span class="built_in">NSNumber</span> class]]){</span><br><span class="line">            <span class="keyword">return</span> count;</span><br><span class="line">        } <span class="keyword">else</span> {</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">nil</span>;</span><br><span class="line">        }</span><br><span class="line">    }];</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure></div></figure>
+<figure class="codeblock codeblock--tabbed"><figcaption><span>example</span><ul class="tabs"><li class="tab active">objc</li></ul></figcaption><div class="tabs-content"><figure class="highlight objc" style="display: block;"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">+ (<span class="built_in">NSValueTransformer</span> *)messageUnreadNumberJSONTransformer　{</span><br><span class="line">    <span class="keyword">return</span> [<span class="built_in">MTLValueTransformer</span> transformerUsingForwardBlock:^<span class="keyword">id</span>(<span class="built_in">NSNumber</span> *count, <span class="built_in">BOOL</span> *success, <span class="built_in">NSError</span> *__autoreleasing *error) {</span><br><span class="line">        <span class="keyword">if</span> ([count isKindOfClass:[<span class="built_in">NSNumber</span> <span class="keyword">class</span>]]){</span><br><span class="line">            <span class="keyword">return</span> count;</span><br><span class="line">        } <span class="keyword">else</span> {</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">nil</span>;</span><br><span class="line">        }</span><br><span class="line">    }];</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure></div></figure>
 <p>以上这种办法是可以解决问题的，但是如果类型错误出现的次数过多，我们是否需要对每个类型都有一个这样的判断呢？这种重复的事情是当然不能交给 Coder 来进行嘛，所以开始阅读 Mantle 源码，在这个过程中发现这么一个函数 <code>MTLJSONAdapter.m line: 364</code>，在函数代码中也对此进行了分析</p>
-<figure class="codeblock codeblock--tabbed"><figcaption><span>example</span><ul class="tabs"><li class="tab active">objc</li></ul></figcaption><div class="tabs-content"><figure class="highlight objc" style="display: block;"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br></pre></td><td class="code"><pre><span class="line">+ (<span class="built_in">NSDictionary</span> *)valueTransformersForModelClass:(Class)modelClass {</span><br><span class="line">    <span class="built_in">NSParameterAssert</span>(modelClass != <span class="literal">nil</span>);</span><br><span class="line">    <span class="built_in">NSParameterAssert</span>([modelClass conformsToProtocol:<span class="class"><span class="keyword">@protocol</span>(<span class="title">MTLJSONSerializing</span>)]);</span></span><br><span class="line"></span><br><span class="line">    <span class="built_in">NSMutableDictionary</span> *result = [<span class="built_in">NSMutableDictionary</span> dictionary];</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> (<span class="built_in">NSString</span> *key <span class="keyword">in</span> [modelClass propertyKeys]) {</span><br><span class="line">        <span class="comment">/*</span><br><span class="line">      　 第一个方法：寻找“property name +JSONTransformer” 的方法</span><br><span class="line">      　比如：如果在 .m　文件里如果实现了这样的方法：</span><br><span class="line">        + (NSValueTransformer *)messageUnreadNumberJSONTransformer　{</span><br><span class="line">            return [MTLValueTransformer transformerUsingForwardBlock:^id(NSNumber *count, BOOL *success, NSError *__autoreleasing *error) {</span><br><span class="line">                if ([count intValue] &gt;= 9) {</span><br><span class="line">                    return @9;</span><br><span class="line">                } else {</span><br><span class="line">                    count = @([count intValue]+1);</span><br><span class="line">                    return count;</span><br><span class="line">                }</span><br><span class="line">            }];</span><br><span class="line">        }</span><br><span class="line">         */</span></span><br><span class="line">        SEL selector = MTLSelectorWithKeyPattern(key, <span class="string">"JSONTransformer"</span>);</span><br><span class="line">        <span class="keyword">if</span> ([modelClass respondsToSelector:selector]) {</span><br><span class="line">            IMP imp = [modelClass methodForSelector:selector];</span><br><span class="line">            <span class="built_in">NSValueTransformer</span> * (*function)(<span class="keyword">id</span>, SEL) = (__typeof__(function))imp;</span><br><span class="line">            <span class="built_in">NSValueTransformer</span> *transformer = function(modelClass, selector);</span><br><span class="line"></span><br><span class="line">            <span class="keyword">if</span> (transformer != <span class="literal">nil</span>) result[key] = transformer;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">continue</span>;</span><br><span class="line">        }</span><br><span class="line"></span><br><span class="line">        <span class="comment">/*</span><br><span class="line">          第二个方法：Mantle 框架本身提供了一个 JSONTransformerForKey 的函数，如果实现了，那么走这个方法里实现的内容</span><br><span class="line">         */</span></span><br><span class="line">        <span class="keyword">if</span> ([modelClass respondsToSelector:<span class="keyword">@selector</span>(JSONTransformerForKey:)]) {</span><br><span class="line">            <span class="built_in">NSValueTransformer</span> *transformer = [modelClass JSONTransformerForKey:key];</span><br><span class="line"></span><br><span class="line">            <span class="keyword">if</span> (transformer != <span class="literal">nil</span>) result[key] = transformer;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">continue</span>;</span><br><span class="line">        }</span><br><span class="line"></span><br><span class="line">        <span class="comment">/*</span><br><span class="line">          第三个方法：查找“property type name+JSONTransformer”的方法</span><br><span class="line">         比如：框架本身为我们实现了一个这样的方法</span><br><span class="line">         </span><br><span class="line">         + (NSValueTransformer *)NSURLJSONTransformer {</span><br><span class="line">            return [NSValueTransformer valueTransformerForName:MTLURLValueTransformerName];</span><br><span class="line">         }</span><br><span class="line"></span><br><span class="line">         */</span></span><br><span class="line">        objc_property_t property = class_getProperty(modelClass, key.UTF8String);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> (property == <span class="literal">NULL</span>) <span class="keyword">continue</span>;</span><br><span class="line"></span><br><span class="line">        mtl_propertyAttributes *attributes = mtl_copyPropertyAttributes(property);</span><br><span class="line">        @onExit {</span><br><span class="line">            free(attributes);</span><br><span class="line">        };</span><br><span class="line"></span><br><span class="line">        <span class="built_in">NSValueTransformer</span> *transformer = <span class="literal">nil</span>;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> (*(attributes-&gt;type) == *(@encode(<span class="keyword">id</span>))) {</span><br><span class="line">            Class propertyClass = attributes-&gt;objectClass;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">if</span> (propertyClass != <span class="literal">nil</span>) {</span><br><span class="line">                transformer = [<span class="keyword">self</span> transformerForModelPropertiesOfClass:propertyClass];</span><br><span class="line">            }</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">            <span class="comment">// For user-defined MTLModel, try parse it with dictionaryTransformer.</span></span><br><span class="line">            <span class="keyword">if</span> (<span class="literal">nil</span> == transformer &amp;&amp; [propertyClass conformsToProtocol:<span class="class"><span class="keyword">@protocol</span>(<span class="title">MTLJSONSerializing</span>)]) </span>{</span><br><span class="line">                transformer = [<span class="keyword">self</span> dictionaryTransformerWithModelClass:propertyClass];</span><br><span class="line">            }</span><br><span class="line">            </span><br><span class="line">            <span class="keyword">if</span> (transformer == <span class="literal">nil</span>) transformer = [<span class="built_in">NSValueTransformer</span> mtl_validatingTransformerForClass:propertyClass ?: <span class="built_in">NSObject</span>.class];</span><br><span class="line">        } <span class="keyword">else</span> {</span><br><span class="line">            transformer = [<span class="keyword">self</span> transformerForModelPropertiesOfObjCType:attributes-&gt;type] ?: [<span class="built_in">NSValueTransformer</span> mtl_validatingTransformerForClass:<span class="built_in">NSValue</span>.class];</span><br><span class="line">        }</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> (transformer != <span class="literal">nil</span>) result[key] = transformer;</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> result;</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure></div></figure>
+<figure class="codeblock codeblock--tabbed"><figcaption><span>example</span><ul class="tabs"><li class="tab active">objc</li></ul></figcaption><div class="tabs-content"><figure class="highlight objc" style="display: block;"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br></pre></td><td class="code"><pre><span class="line">+ (<span class="built_in">NSDictionary</span> *)valueTransformersForModelClass:(Class)modelClass {</span><br><span class="line">    <span class="built_in">NSParameterAssert</span>(modelClass != <span class="literal">nil</span>);</span><br><span class="line">    <span class="built_in">NSParameterAssert</span>([modelClass conformsToProtocol:<span class="class"><span class="keyword">@protocol</span>(<span class="title">MTLJSONSerializing</span>)]);</span></span><br><span class="line"></span><br><span class="line">    <span class="built_in">NSMutableDictionary</span> *result = [<span class="built_in">NSMutableDictionary</span> dictionary];</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> (<span class="built_in">NSString</span> *key <span class="keyword">in</span> [modelClass propertyKeys]) {</span><br><span class="line">        <span class="comment">/*</span><br><span class="line">      　 第一个方法：寻找“property name +JSONTransformer” 的方法</span><br><span class="line">      　比如：如果在 .m　文件里如果实现了这样的方法：</span><br><span class="line">        + (NSValueTransformer *)messageUnreadNumberJSONTransformer　{</span><br><span class="line">            return [MTLValueTransformer transformerUsingForwardBlock:^id(NSNumber *count, BOOL *success, NSError *__autoreleasing *error) {</span><br><span class="line">                if ([count intValue] &gt;= 9) {</span><br><span class="line">                    return @9;</span><br><span class="line">                } else {</span><br><span class="line">                    count = @([count intValue]+1);</span><br><span class="line">                    return count;</span><br><span class="line">                }</span><br><span class="line">            }];</span><br><span class="line">        }</span><br><span class="line">         */</span></span><br><span class="line">        SEL selector = <span class="built_in">MTLSelectorWithKeyPattern</span>(key, <span class="string">"JSONTransformer"</span>);</span><br><span class="line">        <span class="keyword">if</span> ([modelClass respondsToSelector:selector]) {</span><br><span class="line">            IMP imp = [modelClass methodForSelector:selector];</span><br><span class="line">            <span class="built_in">NSValueTransformer</span> * (*function)(<span class="keyword">id</span>, SEL) = (__typeof__(function))imp;</span><br><span class="line">            <span class="built_in">NSValueTransformer</span> *transformer = function(modelClass, selector);</span><br><span class="line"></span><br><span class="line">            <span class="keyword">if</span> (transformer != <span class="literal">nil</span>) result[key] = transformer;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">continue</span>;</span><br><span class="line">        }</span><br><span class="line"></span><br><span class="line">        <span class="comment">/*</span><br><span class="line">          第二个方法：Mantle 框架本身提供了一个 JSONTransformerForKey 的函数，如果实现了，那么走这个方法里实现的内容</span><br><span class="line">         */</span></span><br><span class="line">        <span class="keyword">if</span> ([modelClass respondsToSelector:<span class="keyword">@selector</span>(JSONTransformerForKey:)]) {</span><br><span class="line">            <span class="built_in">NSValueTransformer</span> *transformer = [modelClass JSONTransformerForKey:key];</span><br><span class="line"></span><br><span class="line">            <span class="keyword">if</span> (transformer != <span class="literal">nil</span>) result[key] = transformer;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">continue</span>;</span><br><span class="line">        }</span><br><span class="line"></span><br><span class="line">        <span class="comment">/*</span><br><span class="line">          第三个方法：查找“property type name+JSONTransformer”的方法</span><br><span class="line">         比如：框架本身为我们实现了一个这样的方法</span><br><span class="line">         </span><br><span class="line">         + (NSValueTransformer *)NSURLJSONTransformer {</span><br><span class="line">            return [NSValueTransformer valueTransformerForName:MTLURLValueTransformerName];</span><br><span class="line">         }</span><br><span class="line"></span><br><span class="line">         */</span></span><br><span class="line">        objc_property_t property = class_getProperty(modelClass, key.UTF8String);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> (property == <span class="literal">NULL</span>) <span class="keyword">continue</span>;</span><br><span class="line"></span><br><span class="line">        mtl_propertyAttributes *attributes = mtl_copyPropertyAttributes(property);</span><br><span class="line">        @onExit {</span><br><span class="line">            free(attributes);</span><br><span class="line">        };</span><br><span class="line"></span><br><span class="line">        <span class="built_in">NSValueTransformer</span> *transformer = <span class="literal">nil</span>;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> (*(attributes-&gt;type) == *(<span class="keyword">@encode</span>(<span class="keyword">id</span>))) {</span><br><span class="line">            Class propertyClass = attributes-&gt;objectClass;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">if</span> (propertyClass != <span class="literal">nil</span>) {</span><br><span class="line">                transformer = [<span class="keyword">self</span> transformerForModelPropertiesOfClass:propertyClass];</span><br><span class="line">            }</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">            <span class="comment">// For user-defined MTLModel, try parse it with dictionaryTransformer.</span></span><br><span class="line">            <span class="keyword">if</span> (<span class="literal">nil</span> == transformer &amp;&amp; [propertyClass conformsToProtocol:<span class="class"><span class="keyword">@protocol</span>(<span class="title">MTLJSONSerializing</span>)]) </span>{</span><br><span class="line">                transformer = [<span class="keyword">self</span> dictionaryTransformerWithModelClass:propertyClass];</span><br><span class="line">            }</span><br><span class="line">            </span><br><span class="line">            <span class="keyword">if</span> (transformer == <span class="literal">nil</span>) transformer = [<span class="built_in">NSValueTransformer</span> mtl_validatingTransformerForClass:propertyClass ?: <span class="built_in">NSObject</span>.class];</span><br><span class="line">        } <span class="keyword">else</span> {</span><br><span class="line">            transformer = [<span class="keyword">self</span> transformerForModelPropertiesOfObjCType:attributes-&gt;type] ?: [<span class="built_in">NSValueTransformer</span> mtl_validatingTransformerForClass:<span class="built_in">NSValue</span>.class];</span><br><span class="line">        }</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> (transformer != <span class="literal">nil</span>) result[key] = transformer;</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> result;</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure></div></figure>
 <p>根据以上代码的分析。我们发现其实 Mantle 的核心类型转换的代码的流程大约是：<br><figure class="highlight actionscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> <span class="string">"property name + JSONTransformer"</span> 的方法 &#123;</span><br><span class="line">    <span class="keyword">continue</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> JSONTransformerForKey 的方法 &#123;</span><br><span class="line">    <span class="keyword">continue</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> <span class="string">"property type name + JSONTransformer"</span> 的方法 &#123;</span><br><span class="line">    <span class="keyword">continue</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <p>我不太明白为什么框架本身仅仅为我们实现了一个 <code>+ (NSValueTransformer *)NSURLJSONTransformer</code> 的方法，大可以实现包括 <code>NSString, NSNumber</code>等等这样的函数，后来我和官方联系了下，官方表示这些函数不像 <code>NSURLJSONTransformer</code> 这个比较有通用性。所以留个开发者自己来实现，这样能够比较灵活的控制业务和数据的关系。<br>想想也是这样的，官方既然没有这么干，那么索性我们自己实现咯：<br><figure class="highlight objectivec"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">+ (<span class="built_in">NSValueTransformer</span> *)<span class="built_in">NSStringJSONTransformer</span>;</span><br><span class="line">+ (<span class="built_in">NSValueTransformer</span> *)<span class="built_in">NSNumberJSONTransformer</span>;</span><br><span class="line">+ (<span class="built_in">NSValueTransformer</span> *)<span class="built_in">NSDictionaryJSONTransformer</span>;</span><br><span class="line">+ (<span class="built_in">NSValueTransformer</span> *)<span class="built_in">NSMutableDictionaryJSONTransformer</span>;</span><br><span class="line">+ (<span class="built_in">NSValueTransformer</span> *)<span class="built_in">NSArrayJSONTransformer</span>;</span><br><span class="line">+ (<span class="built_in">NSValueTransformer</span> *)<span class="built_in">NSMutableArrayJSONTransformer</span>;</span><br><span class="line">+ (<span class="built_in">NSValueTransformer</span> *)<span class="built_in">NSDateJSONTransformer</span>;</span><br></pre></td></tr></table></figure></p>
 <p>对常用的类型进行了保护，避免出现因为类型的错误导致的 Crash。<br>这里建议 int, bool, float 等类型最好使用 NSNumber，如果有兴趣你可以尝试自己添加这些基础类型的 JSONTransformer 函数。<br>那么现在你可以自由自在的使用这些功能了，并且这部分是对源码没有任何侵入式的修改。其中 <code>+ (NSValueTransformer *)NSStringJSONTransformer</code> 的实现是这样的：</p>
-<figure class="codeblock codeblock--tabbed"><figcaption><span>example</span><ul class="tabs"><li class="tab active">objc</li></ul></figcaption><div class="tabs-content"><figure class="highlight objc" style="display: block;"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">+ (<span class="built_in">NSValueTransformer</span> *)<span class="built_in">NSStringJSONTransformer</span> {</span><br><span class="line">    <span class="keyword">return</span> [MTLValueTransformer transformerUsingForwardBlock:^<span class="keyword">id</span>(<span class="keyword">id</span> value, <span class="built_in">BOOL</span> *success, <span class="built_in">NSError</span> *__autoreleasing *error) {</span><br><span class="line">        <span class="keyword">if</span> ([value isKindOfClass:[<span class="built_in">NSString</span> class]]) {</span><br><span class="line">            <span class="keyword">return</span> value;</span><br><span class="line">        } <span class="keyword">else</span> <span class="keyword">if</span> ([value isKindOfClass:[<span class="built_in">NSNumber</span> class]]) {</span><br><span class="line">            <span class="keyword">return</span> [value stringValue];</span><br><span class="line">        } <span class="keyword">else</span> <span class="keyword">if</span> ([value isKindOfClass:[<span class="built_in">NSDictionary</span> class]] || [value isKindOfClass:[<span class="built_in">NSArray</span> class]] || !value) {</span><br><span class="line"><span class="meta">#if DEBUG</span></span><br><span class="line">            <span class="built_in">NSAssert</span>(value != <span class="literal">nil</span>, <span class="string">@"Type error"</span>);</span><br><span class="line"><span class="meta">#endif</span></span><br><span class="line">            <span class="keyword">return</span> [<span class="built_in">NSNull</span> null];</span><br><span class="line">        } <span class="keyword">else</span> {</span><br><span class="line">            <span class="keyword">return</span> [value stringValue];</span><br><span class="line">        }</span><br><span class="line">    }];</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure></div></figure>
+<figure class="codeblock codeblock--tabbed"><figcaption><span>example</span><ul class="tabs"><li class="tab active">objc</li></ul></figcaption><div class="tabs-content"><figure class="highlight objc" style="display: block;"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">+ (<span class="built_in">NSValueTransformer</span> *)<span class="built_in">NSStringJSONTransformer</span> {</span><br><span class="line">    <span class="keyword">return</span> [<span class="built_in">MTLValueTransformer</span> transformerUsingForwardBlock:^<span class="keyword">id</span>(<span class="keyword">id</span> value, <span class="built_in">BOOL</span> *success, <span class="built_in">NSError</span> *__autoreleasing *error) {</span><br><span class="line">        <span class="keyword">if</span> ([value isKindOfClass:[<span class="built_in">NSString</span> <span class="keyword">class</span>]]) {</span><br><span class="line">            <span class="keyword">return</span> value;</span><br><span class="line">        } <span class="keyword">else</span> <span class="keyword">if</span> ([value isKindOfClass:[<span class="built_in">NSNumber</span> <span class="keyword">class</span>]]) {</span><br><span class="line">            <span class="keyword">return</span> [value stringValue];</span><br><span class="line">        } <span class="keyword">else</span> <span class="keyword">if</span> ([value isKindOfClass:[<span class="built_in">NSDictionary</span> <span class="keyword">class</span>]] || [value isKindOfClass:[<span class="built_in">NSArray</span> <span class="keyword">class</span>]] || !value) {</span><br><span class="line"><span class="meta">#if DEBUG</span></span><br><span class="line">            <span class="built_in">NSAssert</span>(value != <span class="literal">nil</span>, <span class="string">@"Type error"</span>);</span><br><span class="line"><span class="meta">#endif</span></span><br><span class="line">            <span class="keyword">return</span> [<span class="built_in">NSNull</span> null];</span><br><span class="line">        } <span class="keyword">else</span> {</span><br><span class="line">            <span class="keyword">return</span> [value stringValue];</span><br><span class="line">        }</span><br><span class="line">    }];</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure></div></figure>
 <h3 id="如何使用？"><a href="#如何使用？" class="headerlink" title="如何使用？"></a>如何使用？</h3><ol>
 <li>在 podfile 里添加 <a href="https://github.com/Mantle/Mantle" target="_blank" rel="external">Mantle</a> 和 <a href="https://github.com/rentzsch/jrswizzle" target="_blank" rel="external">jrswizzle</a>. <code>pod update</code></li>
 <li>下载 <a href="https://github.com/hilen/MantleExtension" target="_blank" rel="external">https://github.com/hilen/MantleExtension</a> 源码，把 <code>Source</code> 文件夹的内容添加到工程内</li>
@@ -357,7 +364,7 @@
 
             </div>
             
-                <div id="bottom-bar" class="post-bottom-bar" data-behavior="1">
+                <div id="bottom-bar" class="post-bottom-bar" data-behavior="2">
                     <div class="post-actions-wrap">
     <nav>
         <ul class="post-actions post-action-nav">
@@ -419,11 +426,11 @@
 
 
                 </div>
-                <div id="share-options-bar" class="share-options-bar" data-behavior="1">
+                <div id="share-options-bar" class="share-options-bar" data-behavior="2">
     <ul class="share-options">
         <li class="share-option">
             <a class="share-option-btn" target="new" href="https://plus.google.com/share?url=http://hilen.github.io/2016/08/10/mantle-extension/">
-                <i class="fa fa-google-plus"></i><span class="">分享到 Google+</span>
+                <i class="fa fa-google-plus"></i><span>分享到 Google+</span>
             </a>
         </li>
         <li class="share-option">
@@ -439,6 +446,7 @@
     </ul>
 </div>
 <div id="share-options-mask" class="share-options-mask"></div>
+
             
         </div>
         
@@ -454,36 +462,262 @@
             <i class="fa fa-remove"></i>
         </div>
         
-            <img id="about-card-picture" src="http://ww1.sinaimg.cn/large/6a011e49jw1f1e87gcr14j20ks0ksdgr.jpg"/>
+            <img id="about-card-picture" src="http://ww1.sinaimg.cn/large/6a011e49jw1f1e87gcr14j20ks0ksdgr.jpg" alt="作者的图片"/>
         
             <h4 id="about-card-name">Hilen</h4>
         
-            <h5 id="about-card-bio"><p>author.bio</p>
-</h5>
+            <div id="about-card-bio"><p>author.bio</p>
+</div>
         
         
-            <h5 id="about-card-job">
+            <div id="about-card-job">
                 <i class="fa fa-briefcase"></i>
                 <br/>
                 <p>author.job</p>
 
-            </h5>
+            </div>
         
         
-            <h5 id="about-card-location">
+            <div id="about-card-location">
                 <i class="fa fa-map-marker"></i>
                 <br/>
                 Hangzhou
-            </h5>
+            </div>
         
     </div>
 </div>
 
+        <div id="algolia-search-modal" class="modal-container">
+    <div class="modal">
+        <div class="modal-header">
+            <span class="close-button"><i class="fa fa-close"></i></span>
+            <a href="https://algolia.com" target="_blank" class="searchby-algolia text-color-light link-unstyled">
+                <span class="searchby-algolia-text text-color-light text-small">by</span>
+                <img class="searchby-algolia-logo" src="https://www.algolia.com/static_assets/images/press/downloads/algolia-light.svg">
+            </a>
+            <i class="search-icon fa fa-search"></i>
+            <form id="algolia-search-form">
+                <input type="text" id="algolia-search-input" name="search"
+                    class="form-control input--large search-input" placeholder="Search "
+                    autofocus="autofocus"/>
+            </form>
+        </div>
+        <div class="modal-body">
+            <div class="no-result text-color-light text-center">没有找到文章</div>
+            <div class="results">
+                
+                <div class="media">
+                    
+                    <div class="media-body">
+                        <a class="link-unstyled" href="http://hilen.github.io/2015/11/04/hello-world/">
+                            <h3 class="media-heading">Hello World</h3>
+                        </a>
+                        <span class="media-meta">
+                            <span class="media-date text-small">
+                                
+                                    2015年11月4日
+                                
+                            </span>
+                        </span>
+                        <div class="media-content hide-xs font-merryweather"><p>Welcome to <a href="http://hexo.io/">Hexo</a>! This is your very first post. Check <a href="http://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="http://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p></div>
+                    </div>
+                    <div style="clear:both;"></div>
+                    <hr>
+                </div>
+                
+                <div class="media">
+                    
+                    <div class="media-body">
+                        <a class="link-unstyled" href="http://hilen.github.io/2015/11/04/instagram-libraries/">
+                            <h3 class="media-heading">Instagram iOS App Libraries</h3>
+                        </a>
+                        <span class="media-meta">
+                            <span class="media-date text-small">
+                                
+                                    2015年11月4日
+                                
+                            </span>
+                        </span>
+                        <div class="media-content hide-xs font-merryweather"><p>表格内容是 Instagram iOS App 所用到的第三方库，具体协议内容可以在 <a href="https://instagram.com/about/legal/libraries/">https://instagram.com/about/legal/libraries/</a> 找到。</p></div>
+                    </div>
+                    <div style="clear:both;"></div>
+                    <hr>
+                </div>
+                
+                <div class="media">
+                    
+                    <div class="media-body">
+                        <a class="link-unstyled" href="http://hilen.github.io/2015/12/01/reveal-loader/">
+                            <h3 class="media-heading">Reveal 1.6.3 和 Reveal Loader</h3>
+                        </a>
+                        <span class="media-meta">
+                            <span class="media-date text-small">
+                                
+                                    2015年12月1日
+                                
+                            </span>
+                        </span>
+                        <div class="media-content hide-xs font-merryweather"><p>前几天我在越狱手机上的装 Reveal Loader，手机也越狱了，版本也对了。但是每次重启都是白苹果，那明晃晃的白苹果，就快闪瞎了我的<br>28k 钛合金🐶眼，开始怀疑是手机系统版本和越狱不兼容导致的的问题，于是差点就要重新刷机。但是想<br>想还是没有刷，因为太麻烦，很耽误时间。然后….哈哈，卖个关子，最后成功运行了，在这里记录一下。</p></div>
+                    </div>
+                    <div style="clear:both;"></div>
+                    <hr>
+                </div>
+                
+                <div class="media">
+                    
+                    <div class="media-body">
+                        <a class="link-unstyled" href="http://hilen.github.io/2016/05/06/ios-device-types/">
+                            <h3 class="media-heading">iOS Device Types</h3>
+                        </a>
+                        <span class="media-meta">
+                            <span class="media-date text-small">
+                                
+                                    2016年5月6日
+                                
+                            </span>
+                        </span>
+                        <div class="media-content hide-xs font-merryweather"><p>这篇文章展示了所有 iOS 设备的机器类型。<br>Reference:</p>
+<ul>
+<li><a href="https://support.hockeyapp.net/kb/client-integration-ios-mac-os-x-tvos/ios-device-types">https://support.hockeyapp.net/kb/client-integration-ios-mac-os-x-tvos/ios-device-types</a></li>
+<li><a href="https://www.paintcodeapp.com/news/ultimate-guide-to-iphone-resolutions">不同尺寸的 iPhone 屏幕像素大小</a></li>
+</ul></div>
+                    </div>
+                    <div style="clear:both;"></div>
+                    <hr>
+                </div>
+                
+                <div class="media">
+                    
+                    <div class="media-body">
+                        <a class="link-unstyled" href="http://hilen.github.io/2016/05/06/use-dropbox-synchronise-sublime/">
+                            <h3 class="media-heading">使用 Dropbox 来同步 Sublime 的配置</h3>
+                        </a>
+                        <span class="media-meta">
+                            <span class="media-date text-small">
+                                
+                                    2016年5月6日
+                                
+                            </span>
+                        </span>
+                        <div class="media-content hide-xs font-merryweather"><p>善用 Dropbox 来同步你的各种配置吧 ╮(╯▽╰)╭<br></div>
+                    </div>
+                    <div style="clear:both;"></div>
+                    <hr>
+                </div>
+                
+                <div class="media">
+                    
+                    <div class="media-body">
+                        <a class="link-unstyled" href="http://hilen.github.io/2016/05/16/my-snip/">
+                            <h3 class="media-heading">日常随手记</h3>
+                        </a>
+                        <span class="media-meta">
+                            <span class="media-date text-small">
+                                
+                                    2016年5月16日
+                                
+                            </span>
+                        </span>
+                        <div class="media-content hide-xs font-merryweather"><!-- toc -->
+<h2 id="CocoaPods-的安装和卸载"><a href="#CocoaPods-的安装和卸载" class="headerlink" title="CocoaPods 的安装和卸载"></a>CocoaPods 的安装和卸载</h2><p>Uninstall: sudo gem uninstall cocoapods -v 0.39.0<br>Install: sudo gem install -n /usr/local/bin cocoapods -v 0.39.0<br></div>
+                    </div>
+                    <div style="clear:both;"></div>
+                    <hr>
+                </div>
+                
+                <div class="media">
+                    
+                    <div class="media-body">
+                        <a class="link-unstyled" href="http://hilen.github.io/2016/05/16/tranquilpeak-theme-tutorial/">
+                            <h3 class="media-heading">Tranquilpeak 主题的使用方法</h3>
+                        </a>
+                        <span class="media-meta">
+                            <span class="media-date text-small">
+                                
+                                    2016年5月16日
+                                
+                            </span>
+                        </span>
+                        <div class="media-content hide-xs font-merryweather"><p>这个<a href="https://github.com/LouisBarranqueiro/hexo-theme-tranquilpeak">主题</a>很赞哦，里面有不错的内容可以让博客更丰富。</p>
+<h4 id="改变字体"><a href="#改变字体" class="headerlink" title="改变字体"></a>改变字体</h4><p><a href="https://github.com/LouisBarranqueiro/hexo-theme-tranquilpeak/issues/194">https://github.com/LouisBarranqueiro/hexo-theme-tranquilpeak/issues/194</a></p></div>
+                    </div>
+                    <div style="clear:both;"></div>
+                    <hr>
+                </div>
+                
+                <div class="media">
+                    
+                    <div class="media-body">
+                        <a class="link-unstyled" href="http://hilen.github.io/2016/05/16/configuration-scheme/">
+                            <h3 class="media-heading">iOS Build Configuration + Scheme 的使用</h3>
+                        </a>
+                        <span class="media-meta">
+                            <span class="media-date text-small">
+                                
+                                    2016年5月16日
+                                
+                            </span>
+                        </span>
+                        <div class="media-content hide-xs font-merryweather"><p>在日常的 iOS 开发中，我们经常会使用到不同的网络环境切换问题，比如：</p></div>
+                    </div>
+                    <div style="clear:both;"></div>
+                    <hr>
+                </div>
+                
+                <div class="media">
+                    
+                    <div class="media-body">
+                        <a class="link-unstyled" href="http://hilen.github.io/2016/08/10/mantle-extension/">
+                            <h3 class="media-heading">Mantle 的增强</h3>
+                        </a>
+                        <span class="media-meta">
+                            <span class="media-date text-small">
+                                
+                                    2016年8月10日
+                                
+                            </span>
+                        </span>
+                        <div class="media-content hide-xs font-merryweather"><p><a href="https://github.com/hilen/MantleExtension">MantleExtension</a> 是在 <a href="https://github.com/Mantle/Mantle">Mantle</a> 框架提供的类型转换方法的基础上做了一层增强，为了解决服务端返回的同一个数据但出现不同类型而导致客户端 model 解析异常的问题。它可以并且不用修改 Mantle 的源码。<br></div>
+                    </div>
+                    <div style="clear:both;"></div>
+                    <hr>
+                </div>
+                
+                <div class="media">
+                    
+                    <div class="media-body">
+                        <a class="link-unstyled" href="http://hilen.github.io/2016/10/12/sublime-config/">
+                            <h3 class="media-heading">Sublime Text 3 配置</h3>
+                        </a>
+                        <span class="media-meta">
+                            <span class="media-date text-small">
+                                
+                                    2016年10月12日
+                                
+                            </span>
+                        </span>
+                        <div class="media-content hide-xs font-merryweather"><p>Sublime Text 是一个代码编辑器。Sublime Text 是由程序员 Jon Skinner 于 2008 年 1 月份所开发出来，它最初被设计为一个具有丰富扩展功能的 Vim。它具有漂亮的用户界面和强大的功能，例如代码缩略图，Python 的插件，代码段等。还可自定义键绑定，菜单和工具栏等等内容。</p></div>
+                    </div>
+                    <div style="clear:both;"></div>
+                    <hr>
+                </div>
+                
+            </div>
+        </div>
+        <div class="modal-footer">
+            <p class="results-count text-medium"
+                data-message-zero="没有找到文章"
+                data-message-one="找到 1 篇文章"
+                data-message-other="找到 {n} 篇文章">
+                找到 11 篇文章
+            </p>
+        </div>
+    </div>
+</div>
         
 <div id="cover" style="background-image:url('http://ww4.sinaimg.cn/large/6a011e49gw1f3lsa8dz80j21kw0zke0b.jpg');"></div>
-    </body>
-    <!--SCRIPTS-->
-<script src="/assets/js/scrip-tu4ziscb5jrkjxubeugdgizktyuugflfq5jvgz4agzzmwifuq01g1lmq8giw.min.js" type="text/javascript"></script>
+        <!--SCRIPTS-->
+<script src="/assets/js/script-rt08quwts7iav5x0cfd2ym0gb5qkd1lvrsmwrakxtkhefmaaes4ywkmnjnwf.min.js" type="text/javascript"></script>
 <!--SCRIPTS END-->
 
     
@@ -492,7 +726,7 @@
                  this.page.url = 'http://hilen.github.io/2016/08/10/mantle-extension/';
                  
                     this.page.identifier = '2016/08/10/mantle-extension/';
-                                  
+                 
              };
             (function() {
                 var d = document, s = d.createElement('script');
@@ -507,4 +741,5 @@
 
 
 
+    </body>
 </html>

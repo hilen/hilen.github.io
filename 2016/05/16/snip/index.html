@@ -6,23 +6,26 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="generator" content="Hilen&#39;s Blog">
-    <title>使用 Dropbox 来同步 Sublime 的配置 - Hilen&#39;s Blog</title>
+    <title>日常随手记 - Hilen&#39;s Blog</title>
     <meta name="author" content="Hilen">
     
     
         <link rel="icon" href="http://hilen.github.io/assets/images/favicon.png">
     
     
-    <meta name="description" content="善用 Dropbox 来同步你的各种配置吧 ╮(╯▽╰)╭">
+    <meta name="description" content="&amp;lt;!-- toc --&amp;gt;
+CocoaPods 的安装和卸载Uninstall: sudo gem uninstall cocoapods -v 0.39.0Install: sudo gem install -n /usr/local/bin cocoapods -v 0.39.0">
 <meta property="og:type" content="blog">
-<meta property="og:title" content="使用 Dropbox 来同步 Sublime 的配置">
-<meta property="og:url" content="http://hilen.github.io/2016/05/06/use-dropbox-synchronise-sublime/index.html">
+<meta property="og:title" content="日常随手记">
+<meta property="og:url" content="http://hilen.github.io/2016/05/16/snip/index.html">
 <meta property="og:site_name" content="Hilen's Blog">
-<meta property="og:description" content="善用 Dropbox 来同步你的各种配置吧 ╮(╯▽╰)╭">
-<meta property="og:updated_time" content="2016-07-27T03:50:50.000Z">
+<meta property="og:description" content="&amp;lt;!-- toc --&amp;gt;
+CocoaPods 的安装和卸载Uninstall: sudo gem uninstall cocoapods -v 0.39.0Install: sudo gem install -n /usr/local/bin cocoapods -v 0.39.0">
+<meta property="og:updated_time" content="2016-08-17T03:28:10.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="使用 Dropbox 来同步 Sublime 的配置">
-<meta name="twitter:description" content="善用 Dropbox 来同步你的各种配置吧 ╮(╯▽╰)╭">
+<meta name="twitter:title" content="日常随手记">
+<meta name="twitter:description" content="&amp;lt;!-- toc --&amp;gt;
+CocoaPods 的安装和卸载Uninstall: sudo gem uninstall cocoapods -v 0.39.0Install: sudo gem install -n /usr/local/bin cocoapods -v 0.39.0">
     
     
         
@@ -214,13 +217,13 @@
         <div class="post-header main-content-wrap text-left">
     
         <h1 class="post-title" itemprop="headline">
-            使用 Dropbox 来同步 Sublime 的配置
+            日常随手记
         </h1>
     
     <div class="post-meta">
-    <time itemprop="datePublished" datetime="2016-05-06T18:11:35+08:00">
+    <time itemprop="datePublished" datetime="2016-05-16T14:11:35+08:00">
 	
-		    5月 06, 2016
+		    5月 16, 2016
     	
     </time>
     
@@ -236,20 +239,143 @@
     
     <div class="post-content markdown" itemprop="articleBody">
         <div class="main-content-wrap">
-            <p>善用 Dropbox 来同步你的各种配置吧 ╮(╯▽╰)╭<br><a id="more"></a></p>
-<p>原文链接：<a href="http://thoughtfulweb.com/thoughts/on/use-a-dropbox-account-to-synchronise-your-sublime-text-2-settings" target="_blank" rel="external">http://thoughtfulweb.com/thoughts/on/use-a-dropbox-account-to-synchronise-your-sublime-text-2-settings</a></p>
-<h2 id="使用-Dropbox-账户同步你的-Sublime-Text-2-设置"><a href="#使用-Dropbox-账户同步你的-Sublime-Text-2-设置" class="headerlink" title="使用 Dropbox 账户同步你的 Sublime Text 2 设置"></a>使用 Dropbox 账户同步你的 Sublime Text 2 设置</h2><p>假设你已经有一个 Dropbox 的帐户，如果没有的话。去这里 <a href="https://www.dropbox.com/" target="_blank" rel="external">https://www.dropbox.com/</a>申请一个就好。</p>
-<h3 id="Step-1"><a href="#Step-1" class="headerlink" title="Step 1"></a>Step 1</h3><p>在你本机电脑上的的 Dropbox 目录下创建一个名为<code>Apps</code>的文件夹，然后在<code>Apps</code>文件夹内创建一个名为<code>Sublime</code>的文件夹。(文件夹名随便)</p>
-<h3 id="Step-2"><a href="#Step-2" class="headerlink" title="Step 2"></a>Step 2</h3><p>如果你的<code>Sublime Text 2</code>正在运行，关掉它</p>
-<h3 id="Step-3"><a href="#Step-3" class="headerlink" title="Step 3"></a>Step 3</h3><p>终端执行:<code>cd /Applications/Sublime\ Text\ 2.app/Contents/MacOS/</code> 可以看到名为<br><code>Installed Packages</code>,<code>Packages</code>,<code>Pristine Packages</code>的三个文件夹，然后把这几个文件夹剪切到<code>~/Dropbox/Apps/sublime</code> 文件夹下</p>
-<h3 id="Step-4"><a href="#Step-4" class="headerlink" title="Step 4"></a>Step 4</h3><p>打开你的终端，<code>cd ~/Library/Application\ Support/Sublime\ Text\ 2/</code> 然后 <code>ls -l</code>查看一下文件夹目录下都有哪些目录。如果第三步你是剪切的话，只会看到 <code>Backup</code> 和 <code>Settings</code> 两个文件夹。</p>
-<h3 id="Step-5"><a href="#Step-5" class="headerlink" title="Step 5"></a>Step 5</h3><p>创建软连接<br>命令行进入目录<code>cd ~/Library/Application\ Support/Sublime\ Text\ 2/</code><br>然后执行：<br><figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">ln -s <span class="regexp">~/Dropbox/</span>Apps<span class="regexp">/Sublime/</span>Packages ./Packages</span><br><span class="line">ln -s <span class="regexp">~/Dropbox/</span>Apps<span class="regexp">/Sublime/</span>Installed\ Packages ./Installed\ Packages</span><br><span class="line">ln -s <span class="regexp">~/Dropbox/</span>Apps<span class="regexp">/Sublime/</span>Pristine\ Packages ./Pristine\ Packages</span><br></pre></td></tr></table></figure></p>
-<p>好了，OK 了</p>
-<p>Enjoy! </p>
+            <h1 id="table-of-contents">目录</h1><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#CocoaPods-的安装和卸载"><span class="toc-text">CocoaPods 的安装和卸载</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#LLDB-和-Chisel-调试"><span class="toc-text">LLDB 和 Chisel 调试</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Mac-下多个-SSH-Key-配置方法"><span class="toc-text">Mac 下多个 SSH Key 配置方法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#iTerm-的快捷键使用"><span class="toc-text">iTerm 的快捷键使用</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Git-Log-的优雅写法"><span class="toc-text">Git Log 的优雅写法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#iOS-的注释可以写的内容"><span class="toc-text">iOS 的注释可以写的内容</span></a></li></ol>
+<h2 id="CocoaPods-的安装和卸载"><a href="#CocoaPods-的安装和卸载" class="headerlink" title="CocoaPods 的安装和卸载"></a>CocoaPods 的安装和卸载</h2><p>Uninstall: sudo gem uninstall cocoapods -v 0.39.0<br>Install: sudo gem install -n /usr/local/bin cocoapods -v 0.39.0<br><a id="more"></a></p>
 <hr>
-<h5 id="阅读更多"><a href="#阅读更多" class="headerlink" title="阅读更多"></a>阅读更多</h5><ul>
-<li><a href="https://packagecontrol.io/docs/syncing" target="_blank" rel="external">https://packagecontrol.io/docs/syncing</a></li>
-<li><a href="https://gist.github.com/ijy/7399688" target="_blank" rel="external">My Sublime Text 3 setup</a></li>
+<h2 id="LLDB-和-Chisel-调试"><a href="#LLDB-和-Chisel-调试" class="headerlink" title="LLDB 和 Chisel 调试"></a>LLDB 和 Chisel 调试</h2><p>Reference：</p>
+<ul>
+<li><a href="http://www.starfelix.com/blog/2014/03/17/lldbdiao-shi-ming-ling-chu-tan/" target="_blank" rel="external">LLDB调试命令初探</a></li>
+<li><a href="http://www.jianshu.com/p/e89af3e9a8d7" target="_blank" rel="external">小笨狼与LLDB的故事</a></li>
+<li><a href="http://southpeak.github.io/blog/2015/01/25/tool-lldb/" target="_blank" rel="external">LLDB调试器使用简介</a></li>
+<li><a href="https://gist.github.com/ryanchang/a2f738f0c3cc6fbd71fa" target="_blank" rel="external">LLDB Cheat Sheet</a></li>
+<li><a href="https://blog.cnbluebox.com/blog/2015/03/05/chisel/" target="_blank" rel="external">Chisel-LLDB命令插件，让调试更Easy</a></li>
+<li><a href="https://github.com/facebook/chisel/blob/master/README.md" target="_blank" rel="external">chisel/README.md at master · facebook/chisel</a></li>
+<li><a href="https://objccn.io/issue-19-2/" target="_blank" rel="external">ObjC 中国 - 与调试器共舞 - LLDB 的华尔兹</a></li>
+</ul>
+<hr>
+<h2 id="Mac-下多个-SSH-Key-配置方法"><a href="#Mac-下多个-SSH-Key-配置方法" class="headerlink" title="Mac 下多个 SSH Key 配置方法"></a>Mac 下多个 SSH Key 配置方法</h2><p>【1】配置 git user.name， user.email<br><figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git config  user<span class="class">.name</span> <span class="string">"hilen"</span></span><br><span class="line">git config  user<span class="class">.email</span> <span class="string">"hilenkz@gmail.com"</span></span><br></pre></td></tr></table></figure></p>
+<p>【2】生成 SSH Key<br>打开终端，并输入 <code>ssh-keygen -t rsa -C &quot;hilenkz@gmail.com&quot; -f hilen_rsa</code></p>
+<figure class="highlight haml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">解释：</span><br><span class="line">-<span class="ruby"><span class="constant">C</span> <span class="symbol">:</span> 邮箱地址</span><br><span class="line"></span>-<span class="ruby">f <span class="symbol">:</span> 文件名</span></span><br></pre></td></tr></table></figure>
+<p>上面的 hilen_rsa 就是文件名，这时 ~/.ssh 目录下会多出 hilen_rsa 和 hilen_rsa.pub 两个文件， hilen_rsa.pub 里保存的就是我们要使用的key。</p>
+<p>【3】配置 SSH config 文件<br>打开　~/.ssh/config （如果没有就创建一个）<br><figure class="highlight crmsh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># GitHub</span></span><br><span class="line">Host www.github.com</span><br><span class="line">    HostName github.com</span><br><span class="line">    IdentityFile ~/.ssh/hilen_rsa</span><br><span class="line">    PreferredAuthentications publickey</span><br><span class="line">    <span class="keyword">User</span> <span class="title">hilen</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># bitbucket</span></span><br><span class="line">Host bitbucket.org</span><br><span class="line">    HostName bitbucket.org</span><br><span class="line">    IdentityFile ~/.ssh/hilen_rsa</span><br><span class="line">    PreferredAuthentications publickey</span><br><span class="line">    <span class="keyword">User</span> <span class="title">hilen</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># xxx</span></span><br><span class="line">Host xxx.com</span><br><span class="line">    HostName xxx.com</span><br><span class="line">    IdentityFile ~/.ssh/id_rsa</span><br><span class="line">    PreferredAuthentications publickey</span><br><span class="line">    <span class="keyword">User</span> <span class="title">hilenlai</span></span><br></pre></td></tr></table></figure></p>
+<p>在 <code>config</code> 文件内输入你自己的配置</p>
+<p>【4】查看配置是否生效<br>终端内输入： <code>ssh-add -l</code><br><figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">2048</span> <span class="constant">SHA256</span><span class="symbol">:P2Pj1zuBnN+ncKcZA0zN+wIpcTLC2DG2DYnkTl3nkdM</span> hilen_rsa (<span class="constant">RSA</span>)</span><br><span class="line"><span class="number">4096</span> <span class="constant">SHA256</span><span class="symbol">:jpPlCXfUBf/sILsu98M0NYtFy7OJ8BSrBRCh+vyw38U</span> id_rsa (<span class="constant">RSA</span>)</span><br></pre></td></tr></table></figure></p>
+<p>查看是否在 SSH 列表内，如果不在，执行：<code>ssh-add -K ~/.ssh/hilen_rsa</code></p>
+<p>【5】测试 SSH Key 是否配置成功<br>终端：<code>ssh -T git@github.com</code><br><figure class="highlight applescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Hi Hilen! You've successfully authenticated, <span class="keyword">but</span> GitHub <span class="keyword">does</span> <span class="keyword">not</span> provide shell access.</span><br></pre></td></tr></table></figure></p>
+<p>证明成功了</p>
+<p>【6】复制你的 publickey<br><code>pbcopy &lt; ~/.ssh/hilen_rsa.pub</code> 复制这个 key, 粘贴到你要的位置。OK done</p>
+<p>Reference</p>
+<ul>
+<li><a href="http://stackoverflow.com/questions/3225862/multiple-github-accounts-ssh-config" target="_blank" rel="external">http://stackoverflow.com/questions/3225862/multiple-github-accounts-ssh-config</a></li>
+<li><a href="http://stackoverflow.com/questions/1909651/svnssh-not-having-to-do-ssh-add-every-time-mac-os" target="_blank" rel="external">http://stackoverflow.com/questions/1909651/svnssh-not-having-to-do-ssh-add-every-time-mac-os</a></li>
+</ul>
+<hr>
+<h2 id="iTerm-的快捷键使用"><a href="#iTerm-的快捷键使用" class="headerlink" title="iTerm 的快捷键使用"></a>iTerm 的快捷键使用</h2><table>
+<thead>
+<tr>
+<th>快捷键</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>⌘ 数字</td>
+<td>在各 tab 标签直接来回切换i</td>
+</tr>
+<tr>
+<td>⌘ f</td>
+<td>查找</td>
+</tr>
+<tr>
+<td>⌘ ;</td>
+<td>自动完成</td>
+</tr>
+<tr>
+<td>⌘ d</td>
+<td>横着分屏</td>
+</tr>
+<tr>
+<td>⌘ ⇧ d</td>
+<td>竖着分屏</td>
+</tr>
+<tr>
+<td>⌘ ⇧ H</td>
+<td>命令历史</td>
+</tr>
+<tr>
+<td>⌘ ⌥ B</td>
+<td>命令回放</td>
+</tr>
+<tr>
+<td>⌃ a</td>
+<td>光标移动到行首</td>
+</tr>
+<tr>
+<td>⌃ e</td>
+<td>光标移动到行末</td>
+</tr>
+<tr>
+<td>⌃ f</td>
+<td>前移一个字符</td>
+</tr>
+<tr>
+<td>⌃ b</td>
+<td>后退一个字符</td>
+</tr>
+<tr>
+<td>⌃ l</td>
+<td>清屏</td>
+</tr>
+<tr>
+<td>⌃ p</td>
+<td>显示历史命令</td>
+</tr>
+<tr>
+<td>⌃ r</td>
+<td>倒转查找</td>
+</tr>
+<tr>
+<td>⌃ d</td>
+<td>删除当前光标的字符</td>
+</tr>
+<tr>
+<td>⌃ h</td>
+<td>删除光标之前的字符</td>
+</tr>
+<tr>
+<td>⌃ w</td>
+<td>删除光标之前的单词</td>
+</tr>
+<tr>
+<td>⌃ k</td>
+<td>删除光标之后整行</td>
+</tr>
+<tr>
+<td>⌃ u</td>
+<td>清空当前行，无论光标在什么位置</td>
+</tr>
+</tbody>
+</table>
+<p>键位说明：</p>
+<ul>
+<li>Command ⌘</li>
+<li>Shift ⇧</li>
+<li>Option ⌥</li>
+<li>Control ⌃</li>
+<li>Caps Lock ⇪<br>Reference：</li>
+<li><a href="https://support.apple.com/zh-cn/HT201236" target="_blank" rel="external">https://support.apple.com/zh-cn/HT201236</a></li>
+</ul>
+<hr>
+<h2 id="Git-Log-的优雅写法"><a href="#Git-Log-的优雅写法" class="headerlink" title="Git Log 的优雅写法"></a>Git Log 的优雅写法</h2><figure class="highlight accesslog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">[Added]</span> : 添加的新功能</span><br><span class="line"><span class="string">[Changed]</span> : 功能变更</span><br><span class="line"><span class="string">[Deprecated]</span> : 不建议使用，未来会删掉</span><br><span class="line"><span class="string">[Removed]</span> : 之前不建议使用的功能，这次真的删掉了</span><br><span class="line"><span class="string">[Fixed]</span> : 改的bug</span><br><span class="line"><span class="string">[Security]</span> : 改的有关安全相关bug</span><br></pre></td></tr></table></figure>
+<p>Reference：</p>
+<ul>
+<li><a href="http://keepachangelog.com/zh-CN/" target="_blank" rel="external">http://keepachangelog.com/zh-CN/</a></li>
+</ul>
+<hr>
+<h2 id="iOS-的注释可以写的内容"><a href="#iOS-的注释可以写的内容" class="headerlink" title="iOS 的注释可以写的内容"></a>iOS 的注释可以写的内容</h2><figure class="highlight aspectj"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/** First line text.</span><br><span class="line"> Putting \\n doesn't create a new line.\n One way to create a newline is by making sure nothing is on that line. Not even a single space character!</span><br><span class="line"> <span class="doctag">@a</span> Italic text <span class="doctag">@em</span> with @<span class="doctag">@a</span> or @<span class="doctag">@em</span>.</span><br><span class="line"> <span class="doctag">@b</span> Bold text with @<span class="doctag">@b</span>.</span><br><span class="line"></span><br><span class="line"> <span class="doctag">@p</span> Typewritter font <span class="doctag">@c</span> with @<span class="doctag">@p</span> or @<span class="doctag">@c</span>.</span><br><span class="line"></span><br><span class="line"> Backslashes and must be escaped: C:\\foo.</span><br><span class="line"></span><br><span class="line"> And so do @@ signs: user@<span class="doctag">@example</span>.com</span><br><span class="line"></span><br><span class="line"> Some more text.</span><br><span class="line"> <span class="doctag">@brief</span> brief text</span><br><span class="line"> <span class="doctag">@attention</span> attention text</span><br><span class="line"> <span class="doctag">@author</span> author text</span><br><span class="line"> <span class="doctag">@bug</span> bug text</span><br><span class="line"> <span class="doctag">@copyright</span> copyright text</span><br><span class="line"> <span class="doctag">@date</span> date text</span><br><span class="line"> <span class="doctag">@invariant</span> invariant text</span><br><span class="line"> <span class="doctag">@note</span> note text</span><br><span class="line"> <span class="doctag">@post</span> post text</span><br><span class="line"> <span class="doctag">@pre</span> pre text</span><br><span class="line"> <span class="doctag">@remarks</span> remarks text</span><br><span class="line"> <span class="doctag">@sa</span> sa text</span><br><span class="line"> <span class="doctag">@see</span> see text</span><br><span class="line"> <span class="doctag">@since</span> since text</span><br><span class="line"> <span class="doctag">@todo</span> todo text</span><br><span class="line"> <span class="doctag">@version</span> version text</span><br><span class="line"> <span class="doctag">@warning</span> warning text</span><br><span class="line"></span><br><span class="line"> <span class="doctag">@result</span> result text</span><br><span class="line"> <span class="doctag">@return</span> return text</span><br><span class="line"> <span class="doctag">@returns</span> returns text</span><br><span class="line"></span><br><span class="line"> <span class="doctag">@code</span></span><br><span class="line">// code text</span><br><span class="line">while (someCondition) &#123;</span><br><span class="line">    NSLog(@"Hello");</span><br><span class="line">    doSomething();</span><br><span class="line">&#125;<span class="doctag">@endcode</span></span><br><span class="line"> Last line text.</span><br><span class="line"></span><br><span class="line"> <span class="doctag">@param</span> param param text</span><br><span class="line"> <span class="doctag">@tparam</span> tparam tparam text</span><br><span class="line"> */</span></span><br><span class="line">- (<span class="keyword">void</span>)myMethod &#123;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>Reference：</p>
+<ul>
+<li><a href="http://stackoverflow.com/questions/19168423/what-are-the-new-documentation-commands-available-in-xcode-5" target="_blank" rel="external">http://stackoverflow.com/questions/19168423/what-are-the-new-documentation-commands-available-in-xcode-5</a></li>
 </ul>
 
             
@@ -269,7 +395,7 @@
         <ul class="post-actions post-action-nav">
             <li class="post-action">
                 
-                    <a class="post-action-btn btn btn--default tooltip--top" href="/2016/05/16/my-snip/"  data-tooltip="日常随手记">
+                    <a class="post-action-btn btn btn--default tooltip--top" href="/2016/05/16/configuration-scheme/"  data-tooltip="iOS Build Configuration + Scheme 的使用">
                 
                     <i class="fa fa-angle-left"></i>
                     <span class="hide-xs hide-sm text-small icon-ml">上一篇</span>
@@ -277,7 +403,7 @@
             </li>
             <li class="post-action">
                 
-                    <a class="post-action-btn btn btn--default tooltip--top" href="/2016/05/06/ios-device-types/" data-tooltip="iOS Device Types">
+                    <a class="post-action-btn btn btn--default tooltip--top" href="/2016/05/16/tranquilpeak-theme-tutorial/" data-tooltip="Tranquilpeak 主题的使用方法">
                 
                     <span class="hide-xs hide-sm text-small icon-mr">下一篇</span>
                     <i class="fa fa-angle-right"></i>
@@ -292,17 +418,17 @@
             </a>
         </li>
         <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=http://hilen.github.io/2016/05/06/use-dropbox-synchronise-sublime/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=http://hilen.github.io/2016/05/16/snip/">
                 <i class="fa fa-google-plus"></i>
             </a>
         </li>
         <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://hilen.github.io/2016/05/06/use-dropbox-synchronise-sublime/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://hilen.github.io/2016/05/16/snip/">
                 <i class="fa fa-facebook-official"></i>
             </a>
         </li>
         <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=http://hilen.github.io/2016/05/06/use-dropbox-synchronise-sublime/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=http://hilen.github.io/2016/05/16/snip/">
                 <i class="fa fa-twitter"></i>
             </a>
         </li>
@@ -315,7 +441,7 @@
         
         <li class="post-action">
             
-                <a class="post-action-btn btn btn--default" href="#">
+                <a class="post-action-btn btn btn--default" href="#table-of-contents">
             
                 <i class="fa fa-list"></i>
             </a>
@@ -350,7 +476,7 @@
         <ul class="post-actions post-action-nav">
             <li class="post-action">
                 
-                    <a class="post-action-btn btn btn--default tooltip--top" href="/2016/05/16/my-snip/"  data-tooltip="日常随手记">
+                    <a class="post-action-btn btn btn--default tooltip--top" href="/2016/05/16/configuration-scheme/"  data-tooltip="iOS Build Configuration + Scheme 的使用">
                 
                     <i class="fa fa-angle-left"></i>
                     <span class="hide-xs hide-sm text-small icon-ml">上一篇</span>
@@ -358,7 +484,7 @@
             </li>
             <li class="post-action">
                 
-                    <a class="post-action-btn btn btn--default tooltip--top" href="/2016/05/06/ios-device-types/" data-tooltip="iOS Device Types">
+                    <a class="post-action-btn btn btn--default tooltip--top" href="/2016/05/16/tranquilpeak-theme-tutorial/" data-tooltip="Tranquilpeak 主题的使用方法">
                 
                     <span class="hide-xs hide-sm text-small icon-mr">下一篇</span>
                     <i class="fa fa-angle-right"></i>
@@ -373,17 +499,17 @@
             </a>
         </li>
         <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=http://hilen.github.io/2016/05/06/use-dropbox-synchronise-sublime/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=http://hilen.github.io/2016/05/16/snip/">
                 <i class="fa fa-google-plus"></i>
             </a>
         </li>
         <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://hilen.github.io/2016/05/06/use-dropbox-synchronise-sublime/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://hilen.github.io/2016/05/16/snip/">
                 <i class="fa fa-facebook-official"></i>
             </a>
         </li>
         <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=http://hilen.github.io/2016/05/06/use-dropbox-synchronise-sublime/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=http://hilen.github.io/2016/05/16/snip/">
                 <i class="fa fa-twitter"></i>
             </a>
         </li>
@@ -396,7 +522,7 @@
         
         <li class="post-action">
             
-                <a class="post-action-btn btn btn--default" href="#">
+                <a class="post-action-btn btn btn--default" href="#table-of-contents">
             
                 <i class="fa fa-list"></i>
             </a>
@@ -409,17 +535,17 @@
                 <div id="share-options-bar" class="share-options-bar" data-behavior="2">
     <ul class="share-options">
         <li class="share-option">
-            <a class="share-option-btn" target="new" href="https://plus.google.com/share?url=http://hilen.github.io/2016/05/06/use-dropbox-synchronise-sublime/">
+            <a class="share-option-btn" target="new" href="https://plus.google.com/share?url=http://hilen.github.io/2016/05/16/snip/">
                 <i class="fa fa-google-plus"></i><span>分享到 Google+</span>
             </a>
         </li>
         <li class="share-option">
-            <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://hilen.github.io/2016/05/06/use-dropbox-synchronise-sublime/">
+            <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://hilen.github.io/2016/05/16/snip/">
                 <i class="fa fa-facebook-official"></i><span>分享到 Facebook</span>
             </a>
         </li>
         <li class="share-option">
-            <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=http://hilen.github.io/2016/05/06/use-dropbox-synchronise-sublime/">
+            <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=http://hilen.github.io/2016/05/16/snip/">
                 <i class="fa fa-twitter"></i><span>分享到 Twitter</span>
             </a>
         </li>
@@ -569,7 +695,7 @@
                 <div class="media">
                     
                     <div class="media-body">
-                        <a class="link-unstyled" href="http://hilen.github.io/2016/05/06/use-dropbox-synchronise-sublime/">
+                        <a class="link-unstyled" href="http://hilen.github.io/2016/05/06/dropbox-synchronise-sublime/">
                             <h3 class="media-heading">使用 Dropbox 来同步 Sublime 的配置</h3>
                         </a>
                         <span class="media-meta">
@@ -580,26 +706,6 @@
                             </span>
                         </span>
                         <div class="media-content hide-xs font-merryweather"><p>善用 Dropbox 来同步你的各种配置吧 ╮(╯▽╰)╭<br></div>
-                    </div>
-                    <div style="clear:both;"></div>
-                    <hr>
-                </div>
-                
-                <div class="media">
-                    
-                    <div class="media-body">
-                        <a class="link-unstyled" href="http://hilen.github.io/2016/05/16/my-snip/">
-                            <h3 class="media-heading">日常随手记</h3>
-                        </a>
-                        <span class="media-meta">
-                            <span class="media-date text-small">
-                                
-                                    2016年5月16日
-                                
-                            </span>
-                        </span>
-                        <div class="media-content hide-xs font-merryweather"><!-- toc -->
-<h2 id="CocoaPods-的安装和卸载"><a href="#CocoaPods-的安装和卸载" class="headerlink" title="CocoaPods 的安装和卸载"></a>CocoaPods 的安装和卸载</h2><p>Uninstall: sudo gem uninstall cocoapods -v 0.39.0<br>Install: sudo gem install -n /usr/local/bin cocoapods -v 0.39.0<br></div>
                     </div>
                     <div style="clear:both;"></div>
                     <hr>
@@ -620,6 +726,26 @@
                         </span>
                         <div class="media-content hide-xs font-merryweather"><p>这个<a href="https://github.com/LouisBarranqueiro/hexo-theme-tranquilpeak">主题</a>很赞哦，里面有不错的内容可以让博客更丰富。</p>
 <h4 id="改变字体"><a href="#改变字体" class="headerlink" title="改变字体"></a>改变字体</h4><p><a href="https://github.com/LouisBarranqueiro/hexo-theme-tranquilpeak/issues/194">https://github.com/LouisBarranqueiro/hexo-theme-tranquilpeak/issues/194</a></p></div>
+                    </div>
+                    <div style="clear:both;"></div>
+                    <hr>
+                </div>
+                
+                <div class="media">
+                    
+                    <div class="media-body">
+                        <a class="link-unstyled" href="http://hilen.github.io/2016/05/16/snip/">
+                            <h3 class="media-heading">日常随手记</h3>
+                        </a>
+                        <span class="media-meta">
+                            <span class="media-date text-small">
+                                
+                                    2016年5月16日
+                                
+                            </span>
+                        </span>
+                        <div class="media-content hide-xs font-merryweather"><!-- toc -->
+<h2 id="CocoaPods-的安装和卸载"><a href="#CocoaPods-的安装和卸载" class="headerlink" title="CocoaPods 的安装和卸载"></a>CocoaPods 的安装和卸载</h2><p>Uninstall: sudo gem uninstall cocoapods -v 0.39.0<br>Install: sudo gem install -n /usr/local/bin cocoapods -v 0.39.0<br></div>
                     </div>
                     <div style="clear:both;"></div>
                     <hr>
@@ -703,9 +829,9 @@
     
         <script>
              var disqus_config = function () {
-                 this.page.url = 'http://hilen.github.io/2016/05/06/use-dropbox-synchronise-sublime/';
+                 this.page.url = 'http://hilen.github.io/2016/05/16/snip/';
                  
-                    this.page.identifier = '2016/05/06/use-dropbox-synchronise-sublime/';
+                    this.page.identifier = '2016/05/16/snip/';
                  
              };
             (function() {

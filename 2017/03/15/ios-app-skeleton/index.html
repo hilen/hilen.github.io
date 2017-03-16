@@ -24,7 +24,7 @@
 <meta property="og:image" content="http://ww1.sinaimg.cn/large/6a011e49gy1fdoqguar2nj20nn0n8ae8">
 <meta property="og:image" content="http://ww1.sinaimg.cn/large/6a011e49gy1fdnzj6jxs5j20af0ij46l">
 <meta property="og:image" content="http://ww1.sinaimg.cn/large/6a011e49gy1fdnzltfy6lj20af0ik769">
-<meta property="og:updated_time" content="2017-03-16T08:07:07.000Z">
+<meta property="og:updated_time" content="2017-03-16T08:09:34.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="开发一个 iOS 应用你所需要做些什么呢？">
 <meta name="twitter:description" content="从 07 年到现在，iOS 开发也近乎 10 年的时间了，随着 iOS 版本的一步步更新， Xcode 慢慢的稳定，社区的力量也随之变的越来越大，有很多工具可以帮助我们快速去搭建一个 App。">
@@ -241,7 +241,7 @@
     
     <div class="post-content markdown" itemprop="articleBody">
         <div class="main-content-wrap">
-            <p>从 07 年到现在，iOS 开发也近乎 10 年的时间了，随着 iOS 版本的一步步更新， Xcode 慢慢的稳定，社区的力量也随之变的越来越大，有很多工具可以帮助我们快速去搭建一个 App。<br><a id="more"></a><br>但是 一个 App 想要稳扎稳打，不畏惧任何版本迭代和业务变化，那么需要做的事情还是很多的，良好的 App 架构和前期的代码规范，以及效率工具的使用会使得整个 App 的迭代变的有条不紊，这也避免了后续大的迭代和更新的时候导致代码变的散乱。接下来我简单介绍一下这方面的内容，下面是一个脑图，里面的内容我会一一解释。<br><div class="figure nocaption" style="width:100%;"><a class="fancybox" href="http://ww1.sinaimg.cn/large/6a011e49gy1fdoqguar2nj20nn0n8ae8" title="" data-fancybox-group="" target="_blank" rel="external"><img class="fig-img" src="http://ww1.sinaimg.cn/large/6a011e49gy1fdoqguar2nj20nn0n8ae8" style="width:100%;height:100%;" alt=""></a></div></p>
+            <p>从 07 年到现在，iOS 开发也近乎 10 年的时间了，随着 iOS 版本的一步步更新， Xcode 慢慢的稳定，社区的力量也随之变的越来越大，有很多工具可以帮助我们快速去搭建一个 App。<br><a id="more"></a><br>但是 一个 App 想要稳扎稳打，不畏惧任何版本迭代和业务变化，那么需要做的事情还是很多的，良好的 App 架构和前期的代码规范，以及效率工具的使用会使得整个 App 的迭代变的有条不紊，这也避免了后续大的迭代和更新的时候导致代码变的散乱。接下来我简单介绍一下这方面的内容，下面是一个脑图，里面的内容我将一一展开解释。<br><img src="http://ww1.sinaimg.cn/large/6a011e49gy1fdoqguar2nj20nn0n8ae8" alt=""></p>
 <h2 id="前期准备"><a href="#前期准备" class="headerlink" title="前期准备"></a>前期准备</h2><h4 id="代码规范"><a href="#代码规范" class="headerlink" title="代码规范"></a>代码规范</h4><p>代码规范的重要性是重中之重，这也是笔者最为看中的一点。这里有 <a href="https://google.github.io/styleguide/objcguide.xml" target="_blank" rel="external">Google Objective-C Style Guide</a> 和 <a href="https://github.com/raywenderlich/objective-c-style-guide" target="_blank" rel="external">Raywenderlich Objective-C Style Guide</a> 可以参考。这点从项目 kick off 的时候最好就规范起来。随着团队的扩大，新入的成员一定要严格按照团队的代码规范去编码，不然每个人的风格迥异，命名和代码格式都不一样，在接手项目或者迭代业务的时候会非常诡异，特别是那些具有强迫症的同学。还可以建设一个 <code>Code Rivew</code> 机制，指定一些红线标准来一步步落地。切记：<code>能跑起来不是目的</code></p>
 <h4 id="Git-代码管理"><a href="#Git-代码管理" class="headerlink" title="Git 代码管理"></a>Git 代码管理</h4><ol>
 <li>这里推荐使用 Git 来管理自己的项目，可以使用 <a href="https://www.github.com" target="_blank" rel="external">Github</a> 的 private repo（当然是收费的咯），还可以自己在服务器上搭建 <a href="https://about.gitlab.com/" target="_blank" rel="external">Gitlab</a> 服务器来管理自己的代码。</li>

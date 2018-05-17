@@ -254,18 +254,18 @@
 </ul>
 <p>面对以上需求，也许你会针对不同的包给出不同的宏定义，比如 <code>#define QA_TEST</code> ,<code>#define APP_STORE</code>, <code>#define GRAY_TEST</code>，然后针对不同的宏定义在里面进行不同的参数修改。但是如果各个业务方来频繁的找你，也许手动的修改这些文件会让你崩溃。</p>
 <p>接下来提供一个解决方案，专门针对这种不同的环境或编译需求使用的无侵入，无修改，无痛的三无解决方案。名字叫：Build Configuration + Scheme</p>
-<p>关于 <a href="https://developer.apple.com/library/ios/recipes/xcode_help-project_editor/Articles/BasingBuildConfigurationsonConfigurationFiles.html" target="_blank" rel="external">Build Configuration</a> 的官方解释。<br>关于 <a href="https://developer.apple.com/library/ios/recipes/xcode_help-scheme_editor/Articles/SchemeDialog.html#//apple_ref/doc/uid/TP40010402-CH1-SW1" target="_blank" rel="external">Scheme</a> 的官方解释。</p>
+<p>关于 <a href="https://developer.apple.com/library/ios/recipes/xcode_help-project_editor/Articles/BasingBuildConfigurationsonConfigurationFiles.html" target="_blank" rel="noopener">Build Configuration</a> 的官方解释。<br>关于 <a href="https://developer.apple.com/library/ios/recipes/xcode_help-scheme_editor/Articles/SchemeDialog.html#//apple_ref/doc/uid/TP40010402-CH1-SW1" target="_blank" rel="noopener">Scheme</a> 的官方解释。</p>
 <p>接下来的步骤可以实现上面所描述的功能。</p>
-<h3 id="1-添加不同的-Configuration"><a href="#1-添加不同的-Configuration" class="headerlink" title="1. 添加不同的 Configuration"></a>1. 添加不同的 Configuration</h3><p>在 Project -&gt; Info -&gt; Configuration 里，复制一个<br><div class="figure nocaption" style="width:100%;"><a class="fancybox" href="http://ww1.sinaimg.cn/large/6a011e49gw1f67fm00645j21j80iin0b.jpg" title="" data-fancybox-group="" target="_blank" rel="external"><img class="fig-img" src="http://ww1.sinaimg.cn/large/6a011e49gw1f67fm00645j21j80iin0b.jpg" style="width:100%;height:100%;" alt=""></a></div></p>
-<h3 id="2-设置-Preprocessor-Macros"><a href="#2-设置-Preprocessor-Macros" class="headerlink" title="2. 设置 Preprocessor Macros"></a>2. 设置 Preprocessor Macros</h3><p>在 Target -&gt; Build Settings -&gt; Preprocessor Macros 里添加自己的宏，比如你可以这样：<br><div class="figure right" style="width:100%;"><a class="fancybox" href="http://ww1.sinaimg.cn/large/6a011e49gw1f67fm00645j21j80iin0b.jpg" title="" data-fancybox-group="" target="_blank" rel="external"><img class="fig-img" src="http://ww1.sinaimg.cn/large/6a011e49gw1f67fm00645j21j80iin0b.jpg" style="width:100%;height:100%;" alt=""></a></div><div style="clear:both;"></div></p>
+<h3 id="1-添加不同的-Configuration"><a href="#1-添加不同的-Configuration" class="headerlink" title="1. 添加不同的 Configuration"></a>1. 添加不同的 Configuration</h3><p>在 Project -&gt; Info -&gt; Configuration 里，复制一个<br><div class="figure nocaption" style="width:100%;"><a class="fancybox" href="http://ww1.sinaimg.cn/large/6a011e49gw1f67fm00645j21j80iin0b.jpg" title="" data-fancybox-group="" target="_blank" rel="noopener"><img class="fig-img" src="http://ww1.sinaimg.cn/large/6a011e49gw1f67fm00645j21j80iin0b.jpg" style="width:100%;height:100%;" alt=""></a></div></p>
+<h3 id="2-设置-Preprocessor-Macros"><a href="#2-设置-Preprocessor-Macros" class="headerlink" title="2. 设置 Preprocessor Macros"></a>2. 设置 Preprocessor Macros</h3><p>在 Target -&gt; Build Settings -&gt; Preprocessor Macros 里添加自己的宏，比如你可以这样：<br><div class="figure right" style="width:100%;"><a class="fancybox" href="http://ww1.sinaimg.cn/large/6a011e49gw1f67fm00645j21j80iin0b.jpg" title="" data-fancybox-group="" target="_blank" rel="noopener"><img class="fig-img" src="http://ww1.sinaimg.cn/large/6a011e49gw1f67fm00645j21j80iin0b.jpg" style="width:100%;height:100%;" alt=""></a></div><div style="clear:both;"></div></p>
 <h3 id="3-可以畅快的使用了"><a href="#3-可以畅快的使用了" class="headerlink" title="3. 可以畅快的使用了"></a>3. 可以畅快的使用了</h3><p>接下来在你的代码中可以随便使用了</p>
-<figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#ifdef DEBUG</span></div><div class="line">    <span class="built_in">NSLog</span>(<span class="string">@"Debug"</span>);</div><div class="line"><span class="meta">##endif</span></div><div class="line"></div><div class="line"><span class="meta">#ifdef TEST</span></div><div class="line">    <span class="built_in">NSLog</span>(<span class="string">@"Test"</span>);</div><div class="line"><span class="meta">##endif</span></div></pre></td></tr></table></figure>
-<div class="figure right" style="width:100%;"><a class="fancybox" href="http://ww1.sinaimg.cn/large/6a011e49gw1f67fqfa7zej21kw0usdo5.jpg" title="" data-fancybox-group="" target="_blank" rel="external"><img class="fig-img" src="http://ww1.sinaimg.cn/large/6a011e49gw1f67fqfa7zej21kw0usdo5.jpg" style="width:100%;height:100%;" alt=""></a></div><div style="clear:both;"></div>
-<h3 id="4-选择你要的-Scheme"><a href="#4-选择你要的-Scheme" class="headerlink" title="4. 选择你要的 Scheme"></a>4. 选择你要的 Scheme</h3><div class="figure right" style="width:100%;"><a class="fancybox" href="http://ww1.sinaimg.cn/large/6a011e49gw1f67fr9d270j21kw0us0x9.jpg" title="" data-fancybox-group="" target="_blank" rel="external"><img class="fig-img" src="http://ww1.sinaimg.cn/large/6a011e49gw1f67fr9d270j21kw0us0x9.jpg" style="width:100%;height:100%;" alt=""></a></div><div style="clear:both;"></div>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#ifdef DEBUG</span></span><br><span class="line">    <span class="built_in">NSLog</span>(<span class="string">@"Debug"</span>);</span><br><span class="line"><span class="meta">##endif</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#ifdef TEST</span></span><br><span class="line">    <span class="built_in">NSLog</span>(<span class="string">@"Test"</span>);</span><br><span class="line"><span class="meta">##endif</span></span><br></pre></td></tr></table></figure>
+<div class="figure right" style="width:100%;"><a class="fancybox" href="http://ww1.sinaimg.cn/large/6a011e49gw1f67fqfa7zej21kw0usdo5.jpg" title="" data-fancybox-group="" target="_blank" rel="noopener"><img class="fig-img" src="http://ww1.sinaimg.cn/large/6a011e49gw1f67fqfa7zej21kw0usdo5.jpg" style="width:100%;height:100%;" alt=""></a></div><div style="clear:both;"></div>
+<h3 id="4-选择你要的-Scheme"><a href="#4-选择你要的-Scheme" class="headerlink" title="4. 选择你要的 Scheme"></a>4. 选择你要的 Scheme</h3><div class="figure right" style="width:100%;"><a class="fancybox" href="http://ww1.sinaimg.cn/large/6a011e49gw1f67fr9d270j21kw0us0x9.jpg" title="" data-fancybox-group="" target="_blank" rel="noopener"><img class="fig-img" src="http://ww1.sinaimg.cn/large/6a011e49gw1f67fr9d270j21kw0us0x9.jpg" style="width:100%;height:100%;" alt=""></a></div><div style="clear:both;"></div>
 <p>Enjoy</p>
 <p>Reference：</p>
 <ul>
-<li><a href="https://developer.apple.com/library/ios/recipes/xcode_help-project_editor/Articles/BasingBuildConfigurationsonConfigurationFiles.html" target="_blank" rel="external">https://developer.apple.com/library/ios/recipes/xcode_help-project_editor/Articles/BasingBuildConfigurationsonConfigurationFiles.html</a></li>
+<li><a href="https://developer.apple.com/library/ios/recipes/xcode_help-project_editor/Articles/BasingBuildConfigurationsonConfigurationFiles.html" target="_blank" rel="noopener">https://developer.apple.com/library/ios/recipes/xcode_help-project_editor/Articles/BasingBuildConfigurationsonConfigurationFiles.html</a></li>
 </ul>
 
             
@@ -293,7 +293,7 @@
             </li>
             <li class="post-action">
                 
-                    <a class="post-action-btn btn btn--default tooltip--top" href="/2016/05/16/snip/" data-tooltip="日常随手记">
+                    <a class="post-action-btn btn btn--default tooltip--top" href="/2016/05/06/ios-device/" data-tooltip="iOS Device Types">
                 
                     <span class="hide-xs hide-sm text-small icon-mr">下一篇</span>
                     <i class="fa fa-angle-right"></i>
@@ -374,7 +374,7 @@
             </li>
             <li class="post-action">
                 
-                    <a class="post-action-btn btn btn--default tooltip--top" href="/2016/05/16/snip/" data-tooltip="日常随手记">
+                    <a class="post-action-btn btn btn--default tooltip--top" href="/2016/05/06/ios-device/" data-tooltip="iOS Device Types">
                 
                     <span class="hide-xs hide-sm text-small icon-mr">下一篇</span>
                     <i class="fa fa-angle-right"></i>
@@ -515,7 +515,7 @@
                                 
                             </span>
                         </span>
-                        <div class="media-content hide-xs font-merryweather"><p>Welcome to <a href="http://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="http://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="http://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p></div>
+                        <div class="media-content hide-xs font-merryweather"><p>Welcome to <a href="http://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="http://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="http://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p></div>
                     </div>
                     <div style="clear:both;"></div>
                     <hr>
@@ -534,7 +534,7 @@
                                 
                             </span>
                         </span>
-                        <div class="media-content hide-xs font-merryweather"><p>表格内容是 Instagram iOS App 所用到的第三方库，具体协议内容可以在 <a href="https://instagram.com/about/legal/libraries/" target="_blank" rel="external">https://instagram.com/about/legal/libraries/</a> 找到。</p></div>
+                        <div class="media-content hide-xs font-merryweather"><p>表格内容是 Instagram iOS App 所用到的第三方库，具体协议内容可以在 <a href="https://instagram.com/about/legal/libraries/" target="_blank" rel="noopener">https://instagram.com/about/legal/libraries/</a> 找到。</p></div>
                     </div>
                     <div style="clear:both;"></div>
                     <hr>
@@ -574,29 +574,9 @@
                         </span>
                         <div class="media-content hide-xs font-merryweather"><p>这篇文章展示了所有 iOS 设备的机器类型。<br>Reference:</p>
 <ul>
-<li><a href="https://support.hockeyapp.net/kb/client-integration-ios-mac-os-x-tvos/ios-device-types" target="_blank" rel="external">https://support.hockeyapp.net/kb/client-integration-ios-mac-os-x-tvos/ios-device-types</a></li>
-<li><a href="https://www.paintcodeapp.com/news/ultimate-guide-to-iphone-resolutions" target="_blank" rel="external">不同尺寸的 iPhone 屏幕像素大小</a></li>
+<li><a href="https://support.hockeyapp.net/kb/client-integration-ios-mac-os-x-tvos/ios-device-types" target="_blank" rel="noopener">https://support.hockeyapp.net/kb/client-integration-ios-mac-os-x-tvos/ios-device-types</a></li>
+<li><a href="https://www.paintcodeapp.com/news/ultimate-guide-to-iphone-resolutions" target="_blank" rel="noopener">不同尺寸的 iPhone 屏幕像素大小</a></li>
 </ul></div>
-                    </div>
-                    <div style="clear:both;"></div>
-                    <hr>
-                </div>
-                
-                <div class="media">
-                    
-                    <div class="media-body">
-                        <a class="link-unstyled" href="http://hilen.github.io/2016/05/16/tranquilpeak-theme-tutorial/">
-                            <h3 class="media-heading">Tranquilpeak 主题的使用方法</h3>
-                        </a>
-                        <span class="media-meta">
-                            <span class="media-date text-small">
-                                
-                                    2016年5月16日
-                                
-                            </span>
-                        </span>
-                        <div class="media-content hide-xs font-merryweather"><p>这个<a href="https://github.com/LouisBarranqueiro/hexo-theme-tranquilpeak" target="_blank" rel="external">主题</a>很赞哦，里面有不错的内容可以让博客更丰富。</p>
-<h4 id="改变字体"><a href="#改变字体" class="headerlink" title="改变字体"></a>改变字体</h4><p><a href="https://github.com/LouisBarranqueiro/hexo-theme-tranquilpeak/issues/194" target="_blank" rel="external">https://github.com/LouisBarranqueiro/hexo-theme-tranquilpeak/issues/194</a></p></div>
                     </div>
                     <div style="clear:both;"></div>
                     <hr>
@@ -616,6 +596,26 @@
                             </span>
                         </span>
                         <div class="media-content hide-xs font-merryweather"><p>在日常的 iOS 开发中，我们经常会使用到不同的网络环境切换问题，比如：</p></div>
+                    </div>
+                    <div style="clear:both;"></div>
+                    <hr>
+                </div>
+                
+                <div class="media">
+                    
+                    <div class="media-body">
+                        <a class="link-unstyled" href="http://hilen.github.io/2016/05/16/tranquilpeak-theme-tutorial/">
+                            <h3 class="media-heading">Tranquilpeak 主题的使用方法</h3>
+                        </a>
+                        <span class="media-meta">
+                            <span class="media-date text-small">
+                                
+                                    2016年5月16日
+                                
+                            </span>
+                        </span>
+                        <div class="media-content hide-xs font-merryweather"><p>这个<a href="https://github.com/LouisBarranqueiro/hexo-theme-tranquilpeak" target="_blank" rel="noopener">主题</a>很赞哦，里面有不错的内容可以让博客更丰富。</p>
+<h4 id="改变字体"><a href="#改变字体" class="headerlink" title="改变字体"></a>改变字体</h4><p><a href="https://github.com/LouisBarranqueiro/hexo-theme-tranquilpeak/issues/194" target="_blank" rel="noopener">https://github.com/LouisBarranqueiro/hexo-theme-tranquilpeak/issues/194</a></p></div>
                     </div>
                     <div style="clear:both;"></div>
                     <hr>
@@ -654,7 +654,7 @@
                                 
                             </span>
                         </span>
-                        <div class="media-content hide-xs font-merryweather"><p><a href="https://github.com/hilen/MantleExtension" target="_blank" rel="external">MantleExtension</a> 是在 <a href="https://github.com/Mantle/Mantle" target="_blank" rel="external">Mantle</a> 框架提供的类型转换方法的基础上做了一层增强，为了解决服务端返回的同一个数据但出现不同类型而导致客户端 model 解析异常的问题。它可以并且不用修改 Mantle 的源码。<br></div>
+                        <div class="media-content hide-xs font-merryweather"><p><a href="https://github.com/hilen/MantleExtension" target="_blank" rel="noopener">MantleExtension</a> 是在 <a href="https://github.com/Mantle/Mantle" target="_blank" rel="noopener">Mantle</a> 框架提供的类型转换方法的基础上做了一层增强，为了解决服务端返回的同一个数据但出现不同类型而导致客户端 model 解析异常的问题。它可以并且不用修改 Mantle 的源码。<br></div>
                     </div>
                     <div style="clear:both;"></div>
                     <hr>
@@ -711,7 +711,7 @@
     </div>
 </div>
         
-<div id="cover" style="background-image:url('https://gw.alicdn.com/tfs/TB1SSqor1uSBuNjy1XcXXcYjFXa-2000-1163.png');"></div>
+<div id="cover" style="background-image:url('https://gw.alicdn.com/tfs/TB1FPrdr9BYBeNjy0FeXXbnmFXa-2000-1163.jpg');"></div>
         <!--SCRIPTS-->
 <script src="/assets/js/script-rt08quwts7iav5x0cfd2ym0gb5qkd1lvrsmwrakxtkhefmaaes4ywkmnjnwf.min.js"></script>
 <!--SCRIPTS END-->

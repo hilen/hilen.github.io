@@ -238,20 +238,20 @@
     
     <div class="post-content markdown" itemprop="articleBody">
         <div class="main-content-wrap">
-            <p>CocoaPods 是 iOS 日常开发所使用的包管理器，它把 Rails 里的 Gem 带进了 macOS 中，让 iOS 和 macOS 管理自己的第三方依赖。<br>接下来介绍几个概念：<br><code>rbenv</code>：管理 Ruby 版本的内容<br><a id="more"></a><code>rails</code>：著名开发框架。详细看 <a href="http://guides.ruby-china.org/" target="_blank" rel="external">http://guides.ruby-china.org/</a><br><code>bundle</code>：是 rails 框架里面安装 Gemfile 指定的各种库的工具。在配置文件 gemfile 里说明你的应用依赖哪些第三方包，他自动帮你下载安装多个包，并且会下载这些包依赖的包<br><code>gem</code>：是 ruby 的其中一个“程序”叫 RubyGems，在终端使用的 gem 命令，是指通过 RubyGems 管理 Gem 包<br><code>pod</code>：是 CocoaPods 的管理 iOS 的第三方库工具</p>
+            <p>CocoaPods 是 iOS 日常开发所使用的包管理器，它把 Rails 里的 Gem 带进了 macOS 中，让 iOS 和 macOS 管理自己的第三方依赖。<br>接下来介绍几个概念：<br><code>rbenv</code>：管理 Ruby 版本的内容<br><a id="more"></a><code>rails</code>：著名开发框架。详细看 <a href="http://guides.ruby-china.org/" target="_blank" rel="noopener">http://guides.ruby-china.org/</a><br><code>bundle</code>：是 rails 框架里面安装 Gemfile 指定的各种库的工具。在配置文件 gemfile 里说明你的应用依赖哪些第三方包，他自动帮你下载安装多个包，并且会下载这些包依赖的包<br><code>gem</code>：是 ruby 的其中一个“程序”叫 RubyGems，在终端使用的 gem 命令，是指通过 RubyGems 管理 Gem 包<br><code>pod</code>：是 CocoaPods 的管理 iOS 的第三方库工具</p>
 <p>接下来介绍一下具体的 CocoaPods 安装流程，首先你需要一台 Mac [doge]</p>
 <h2 id="基于-rbenv-来安装-CocoaPods"><a href="#基于-rbenv-来安装-CocoaPods" class="headerlink" title="基于 rbenv 来安装 CocoaPods"></a>基于 rbenv 来安装 CocoaPods</h2><ol>
-<li><p>安装 <a href="http://brew.sh/index_zh-cn.html" target="_blank" rel="external">brew</a>：<code>$ /usr/bin/ruby -e &quot;$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)&quot;</code></p>
+<li><p>安装 <a href="http://brew.sh/index_zh-cn.html" target="_blank" rel="noopener">brew</a>：<code>$ /usr/bin/ruby -e &quot;$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)&quot;</code></p>
 </li>
-<li><p>安装 <a href="https://github.com/rbenv/rbenv" target="_blank" rel="external">rbenv</a>：<code>$ brew install rbenv</code></p>
+<li><p>安装 <a href="https://github.com/rbenv/rbenv" target="_blank" rel="noopener">rbenv</a>：<code>$ brew install rbenv</code></p>
 </li>
-<li><p>安装 <a href="https://github.com/rbenv/ruby-build" target="_blank" rel="external">ruby-build</a>：<code>$ git clone https://github.com/rbenv/ruby-build.git ~/.rbenv/plugins/ruby-build</code></p>
+<li><p>安装 <a href="https://github.com/rbenv/ruby-build" target="_blank" rel="noopener">ruby-build</a>：<code>$ git clone https://github.com/rbenv/ruby-build.git ~/.rbenv/plugins/ruby-build</code></p>
 </li>
-<li><p>安装 <a href="https://ruby-china.org/wiki/ruby-mirror" target="_blank" rel="external">ruby-china 镜像</a>：<code>$ git clone https://github.com/andorchen/rbenv-china-mirror.git ~/.rbenv/plugins/rbenv-china-mirror</code></p>
+<li><p>安装 <a href="https://ruby-china.org/wiki/ruby-mirror" target="_blank" rel="noopener">ruby-china 镜像</a>：<code>$ git clone https://github.com/andorchen/rbenv-china-mirror.git ~/.rbenv/plugins/rbenv-china-mirror</code></p>
 </li>
 <li><p>使用 rbenv 安装 ruby 版本：<code>$ rbenv install 2.2.3</code>。你可以选择安装自己需要的版本。</p>
 <p>然后在 ~/.zsh_rc 里添加：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"># rbenv init 需要</div><div class="line">export PATH=&quot;$HOME/.rbenv/bin:$PATH&quot;</div><div class="line">eval &quot;$(rbenv init -)&quot;</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"># rbenv init 需要</span><br><span class="line">export PATH=&quot;$HOME/.rbenv/bin:$PATH&quot;</span><br><span class="line">eval &quot;$(rbenv init -)&quot;</span><br></pre></td></tr></table></figure>
 <p>注意是 bash 用户是在 ~/.bashrc 里, zsh 用户是 ~/.zshrc ，然后重启终端</p>
 </li>
 <li><p>设置全局的 ruby 版本：<code>$ rbenv global 2.2.3</code></p>
@@ -266,13 +266,13 @@
 <li><p>安装 bundler：<code>$ gem install bundler</code></p>
 </li>
 </ol>
-<h2 id="首次使用的速度问题"><a href="#首次使用的速度问题" class="headerlink" title="首次使用的速度问题"></a>首次使用的速度问题</h2><p>当你运行 <code>pod setup</code> 的时候可能会看到这样的信息：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">[Enchanting] pod setup</div><div class="line">Setting up CocoaPods master repo</div><div class="line">[!] /usr/bin/git clone https://github.com/CocoaPods/Specs.git master --depth=1</div><div class="line"></div><div class="line">Cloning into &apos;master&apos;...</div><div class="line">fatal: unable to access &apos;https://github.com/CocoaPods/Specs.git/&apos;: transfer closed with outstanding read data remaining</div></pre></td></tr></table></figure></p>
-<p>原因是：master 的 podspec 文件都托管在 <a href="https://github.com/CocoaPods/Specs" target="_blank" rel="external">https://github.com/CocoaPods/Specs</a> 上面。<br>当执行 pod setup 或者 pod install 的时候，CocoaPods 自动把托管在 github 上的文件下载到本地的 ~/.cocoapods/repos 目录下，但是因为这个索引文件非常大，所以第一次更新时非常慢。</p>
+<h2 id="首次使用的速度问题"><a href="#首次使用的速度问题" class="headerlink" title="首次使用的速度问题"></a>首次使用的速度问题</h2><p>当你运行 <code>pod setup</code> 的时候可能会看到这样的信息：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">[Enchanting] pod setup</span><br><span class="line">Setting up CocoaPods master repo</span><br><span class="line">[!] /usr/bin/git clone https://github.com/CocoaPods/Specs.git master --depth=1</span><br><span class="line"></span><br><span class="line">Cloning into &apos;master&apos;...</span><br><span class="line">fatal: unable to access &apos;https://github.com/CocoaPods/Specs.git/&apos;: transfer closed with outstanding read data remaining</span><br></pre></td></tr></table></figure></p>
+<p>原因是：master 的 podspec 文件都托管在 <a href="https://github.com/CocoaPods/Specs" target="_blank" rel="noopener">https://github.com/CocoaPods/Specs</a> 上面。<br>当执行 pod setup 或者 pod install 的时候，CocoaPods 自动把托管在 github 上的文件下载到本地的 ~/.cocoapods/repos 目录下，但是因为这个索引文件非常大，所以第一次更新时非常慢。</p>
 <p>解决办法（默认你已经有了 shadowsocks）<br>挂代理：<code>git config --global http.https://github.com.proxy socks5://127.0.0.1:1080</code><br>取消代理：<code>git config --global --unset http.https://github.com.proxy</code><br>然后再进行 <code>pod setup</code>，这次速度就会快很多。</p>
-<p>另外当运行 Xcode 的时候，可能会报 ruby 相关的错误。因为当前 macOS Sierra 使用的是 oh-my-zsh 的命令终端管理，但是 Xcode 本身跑的是 .bash 而非 .zshrc 里的内容。所以需要加上下面这句话，使得 Xcode 在运行的时候跑的是 local 的Ruby 环境，也就是 /Users/xxxxxxx/.rbenv/shims/ruby 下的版本。打开 <code>~/.bash_profile</code>，添加下面这行：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">export PATH=&quot;$HOME/.rbenv/shims:$HOME/.rbenv/bin:$PATH&quot;</div></pre></td></tr></table></figure></p>
+<p>另外当运行 Xcode 的时候，可能会报 ruby 相关的错误。因为当前 macOS Sierra 使用的是 oh-my-zsh 的命令终端管理，但是 Xcode 本身跑的是 .bash 而非 .zshrc 里的内容。所以需要加上下面这句话，使得 Xcode 在运行的时候跑的是 local 的Ruby 环境，也就是 /Users/xxxxxxx/.rbenv/shims/ruby 下的版本。打开 <code>~/.bash_profile</code>，添加下面这行：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">export PATH=&quot;$HOME/.rbenv/shims:$HOME/.rbenv/bin:$PATH&quot;</span><br></pre></td></tr></table></figure></p>
 <p>Reference：</p>
 <ul>
-<li><a href="https://ruby-china.org/wiki/rbenv-guide" target="_blank" rel="external">https://ruby-china.org/wiki/rbenv-guide</a></li>
+<li><a href="https://ruby-china.org/wiki/rbenv-guide" target="_blank" rel="noopener">https://ruby-china.org/wiki/rbenv-guide</a></li>
 </ul>
 <p>Enjoy.</p>
 
@@ -523,7 +523,7 @@
                                 
                             </span>
                         </span>
-                        <div class="media-content hide-xs font-merryweather"><p>Welcome to <a href="http://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="http://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="http://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p></div>
+                        <div class="media-content hide-xs font-merryweather"><p>Welcome to <a href="http://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="http://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="http://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p></div>
                     </div>
                     <div style="clear:both;"></div>
                     <hr>
@@ -542,7 +542,7 @@
                                 
                             </span>
                         </span>
-                        <div class="media-content hide-xs font-merryweather"><p>表格内容是 Instagram iOS App 所用到的第三方库，具体协议内容可以在 <a href="https://instagram.com/about/legal/libraries/" target="_blank" rel="external">https://instagram.com/about/legal/libraries/</a> 找到。</p></div>
+                        <div class="media-content hide-xs font-merryweather"><p>表格内容是 Instagram iOS App 所用到的第三方库，具体协议内容可以在 <a href="https://instagram.com/about/legal/libraries/" target="_blank" rel="noopener">https://instagram.com/about/legal/libraries/</a> 找到。</p></div>
                     </div>
                     <div style="clear:both;"></div>
                     <hr>
@@ -582,29 +582,9 @@
                         </span>
                         <div class="media-content hide-xs font-merryweather"><p>这篇文章展示了所有 iOS 设备的机器类型。<br>Reference:</p>
 <ul>
-<li><a href="https://support.hockeyapp.net/kb/client-integration-ios-mac-os-x-tvos/ios-device-types" target="_blank" rel="external">https://support.hockeyapp.net/kb/client-integration-ios-mac-os-x-tvos/ios-device-types</a></li>
-<li><a href="https://www.paintcodeapp.com/news/ultimate-guide-to-iphone-resolutions" target="_blank" rel="external">不同尺寸的 iPhone 屏幕像素大小</a></li>
+<li><a href="https://support.hockeyapp.net/kb/client-integration-ios-mac-os-x-tvos/ios-device-types" target="_blank" rel="noopener">https://support.hockeyapp.net/kb/client-integration-ios-mac-os-x-tvos/ios-device-types</a></li>
+<li><a href="https://www.paintcodeapp.com/news/ultimate-guide-to-iphone-resolutions" target="_blank" rel="noopener">不同尺寸的 iPhone 屏幕像素大小</a></li>
 </ul></div>
-                    </div>
-                    <div style="clear:both;"></div>
-                    <hr>
-                </div>
-                
-                <div class="media">
-                    
-                    <div class="media-body">
-                        <a class="link-unstyled" href="http://hilen.github.io/2016/05/16/tranquilpeak-theme-tutorial/">
-                            <h3 class="media-heading">Tranquilpeak 主题的使用方法</h3>
-                        </a>
-                        <span class="media-meta">
-                            <span class="media-date text-small">
-                                
-                                    2016年5月16日
-                                
-                            </span>
-                        </span>
-                        <div class="media-content hide-xs font-merryweather"><p>这个<a href="https://github.com/LouisBarranqueiro/hexo-theme-tranquilpeak" target="_blank" rel="external">主题</a>很赞哦，里面有不错的内容可以让博客更丰富。</p>
-<h4 id="改变字体"><a href="#改变字体" class="headerlink" title="改变字体"></a>改变字体</h4><p><a href="https://github.com/LouisBarranqueiro/hexo-theme-tranquilpeak/issues/194" target="_blank" rel="external">https://github.com/LouisBarranqueiro/hexo-theme-tranquilpeak/issues/194</a></p></div>
                     </div>
                     <div style="clear:both;"></div>
                     <hr>
@@ -624,6 +604,26 @@
                             </span>
                         </span>
                         <div class="media-content hide-xs font-merryweather"><p>在日常的 iOS 开发中，我们经常会使用到不同的网络环境切换问题，比如：</p></div>
+                    </div>
+                    <div style="clear:both;"></div>
+                    <hr>
+                </div>
+                
+                <div class="media">
+                    
+                    <div class="media-body">
+                        <a class="link-unstyled" href="http://hilen.github.io/2016/05/16/tranquilpeak-theme-tutorial/">
+                            <h3 class="media-heading">Tranquilpeak 主题的使用方法</h3>
+                        </a>
+                        <span class="media-meta">
+                            <span class="media-date text-small">
+                                
+                                    2016年5月16日
+                                
+                            </span>
+                        </span>
+                        <div class="media-content hide-xs font-merryweather"><p>这个<a href="https://github.com/LouisBarranqueiro/hexo-theme-tranquilpeak" target="_blank" rel="noopener">主题</a>很赞哦，里面有不错的内容可以让博客更丰富。</p>
+<h4 id="改变字体"><a href="#改变字体" class="headerlink" title="改变字体"></a>改变字体</h4><p><a href="https://github.com/LouisBarranqueiro/hexo-theme-tranquilpeak/issues/194" target="_blank" rel="noopener">https://github.com/LouisBarranqueiro/hexo-theme-tranquilpeak/issues/194</a></p></div>
                     </div>
                     <div style="clear:both;"></div>
                     <hr>
@@ -662,7 +662,7 @@
                                 
                             </span>
                         </span>
-                        <div class="media-content hide-xs font-merryweather"><p><a href="https://github.com/hilen/MantleExtension" target="_blank" rel="external">MantleExtension</a> 是在 <a href="https://github.com/Mantle/Mantle" target="_blank" rel="external">Mantle</a> 框架提供的类型转换方法的基础上做了一层增强，为了解决服务端返回的同一个数据但出现不同类型而导致客户端 model 解析异常的问题。它可以并且不用修改 Mantle 的源码。<br></div>
+                        <div class="media-content hide-xs font-merryweather"><p><a href="https://github.com/hilen/MantleExtension" target="_blank" rel="noopener">MantleExtension</a> 是在 <a href="https://github.com/Mantle/Mantle" target="_blank" rel="noopener">Mantle</a> 框架提供的类型转换方法的基础上做了一层增强，为了解决服务端返回的同一个数据但出现不同类型而导致客户端 model 解析异常的问题。它可以并且不用修改 Mantle 的源码。<br></div>
                     </div>
                     <div style="clear:both;"></div>
                     <hr>
@@ -719,7 +719,7 @@
     </div>
 </div>
         
-<div id="cover" style="background-image:url('https://gw.alicdn.com/tfs/TB1SSqor1uSBuNjy1XcXXcYjFXa-2000-1163.png');"></div>
+<div id="cover" style="background-image:url('https://gw.alicdn.com/tfs/TB1FPrdr9BYBeNjy0FeXXbnmFXa-2000-1163.jpg');"></div>
         <!--SCRIPTS-->
 <script src="/assets/js/script-rt08quwts7iav5x0cfd2ym0gb5qkd1lvrsmwrakxtkhefmaaes4ywkmnjnwf.min.js"></script>
 <!--SCRIPTS END-->

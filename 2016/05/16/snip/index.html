@@ -243,30 +243,30 @@
 <hr>
 <h2 id="LLDB-和-Chisel-调试"><a href="#LLDB-和-Chisel-调试" class="headerlink" title="LLDB 和 Chisel 调试"></a>LLDB 和 Chisel 调试</h2><p>Reference：</p>
 <ul>
-<li><a href="http://www.starfelix.com/blog/2014/03/17/lldbdiao-shi-ming-ling-chu-tan/" target="_blank" rel="external">LLDB调试命令初探</a></li>
-<li><a href="http://www.jianshu.com/p/e89af3e9a8d7" target="_blank" rel="external">小笨狼与LLDB的故事</a></li>
-<li><a href="http://southpeak.github.io/blog/2015/01/25/tool-lldb/" target="_blank" rel="external">LLDB调试器使用简介</a></li>
-<li><a href="https://gist.github.com/ryanchang/a2f738f0c3cc6fbd71fa" target="_blank" rel="external">LLDB Cheat Sheet</a></li>
-<li><a href="https://blog.cnbluebox.com/blog/2015/03/05/chisel/" target="_blank" rel="external">Chisel-LLDB命令插件，让调试更Easy</a></li>
-<li><a href="https://github.com/facebook/chisel/blob/master/README.md" target="_blank" rel="external">chisel/README.md at master · facebook/chisel</a></li>
-<li><a href="https://objccn.io/issue-19-2/" target="_blank" rel="external">ObjC 中国 - 与调试器共舞 - LLDB 的华尔兹</a></li>
+<li><a href="http://www.starfelix.com/blog/2014/03/17/lldbdiao-shi-ming-ling-chu-tan/" target="_blank" rel="noopener">LLDB调试命令初探</a></li>
+<li><a href="http://www.jianshu.com/p/e89af3e9a8d7" target="_blank" rel="noopener">小笨狼与LLDB的故事</a></li>
+<li><a href="http://southpeak.github.io/blog/2015/01/25/tool-lldb/" target="_blank" rel="noopener">LLDB调试器使用简介</a></li>
+<li><a href="https://gist.github.com/ryanchang/a2f738f0c3cc6fbd71fa" target="_blank" rel="noopener">LLDB Cheat Sheet</a></li>
+<li><a href="https://blog.cnbluebox.com/blog/2015/03/05/chisel/" target="_blank" rel="noopener">Chisel-LLDB命令插件，让调试更Easy</a></li>
+<li><a href="https://github.com/facebook/chisel/blob/master/README.md" target="_blank" rel="noopener">chisel/README.md at master · facebook/chisel</a></li>
+<li><a href="https://objccn.io/issue-19-2/" target="_blank" rel="noopener">ObjC 中国 - 与调试器共舞 - LLDB 的华尔兹</a></li>
 </ul>
 <hr>
-<h2 id="Mac-下多个-SSH-Key-配置方法"><a href="#Mac-下多个-SSH-Key-配置方法" class="headerlink" title="Mac 下多个 SSH Key 配置方法"></a>Mac 下多个 SSH Key 配置方法</h2><p>【1】配置 git user.name， user.email<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">git config  user.name &quot;hilen&quot;</div><div class="line">git config  user.email &quot;hilenkz@gmail.com&quot;</div></pre></td></tr></table></figure></p>
+<h2 id="Mac-下多个-SSH-Key-配置方法"><a href="#Mac-下多个-SSH-Key-配置方法" class="headerlink" title="Mac 下多个 SSH Key 配置方法"></a>Mac 下多个 SSH Key 配置方法</h2><p>【1】配置 git user.name， user.email<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git config  user.name &quot;hilen&quot;</span><br><span class="line">git config  user.email &quot;hilenkz@gmail.com&quot;</span><br></pre></td></tr></table></figure></p>
 <p>【2】生成 SSH Key<br>打开终端，并输入 <code>ssh-keygen -t rsa -C &quot;hilenkz@gmail.com&quot; -f hilen_rsa</code></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">解释：</div><div class="line">-C : 邮箱地址</div><div class="line">-f : 文件名</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">解释：</span><br><span class="line">-C : 邮箱地址</span><br><span class="line">-f : 文件名</span><br></pre></td></tr></table></figure>
 <p>上面的 hilen_rsa 就是文件名，这时 ~/.ssh 目录下会多出 hilen_rsa 和 hilen_rsa.pub 两个文件， hilen_rsa.pub 里保存的就是我们要使用的key。</p>
-<p>【3】配置 SSH config 文件<br>打开　~/.ssh/config （如果没有就创建一个）<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line"># GitHub</div><div class="line">Host www.github.com</div><div class="line">    HostName github.com</div><div class="line">    IdentityFile ~/.ssh/hilen_rsa</div><div class="line">    PreferredAuthentications publickey</div><div class="line">    User hilen</div><div class="line"></div><div class="line"># bitbucket</div><div class="line">Host bitbucket.org</div><div class="line">    HostName bitbucket.org</div><div class="line">    IdentityFile ~/.ssh/hilen_rsa</div><div class="line">    PreferredAuthentications publickey</div><div class="line">    User hilen</div><div class="line"></div><div class="line"># xxx</div><div class="line">Host xxx.com</div><div class="line">    HostName xxx.com</div><div class="line">    IdentityFile ~/.ssh/id_rsa</div><div class="line">    PreferredAuthentications publickey</div><div class="line">    User hilenlai</div></pre></td></tr></table></figure></p>
+<p>【3】配置 SSH config 文件<br>打开　~/.ssh/config （如果没有就创建一个）<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"># GitHub</span><br><span class="line">Host www.github.com</span><br><span class="line">    HostName github.com</span><br><span class="line">    IdentityFile ~/.ssh/hilen_rsa</span><br><span class="line">    PreferredAuthentications publickey</span><br><span class="line">    User hilen</span><br><span class="line"></span><br><span class="line"># bitbucket</span><br><span class="line">Host bitbucket.org</span><br><span class="line">    HostName bitbucket.org</span><br><span class="line">    IdentityFile ~/.ssh/hilen_rsa</span><br><span class="line">    PreferredAuthentications publickey</span><br><span class="line">    User hilen</span><br><span class="line"></span><br><span class="line"># xxx</span><br><span class="line">Host xxx.com</span><br><span class="line">    HostName xxx.com</span><br><span class="line">    IdentityFile ~/.ssh/id_rsa</span><br><span class="line">    PreferredAuthentications publickey</span><br><span class="line">    User hilenlai</span><br></pre></td></tr></table></figure></p>
 <p>在 <code>config</code> 文件内输入你自己的配置</p>
-<p>【4】查看配置是否生效<br>终端内输入： <code>ssh-add -l</code><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">2048 SHA256:P2Pj1zuBnN+ncKcZA0zN+wIpcTLC2DG2DYnkTl3nkdM hilen_rsa (RSA)</div><div class="line">4096 SHA256:jpPlCXfUBf/sILsu98M0NYtFy7OJ8BSrBRCh+vyw38U id_rsa (RSA)</div></pre></td></tr></table></figure></p>
+<p>【4】查看配置是否生效<br>终端内输入： <code>ssh-add -l</code><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">2048 SHA256:P2Pj1zuBnN+ncKcZA0zN+wIpcTLC2DG2DYnkTl3nkdM hilen_rsa (RSA)</span><br><span class="line">4096 SHA256:jpPlCXfUBf/sILsu98M0NYtFy7OJ8BSrBRCh+vyw38U id_rsa (RSA)</span><br></pre></td></tr></table></figure></p>
 <p>查看是否在 SSH 列表内，如果不在，执行：<code>ssh-add -K ~/.ssh/hilen_rsa</code></p>
-<p>【5】测试 SSH Key 是否配置成功<br>终端：<code>ssh -T git@github.com</code><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">Hi Hilen! You&apos;ve successfully authenticated, but GitHub does not provide shell access.</div></pre></td></tr></table></figure></p>
+<p>【5】测试 SSH Key 是否配置成功<br>终端：<code>ssh -T git@github.com</code><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Hi Hilen! You&apos;ve successfully authenticated, but GitHub does not provide shell access.</span><br></pre></td></tr></table></figure></p>
 <p>证明成功了</p>
 <p>【6】复制你的 publickey<br><code>pbcopy &lt; ~/.ssh/hilen_rsa.pub</code> 复制这个 key, 粘贴到你要的位置。OK done</p>
 <p>Reference</p>
 <ul>
-<li><a href="http://stackoverflow.com/questions/3225862/multiple-github-accounts-ssh-config" target="_blank" rel="external">http://stackoverflow.com/questions/3225862/multiple-github-accounts-ssh-config</a></li>
-<li><a href="http://stackoverflow.com/questions/1909651/svnssh-not-having-to-do-ssh-add-every-time-mac-os" target="_blank" rel="external">http://stackoverflow.com/questions/1909651/svnssh-not-having-to-do-ssh-add-every-time-mac-os</a></li>
+<li><a href="http://stackoverflow.com/questions/3225862/multiple-github-accounts-ssh-config" target="_blank" rel="noopener">http://stackoverflow.com/questions/3225862/multiple-github-accounts-ssh-config</a></li>
+<li><a href="http://stackoverflow.com/questions/1909651/svnssh-not-having-to-do-ssh-add-every-time-mac-os" target="_blank" rel="noopener">http://stackoverflow.com/questions/1909651/svnssh-not-having-to-do-ssh-add-every-time-mac-os</a></li>
 </ul>
 <hr>
 <h2 id="iTerm-的快捷键使用"><a href="#iTerm-的快捷键使用" class="headerlink" title="iTerm 的快捷键使用"></a>iTerm 的快捷键使用</h2><table>
@@ -362,22 +362,22 @@
 <li>Option ⌥</li>
 <li>Control ⌃</li>
 <li>Caps Lock ⇪<br>Reference：</li>
-<li><a href="https://support.apple.com/zh-cn/HT201236" target="_blank" rel="external">https://support.apple.com/zh-cn/HT201236</a></li>
+<li><a href="https://support.apple.com/zh-cn/HT201236" target="_blank" rel="noopener">https://support.apple.com/zh-cn/HT201236</a></li>
 </ul>
 <hr>
-<h2 id="Git-Log-的优雅写法"><a href="#Git-Log-的优雅写法" class="headerlink" title="Git Log 的优雅写法"></a>Git Log 的优雅写法</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">[Added] : 添加的新功能</div><div class="line">[Changed] : 功能变更</div><div class="line">[Deprecated] : 不建议使用，未来会删掉</div><div class="line">[Removed] : 之前不建议使用的功能，这次真的删掉了</div><div class="line">[Fixed] : 改的bug</div><div class="line">[Security] : 改的有关安全相关bug</div></pre></td></tr></table></figure>
+<h2 id="Git-Log-的优雅写法"><a href="#Git-Log-的优雅写法" class="headerlink" title="Git Log 的优雅写法"></a>Git Log 的优雅写法</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">[Added] : 添加的新功能</span><br><span class="line">[Changed] : 功能变更</span><br><span class="line">[Deprecated] : 不建议使用，未来会删掉</span><br><span class="line">[Removed] : 之前不建议使用的功能，这次真的删掉了</span><br><span class="line">[Fixed] : 改的bug</span><br><span class="line">[Security] : 改的有关安全相关bug</span><br></pre></td></tr></table></figure>
 <p>Reference：</p>
 <ul>
-<li><a href="http://keepachangelog.com/zh-CN/" target="_blank" rel="external">http://keepachangelog.com/zh-CN/</a></li>
+<li><a href="http://keepachangelog.com/zh-CN/" target="_blank" rel="noopener">http://keepachangelog.com/zh-CN/</a></li>
 </ul>
 <hr>
-<h2 id="iOS-的注释可以写的内容"><a href="#iOS-的注释可以写的内容" class="headerlink" title="iOS 的注释可以写的内容"></a>iOS 的注释可以写的内容</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div></pre></td><td class="code"><pre><div class="line">/** First line text.</div><div class="line"> Putting \\n doesn&apos;t create a new line.\n One way to create a newline is by making sure nothing is on that line. Not even a single space character!</div><div class="line"> @a Italic text @em with @@a or @@em.</div><div class="line"> @b Bold text with @@b.</div><div class="line"></div><div class="line"> @p Typewritter font @c with @@p or @@c.</div><div class="line"></div><div class="line"> Backslashes and must be escaped: C:\\foo.</div><div class="line"></div><div class="line"> And so do @@ signs: user@@example.com</div><div class="line"></div><div class="line"> Some more text.</div><div class="line"> @brief brief text</div><div class="line"> @attention attention text</div><div class="line"> @author author text</div><div class="line"> @bug bug text</div><div class="line"> @copyright copyright text</div><div class="line"> @date date text</div><div class="line"> @invariant invariant text</div><div class="line"> @note note text</div><div class="line"> @post post text</div><div class="line"> @pre pre text</div><div class="line"> @remarks remarks text</div><div class="line"> @sa sa text</div><div class="line"> @see see text</div><div class="line"> @since since text</div><div class="line"> @todo todo text</div><div class="line"> @version version text</div><div class="line"> @warning warning text</div><div class="line"></div><div class="line"> @result result text</div><div class="line"> @return return text</div><div class="line"> @returns returns text</div><div class="line"></div><div class="line"> @code</div><div class="line">// code text</div><div class="line">while (someCondition) &#123;</div><div class="line">    NSLog(@&quot;Hello&quot;);</div><div class="line">    doSomething();</div><div class="line">&#125;@endcode</div><div class="line"> Last line text.</div><div class="line"></div><div class="line"> @param param param text</div><div class="line"> @tparam tparam tparam text</div><div class="line"> */</div><div class="line">- (void)myMethod &#123;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="iOS-的注释可以写的内容"><a href="#iOS-的注释可以写的内容" class="headerlink" title="iOS 的注释可以写的内容"></a>iOS 的注释可以写的内容</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line">/** First line text.</span><br><span class="line"> Putting \\n doesn&apos;t create a new line.\n One way to create a newline is by making sure nothing is on that line. Not even a single space character!</span><br><span class="line"> @a Italic text @em with @@a or @@em.</span><br><span class="line"> @b Bold text with @@b.</span><br><span class="line"></span><br><span class="line"> @p Typewritter font @c with @@p or @@c.</span><br><span class="line"></span><br><span class="line"> Backslashes and must be escaped: C:\\foo.</span><br><span class="line"></span><br><span class="line"> And so do @@ signs: user@@example.com</span><br><span class="line"></span><br><span class="line"> Some more text.</span><br><span class="line"> @brief brief text</span><br><span class="line"> @attention attention text</span><br><span class="line"> @author author text</span><br><span class="line"> @bug bug text</span><br><span class="line"> @copyright copyright text</span><br><span class="line"> @date date text</span><br><span class="line"> @invariant invariant text</span><br><span class="line"> @note note text</span><br><span class="line"> @post post text</span><br><span class="line"> @pre pre text</span><br><span class="line"> @remarks remarks text</span><br><span class="line"> @sa sa text</span><br><span class="line"> @see see text</span><br><span class="line"> @since since text</span><br><span class="line"> @todo todo text</span><br><span class="line"> @version version text</span><br><span class="line"> @warning warning text</span><br><span class="line"></span><br><span class="line"> @result result text</span><br><span class="line"> @return return text</span><br><span class="line"> @returns returns text</span><br><span class="line"></span><br><span class="line"> @code</span><br><span class="line">// code text</span><br><span class="line">while (someCondition) &#123;</span><br><span class="line">    NSLog(@&quot;Hello&quot;);</span><br><span class="line">    doSomething();</span><br><span class="line">&#125;@endcode</span><br><span class="line"> Last line text.</span><br><span class="line"></span><br><span class="line"> @param param param text</span><br><span class="line"> @tparam tparam tparam text</span><br><span class="line"> */</span><br><span class="line">- (void)myMethod &#123;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>Reference：</p>
 <ul>
-<li><a href="http://stackoverflow.com/questions/19168423/what-are-the-new-documentation-commands-available-in-xcode-5" target="_blank" rel="external">http://stackoverflow.com/questions/19168423/what-are-the-new-documentation-commands-available-in-xcode-5</a></li>
+<li><a href="http://stackoverflow.com/questions/19168423/what-are-the-new-documentation-commands-available-in-xcode-5" target="_blank" rel="noopener">http://stackoverflow.com/questions/19168423/what-are-the-new-documentation-commands-available-in-xcode-5</a></li>
 </ul>
 <hr>
-<h2 id="tree-命令的用法"><a href="#tree-命令的用法" class="headerlink" title="tree 命令的用法"></a>tree 命令的用法</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">tree -a 显示所有</div><div class="line">tree -d 仅显示目录</div><div class="line">tree -L n n代表数字..表示要显示几层...</div><div class="line">tree -f 显示完整路径..</div></pre></td></tr></table></figure>
+<h2 id="tree-命令的用法"><a href="#tree-命令的用法" class="headerlink" title="tree 命令的用法"></a>tree 命令的用法</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">tree -a 显示所有</span><br><span class="line">tree -d 仅显示目录</span><br><span class="line">tree -L n n代表数字..表示要显示几层...</span><br><span class="line">tree -f 显示完整路径..</span><br></pre></td></tr></table></figure>
             
         </div>
     </div>
@@ -395,7 +395,7 @@
         <ul class="post-actions post-action-nav">
             <li class="post-action">
                 
-                    <a class="post-action-btn btn btn--default tooltip--top" href="/2016/05/16/configuration-scheme/"  data-tooltip="iOS Build Configuration + Scheme 的使用">
+                    <a class="post-action-btn btn btn--default tooltip--top" href="/2016/08/10/mantle-extension/"  data-tooltip="Mantle 的增强">
                 
                     <i class="fa fa-angle-left"></i>
                     <span class="hide-xs hide-sm text-small icon-ml">上一篇</span>
@@ -403,7 +403,7 @@
             </li>
             <li class="post-action">
                 
-                    <a class="post-action-btn btn btn--default tooltip--top" href="/2016/05/06/ios-device/" data-tooltip="iOS Device Types">
+                    <a class="post-action-btn btn btn--default tooltip--top" href="/2016/05/16/tranquilpeak-theme-tutorial/" data-tooltip="Tranquilpeak 主题的使用方法">
                 
                     <span class="hide-xs hide-sm text-small icon-mr">下一篇</span>
                     <i class="fa fa-angle-right"></i>
@@ -476,7 +476,7 @@
         <ul class="post-actions post-action-nav">
             <li class="post-action">
                 
-                    <a class="post-action-btn btn btn--default tooltip--top" href="/2016/05/16/configuration-scheme/"  data-tooltip="iOS Build Configuration + Scheme 的使用">
+                    <a class="post-action-btn btn btn--default tooltip--top" href="/2016/08/10/mantle-extension/"  data-tooltip="Mantle 的增强">
                 
                     <i class="fa fa-angle-left"></i>
                     <span class="hide-xs hide-sm text-small icon-ml">上一篇</span>
@@ -484,7 +484,7 @@
             </li>
             <li class="post-action">
                 
-                    <a class="post-action-btn btn btn--default tooltip--top" href="/2016/05/06/ios-device/" data-tooltip="iOS Device Types">
+                    <a class="post-action-btn btn btn--default tooltip--top" href="/2016/05/16/tranquilpeak-theme-tutorial/" data-tooltip="Tranquilpeak 主题的使用方法">
                 
                     <span class="hide-xs hide-sm text-small icon-mr">下一篇</span>
                     <i class="fa fa-angle-right"></i>
@@ -625,7 +625,7 @@
                                 
                             </span>
                         </span>
-                        <div class="media-content hide-xs font-merryweather"><p>Welcome to <a href="http://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="http://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="http://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p></div>
+                        <div class="media-content hide-xs font-merryweather"><p>Welcome to <a href="http://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="http://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="http://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p></div>
                     </div>
                     <div style="clear:both;"></div>
                     <hr>
@@ -644,7 +644,7 @@
                                 
                             </span>
                         </span>
-                        <div class="media-content hide-xs font-merryweather"><p>表格内容是 Instagram iOS App 所用到的第三方库，具体协议内容可以在 <a href="https://instagram.com/about/legal/libraries/" target="_blank" rel="external">https://instagram.com/about/legal/libraries/</a> 找到。</p></div>
+                        <div class="media-content hide-xs font-merryweather"><p>表格内容是 Instagram iOS App 所用到的第三方库，具体协议内容可以在 <a href="https://instagram.com/about/legal/libraries/" target="_blank" rel="noopener">https://instagram.com/about/legal/libraries/</a> 找到。</p></div>
                     </div>
                     <div style="clear:both;"></div>
                     <hr>
@@ -684,29 +684,9 @@
                         </span>
                         <div class="media-content hide-xs font-merryweather"><p>这篇文章展示了所有 iOS 设备的机器类型。<br>Reference:</p>
 <ul>
-<li><a href="https://support.hockeyapp.net/kb/client-integration-ios-mac-os-x-tvos/ios-device-types" target="_blank" rel="external">https://support.hockeyapp.net/kb/client-integration-ios-mac-os-x-tvos/ios-device-types</a></li>
-<li><a href="https://www.paintcodeapp.com/news/ultimate-guide-to-iphone-resolutions" target="_blank" rel="external">不同尺寸的 iPhone 屏幕像素大小</a></li>
+<li><a href="https://support.hockeyapp.net/kb/client-integration-ios-mac-os-x-tvos/ios-device-types" target="_blank" rel="noopener">https://support.hockeyapp.net/kb/client-integration-ios-mac-os-x-tvos/ios-device-types</a></li>
+<li><a href="https://www.paintcodeapp.com/news/ultimate-guide-to-iphone-resolutions" target="_blank" rel="noopener">不同尺寸的 iPhone 屏幕像素大小</a></li>
 </ul></div>
-                    </div>
-                    <div style="clear:both;"></div>
-                    <hr>
-                </div>
-                
-                <div class="media">
-                    
-                    <div class="media-body">
-                        <a class="link-unstyled" href="http://hilen.github.io/2016/05/16/tranquilpeak-theme-tutorial/">
-                            <h3 class="media-heading">Tranquilpeak 主题的使用方法</h3>
-                        </a>
-                        <span class="media-meta">
-                            <span class="media-date text-small">
-                                
-                                    2016年5月16日
-                                
-                            </span>
-                        </span>
-                        <div class="media-content hide-xs font-merryweather"><p>这个<a href="https://github.com/LouisBarranqueiro/hexo-theme-tranquilpeak" target="_blank" rel="external">主题</a>很赞哦，里面有不错的内容可以让博客更丰富。</p>
-<h4 id="改变字体"><a href="#改变字体" class="headerlink" title="改变字体"></a>改变字体</h4><p><a href="https://github.com/LouisBarranqueiro/hexo-theme-tranquilpeak/issues/194" target="_blank" rel="external">https://github.com/LouisBarranqueiro/hexo-theme-tranquilpeak/issues/194</a></p></div>
                     </div>
                     <div style="clear:both;"></div>
                     <hr>
@@ -726,6 +706,26 @@
                             </span>
                         </span>
                         <div class="media-content hide-xs font-merryweather"><p>在日常的 iOS 开发中，我们经常会使用到不同的网络环境切换问题，比如：</p></div>
+                    </div>
+                    <div style="clear:both;"></div>
+                    <hr>
+                </div>
+                
+                <div class="media">
+                    
+                    <div class="media-body">
+                        <a class="link-unstyled" href="http://hilen.github.io/2016/05/16/tranquilpeak-theme-tutorial/">
+                            <h3 class="media-heading">Tranquilpeak 主题的使用方法</h3>
+                        </a>
+                        <span class="media-meta">
+                            <span class="media-date text-small">
+                                
+                                    2016年5月16日
+                                
+                            </span>
+                        </span>
+                        <div class="media-content hide-xs font-merryweather"><p>这个<a href="https://github.com/LouisBarranqueiro/hexo-theme-tranquilpeak" target="_blank" rel="noopener">主题</a>很赞哦，里面有不错的内容可以让博客更丰富。</p>
+<h4 id="改变字体"><a href="#改变字体" class="headerlink" title="改变字体"></a>改变字体</h4><p><a href="https://github.com/LouisBarranqueiro/hexo-theme-tranquilpeak/issues/194" target="_blank" rel="noopener">https://github.com/LouisBarranqueiro/hexo-theme-tranquilpeak/issues/194</a></p></div>
                     </div>
                     <div style="clear:both;"></div>
                     <hr>
@@ -764,7 +764,7 @@
                                 
                             </span>
                         </span>
-                        <div class="media-content hide-xs font-merryweather"><p><a href="https://github.com/hilen/MantleExtension" target="_blank" rel="external">MantleExtension</a> 是在 <a href="https://github.com/Mantle/Mantle" target="_blank" rel="external">Mantle</a> 框架提供的类型转换方法的基础上做了一层增强，为了解决服务端返回的同一个数据但出现不同类型而导致客户端 model 解析异常的问题。它可以并且不用修改 Mantle 的源码。<br></div>
+                        <div class="media-content hide-xs font-merryweather"><p><a href="https://github.com/hilen/MantleExtension" target="_blank" rel="noopener">MantleExtension</a> 是在 <a href="https://github.com/Mantle/Mantle" target="_blank" rel="noopener">Mantle</a> 框架提供的类型转换方法的基础上做了一层增强，为了解决服务端返回的同一个数据但出现不同类型而导致客户端 model 解析异常的问题。它可以并且不用修改 Mantle 的源码。<br></div>
                     </div>
                     <div style="clear:both;"></div>
                     <hr>
@@ -821,7 +821,7 @@
     </div>
 </div>
         
-<div id="cover" style="background-image:url('https://gw.alicdn.com/tfs/TB1SSqor1uSBuNjy1XcXXcYjFXa-2000-1163.png');"></div>
+<div id="cover" style="background-image:url('https://gw.alicdn.com/tfs/TB1FPrdr9BYBeNjy0FeXXbnmFXa-2000-1163.jpg');"></div>
         <!--SCRIPTS-->
 <script src="/assets/js/script-rt08quwts7iav5x0cfd2ym0gb5qkd1lvrsmwrakxtkhefmaaes4ywkmnjnwf.min.js"></script>
 <!--SCRIPTS END-->

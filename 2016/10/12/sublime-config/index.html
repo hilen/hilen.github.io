@@ -16,16 +16,19 @@
     
     
     <meta name="description" content="Sublime Text 是一个代码编辑器。Sublime Text 是由程序员 Jon Skinner 于 2008 年 1 月份所开发出来，它最初被设计为一个具有丰富扩展功能的 Vim。它具有漂亮的用户界面和强大的功能，例如代码缩略图，Python 的插件，代码段等。还可自定义键绑定，菜单和工具栏等等内容。">
+<meta name="keywords" content="Sublime Text">
 <meta property="og:type" content="blog">
 <meta property="og:title" content="Sublime Text 3 配置">
 <meta property="og:url" content="http://hilen.github.io/2016/10/12/sublime-config/index.html">
-<meta property="og:site_name" content="Hilen's Blog">
+<meta property="og:site_name" content="Hilen&#39;s Blog">
 <meta property="og:description" content="Sublime Text 是一个代码编辑器。Sublime Text 是由程序员 Jon Skinner 于 2008 年 1 月份所开发出来，它最初被设计为一个具有丰富扩展功能的 Vim。它具有漂亮的用户界面和强大的功能，例如代码缩略图，Python 的插件，代码段等。还可自定义键绑定，菜单和工具栏等等内容。">
+<meta property="og:locale" content="zh-cn">
 <meta property="og:image" content="http://ww1.sinaimg.cn/large/6a011e49gw1f8paq3el2uj21ao104agz.jpg">
 <meta property="og:updated_time" content="2016-11-22T12:48:57.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Sublime Text 3 配置">
 <meta name="twitter:description" content="Sublime Text 是一个代码编辑器。Sublime Text 是由程序员 Jon Skinner 于 2008 年 1 月份所开发出来，它最初被设计为一个具有丰富扩展功能的 Vim。它具有漂亮的用户界面和强大的功能，例如代码缩略图，Python 的插件，代码段等。还可自定义键绑定，菜单和工具栏等等内容。">
+<meta name="twitter:image" content="http://ww1.sinaimg.cn/large/6a011e49gw1f8paq3el2uj21ao104agz.jpg">
     
     
         
@@ -37,7 +40,7 @@
     
     
     <!--STYLES-->
-    <link rel="stylesheet" href="/assets/css/style-yrst5vo1nxaxbp2g3v9na2wg1lixlpr3ghbjdvskeixmu79deycecx3rh4bt.min.css" type="text/css">
+    <link rel="stylesheet" href="/assets/css/style-yrst5vo1nxaxbp2g3v9na2wg1lixlpr3ghbjdvskeixmu79deycecx3rh4bt.min.css">
     <!--STYLES END-->
     
     <script type="text/javascript">
@@ -73,7 +76,7 @@
     
         
             <a  class="header-right-picture "
-                href="/#about">
+                href="#about">
         
         
             <img class="header-picture" src="http://ww1.sinaimg.cn/large/6a011e49jw1f1e87gcr14j20ks0ksdgr.jpg" alt="作者的图片"/>
@@ -157,7 +160,7 @@
                 <li class="sidebar-button">
                     
                         <a  class="sidebar-button-link open-algolia-search"
-                             href="/#search"
+                             href="#search"
                             
                         >
                     
@@ -169,7 +172,7 @@
                 <li class="sidebar-button">
                     
                         <a  class="sidebar-button-link "
-                             href="/#about"
+                             href="#about"
                             
                         >
                     
@@ -243,10 +246,10 @@
 <a id="more"></a>
 <h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><p>从 <a href="https://www.sublimetext.com/3" target="_blank" rel="external">https://www.sublimetext.com/3</a> 下载并且拖拽到 <code>Application</code> 文件夹内。</p>
 <p>Sublime Text 比较强大的就是它的插件了，那么这里就要提到 <code>Package Control</code> 这个插件管理包了。<br>安装方法： 使用 <code>Ctrl + ` </code> 快捷键或者通过 <code>View -&gt; Show Console</code> 菜单打开命令行。然后输入</p>
-<figure class="highlight livecodeserver"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">import urllib.request,os,hashlib; h = <span class="string">'df21e130d211cfc94d9b0905775a7c0f'</span> + <span class="string">'1e3d39e33b79698005270310898eea76'</span>; pf = <span class="string">'Package Control.sublime-package'</span>; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); <span class="keyword">by</span> = urllib.request.urlopen( <span class="string">'http://packagecontrol.io/'</span> + pf.<span class="built_in">replace</span>(<span class="string">' '</span>, <span class="string">'%20'</span>)).<span class="built_in">read</span>(); dh = hashlib.sha256(<span class="keyword">by</span>).hexdigest(); print(<span class="string">'Error validating download (got %s instead of %s), please try manual install'</span> % (dh, h)) <span class="keyword">if</span> dh != h <span class="keyword">else</span> <span class="built_in">open</span>(os.path.join( ipp, pf), <span class="string">'wb'</span> ).<span class="built_in">write</span>(<span class="keyword">by</span>)</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">import urllib.request,os,hashlib; h = &apos;df21e130d211cfc94d9b0905775a7c0f&apos; + &apos;1e3d39e33b79698005270310898eea76&apos;; pf = &apos;Package Control.sublime-package&apos;; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); by = urllib.request.urlopen( &apos;http://packagecontrol.io/&apos; + pf.replace(&apos; &apos;, &apos;%20&apos;)).read(); dh = hashlib.sha256(by).hexdigest(); print(&apos;Error validating download (got %s instead of %s), please try manual install&apos; % (dh, h)) if dh != h else open(os.path.join( ipp, pf), &apos;wb&apos; ).write(by)</div></pre></td></tr></table></figure>
 <p>以上内容在 <a href="https://packagecontrol.io/installation" target="_blank" rel="external">https://packagecontrol.io/installation</a> 可以找到，最好以官方为准。</p>
 <p>使用打开 <code>⌘ + shift + p</code>  打开，你会看到这样一个界面。那么恭喜你，安装成功。<br><img src="http://ww1.sinaimg.cn/large/6a011e49gw1f8paq3el2uj21ao104agz.jpg" alt=""></p>
-<h2 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h2><figure class="highlight elixir"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">	<span class="regexp">//</span> 代码提示</span><br><span class="line">	<span class="string">"auto_complete"</span><span class="symbol">:</span> <span class="keyword">true</span>,</span><br><span class="line"></span><br><span class="line">	<span class="regexp">//</span> 设置光标闪动方式,<span class="string">"smooth"</span>, <span class="string">"phase"</span>, <span class="string">"blink"</span>, <span class="string">"wide"</span>,<span class="string">"solid"</span>.</span><br><span class="line">	<span class="string">"caret_style"</span><span class="symbol">:</span> <span class="string">"wide"</span>,</span><br><span class="line"></span><br><span class="line">	<span class="string">"default_encoding"</span><span class="symbol">:</span> <span class="string">"UTF-8"</span>,</span><br><span class="line"></span><br><span class="line">	<span class="regexp">//</span> 每一行结束的时候用什么字符做终止符</span><br><span class="line">	<span class="string">"default_line_ending"</span><span class="symbol">:</span> <span class="string">"system"</span>,</span><br><span class="line"></span><br><span class="line">	<span class="string">"default_new_file_syntax"</span><span class="symbol">:</span> <span class="string">"Packages/Text/Objective-C.tmLanguage"</span>,</span><br><span class="line"></span><br><span class="line">	<span class="regexp">//</span> 是否显示代码折叠按钮</span><br><span class="line">	<span class="string">"fold_buttons"</span><span class="symbol">:</span> <span class="keyword">true</span>,</span><br><span class="line"></span><br><span class="line">	<span class="string">"font_face"</span><span class="symbol">:</span> <span class="string">"Monaco"</span>,</span><br><span class="line">	<span class="string">"font_size"</span><span class="symbol">:</span> <span class="number">16.0</span>,</span><br><span class="line">	<span class="string">"ignored_packages"</span><span class="symbol">:</span></span><br><span class="line">	[</span><br><span class="line">		<span class="string">"Vintage"</span></span><br><span class="line">	],</span><br><span class="line">	<span class="string">"highlight_line"</span><span class="symbol">:</span> <span class="keyword">true</span>,</span><br><span class="line">   <span class="string">"highlight_modified_tabs"</span><span class="symbol">:</span> <span class="keyword">true</span>,</span><br><span class="line">	<span class="string">"line_numbers"</span><span class="symbol">:</span> <span class="keyword">true</span>,</span><br><span class="line">	<span class="string">"line_padding_bottom"</span><span class="symbol">:</span> <span class="number">1</span>,</span><br><span class="line">	<span class="string">"line_padding_top"</span><span class="symbol">:</span> <span class="number">1</span>,</span><br><span class="line"></span><br><span class="line">	<span class="string">"soda_folder_icons"</span><span class="symbol">:</span> <span class="keyword">true</span>,</span><br><span class="line"></span><br><span class="line">	<span class="string">"tab_size"</span><span class="symbol">:</span> <span class="number">4</span>,</span><br><span class="line"></span><br><span class="line">	<span class="regexp">//</span>主题相关</span><br><span class="line">	<span class="string">"theme"</span><span class="symbol">:</span> <span class="string">"Soda Dark 3.sublime-theme"</span>,</span><br><span class="line"></span><br><span class="line">	<span class="regexp">//</span> 为<span class="keyword">true</span>时，保存文件时会删除每行结束后多余的空格</span><br><span class="line">	<span class="string">"trim_trailing_white_space_on_save"</span><span class="symbol">:</span> <span class="keyword">true</span>,</span><br><span class="line"></span><br><span class="line">	<span class="string">"use_current_file_syntax"</span><span class="symbol">:</span> <span class="keyword">true</span>,</span><br><span class="line"></span><br><span class="line">	<span class="string">"word_wrap"</span><span class="symbol">:</span> <span class="keyword">true</span>,</span><br><span class="line"></span><br><span class="line">	<span class="string">"update_check"</span><span class="symbol">:</span> <span class="keyword">false</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">	// 代码提示</div><div class="line">	&quot;auto_complete&quot;: true,</div><div class="line"></div><div class="line">	// 设置光标闪动方式,&quot;smooth&quot;, &quot;phase&quot;, &quot;blink&quot;, &quot;wide&quot;,&quot;solid&quot;.</div><div class="line">	&quot;caret_style&quot;: &quot;wide&quot;,</div><div class="line"></div><div class="line">	&quot;default_encoding&quot;: &quot;UTF-8&quot;,</div><div class="line"></div><div class="line">	// 每一行结束的时候用什么字符做终止符</div><div class="line">	&quot;default_line_ending&quot;: &quot;system&quot;,</div><div class="line"></div><div class="line">	&quot;default_new_file_syntax&quot;: &quot;Packages/Text/Objective-C.tmLanguage&quot;,</div><div class="line"></div><div class="line">	// 是否显示代码折叠按钮</div><div class="line">	&quot;fold_buttons&quot;: true,</div><div class="line"></div><div class="line">	&quot;font_face&quot;: &quot;Monaco&quot;,</div><div class="line">	&quot;font_size&quot;: 16.0,</div><div class="line">	&quot;ignored_packages&quot;:</div><div class="line">	[</div><div class="line">		&quot;Vintage&quot;</div><div class="line">	],</div><div class="line">	&quot;highlight_line&quot;: true,</div><div class="line">   &quot;highlight_modified_tabs&quot;: true,</div><div class="line">	&quot;line_numbers&quot;: true,</div><div class="line">	&quot;line_padding_bottom&quot;: 1,</div><div class="line">	&quot;line_padding_top&quot;: 1,</div><div class="line"></div><div class="line">	&quot;soda_folder_icons&quot;: true,</div><div class="line"></div><div class="line">	&quot;tab_size&quot;: 4,</div><div class="line"></div><div class="line">	//主题相关</div><div class="line">	&quot;theme&quot;: &quot;Soda Dark 3.sublime-theme&quot;,</div><div class="line"></div><div class="line">	// 为true时，保存文件时会删除每行结束后多余的空格</div><div class="line">	&quot;trim_trailing_white_space_on_save&quot;: true,</div><div class="line"></div><div class="line">	&quot;use_current_file_syntax&quot;: true,</div><div class="line"></div><div class="line">	&quot;word_wrap&quot;: true,</div><div class="line"></div><div class="line">	&quot;update_check&quot;: false</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <h2 id="主题"><a href="#主题" class="headerlink" title="主题"></a>主题</h2><ul>
 <li><a href="https://github.com/buymeasoda/soda-theme" target="_blank" rel="external">Soda</a></li>
 </ul>
@@ -348,7 +351,7 @@
 
                 <footer id="footer" class="main-content-wrap">
     <span class="copyrights">
-        Copyrights &copy; 2017 Hilen. All Rights Reserved.
+        Copyrights &copy; 2018 Hilen. All Rights Reserved.
     </span>
 </footer>
 
@@ -509,7 +512,7 @@
                                 
                             </span>
                         </span>
-                        <div class="media-content hide-xs font-merryweather"><p>Welcome to <a href="http://hexo.io/">Hexo</a>! This is your very first post. Check <a href="http://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="http://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p></div>
+                        <div class="media-content hide-xs font-merryweather"><p>Welcome to <a href="http://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="http://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="http://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p></div>
                     </div>
                     <div style="clear:both;"></div>
                     <hr>
@@ -528,7 +531,7 @@
                                 
                             </span>
                         </span>
-                        <div class="media-content hide-xs font-merryweather"><p>表格内容是 Instagram iOS App 所用到的第三方库，具体协议内容可以在 <a href="https://instagram.com/about/legal/libraries/">https://instagram.com/about/legal/libraries/</a> 找到。</p></div>
+                        <div class="media-content hide-xs font-merryweather"><p>表格内容是 Instagram iOS App 所用到的第三方库，具体协议内容可以在 <a href="https://instagram.com/about/legal/libraries/" target="_blank" rel="external">https://instagram.com/about/legal/libraries/</a> 找到。</p></div>
                     </div>
                     <div style="clear:both;"></div>
                     <hr>
@@ -568,8 +571,8 @@
                         </span>
                         <div class="media-content hide-xs font-merryweather"><p>这篇文章展示了所有 iOS 设备的机器类型。<br>Reference:</p>
 <ul>
-<li><a href="https://support.hockeyapp.net/kb/client-integration-ios-mac-os-x-tvos/ios-device-types">https://support.hockeyapp.net/kb/client-integration-ios-mac-os-x-tvos/ios-device-types</a></li>
-<li><a href="https://www.paintcodeapp.com/news/ultimate-guide-to-iphone-resolutions">不同尺寸的 iPhone 屏幕像素大小</a></li>
+<li><a href="https://support.hockeyapp.net/kb/client-integration-ios-mac-os-x-tvos/ios-device-types" target="_blank" rel="external">https://support.hockeyapp.net/kb/client-integration-ios-mac-os-x-tvos/ios-device-types</a></li>
+<li><a href="https://www.paintcodeapp.com/news/ultimate-guide-to-iphone-resolutions" target="_blank" rel="external">不同尺寸的 iPhone 屏幕像素大小</a></li>
 </ul></div>
                     </div>
                     <div style="clear:both;"></div>
@@ -579,17 +582,37 @@
                 <div class="media">
                     
                     <div class="media-body">
-                        <a class="link-unstyled" href="http://hilen.github.io/2016/05/06/dropbox-synchronise-sublime/">
-                            <h3 class="media-heading">使用 Dropbox 来同步 Sublime 的配置</h3>
+                        <a class="link-unstyled" href="http://hilen.github.io/2016/05/16/tranquilpeak-theme-tutorial/">
+                            <h3 class="media-heading">Tranquilpeak 主题的使用方法</h3>
                         </a>
                         <span class="media-meta">
                             <span class="media-date text-small">
                                 
-                                    2016年5月6日
+                                    2016年5月16日
                                 
                             </span>
                         </span>
-                        <div class="media-content hide-xs font-merryweather"><p>善用 Dropbox 来同步你的各种配置吧 ╮(╯▽╰)╭<br></div>
+                        <div class="media-content hide-xs font-merryweather"><p>这个<a href="https://github.com/LouisBarranqueiro/hexo-theme-tranquilpeak" target="_blank" rel="external">主题</a>很赞哦，里面有不错的内容可以让博客更丰富。</p>
+<h4 id="改变字体"><a href="#改变字体" class="headerlink" title="改变字体"></a>改变字体</h4><p><a href="https://github.com/LouisBarranqueiro/hexo-theme-tranquilpeak/issues/194" target="_blank" rel="external">https://github.com/LouisBarranqueiro/hexo-theme-tranquilpeak/issues/194</a></p></div>
+                    </div>
+                    <div style="clear:both;"></div>
+                    <hr>
+                </div>
+                
+                <div class="media">
+                    
+                    <div class="media-body">
+                        <a class="link-unstyled" href="http://hilen.github.io/2016/05/16/configuration-scheme/">
+                            <h3 class="media-heading">iOS Build Configuration + Scheme 的使用</h3>
+                        </a>
+                        <span class="media-meta">
+                            <span class="media-date text-small">
+                                
+                                    2016年5月16日
+                                
+                            </span>
+                        </span>
+                        <div class="media-content hide-xs font-merryweather"><p>在日常的 iOS 开发中，我们经常会使用到不同的网络环境切换问题，比如：</p></div>
                     </div>
                     <div style="clear:both;"></div>
                     <hr>
@@ -618,45 +641,6 @@
                 <div class="media">
                     
                     <div class="media-body">
-                        <a class="link-unstyled" href="http://hilen.github.io/2016/05/16/tranquilpeak-theme-tutorial/">
-                            <h3 class="media-heading">Tranquilpeak 主题的使用方法</h3>
-                        </a>
-                        <span class="media-meta">
-                            <span class="media-date text-small">
-                                
-                                    2016年5月16日
-                                
-                            </span>
-                        </span>
-                        <div class="media-content hide-xs font-merryweather"><p>这个<a href="https://github.com/LouisBarranqueiro/hexo-theme-tranquilpeak">主题</a>很赞哦，里面有不错的内容可以让博客更丰富。</p>
-<h4 id="改变字体"><a href="#改变字体" class="headerlink" title="改变字体"></a>改变字体</h4><p><a href="https://github.com/LouisBarranqueiro/hexo-theme-tranquilpeak/issues/194">https://github.com/LouisBarranqueiro/hexo-theme-tranquilpeak/issues/194</a></p></div>
-                    </div>
-                    <div style="clear:both;"></div>
-                    <hr>
-                </div>
-                
-                <div class="media">
-                    
-                    <div class="media-body">
-                        <a class="link-unstyled" href="http://hilen.github.io/2016/05/16/configuration-scheme/">
-                            <h3 class="media-heading">iOS Build Configuration + Scheme 的使用</h3>
-                        </a>
-                        <span class="media-meta">
-                            <span class="media-date text-small">
-                                
-                                    2016年5月16日
-                                
-                            </span>
-                        </span>
-                        <div class="media-content hide-xs font-merryweather"><p>在日常的 iOS 开发中，我们经常会使用到不同的网络环境切换问题，比如：</p></div>
-                    </div>
-                    <div style="clear:both;"></div>
-                    <hr>
-                </div>
-                
-                <div class="media">
-                    
-                    <div class="media-body">
                         <a class="link-unstyled" href="http://hilen.github.io/2016/08/10/mantle-extension/">
                             <h3 class="media-heading">Mantle 的增强</h3>
                         </a>
@@ -667,7 +651,7 @@
                                 
                             </span>
                         </span>
-                        <div class="media-content hide-xs font-merryweather"><p><a href="https://github.com/hilen/MantleExtension">MantleExtension</a> 是在 <a href="https://github.com/Mantle/Mantle">Mantle</a> 框架提供的类型转换方法的基础上做了一层增强，为了解决服务端返回的同一个数据但出现不同类型而导致客户端 model 解析异常的问题。它可以并且不用修改 Mantle 的源码。<br></div>
+                        <div class="media-content hide-xs font-merryweather"><p><a href="https://github.com/hilen/MantleExtension" target="_blank" rel="external">MantleExtension</a> 是在 <a href="https://github.com/Mantle/Mantle" target="_blank" rel="external">Mantle</a> 框架提供的类型转换方法的基础上做了一层增强，为了解决服务端返回的同一个数据但出现不同类型而导致客户端 model 解析异常的问题。它可以并且不用修改 Mantle 的源码。<br></div>
                     </div>
                     <div style="clear:both;"></div>
                     <hr>
@@ -692,6 +676,25 @@
                     <hr>
                 </div>
                 
+                <div class="media">
+                    
+                    <div class="media-body">
+                        <a class="link-unstyled" href="http://hilen.github.io/2016/10/24/ruby-cocoapods/">
+                            <h3 class="media-heading">macOS Sierra 安装 rbenv 管理器 和 CocoaPods</h3>
+                        </a>
+                        <span class="media-meta">
+                            <span class="media-date text-small">
+                                
+                                    2016年10月24日
+                                
+                            </span>
+                        </span>
+                        <div class="media-content hide-xs font-merryweather"><p>CocoaPods 是 iOS 日常开发所使用的包管理器，它把 Rails 里的 Gem 带进了 macOS 中，让 iOS 和 macOS 管理自己的第三方依赖。<br>接下来介绍几个概念：<br><code>rbenv</code>：管理 Ruby 版本的内容<br></div>
+                    </div>
+                    <div style="clear:both;"></div>
+                    <hr>
+                </div>
+                
             </div>
         </div>
         <div class="modal-footer">
@@ -699,15 +702,15 @@
                 data-message-zero="没有找到文章"
                 data-message-one="找到 1 篇文章"
                 data-message-other="找到 {n} 篇文章">
-                找到 12 篇文章
+                找到 11 篇文章
             </p>
         </div>
     </div>
 </div>
         
-<div id="cover" style="background-image:url('http://ww4.sinaimg.cn/large/6a011e49gw1f3lsa8dz80j21kw0zke0b.jpg');"></div>
+<div id="cover" style="background-image:url('https://gw.alicdn.com/tfs/TB1SSqor1uSBuNjy1XcXXcYjFXa-2000-1163.png');"></div>
         <!--SCRIPTS-->
-<script src="/assets/js/script-rt08quwts7iav5x0cfd2ym0gb5qkd1lvrsmwrakxtkhefmaaes4ywkmnjnwf.min.js" type="text/javascript"></script>
+<script src="/assets/js/script-rt08quwts7iav5x0cfd2ym0gb5qkd1lvrsmwrakxtkhefmaaes4ywkmnjnwf.min.js"></script>
 <!--SCRIPTS END-->
 
     

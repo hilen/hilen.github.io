@@ -10,10 +10,8 @@
     <meta name="author" content="Hilen">
     
     
-        <link rel="icon" href="http://hilen.github.io/assets/images/favicon.ico">
     
-    
-    <script type="application/ld+json">{"@context":"http://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"Hilen","sameAs":["https://github.com/hilen","mailto:loktarlai@gmail.com"],"image":"https://gw.alicdn.com/tfs/TB1YReFr1uSBuNjy1XcXXcYjFXa-400-400.jpg"},"articleBody":"\nCocoaPods 的安装和卸载Uninstall: sudo gem uninstall cocoapods -v 0.39.0Install: sudo gem install -n /usr/local/bin cocoapods -v 0.39.0\n\nLLDB 和 Chisel 调试Reference：\n\nLLDB调试命令初探\n小笨狼与LLDB的故事\nLLDB调试器使用简介\nLLDB Cheat Sheet\nChisel-LLDB命令插件，让调试更Easy\nchisel/README.md at master · facebook/chisel\nObjC 中国 - 与调试器共舞 - LLDB 的华尔兹\n\n\nMac 下多个 SSH Key 配置方法【1】配置 git user.name， user.email12git config  user.name &quot;hilen&quot;git config  user.email &quot;hilenkz@gmail.com&quot;\n【2】生成 SSH Key打开终端，并输入 ssh-keygen -t rsa -C &quot;hilenkz@gmail.com&quot; -f hilen_rsa\n123解释：-C : 邮箱地址-f : 文件名\n上面的 hilen_rsa 就是文件名，这时 ~/.ssh 目录下会多出 hilen_rsa 和 hilen_rsa.pub 两个文件， hilen_rsa.pub 里保存的就是我们要使用的key。\n【3】配置 SSH config 文件打开　~/.ssh/config （如果没有就创建一个）1234567891011121314151617181920# GitHubHost www.github.com    HostName github.com    IdentityFile ~/.ssh/hilen_rsa    PreferredAuthentications publickey    User hilen# bitbucketHost bitbucket.org    HostName bitbucket.org    IdentityFile ~/.ssh/hilen_rsa    PreferredAuthentications publickey    User hilen# xxxHost xxx.com    HostName xxx.com    IdentityFile ~/.ssh/id_rsa    PreferredAuthentications publickey    User hilenlai\n在 config 文件内输入你自己的配置\n【4】查看配置是否生效终端内输入： ssh-add -l122048 SHA256:P2Pj1zuBnN+ncKcZA0zN+wIpcTLC2DG2DYnkTl3nkdM hilen_rsa (RSA)4096 SHA256:jpPlCXfUBf/sILsu98M0NYtFy7OJ8BSrBRCh+vyw38U id_rsa (RSA)\n查看是否在 SSH 列表内，如果不在，执行：ssh-add -K ~/.ssh/hilen_rsa\n【5】测试 SSH Key 是否配置成功终端：ssh -T git@github.com1Hi Hilen! You&apos;ve successfully authenticated, but GitHub does not provide shell access.\n证明成功了\n【6】复制你的 publickeypbcopy &lt; ~/.ssh/hilen_rsa.pub 复制这个 key, 粘贴到你要的位置。OK done\nReference\n\nhttp://stackoverflow.com/questions/3225862/multiple-github-accounts-ssh-config\nhttp://stackoverflow.com/questions/1909651/svnssh-not-having-to-do-ssh-add-every-time-mac-os\n\n\niTerm 的快捷键使用\n\n\n快捷键\n作用\n\n\n\n\n⌘ 数字\n在各 tab 标签直接来回切换i\n\n\n⌘ f\n查找\n\n\n⌘ ;\n自动完成\n\n\n⌘ d\n横着分屏\n\n\n⌘ ⇧ d\n竖着分屏\n\n\n⌘ ⇧ H\n命令历史\n\n\n⌘ ⌥ B\n命令回放\n\n\n⌃ a\n光标移动到行首\n\n\n⌃ e\n光标移动到行末\n\n\n⌃ f\n前移一个字符\n\n\n⌃ b\n后退一个字符\n\n\n⌃ l\n清屏\n\n\n⌃ p\n显示历史命令\n\n\n⌃ r\n倒转查找\n\n\n⌃ d\n删除当前光标的字符\n\n\n⌃ h\n删除光标之前的字符\n\n\n⌃ w\n删除光标之前的单词\n\n\n⌃ k\n删除光标之后整行\n\n\n⌃ u\n清空当前行，无论光标在什么位置\n\n\n\n键位说明：\n\nCommand ⌘\nShift ⇧\nOption ⌥\nControl ⌃\nCaps Lock ⇪Reference：\nhttps://support.apple.com/zh-cn/HT201236\n\n\nGit Log 的优雅写法123456[Added] : 添加的新功能[Changed] : 功能变更[Deprecated] : 不建议使用，未来会删掉[Removed] : 之前不建议使用的功能，这次真的删掉了[Fixed] : 改的bug[Security] : 改的有关安全相关bug\nReference：\n\nhttp://keepachangelog.com/zh-CN/\n\n\niOS 的注释可以写的内容1234567891011121314151617181920212223242526272829303132333435363738394041424344454647/** First line text. Putting \\\\n doesn&apos;t create a new line.\\n One way to create a newline is by making sure nothing is on that line. Not even a single space character! @a Italic text @em with @@a or @@em. @b Bold text with @@b. @p Typewritter font @c with @@p or @@c. Backslashes and must be escaped: C:\\\\foo. And so do @@ signs: user@@example.com Some more text. @brief brief text @attention attention text @author author text @bug bug text @copyright copyright text @date date text @invariant invariant text @note note text @post post text @pre pre text @remarks remarks text @sa sa text @see see text @since since text @todo todo text @version version text @warning warning text @result result text @return return text @returns returns text @code// code textwhile (someCondition) &#123;    NSLog(@&quot;Hello&quot;);    doSomething();&#125;@endcode Last line text. @param param param text @tparam tparam tparam text */- (void)myMethod &#123;&#125;\nReference：\n\nhttp://stackoverflow.com/questions/19168423/what-are-the-new-documentation-commands-available-in-xcode-5\n\n\ntree 命令的用法1234tree -a 显示所有tree -d 仅显示目录tree -L n n代表数字..表示要显示几层...tree -f 显示完整路径..","dateCreated":"2016-05-16T14:11:35+08:00","dateModified":"2017-01-02T18:38:14+08:00","datePublished":"2016-05-16T14:11:35+08:00","description":"\nCocoaPods 的安装和卸载Uninstall: sudo gem uninstall cocoapods -v 0.39.0Install: sudo gem install -n /usr/local/bin cocoapods -v 0.39.0","headline":"日常随手记","image":[],"mainEntityOfPage":{"@type":"WebPage","@id":"http://hilen.github.io/2016/05/16/snip/"},"publisher":{"@type":"Organization","name":"Hilen","sameAs":["https://github.com/hilen","mailto:loktarlai@gmail.com"],"image":"https://gw.alicdn.com/tfs/TB1YReFr1uSBuNjy1XcXXcYjFXa-400-400.jpg","logo":{"@type":"ImageObject","url":"https://gw.alicdn.com/tfs/TB1YReFr1uSBuNjy1XcXXcYjFXa-400-400.jpg"}},"url":"http://hilen.github.io/2016/05/16/snip/","keywords":"tutorial, tool"}</script>
+    <script type="application/ld+json">{"@context":"http://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"Hilen","sameAs":["https://github.com/","mailto:loktarlai@gmail.com"],"image":"https://gw.alicdn.com/tfs/TB1XyOtdUuF3KVjSZK9XXbVtXXa-328-312.png"},"articleBody":"\nCocoaPods 的安装和卸载Uninstall: sudo gem uninstall cocoapods -v 0.39.0Install: sudo gem install -n /usr/local/bin cocoapods -v 0.39.0\n\nLLDB 和 Chisel 调试Reference：\n\nLLDB调试命令初探\n小笨狼与LLDB的故事\nLLDB调试器使用简介\nLLDB Cheat Sheet\nChisel-LLDB命令插件，让调试更Easy\nchisel/README.md at master · facebook/chisel\nObjC 中国 - 与调试器共舞 - LLDB 的华尔兹\n\n\nMac 下多个 SSH Key 配置方法【1】配置 git user.name， user.email12git config  user.name &quot;hilen&quot;git config  user.email &quot;hilenkz@gmail.com&quot;\n【2】生成 SSH Key打开终端，并输入 ssh-keygen -t rsa -C &quot;hilenkz@gmail.com&quot; -f hilen_rsa\n123解释：-C : 邮箱地址-f : 文件名\n上面的 hilen_rsa 就是文件名，这时 ~/.ssh 目录下会多出 hilen_rsa 和 hilen_rsa.pub 两个文件， hilen_rsa.pub 里保存的就是我们要使用的key。\n【3】配置 SSH config 文件打开　~/.ssh/config （如果没有就创建一个）1234567891011121314151617181920# GitHubHost www.github.com    HostName github.com    IdentityFile ~/.ssh/hilen_rsa    PreferredAuthentications publickey    User hilen# bitbucketHost bitbucket.org    HostName bitbucket.org    IdentityFile ~/.ssh/hilen_rsa    PreferredAuthentications publickey    User hilen# xxxHost xxx.com    HostName xxx.com    IdentityFile ~/.ssh/id_rsa    PreferredAuthentications publickey    User hilenlai\n在 config 文件内输入你自己的配置\n【4】查看配置是否生效终端内输入： ssh-add -l122048 SHA256:P2Pj1zuBnN+ncKcZA0zN+wIpcTLC2DG2DYnkTl3nkdM hilen_rsa (RSA)4096 SHA256:jpPlCXfUBf/sILsu98M0NYtFy7OJ8BSrBRCh+vyw38U id_rsa (RSA)\n查看是否在 SSH 列表内，如果不在，执行：ssh-add -K ~/.ssh/hilen_rsa\n【5】测试 SSH Key 是否配置成功终端：ssh -T git@github.com1Hi Hilen! You&apos;ve successfully authenticated, but GitHub does not provide shell access.\n证明成功了\n【6】复制你的 publickeypbcopy &lt; ~/.ssh/hilen_rsa.pub 复制这个 key, 粘贴到你要的位置。OK done\nReference\n\nhttp://stackoverflow.com/questions/3225862/multiple-github-accounts-ssh-config\nhttp://stackoverflow.com/questions/1909651/svnssh-not-having-to-do-ssh-add-every-time-mac-os\n\n\niTerm 的快捷键使用\n\n\n快捷键\n作用\n\n\n\n\n⌘ 数字\n在各 tab 标签直接来回切换i\n\n\n⌘ f\n查找\n\n\n⌘ ;\n自动完成\n\n\n⌘ d\n横着分屏\n\n\n⌘ ⇧ d\n竖着分屏\n\n\n⌘ ⇧ H\n命令历史\n\n\n⌘ ⌥ B\n命令回放\n\n\n⌃ a\n光标移动到行首\n\n\n⌃ e\n光标移动到行末\n\n\n⌃ f\n前移一个字符\n\n\n⌃ b\n后退一个字符\n\n\n⌃ l\n清屏\n\n\n⌃ p\n显示历史命令\n\n\n⌃ r\n倒转查找\n\n\n⌃ d\n删除当前光标的字符\n\n\n⌃ h\n删除光标之前的字符\n\n\n⌃ w\n删除光标之前的单词\n\n\n⌃ k\n删除光标之后整行\n\n\n⌃ u\n清空当前行，无论光标在什么位置\n\n\n\n键位说明：\n\nCommand ⌘\nShift ⇧\nOption ⌥\nControl ⌃\nCaps Lock ⇪Reference：\nhttps://support.apple.com/zh-cn/HT201236\n\n\nGit Log 的优雅写法123456[Added] : 添加的新功能[Changed] : 功能变更[Deprecated] : 不建议使用，未来会删掉[Removed] : 之前不建议使用的功能，这次真的删掉了[Fixed] : 改的bug[Security] : 改的有关安全相关bug\nReference：\n\nhttp://keepachangelog.com/zh-CN/\n\n\niOS 的注释可以写的内容1234567891011121314151617181920212223242526272829303132333435363738394041424344454647/** First line text. Putting \\\\n doesn&apos;t create a new line.\\n One way to create a newline is by making sure nothing is on that line. Not even a single space character! @a Italic text @em with @@a or @@em. @b Bold text with @@b. @p Typewritter font @c with @@p or @@c. Backslashes and must be escaped: C:\\\\foo. And so do @@ signs: user@@example.com Some more text. @brief brief text @attention attention text @author author text @bug bug text @copyright copyright text @date date text @invariant invariant text @note note text @post post text @pre pre text @remarks remarks text @sa sa text @see see text @since since text @todo todo text @version version text @warning warning text @result result text @return return text @returns returns text @code// code textwhile (someCondition) &#123;    NSLog(@&quot;Hello&quot;);    doSomething();&#125;@endcode Last line text. @param param param text @tparam tparam tparam text */- (void)myMethod &#123;&#125;\nReference：\n\nhttp://stackoverflow.com/questions/19168423/what-are-the-new-documentation-commands-available-in-xcode-5\n\n\ntree 命令的用法1234tree -a 显示所有tree -d 仅显示目录tree -L n n代表数字..表示要显示几层...tree -f 显示完整路径..","dateCreated":"2016-05-16T14:11:35+08:00","dateModified":"2017-01-02T18:38:14+08:00","datePublished":"2016-05-16T14:11:35+08:00","description":"\nCocoaPods 的安装和卸载Uninstall: sudo gem uninstall cocoapods -v 0.39.0Install: sudo gem install -n /usr/local/bin cocoapods -v 0.39.0","headline":"日常随手记","image":[],"mainEntityOfPage":{"@type":"WebPage","@id":"http://hilen.github.io/2016/05/16/snip/"},"publisher":{"@type":"Organization","name":"Hilen","sameAs":["https://github.com/","mailto:loktarlai@gmail.com"],"image":"https://gw.alicdn.com/tfs/TB1XyOtdUuF3KVjSZK9XXbVtXXa-328-312.png","logo":{"@type":"ImageObject","url":"https://gw.alicdn.com/tfs/TB1XyOtdUuF3KVjSZK9XXbVtXXa-328-312.png"}},"url":"http://hilen.github.io/2016/05/16/snip/","keywords":"tutorial, tool"}</script>
     <meta name="description" content="CocoaPods 的安装和卸载Uninstall: sudo gem uninstall cocoapods -v 0.39.0Install: sudo gem install -n /usr/local/bin cocoapods -v 0.39.0">
 <meta name="keywords" content="tutorial,tool">
 <meta property="og:type" content="blog">
@@ -31,26 +29,25 @@
         
     
     
-        <meta property="og:image" content="https://gw.alicdn.com/tfs/TB1YReFr1uSBuNjy1XcXXcYjFXa-400-400.jpg"/>
+        <meta property="og:image" content="https://gw.alicdn.com/tfs/TB1XyOtdUuF3KVjSZK9XXbVtXXa-328-312.png"/>
     
     
     
     
     <!--STYLES-->
-    <link rel="stylesheet" href="/assets/css/style-iyf5blgihhzgnb7opvoxogciduirwx4jb55uidwasrcpsbrgylihgd9wdotx.min.css">
+    <link rel="stylesheet" href="/assets/css/all.css">
+    <link rel="stylesheet" href="/assets/css/jquery.fancybox.css">
+    <link rel="stylesheet" href="/assets/css/thumbs.css">
+    <link rel="stylesheet" href="/assets/css/tranquilpeak.css">
     <!--STYLES END-->
     
-    <script type="text/javascript">
-        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
 
-        ga('create', 'UA-69700708-1', 'auto');
-        ga('send', 'pageview');
-    </script>
+    
 
-
+    
+        
+            <link rel="stylesheet" href="/assets/css/gitalk.css">
+        
     
 </head>
 
@@ -76,7 +73,7 @@
                 href="#about">
         
         
-            <img class="header-picture" src="https://gw.alicdn.com/tfs/TB1YReFr1uSBuNjy1XcXXcYjFXa-400-400.jpg" alt="Author&#39;s picture"/>
+            <img class="header-picture" src="https://gw.alicdn.com/tfs/TB1XyOtdUuF3KVjSZK9XXbVtXXa-328-312.png" alt="Author&#39;s picture"/>
         
         </a>
     
@@ -94,11 +91,11 @@
         
             <div class="sidebar-profile">
                 <a href="/#about">
-                    <img class="sidebar-profile-picture" src="https://gw.alicdn.com/tfs/TB1YReFr1uSBuNjy1XcXXcYjFXa-400-400.jpg" alt="Author&#39;s picture"/>
+                    <img class="sidebar-profile-picture" src="https://gw.alicdn.com/tfs/TB1XyOtdUuF3KVjSZK9XXbVtXXa-328-312.png" alt="Author&#39;s picture"/>
                 </a>
                 <h4 class="sidebar-profile-name">Hilen</h4>
                 
-                    <h5 class="sidebar-profile-bio"><p>Hi，我是 Hilen</p>
+                    <h5 class="sidebar-profile-bio"><p>author.bio</p>
 </h5>
                 
             </div>
@@ -114,7 +111,7 @@
                             title="Home"
                         >
                     
-                        <i class="sidebar-button-icon fa fa-lg fa-home" aria-hidden="true"></i>
+                        <i class="sidebar-button-icon fa fa-home" aria-hidden="true"></i>
                         <span class="sidebar-button-desc">Home</span>
                     </a>
             </li>
@@ -127,7 +124,7 @@
                             title="Categories"
                         >
                     
-                        <i class="sidebar-button-icon fa fa-lg fa-bookmark" aria-hidden="true"></i>
+                        <i class="sidebar-button-icon fa fa-bookmark" aria-hidden="true"></i>
                         <span class="sidebar-button-desc">Categories</span>
                     </a>
             </li>
@@ -140,7 +137,7 @@
                             title="Tags"
                         >
                     
-                        <i class="sidebar-button-icon fa fa-lg fa-tags" aria-hidden="true"></i>
+                        <i class="sidebar-button-icon fa fa-tags" aria-hidden="true"></i>
                         <span class="sidebar-button-desc">Tags</span>
                     </a>
             </li>
@@ -153,7 +150,7 @@
                             title="Archives"
                         >
                     
-                        <i class="sidebar-button-icon fa fa-lg fa-archive" aria-hidden="true"></i>
+                        <i class="sidebar-button-icon fa fa-archive" aria-hidden="true"></i>
                         <span class="sidebar-button-desc">Archives</span>
                     </a>
             </li>
@@ -166,7 +163,7 @@
                             title="Search"
                         >
                     
-                        <i class="sidebar-button-icon fa fa-lg fa-search" aria-hidden="true"></i>
+                        <i class="sidebar-button-icon fa fa-search" aria-hidden="true"></i>
                         <span class="sidebar-button-desc">Search</span>
                     </a>
             </li>
@@ -179,7 +176,7 @@
                             title="About"
                         >
                     
-                        <i class="sidebar-button-icon fa fa-lg fa-question" aria-hidden="true"></i>
+                        <i class="sidebar-button-icon fa fa-question" aria-hidden="true"></i>
                         <span class="sidebar-button-desc">About</span>
                     </a>
             </li>
@@ -190,9 +187,9 @@
             
                 <li class="sidebar-button">
                     
-                        <a  class="sidebar-button-link " href="https://github.com/hilen" target="_blank" rel="noopener" title="GitHub">
+                        <a  class="sidebar-button-link " href="https://github.com/" target="_blank" rel="noopener" title="GitHub">
                     
-                        <i class="sidebar-button-icon fa fa-lg fa-github" aria-hidden="true"></i>
+                        <i class="sidebar-button-icon fab fa-github" aria-hidden="true"></i>
                         <span class="sidebar-button-desc">GitHub</span>
                     </a>
             </li>
@@ -201,7 +198,7 @@
                     
                         <a  class="sidebar-button-link " href="mailto:loktarlai@gmail.com" target="_blank" rel="noopener" title="Mail">
                     
-                        <i class="sidebar-button-icon fa fa-lg fa-envelope-o" aria-hidden="true"></i>
+                        <i class="sidebar-button-icon fa fa-envelope" aria-hidden="true"></i>
                         <span class="sidebar-button-desc">Mail</span>
                     </a>
             </li>
@@ -390,6 +387,7 @@
 <h2 id="tree-命令的用法"><a href="#tree-命令的用法" class="headerlink" title="tree 命令的用法"></a>tree 命令的用法</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">tree -a 显示所有</span><br><span class="line">tree -d 仅显示目录</span><br><span class="line">tree -L n n代表数字..表示要显示几层...</span><br><span class="line">tree -f 显示完整路径..</span><br></pre></td></tr></table></figure>
             
 
+
         </div>
     </div>
     <div id="post-footer" class="post-footer main-content-wrap">
@@ -408,7 +406,7 @@
             <li class="post-action">
                 
                     
-                    <a class="post-action-btn btn btn--default tooltip--top" href="/2016/08/10/mantle-extension/" data-tooltip="Mantle 的增强" aria-label="PREVIOUS: Mantle 的增强">
+                    <a class="post-action-btn btn btn--default tooltip--top" href="/2016/05/16/configuration-scheme/" data-tooltip="iOS Build Configuration + Scheme 的使用" aria-label="PREVIOUS: iOS Build Configuration + Scheme 的使用">
                 
                     <i class="fa fa-angle-left" aria-hidden="true"></i>
                     <span class="hide-xs hide-sm text-small icon-ml">PREVIOUS</span>
@@ -417,7 +415,7 @@
             <li class="post-action">
                 
                     
-                    <a class="post-action-btn btn btn--default tooltip--top" href="/2016/05/16/configuration-scheme/" data-tooltip="iOS Build Configuration + Scheme 的使用" aria-label="NEXT: iOS Build Configuration + Scheme 的使用">
+                    <a class="post-action-btn btn btn--default tooltip--top" href="/2016/05/16/tranquilpeak-theme-tutorial/" data-tooltip="Tranquilpeak 主题的使用方法" aria-label="NEXT: Tranquilpeak 主题的使用方法">
                 
                     <span class="hide-xs hide-sm text-small icon-mr">NEXT</span>
                     <i class="fa fa-angle-right" aria-hidden="true"></i>
@@ -436,7 +434,7 @@
             
             <li class="post-action hide-xs">
                 <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://hilen.github.io/2016/05/16/snip/" title="Share on Facebook">
-                    <i class="fa fa-facebook-official" aria-hidden="true"></i>
+                    <i class="fab fa-facebook" aria-hidden="true"></i>
                 </a>
             </li>
         
@@ -444,15 +442,7 @@
             
             <li class="post-action hide-xs">
                 <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=http://hilen.github.io/2016/05/16/snip/" title="Share on Twitter">
-                    <i class="fa fa-twitter" aria-hidden="true"></i>
-                </a>
-            </li>
-        
-            
-            
-            <li class="post-action hide-xs">
-                <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=http://hilen.github.io/2016/05/16/snip/" title="Share on Google+">
-                    <i class="fa fa-google-plus" aria-hidden="true"></i>
+                    <i class="fab fa-twitter" aria-hidden="true"></i>
                 </a>
             </li>
         
@@ -460,15 +450,31 @@
             
             <li class="post-action hide-xs">
                 <a class="post-action-btn btn btn--default" target="new" href="http://service.weibo.com/share/share.php?&amp;title=http://hilen.github.io/2016/05/16/snip/" title="Share on Weibo">
-                    <i class="fa fa-weibo" aria-hidden="true"></i>
+                    <i class="fab fa-weibo" aria-hidden="true"></i>
+                </a>
+            </li>
+        
+            
+            
+            <li class="post-action hide-xs">
+                <a class="post-action-btn btn btn--default" target="new" href="http://connect.qq.com/widget/shareqq/index.html?url=http://hilen.github.io/2016/05/16/snip/&amp;title=日常随手记" title="Share on QQ">
+                    <i class="fab fa-qq" aria-hidden="true"></i>
+                </a>
+            </li>
+        
+            
+            
+            <li class="post-action hide-xs">
+                <a class="post-action-btn btn btn--default" target="new" href="http://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=http://hilen.github.io/2016/05/16/snip/" title="Share on Qzone">
+                    <i class="fa fa-star" aria-hidden="true"></i>
                 </a>
             </li>
         
         
             
                 <li class="post-action">
-                    <a class="post-action-btn btn btn--default" href="#disqus_thread">
-                        <i class="fa fa-comment-o"></i>
+                    <a class="post-action-btn btn btn--default" href="#gitalk">
+                         <i class="fa fa-comment"></i>
                     </a>
                 </li>
             
@@ -487,9 +493,8 @@
         
         
             
-                <div id="disqus_thread">
-    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-</div>
+                <div id="gitalk"></div>
+
             
         
     </div>
@@ -499,7 +504,7 @@
 
                 <footer id="footer" class="main-content-wrap">
     <span class="copyrights">
-        Copyrights &copy; 2018 Hilen. All Rights Reserved.
+        Copyrights &copy; 2019 Hilen. All Rights Reserved.
     </span>
 </footer>
 
@@ -512,7 +517,7 @@
             <li class="post-action">
                 
                     
-                    <a class="post-action-btn btn btn--default tooltip--top" href="/2016/08/10/mantle-extension/" data-tooltip="Mantle 的增强" aria-label="PREVIOUS: Mantle 的增强">
+                    <a class="post-action-btn btn btn--default tooltip--top" href="/2016/05/16/configuration-scheme/" data-tooltip="iOS Build Configuration + Scheme 的使用" aria-label="PREVIOUS: iOS Build Configuration + Scheme 的使用">
                 
                     <i class="fa fa-angle-left" aria-hidden="true"></i>
                     <span class="hide-xs hide-sm text-small icon-ml">PREVIOUS</span>
@@ -521,7 +526,7 @@
             <li class="post-action">
                 
                     
-                    <a class="post-action-btn btn btn--default tooltip--top" href="/2016/05/16/configuration-scheme/" data-tooltip="iOS Build Configuration + Scheme 的使用" aria-label="NEXT: iOS Build Configuration + Scheme 的使用">
+                    <a class="post-action-btn btn btn--default tooltip--top" href="/2016/05/16/tranquilpeak-theme-tutorial/" data-tooltip="Tranquilpeak 主题的使用方法" aria-label="NEXT: Tranquilpeak 主题的使用方法">
                 
                     <span class="hide-xs hide-sm text-small icon-mr">NEXT</span>
                     <i class="fa fa-angle-right" aria-hidden="true"></i>
@@ -540,7 +545,7 @@
             
             <li class="post-action hide-xs">
                 <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://hilen.github.io/2016/05/16/snip/" title="Share on Facebook">
-                    <i class="fa fa-facebook-official" aria-hidden="true"></i>
+                    <i class="fab fa-facebook" aria-hidden="true"></i>
                 </a>
             </li>
         
@@ -548,15 +553,7 @@
             
             <li class="post-action hide-xs">
                 <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=http://hilen.github.io/2016/05/16/snip/" title="Share on Twitter">
-                    <i class="fa fa-twitter" aria-hidden="true"></i>
-                </a>
-            </li>
-        
-            
-            
-            <li class="post-action hide-xs">
-                <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=http://hilen.github.io/2016/05/16/snip/" title="Share on Google+">
-                    <i class="fa fa-google-plus" aria-hidden="true"></i>
+                    <i class="fab fa-twitter" aria-hidden="true"></i>
                 </a>
             </li>
         
@@ -564,15 +561,31 @@
             
             <li class="post-action hide-xs">
                 <a class="post-action-btn btn btn--default" target="new" href="http://service.weibo.com/share/share.php?&amp;title=http://hilen.github.io/2016/05/16/snip/" title="Share on Weibo">
-                    <i class="fa fa-weibo" aria-hidden="true"></i>
+                    <i class="fab fa-weibo" aria-hidden="true"></i>
+                </a>
+            </li>
+        
+            
+            
+            <li class="post-action hide-xs">
+                <a class="post-action-btn btn btn--default" target="new" href="http://connect.qq.com/widget/shareqq/index.html?url=http://hilen.github.io/2016/05/16/snip/&amp;title=日常随手记" title="Share on QQ">
+                    <i class="fab fa-qq" aria-hidden="true"></i>
+                </a>
+            </li>
+        
+            
+            
+            <li class="post-action hide-xs">
+                <a class="post-action-btn btn btn--default" target="new" href="http://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=http://hilen.github.io/2016/05/16/snip/" title="Share on Qzone">
+                    <i class="fa fa-star" aria-hidden="true"></i>
                 </a>
             </li>
         
         
             
                 <li class="post-action">
-                    <a class="post-action-btn btn btn--default" href="#disqus_thread">
-                        <i class="fa fa-comment-o"></i>
+                    <a class="post-action-btn btn btn--default" href="#gitalk">
+                         <i class="fa fa-comment"></i>
                     </a>
                 </li>
             
@@ -589,44 +602,54 @@
 
 
                 </div>
-                <div id="share-options-bar" class="share-options-bar" data-behavior="2">
-    <i id="btn-close-shareoptions" class="fa fa-close"></i>
-    <ul class="share-options">
-        
+                
+    <div id="share-options-bar" class="share-options-bar" data-behavior="2">
+        <i id="btn-close-shareoptions" class="fa fa-times"></i>
+        <ul class="share-options">
             
+                
+                
+                <li class="share-option">
+                    <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://hilen.github.io/2016/05/16/snip/">
+                        <i class="fab fa-facebook" aria-hidden="true"></i><span>Share on Facebook</span>
+                    </a>
+                </li>
             
-            <li class="share-option">
-                <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://hilen.github.io/2016/05/16/snip/">
-                    <i class="fa fa-facebook-official" aria-hidden="true"></i><span>Share on Facebook</span>
-                </a>
-            </li>
-        
+                
+                
+                <li class="share-option">
+                    <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=http://hilen.github.io/2016/05/16/snip/">
+                        <i class="fab fa-twitter" aria-hidden="true"></i><span>Share on Twitter</span>
+                    </a>
+                </li>
             
+                
+                
+                <li class="share-option">
+                    <a class="share-option-btn" target="new" href="http://service.weibo.com/share/share.php?&amp;title=http://hilen.github.io/2016/05/16/snip/">
+                        <i class="fab fa-weibo" aria-hidden="true"></i><span>Share on Weibo</span>
+                    </a>
+                </li>
             
-            <li class="share-option">
-                <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=http://hilen.github.io/2016/05/16/snip/">
-                    <i class="fa fa-twitter" aria-hidden="true"></i><span>Share on Twitter</span>
-                </a>
-            </li>
-        
+                
+                
+                <li class="share-option">
+                    <a class="share-option-btn" target="new" href="http://connect.qq.com/widget/shareqq/index.html?url=http://hilen.github.io/2016/05/16/snip/&amp;title=日常随手记">
+                        <i class="fab fa-qq" aria-hidden="true"></i><span>Share on QQ</span>
+                    </a>
+                </li>
             
+                
+                
+                <li class="share-option">
+                    <a class="share-option-btn" target="new" href="http://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=http://hilen.github.io/2016/05/16/snip/">
+                        <i class="fa fa-star" aria-hidden="true"></i><span>Share on Qzone</span>
+                    </a>
+                </li>
             
-            <li class="share-option">
-                <a class="share-option-btn" target="new" href="https://plus.google.com/share?url=http://hilen.github.io/2016/05/16/snip/">
-                    <i class="fa fa-google-plus" aria-hidden="true"></i><span>Share on Google+</span>
-                </a>
-            </li>
-        
-            
-            
-            <li class="share-option">
-                <a class="share-option-btn" target="new" href="http://service.weibo.com/share/share.php?&amp;title=http://hilen.github.io/2016/05/16/snip/">
-                    <i class="fa fa-weibo" aria-hidden="true"></i><span>Share on Weibo</span>
-                </a>
-            </li>
-        
-    </ul>
-</div>
+        </ul>
+    </div>
+
 
             
         </div>
@@ -640,14 +663,14 @@
 <div id="about">
     <div id="about-card">
         <div id="about-btn-close">
-            <i class="fa fa-remove"></i>
+            <i class="fa fa-times"></i>
         </div>
         
-            <img id="about-card-picture" src="https://gw.alicdn.com/tfs/TB1YReFr1uSBuNjy1XcXXcYjFXa-400-400.jpg" alt="Author&#39;s picture"/>
+            <img id="about-card-picture" src="https://gw.alicdn.com/tfs/TB1XyOtdUuF3KVjSZK9XXbVtXXa-328-312.png" alt="Author&#39;s picture"/>
         
             <h4 id="about-card-name">Hilen</h4>
         
-            <div id="about-card-bio"><p>Hi，我是 Hilen</p>
+            <div id="about-card-bio"><p>author.bio</p>
 </div>
         
         
@@ -660,7 +683,7 @@
         
         
             <div id="about-card-location">
-                <i class="fa fa-map-marker"></i>
+                <i class="fa fa-map-marker-alt"></i>
                 <br/>
                 Hangzhou
             </div>
@@ -670,29 +693,32 @@
 
         
         
-<div id="cover" style="background-image:url('https://gw.alicdn.com/tfs/TB1FPrdr9BYBeNjy0FeXXbnmFXa-2000-1163.jpg');"></div>
+<div id="cover" style="background-image:url('/assets/images/wow.jpg');"></div>
         <!--SCRIPTS-->
-<script src="/assets/js/script-ohioetczfrp0f3mmkfj9rcsdmagaqsxy1pdxbhh7e6dwqofhfw4guyh6fiyg.min.js"></script>
+<script src="/assets/js/jquery.js"></script>
+<script src="/assets/js/jquery.fancybox.js"></script>
+<script src="/assets/js/thumbs.js"></script>
+<script src="/assets/js/tranquilpeak.js"></script>
 <!--SCRIPTS END-->
 
-    
-        <script>
-             var disqus_config = function () {
-                 this.page.url = 'http://hilen.github.io/2016/05/16/snip/';
-                 
-                    this.page.identifier = '2016/05/16/snip/';
-                 
-             };
-            (function() {
-                var d = document, s = d.createElement('script');
-                var disqus_shortname = 'hilen';
-                s.src = '//' + disqus_shortname + '.disqus.com/embed.js';
 
-                s.setAttribute('data-timestamp', +new Date());
-                (d.head || d.body).appendChild(s);
-            })();
+    
+        <script src="/assets/js/gitalk.js"></script>
+        <script type="text/javascript">
+          (function() {
+            new Gitalk({
+              clientID: '80541e9a2b6f4a2e0d7c',
+              clientSecret: '6f312d28e3603e25dc49fc1ef25a3d4b51e2fe09',
+              repo: 'hilen.github.io',
+              owner: 'hilen',
+              admin: ['hilen'],
+              id: '2016/05/16/snip/',
+              ...{"language":"cn","perPage":15,"distractionFreeMode":false,"enableHotKey":true,"pagerDirection":"first"}
+            }).render('gitalk')
+          })()
         </script>
     
+
 
 
 

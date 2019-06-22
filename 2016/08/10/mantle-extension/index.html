@@ -10,10 +10,8 @@
     <meta name="author" content="Hilen">
     
     
-        <link rel="icon" href="http://hilen.github.io/assets/images/favicon.ico">
     
-    
-    <script type="application/ld+json">{"@context":"http://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"Hilen","sameAs":["https://github.com/hilen","mailto:loktarlai@gmail.com"],"image":"https://gw.alicdn.com/tfs/TB1YReFr1uSBuNjy1XcXXcYjFXa-400-400.jpg"},"articleBody":"MantleExtension 是在 Mantle 框架提供的类型转换方法的基础上做了一层增强，为了解决服务端返回的同一个数据但出现不同类型而导致客户端 model 解析异常的问题。它可以并且不用修改 Mantle 的源码。在介绍 MantleExtension 的时候，我们先看来下面这个数据文件：response.json:\n12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455565758&#123;  \"code\": 0,  \"message\": \"success\",  \"data\": [    &#123;      \"message_unread_num\": 3203,   // String      \"userid\": \"3277\",      \"meesage_from_type\": 2,      \"avatar_url\": \"http://tp3.sinaimg.cn/5483505050/180/5751030225/1\",      \"nickname\": \"金宝拉\",      \"last_message\": &#123;        \"message_id\": \"wx1234skjksmsjdfwe234iphone1446696401194\",        \"receive_userid\": \"3277\",        \"send_userid\": \"1333333\"      &#125;,      \"timestamp\":1458019159    &#125;,    &#123;      \"message_unread_num\": 374,  // Int      \"userid\": \"1011\",      \"meesage_from_type\": 1,      \"avatar_url\": [],      \"nickname\": 123123878972,      \"last_message\": &#123;        \"send_userid\": \"187283\",      &#125;,      \"timestamp\":1458119159123    &#125;,    &#123;      \"message_unread_num\": null,   // Null      \"userid\": \"719\",      \"meesage_from_type\": [],      \"avatar_url\": \"http://tp2.sinaimg.cn/2144684673/180/5746266273/1\",      \"nickname\": \"我了个擦\",      \"last_message\": &#123;        \"message_id\": &#123;&#125;,        \"receive_userid\": 719,        \"send_userid\": null      &#125;,      \"timestamp\":\"1458119159\"    &#125;,    &#123;      \"message_unread_num\": 0,      \"userid\": \"3089\",      \"meesage_from_type\": \"1\",      \"avatar_url\": null,      \"nickname\": \"test\",      \"last_message\": &#123;        \"message_id\": \"wx1234skjksmsjdfwe234iphone1454403959249\",        \"receive_userid\": [          3089        ],        \"send_userid\": &#123;&#125;      &#125;,      \"timestamp\":\"哈哈哈\"    &#125;  ]&#125;\nManually，手动进行 JSON/Model 转换上面一段普普通通的 JSON 数据，在通常的业务开发中，我们经常会和 Model 打交道。因为 Objective-C 或者是 Swift 都是强类型语言，所以也许你遇见过类型错误所带来的崩溃问题。如果你仔细看上面的 JSON 数据，你会发现类型几乎都不相同，举个例子：上面 JSON 文件的注释中 // 就是个典型，里面返回的数据类型是完全不一样的。好的，那么接下来针对 data 字段进行解析，转化成 Model。我们姑且认为第一个字典里的数据格式和类型是正常的，好了，然后你的 Model 可能会这么写:（为了解决解析时候崩溃的问题，你可能会用到这个分类 NSDictionary+JKSafeAccess.h）\nexampleobjc12345678910111213141516171819202122232425262728293031@interface TSTestModel : NSObject@property (nonatomic, copy) NSNumber *messageUnreadNumber;@property (nonatomic, copy) NSString *userId;@property (nonatomic, copy) NSNumber *fromType;@property (nonatomic, copy) NSURL *avatarURL;@property (nonatomic, copy) NSString *receiveUserid;@property (nonatomic, copy) NSString *sendUserid;@property (nonatomic, copy) NSDate *timestamp;- (id)initWithDictionary:(NSDictionary *)dict;@end@implementation TSTestModel- (id)initWithDictionary:(NSDictionary *)dict {    self = [super init];    if (self) {        _messageUnreadNumber = [dict jk_integerForKey: \"message_unread_number\"];        _userId = [dict jk_stringForKey: \"user_id\"];        _fromType = [dict jk_integerForKey: \"meesage_from_type\"];        _avatarURL = [dict jk_stringForKey: \"avatar_url\"];        NSDictionary *messageDict = [dict jk_dictionaryForKey: \"last_message\"];        if (messageDict) {            _receiveUserid = [messageDict jk_stringForKey: \"receive_userid\"];            _sendUserid = [messageDict jk_stringForKey: \"send_userid\"];        }        _timestamp = [dict jk_stringForKey: \"timestamp\"];    }    return self;}@end\n大功告成，然后可以愉快的解析啦。但是呢，或许会有些问题：\n\nTSTestModel 的方法 - (id)initWithDictionary:(NSDictionary *)dict可以解析数据。然后如果数据类型出现错误，使用上述方式保证了 Model 解析不会崩溃，但是涉及到业务层的使用，也许就会崩溃了。因为一旦 key 拿不到，NSDictionary+SafeAccess.h 分类返回的都是 nil。\n\n这个 JSON 文件是比较简单的，但是一旦你遇见复杂的 JSON 数据格式，比如这个类型，写 Model 也许会是比较累的一件事情。\n\n层级关系比较复杂的时候，获取最中间的小 model 里面的数据也会变得困难。\n\n那么怎么办呢？\n接下来也许你会考虑使用 Objective-C 强大的 runtime 功能来实现我们的 Model 数据解析，这个思路很赞。现在开源社区也出现了很多类似的库，比如 Mantle，JSONModel，YYModel，FastEasyMapping，MJExtension 等等。具体可以看看 YY 写的这篇文章 里的内容。\nMantle 的使用和源码增强那么每个类库都有它的特点，这里我介绍下 Mantle。使用 Mantle 来写 Model 的时候是这样的：\nexampleobjc12345678910111213141516171819202122@interface TSTestMantleModel : MTLModel&lt;MTLJSONSerializing&gt;@property (nonatomic, copy) NSNumber *messageUnreadNumber;@property (nonatomic, copy) NSString *userId;@property (nonatomic, copy) NSNumber *fromType;@property (nonatomic, copy) NSURL *avatarURL;@property (nonatomic, copy) NSString *receiveUserid;@property (nonatomic, copy) NSString *sendUserid;@property (nonatomic, copy) NSDate *timestamp;@end@implementation TSTestMantleModel+ (NSDictionary *)JSONKeyPathsByPropertyKey {    return @{@\"messageUnreadNumber\": @\"message_unread_num\",             @\"userId\": @\"userid\",             @\"avatarURL\": @\"avatar_url\",             @\"fromType\": @\"meesage_from_type\",             @\"receiveUserid\": @\"last_message.receive_userid\",             @\"sendUserid\": @\"last_message.send_userid\",             @\"timestamp\": @\"timestamp\"};}@end\n这时候当我们使用 Mantle 原生框架的时候，也许你可能会发现针对 response.json 这个数据，依然会出现 crash 问题。比如这样的：\nexampleobjc123456789102016-08-17 13:49:56.557 MantleExtension[55337:10042976] error is:Error Domain=MTLTransformerErrorHandlingErrorDomain Code=1 \"Value did not match expected type\" UserInfo={MTLTransformerErrorHandlingInputValueErrorKey=3277, NSLocalizedDescription=Value did not match expected type, NSLocalizedFailureReason=Expected 3277 to be of class NSString but got __NSCFNumber}2016-08-17 13:49:56.558 MantleExtension[55337:10042976] error is:Error Domain=MTLTransformerErrorHandlingErrorDomain Code=1 \"Could not convert string to URL\" UserInfo={MTLTransformerErrorHandlingInputValueErrorKey=(), NSLocalizedDescription=Could not convert string to URL, NSLocalizedFailureReason=Expected an NSString, got: ().}2016-08-17 13:49:56.558 MantleExtension[55337:10042976] error is:Error Domain=MTLTransformerErrorHandlingErrorDomain Code=1 \"Value did not match expected type\" UserInfo={MTLTransformerErrorHandlingInputValueErrorKey=719, NSLocalizedDescription=Value did not match expected type, NSLocalizedFailureReason=Expected 719 to be of class NSString but got __NSCFNumber}2016-08-17 13:49:56.561 MantleExtension[55337:10042976] error is:Error Domain=MTLTransformerErrorHandlingErrorDomain Code=1 \"Value did not match expected type\" UserInfo={MTLTransformerErrorHandlingInputValueErrorKey=&lt;CFArray 0x7f9ddc128c40 [0x101625a40]&gt;{type = immutable, count = 1, values = (  0 : &lt;CFNumber 0xb00000000000c113 [0x101625a40]&gt;{value = +3089, type = kCFNumberSInt64Type})}, NSLocalizedDescription=Value did not match expected type, NSLocalizedFailureReason=Expected (    3089) to be of class NSString but got __NSCFArray}\n以上出现的 crash 是因为我们所定义的 Model 的类型和服务端返回数据的赋值数据的类型对应不上，那么我们可能需要做一层转换。 所以针对 这个字段，也许我们会加一段这样的代码：\nexampleobjc123456789+ (NSValueTransformer *)messageUnreadNumberJSONTransformer　{    return [MTLValueTransformer transformerUsingForwardBlock:^id(NSNumber *count, BOOL *success, NSError *__autoreleasing *error) {        if ([count isKindOfClass:[NSNumber class]]){            return count;        } else {            return nil;        }    }];}\n以上这种办法是可以解决问题的，但是如果类型错误出现的次数过多，我们是否需要对每个类型都有一个这样的判断呢？这种重复的事情是当然不能交给 Coder 来进行嘛，所以开始阅读 Mantle 源码，在这个过程中发现这么一个函数 MTLJSONAdapter.m line: 364，在函数代码中也对此进行了分析\nexampleobjc1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556575859606162636465666768697071727374757677787980818283848586+ (NSDictionary *)valueTransformersForModelClass:(Class)modelClass {    NSParameterAssert(modelClass != nil);    NSParameterAssert([modelClass conformsToProtocol:@protocol(MTLJSONSerializing)]);    NSMutableDictionary *result = [NSMutableDictionary dictionary];    for (NSString *key in [modelClass propertyKeys]) {        /*      　 第一个方法：寻找“property name +JSONTransformer” 的方法      　比如：如果在 .m　文件里如果实现了这样的方法：        + (NSValueTransformer *)messageUnreadNumberJSONTransformer　{            return [MTLValueTransformer transformerUsingForwardBlock:^id(NSNumber *count, BOOL *success, NSError *__autoreleasing *error) {                if ([count intValue] &gt;= 9) {                    return @9;                } else {                    count = @([count intValue]+1);                    return count;                }            }];        }         */        SEL selector = MTLSelectorWithKeyPattern(key, \"JSONTransformer\");        if ([modelClass respondsToSelector:selector]) {            IMP imp = [modelClass methodForSelector:selector];            NSValueTransformer * (*function)(id, SEL) = (__typeof__(function))imp;            NSValueTransformer *transformer = function(modelClass, selector);            if (transformer != nil) result[key] = transformer;            continue;        }        /*          第二个方法：Mantle 框架本身提供了一个 JSONTransformerForKey 的函数，如果实现了，那么走这个方法里实现的内容         */        if ([modelClass respondsToSelector:@selector(JSONTransformerForKey:)]) {            NSValueTransformer *transformer = [modelClass JSONTransformerForKey:key];            if (transformer != nil) result[key] = transformer;            continue;        }        /*          第三个方法：查找“property type name+JSONTransformer”的方法         比如：框架本身为我们实现了一个这样的方法                  + (NSValueTransformer *)NSURLJSONTransformer {            return [NSValueTransformer valueTransformerForName:MTLURLValueTransformerName];         }         */        objc_property_t property = class_getProperty(modelClass, key.UTF8String);        if (property == NULL) continue;        mtl_propertyAttributes *attributes = mtl_copyPropertyAttributes(property);        @onExit {            free(attributes);        };        NSValueTransformer *transformer = nil;        if (*(attributes-&gt;type) == *(@encode(id))) {            Class propertyClass = attributes-&gt;objectClass;            if (propertyClass != nil) {                transformer = [self transformerForModelPropertiesOfClass:propertyClass];            }            // For user-defined MTLModel, try parse it with dictionaryTransformer.            if (nil == transformer &amp;&amp; [propertyClass conformsToProtocol:@protocol(MTLJSONSerializing)]) {                transformer = [self dictionaryTransformerWithModelClass:propertyClass];            }                        if (transformer == nil) transformer = [NSValueTransformer mtl_validatingTransformerForClass:propertyClass ?: NSObject.class];        } else {            transformer = [self transformerForModelPropertiesOfObjCType:attributes-&gt;type] ?: [NSValueTransformer mtl_validatingTransformerForClass:NSValue.class];        }        if (transformer != nil) result[key] = transformer;    }    return result;}\n根据以上代码的分析。我们发现其实 Mantle 的核心类型转换的代码的流程大约是：1234567891011if &quot;property name + JSONTransformer&quot; 的方法 &#123;    continue;&#125;if JSONTransformerForKey 的方法 &#123;    continue;&#125;if &quot;property type name + JSONTransformer&quot; 的方法 &#123;    continue;&#125;\n我不太明白为什么框架本身仅仅为我们实现了一个 + (NSValueTransformer *)NSURLJSONTransformer 的方法，大可以实现包括 NSString, NSNumber等等这样的函数，后来我和官方联系了下，官方表示这些函数不像 NSURLJSONTransformer 这个比较有通用性。所以留个开发者自己来实现，这样能够比较灵活的控制业务和数据的关系。想想也是这样的，官方既然没有这么干，那么索性我们自己实现咯：1234567+ (NSValueTransformer *)NSStringJSONTransformer;+ (NSValueTransformer *)NSNumberJSONTransformer;+ (NSValueTransformer *)NSDictionaryJSONTransformer;+ (NSValueTransformer *)NSMutableDictionaryJSONTransformer;+ (NSValueTransformer *)NSArrayJSONTransformer;+ (NSValueTransformer *)NSMutableArrayJSONTransformer;+ (NSValueTransformer *)NSDateJSONTransformer;\n对常用的类型进行了保护，避免出现因为类型的错误导致的 Crash。这里建议 int, bool, float 等类型最好使用 NSNumber，如果有兴趣你可以尝试自己添加这些基础类型的 JSONTransformer 函数。那么现在你可以自由自在的使用这些功能了，并且这部分是对源码没有任何侵入式的修改。其中 + (NSValueTransformer *)NSStringJSONTransformer 的实现是这样的：\nexampleobjc12345678910111213141516+ (NSValueTransformer *)NSStringJSONTransformer {    return [MTLValueTransformer transformerUsingForwardBlock:^id(id value, BOOL *success, NSError *__autoreleasing *error) {        if ([value isKindOfClass:[NSString class]]) {            return value;        } else if ([value isKindOfClass:[NSNumber class]]) {            return [value stringValue];        } else if ([value isKindOfClass:[NSDictionary class]] || [value isKindOfClass:[NSArray class]] || !value) {#if DEBUG            NSAssert(value != nil, @\"Type error\");#endif            return [NSNull null];        } else {            return [value stringValue];        }    }];}\n如何使用？\n在 podfile 里添加 Mantle 和 jrswizzle. pod update\n下载 https://github.com/hilen/MantleExtension 源码，把 Source 文件夹的内容添加到工程内\n添加 #import &quot;MantleAdditionHeader.h&quot; 到工程的 .pch 文件里\n\nOne more thing.推荐一款工具:JSONExport，它是一款 Mac App。无论你是 iOS 开发者还是 Android 开发者，它都非常有效的帮助你完成 Model 的建设。上图：\n\nEnjoy.\n","dateCreated":"2016-08-10T15:11:35+08:00","dateModified":"2016-08-17T14:16:13+08:00","datePublished":"2016-08-10T15:11:35+08:00","description":"MantleExtension 是在 Mantle 框架提供的类型转换方法的基础上做了一层增强，为了解决服务端返回的同一个数据但出现不同类型而导致客户端 model 解析异常的问题。它可以并且不用修改 Mantle 的源码。","headline":"Mantle 的增强","image":[],"mainEntityOfPage":{"@type":"WebPage","@id":"http://hilen.github.io/2016/08/10/mantle-extension/"},"publisher":{"@type":"Organization","name":"Hilen","sameAs":["https://github.com/hilen","mailto:loktarlai@gmail.com"],"image":"https://gw.alicdn.com/tfs/TB1YReFr1uSBuNjy1XcXXcYjFXa-400-400.jpg","logo":{"@type":"ImageObject","url":"https://gw.alicdn.com/tfs/TB1YReFr1uSBuNjy1XcXXcYjFXa-400-400.jpg"}},"url":"http://hilen.github.io/2016/08/10/mantle-extension/","keywords":"iOS, Mantle"}</script>
+    <script type="application/ld+json">{"@context":"http://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"Hilen","sameAs":["https://github.com/","mailto:loktarlai@gmail.com"],"image":"https://gw.alicdn.com/tfs/TB1XyOtdUuF3KVjSZK9XXbVtXXa-328-312.png"},"articleBody":"MantleExtension 是在 Mantle 框架提供的类型转换方法的基础上做了一层增强，为了解决服务端返回的同一个数据但出现不同类型而导致客户端 model 解析异常的问题。它可以并且不用修改 Mantle 的源码。在介绍 MantleExtension 的时候，我们先看来下面这个数据文件：response.json:\n12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455565758&#123;  \"code\": 0,  \"message\": \"success\",  \"data\": [    &#123;      \"message_unread_num\": 3203,   // String      \"userid\": \"3277\",      \"meesage_from_type\": 2,      \"avatar_url\": \"http://tp3.sinaimg.cn/5483505050/180/5751030225/1\",      \"nickname\": \"金宝拉\",      \"last_message\": &#123;        \"message_id\": \"wx1234skjksmsjdfwe234iphone1446696401194\",        \"receive_userid\": \"3277\",        \"send_userid\": \"1333333\"      &#125;,      \"timestamp\":1458019159    &#125;,    &#123;      \"message_unread_num\": 374,  // Int      \"userid\": \"1011\",      \"meesage_from_type\": 1,      \"avatar_url\": [],      \"nickname\": 123123878972,      \"last_message\": &#123;        \"send_userid\": \"187283\",      &#125;,      \"timestamp\":1458119159123    &#125;,    &#123;      \"message_unread_num\": null,   // Null      \"userid\": \"719\",      \"meesage_from_type\": [],      \"avatar_url\": \"http://tp2.sinaimg.cn/2144684673/180/5746266273/1\",      \"nickname\": \"我了个擦\",      \"last_message\": &#123;        \"message_id\": &#123;&#125;,        \"receive_userid\": 719,        \"send_userid\": null      &#125;,      \"timestamp\":\"1458119159\"    &#125;,    &#123;      \"message_unread_num\": 0,      \"userid\": \"3089\",      \"meesage_from_type\": \"1\",      \"avatar_url\": null,      \"nickname\": \"test\",      \"last_message\": &#123;        \"message_id\": \"wx1234skjksmsjdfwe234iphone1454403959249\",        \"receive_userid\": [          3089        ],        \"send_userid\": &#123;&#125;      &#125;,      \"timestamp\":\"哈哈哈\"    &#125;  ]&#125;\nManually，手动进行 JSON/Model 转换上面一段普普通通的 JSON 数据，在通常的业务开发中，我们经常会和 Model 打交道。因为 Objective-C 或者是 Swift 都是强类型语言，所以也许你遇见过类型错误所带来的崩溃问题。如果你仔细看上面的 JSON 数据，你会发现类型几乎都不相同，举个例子：上面 JSON 文件的注释中 // 就是个典型，里面返回的数据类型是完全不一样的。好的，那么接下来针对 data 字段进行解析，转化成 Model。我们姑且认为第一个字典里的数据格式和类型是正常的，好了，然后你的 Model 可能会这么写:（为了解决解析时候崩溃的问题，你可能会用到这个分类 NSDictionary+JKSafeAccess.h）\nexampleobjc12345678910111213141516171819202122232425262728293031@interface TSTestModel : NSObject@property (nonatomic, copy) NSNumber *messageUnreadNumber;@property (nonatomic, copy) NSString *userId;@property (nonatomic, copy) NSNumber *fromType;@property (nonatomic, copy) NSURL *avatarURL;@property (nonatomic, copy) NSString *receiveUserid;@property (nonatomic, copy) NSString *sendUserid;@property (nonatomic, copy) NSDate *timestamp;- (id)initWithDictionary:(NSDictionary *)dict;@end@implementation TSTestModel- (id)initWithDictionary:(NSDictionary *)dict {    self = [super init];    if (self) {        _messageUnreadNumber = [dict jk_integerForKey: \"message_unread_number\"];        _userId = [dict jk_stringForKey: \"user_id\"];        _fromType = [dict jk_integerForKey: \"meesage_from_type\"];        _avatarURL = [dict jk_stringForKey: \"avatar_url\"];        NSDictionary *messageDict = [dict jk_dictionaryForKey: \"last_message\"];        if (messageDict) {            _receiveUserid = [messageDict jk_stringForKey: \"receive_userid\"];            _sendUserid = [messageDict jk_stringForKey: \"send_userid\"];        }        _timestamp = [dict jk_stringForKey: \"timestamp\"];    }    return self;}@end\n大功告成，然后可以愉快的解析啦。但是呢，或许会有些问题：\n\nTSTestModel 的方法 - (id)initWithDictionary:(NSDictionary *)dict可以解析数据。然后如果数据类型出现错误，使用上述方式保证了 Model 解析不会崩溃，但是涉及到业务层的使用，也许就会崩溃了。因为一旦 key 拿不到，NSDictionary+SafeAccess.h 分类返回的都是 nil。\n\n这个 JSON 文件是比较简单的，但是一旦你遇见复杂的 JSON 数据格式，比如这个类型，写 Model 也许会是比较累的一件事情。\n\n层级关系比较复杂的时候，获取最中间的小 model 里面的数据也会变得困难。\n\n那么怎么办呢？\n接下来也许你会考虑使用 Objective-C 强大的 runtime 功能来实现我们的 Model 数据解析，这个思路很赞。现在开源社区也出现了很多类似的库，比如 Mantle，JSONModel，YYModel，FastEasyMapping，MJExtension 等等。具体可以看看 YY 写的这篇文章 里的内容。\nMantle 的使用和源码增强那么每个类库都有它的特点，这里我介绍下 Mantle。使用 Mantle 来写 Model 的时候是这样的：\nexampleobjc12345678910111213141516171819202122@interface TSTestMantleModel : MTLModel&lt;MTLJSONSerializing&gt;@property (nonatomic, copy) NSNumber *messageUnreadNumber;@property (nonatomic, copy) NSString *userId;@property (nonatomic, copy) NSNumber *fromType;@property (nonatomic, copy) NSURL *avatarURL;@property (nonatomic, copy) NSString *receiveUserid;@property (nonatomic, copy) NSString *sendUserid;@property (nonatomic, copy) NSDate *timestamp;@end@implementation TSTestMantleModel+ (NSDictionary *)JSONKeyPathsByPropertyKey {    return @{@\"messageUnreadNumber\": @\"message_unread_num\",             @\"userId\": @\"userid\",             @\"avatarURL\": @\"avatar_url\",             @\"fromType\": @\"meesage_from_type\",             @\"receiveUserid\": @\"last_message.receive_userid\",             @\"sendUserid\": @\"last_message.send_userid\",             @\"timestamp\": @\"timestamp\"};}@end\n这时候当我们使用 Mantle 原生框架的时候，也许你可能会发现针对 response.json 这个数据，依然会出现 crash 问题。比如这样的：\nexampleobjc123456789102016-08-17 13:49:56.557 MantleExtension[55337:10042976] error is:Error Domain=MTLTransformerErrorHandlingErrorDomain Code=1 \"Value did not match expected type\" UserInfo={MTLTransformerErrorHandlingInputValueErrorKey=3277, NSLocalizedDescription=Value did not match expected type, NSLocalizedFailureReason=Expected 3277 to be of class NSString but got __NSCFNumber}2016-08-17 13:49:56.558 MantleExtension[55337:10042976] error is:Error Domain=MTLTransformerErrorHandlingErrorDomain Code=1 \"Could not convert string to URL\" UserInfo={MTLTransformerErrorHandlingInputValueErrorKey=(), NSLocalizedDescription=Could not convert string to URL, NSLocalizedFailureReason=Expected an NSString, got: ().}2016-08-17 13:49:56.558 MantleExtension[55337:10042976] error is:Error Domain=MTLTransformerErrorHandlingErrorDomain Code=1 \"Value did not match expected type\" UserInfo={MTLTransformerErrorHandlingInputValueErrorKey=719, NSLocalizedDescription=Value did not match expected type, NSLocalizedFailureReason=Expected 719 to be of class NSString but got __NSCFNumber}2016-08-17 13:49:56.561 MantleExtension[55337:10042976] error is:Error Domain=MTLTransformerErrorHandlingErrorDomain Code=1 \"Value did not match expected type\" UserInfo={MTLTransformerErrorHandlingInputValueErrorKey=&lt;CFArray 0x7f9ddc128c40 [0x101625a40]&gt;{type = immutable, count = 1, values = (  0 : &lt;CFNumber 0xb00000000000c113 [0x101625a40]&gt;{value = +3089, type = kCFNumberSInt64Type})}, NSLocalizedDescription=Value did not match expected type, NSLocalizedFailureReason=Expected (    3089) to be of class NSString but got __NSCFArray}\n以上出现的 crash 是因为我们所定义的 Model 的类型和服务端返回数据的赋值数据的类型对应不上，那么我们可能需要做一层转换。 所以针对 这个字段，也许我们会加一段这样的代码：\nexampleobjc123456789+ (NSValueTransformer *)messageUnreadNumberJSONTransformer　{    return [MTLValueTransformer transformerUsingForwardBlock:^id(NSNumber *count, BOOL *success, NSError *__autoreleasing *error) {        if ([count isKindOfClass:[NSNumber class]]){            return count;        } else {            return nil;        }    }];}\n以上这种办法是可以解决问题的，但是如果类型错误出现的次数过多，我们是否需要对每个类型都有一个这样的判断呢？这种重复的事情是当然不能交给 Coder 来进行嘛，所以开始阅读 Mantle 源码，在这个过程中发现这么一个函数 MTLJSONAdapter.m line: 364，在函数代码中也对此进行了分析\nexampleobjc1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556575859606162636465666768697071727374757677787980818283848586+ (NSDictionary *)valueTransformersForModelClass:(Class)modelClass {    NSParameterAssert(modelClass != nil);    NSParameterAssert([modelClass conformsToProtocol:@protocol(MTLJSONSerializing)]);    NSMutableDictionary *result = [NSMutableDictionary dictionary];    for (NSString *key in [modelClass propertyKeys]) {        /*      　 第一个方法：寻找“property name +JSONTransformer” 的方法      　比如：如果在 .m　文件里如果实现了这样的方法：        + (NSValueTransformer *)messageUnreadNumberJSONTransformer　{            return [MTLValueTransformer transformerUsingForwardBlock:^id(NSNumber *count, BOOL *success, NSError *__autoreleasing *error) {                if ([count intValue] &gt;= 9) {                    return @9;                } else {                    count = @([count intValue]+1);                    return count;                }            }];        }         */        SEL selector = MTLSelectorWithKeyPattern(key, \"JSONTransformer\");        if ([modelClass respondsToSelector:selector]) {            IMP imp = [modelClass methodForSelector:selector];            NSValueTransformer * (*function)(id, SEL) = (__typeof__(function))imp;            NSValueTransformer *transformer = function(modelClass, selector);            if (transformer != nil) result[key] = transformer;            continue;        }        /*          第二个方法：Mantle 框架本身提供了一个 JSONTransformerForKey 的函数，如果实现了，那么走这个方法里实现的内容         */        if ([modelClass respondsToSelector:@selector(JSONTransformerForKey:)]) {            NSValueTransformer *transformer = [modelClass JSONTransformerForKey:key];            if (transformer != nil) result[key] = transformer;            continue;        }        /*          第三个方法：查找“property type name+JSONTransformer”的方法         比如：框架本身为我们实现了一个这样的方法                  + (NSValueTransformer *)NSURLJSONTransformer {            return [NSValueTransformer valueTransformerForName:MTLURLValueTransformerName];         }         */        objc_property_t property = class_getProperty(modelClass, key.UTF8String);        if (property == NULL) continue;        mtl_propertyAttributes *attributes = mtl_copyPropertyAttributes(property);        @onExit {            free(attributes);        };        NSValueTransformer *transformer = nil;        if (*(attributes-&gt;type) == *(@encode(id))) {            Class propertyClass = attributes-&gt;objectClass;            if (propertyClass != nil) {                transformer = [self transformerForModelPropertiesOfClass:propertyClass];            }            // For user-defined MTLModel, try parse it with dictionaryTransformer.            if (nil == transformer &amp;&amp; [propertyClass conformsToProtocol:@protocol(MTLJSONSerializing)]) {                transformer = [self dictionaryTransformerWithModelClass:propertyClass];            }                        if (transformer == nil) transformer = [NSValueTransformer mtl_validatingTransformerForClass:propertyClass ?: NSObject.class];        } else {            transformer = [self transformerForModelPropertiesOfObjCType:attributes-&gt;type] ?: [NSValueTransformer mtl_validatingTransformerForClass:NSValue.class];        }        if (transformer != nil) result[key] = transformer;    }    return result;}\n根据以上代码的分析。我们发现其实 Mantle 的核心类型转换的代码的流程大约是：1234567891011if &quot;property name + JSONTransformer&quot; 的方法 &#123;    continue;&#125;if JSONTransformerForKey 的方法 &#123;    continue;&#125;if &quot;property type name + JSONTransformer&quot; 的方法 &#123;    continue;&#125;\n我不太明白为什么框架本身仅仅为我们实现了一个 + (NSValueTransformer *)NSURLJSONTransformer 的方法，大可以实现包括 NSString, NSNumber等等这样的函数，后来我和官方联系了下，官方表示这些函数不像 NSURLJSONTransformer 这个比较有通用性。所以留个开发者自己来实现，这样能够比较灵活的控制业务和数据的关系。想想也是这样的，官方既然没有这么干，那么索性我们自己实现咯：1234567+ (NSValueTransformer *)NSStringJSONTransformer;+ (NSValueTransformer *)NSNumberJSONTransformer;+ (NSValueTransformer *)NSDictionaryJSONTransformer;+ (NSValueTransformer *)NSMutableDictionaryJSONTransformer;+ (NSValueTransformer *)NSArrayJSONTransformer;+ (NSValueTransformer *)NSMutableArrayJSONTransformer;+ (NSValueTransformer *)NSDateJSONTransformer;\n对常用的类型进行了保护，避免出现因为类型的错误导致的 Crash。这里建议 int, bool, float 等类型最好使用 NSNumber，如果有兴趣你可以尝试自己添加这些基础类型的 JSONTransformer 函数。那么现在你可以自由自在的使用这些功能了，并且这部分是对源码没有任何侵入式的修改。其中 + (NSValueTransformer *)NSStringJSONTransformer 的实现是这样的：\nexampleobjc12345678910111213141516+ (NSValueTransformer *)NSStringJSONTransformer {    return [MTLValueTransformer transformerUsingForwardBlock:^id(id value, BOOL *success, NSError *__autoreleasing *error) {        if ([value isKindOfClass:[NSString class]]) {            return value;        } else if ([value isKindOfClass:[NSNumber class]]) {            return [value stringValue];        } else if ([value isKindOfClass:[NSDictionary class]] || [value isKindOfClass:[NSArray class]] || !value) {#if DEBUG            NSAssert(value != nil, @\"Type error\");#endif            return [NSNull null];        } else {            return [value stringValue];        }    }];}\n如何使用？\n在 podfile 里添加 Mantle 和 jrswizzle. pod update\n下载 https://github.com/hilen/MantleExtension 源码，把 Source 文件夹的内容添加到工程内\n添加 #import &quot;MantleAdditionHeader.h&quot; 到工程的 .pch 文件里\n\nOne more thing.推荐一款工具:JSONExport，它是一款 Mac App。无论你是 iOS 开发者还是 Android 开发者，它都非常有效的帮助你完成 Model 的建设。上图：\n\nEnjoy.\n","dateCreated":"2016-08-10T15:11:35+08:00","dateModified":"2016-08-17T14:16:13+08:00","datePublished":"2016-08-10T15:11:35+08:00","description":"MantleExtension 是在 Mantle 框架提供的类型转换方法的基础上做了一层增强，为了解决服务端返回的同一个数据但出现不同类型而导致客户端 model 解析异常的问题。它可以并且不用修改 Mantle 的源码。","headline":"Mantle 的增强","image":[],"mainEntityOfPage":{"@type":"WebPage","@id":"http://hilen.github.io/2016/08/10/mantle-extension/"},"publisher":{"@type":"Organization","name":"Hilen","sameAs":["https://github.com/","mailto:loktarlai@gmail.com"],"image":"https://gw.alicdn.com/tfs/TB1XyOtdUuF3KVjSZK9XXbVtXXa-328-312.png","logo":{"@type":"ImageObject","url":"https://gw.alicdn.com/tfs/TB1XyOtdUuF3KVjSZK9XXbVtXXa-328-312.png"}},"url":"http://hilen.github.io/2016/08/10/mantle-extension/","keywords":"iOS, Mantle"}</script>
     <meta name="description" content="MantleExtension 是在 Mantle 框架提供的类型转换方法的基础上做了一层增强，为了解决服务端返回的同一个数据但出现不同类型而导致客户端 model 解析异常的问题。它可以并且不用修改 Mantle 的源码。">
 <meta name="keywords" content="iOS,Mantle">
 <meta property="og:type" content="blog">
@@ -33,26 +31,25 @@
         
     
     
-        <meta property="og:image" content="https://gw.alicdn.com/tfs/TB1YReFr1uSBuNjy1XcXXcYjFXa-400-400.jpg"/>
+        <meta property="og:image" content="https://gw.alicdn.com/tfs/TB1XyOtdUuF3KVjSZK9XXbVtXXa-328-312.png"/>
     
     
     
     
     <!--STYLES-->
-    <link rel="stylesheet" href="/assets/css/style-iyf5blgihhzgnb7opvoxogciduirwx4jb55uidwasrcpsbrgylihgd9wdotx.min.css">
+    <link rel="stylesheet" href="/assets/css/all.css">
+    <link rel="stylesheet" href="/assets/css/jquery.fancybox.css">
+    <link rel="stylesheet" href="/assets/css/thumbs.css">
+    <link rel="stylesheet" href="/assets/css/tranquilpeak.css">
     <!--STYLES END-->
     
-    <script type="text/javascript">
-        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
 
-        ga('create', 'UA-69700708-1', 'auto');
-        ga('send', 'pageview');
-    </script>
+    
 
-
+    
+        
+            <link rel="stylesheet" href="/assets/css/gitalk.css">
+        
     
 </head>
 
@@ -78,7 +75,7 @@
                 href="#about">
         
         
-            <img class="header-picture" src="https://gw.alicdn.com/tfs/TB1YReFr1uSBuNjy1XcXXcYjFXa-400-400.jpg" alt="Author&#39;s picture"/>
+            <img class="header-picture" src="https://gw.alicdn.com/tfs/TB1XyOtdUuF3KVjSZK9XXbVtXXa-328-312.png" alt="Author&#39;s picture"/>
         
         </a>
     
@@ -96,11 +93,11 @@
         
             <div class="sidebar-profile">
                 <a href="/#about">
-                    <img class="sidebar-profile-picture" src="https://gw.alicdn.com/tfs/TB1YReFr1uSBuNjy1XcXXcYjFXa-400-400.jpg" alt="Author&#39;s picture"/>
+                    <img class="sidebar-profile-picture" src="https://gw.alicdn.com/tfs/TB1XyOtdUuF3KVjSZK9XXbVtXXa-328-312.png" alt="Author&#39;s picture"/>
                 </a>
                 <h4 class="sidebar-profile-name">Hilen</h4>
                 
-                    <h5 class="sidebar-profile-bio"><p>Hi，我是 Hilen</p>
+                    <h5 class="sidebar-profile-bio"><p>author.bio</p>
 </h5>
                 
             </div>
@@ -116,7 +113,7 @@
                             title="Home"
                         >
                     
-                        <i class="sidebar-button-icon fa fa-lg fa-home" aria-hidden="true"></i>
+                        <i class="sidebar-button-icon fa fa-home" aria-hidden="true"></i>
                         <span class="sidebar-button-desc">Home</span>
                     </a>
             </li>
@@ -129,7 +126,7 @@
                             title="Categories"
                         >
                     
-                        <i class="sidebar-button-icon fa fa-lg fa-bookmark" aria-hidden="true"></i>
+                        <i class="sidebar-button-icon fa fa-bookmark" aria-hidden="true"></i>
                         <span class="sidebar-button-desc">Categories</span>
                     </a>
             </li>
@@ -142,7 +139,7 @@
                             title="Tags"
                         >
                     
-                        <i class="sidebar-button-icon fa fa-lg fa-tags" aria-hidden="true"></i>
+                        <i class="sidebar-button-icon fa fa-tags" aria-hidden="true"></i>
                         <span class="sidebar-button-desc">Tags</span>
                     </a>
             </li>
@@ -155,7 +152,7 @@
                             title="Archives"
                         >
                     
-                        <i class="sidebar-button-icon fa fa-lg fa-archive" aria-hidden="true"></i>
+                        <i class="sidebar-button-icon fa fa-archive" aria-hidden="true"></i>
                         <span class="sidebar-button-desc">Archives</span>
                     </a>
             </li>
@@ -168,7 +165,7 @@
                             title="Search"
                         >
                     
-                        <i class="sidebar-button-icon fa fa-lg fa-search" aria-hidden="true"></i>
+                        <i class="sidebar-button-icon fa fa-search" aria-hidden="true"></i>
                         <span class="sidebar-button-desc">Search</span>
                     </a>
             </li>
@@ -181,7 +178,7 @@
                             title="About"
                         >
                     
-                        <i class="sidebar-button-icon fa fa-lg fa-question" aria-hidden="true"></i>
+                        <i class="sidebar-button-icon fa fa-question" aria-hidden="true"></i>
                         <span class="sidebar-button-desc">About</span>
                     </a>
             </li>
@@ -192,9 +189,9 @@
             
                 <li class="sidebar-button">
                     
-                        <a  class="sidebar-button-link " href="https://github.com/hilen" target="_blank" rel="noopener" title="GitHub">
+                        <a  class="sidebar-button-link " href="https://github.com/" target="_blank" rel="noopener" title="GitHub">
                     
-                        <i class="sidebar-button-icon fa fa-lg fa-github" aria-hidden="true"></i>
+                        <i class="sidebar-button-icon fab fa-github" aria-hidden="true"></i>
                         <span class="sidebar-button-desc">GitHub</span>
                     </a>
             </li>
@@ -203,7 +200,7 @@
                     
                         <a  class="sidebar-button-link " href="mailto:loktarlai@gmail.com" target="_blank" rel="noopener" title="Mail">
                     
-                        <i class="sidebar-button-icon fa fa-lg fa-envelope-o" aria-hidden="true"></i>
+                        <i class="sidebar-button-icon fa fa-envelope" aria-hidden="true"></i>
                         <span class="sidebar-button-desc">Mail</span>
                     </a>
             </li>
@@ -282,10 +279,11 @@
 <li>添加 <code>#import &quot;MantleAdditionHeader.h&quot;</code> 到工程的 <code>.pch</code> 文件里</li>
 </ol>
 <h3 id="One-more-thing"><a href="#One-more-thing" class="headerlink" title="One more thing."></a>One more thing.</h3><p>推荐一款工具:<a href="https://github.com/Ahmed-Ali/JSONExport" target="_blank" rel="noopener">JSONExport</a>，它是一款 Mac App。无论你是 iOS 开发者还是 Android 开发者，它都非常有效的帮助你完成 Model 的建设。上图：</p>
-<div class="figure nocaption" style="width:100%;"><a class="fancybox" href="http://ww1.sinaimg.cn/large/6a011e49gw1f6opkyat3lj21kw14qani.jpg" title="" data-caption="" data-fancybox="default" target="_blank" rel="noopener"><img class="fig-img" src="http://ww1.sinaimg.cn/large/6a011e49gw1f6opkyat3lj21kw14qani.jpg" style="width:100%;height:100%;" alt=""></a></div>
+<div class="figure nocaption" style="width:100%;"><a class="fancybox" href="http://ww1.sinaimg.cn/large/6a011e49gw1f6opkyat3lj21kw14qani.jpg" title data-caption data-fancybox="default" target="_blank" rel="noopener"><img class="fig-img" src="http://ww1.sinaimg.cn/large/6a011e49gw1f6opkyat3lj21kw14qani.jpg" style="width:100%;height:100%;" alt></a></div>
 <p>Enjoy.</p>
 
             
+
 
         </div>
     </div>
@@ -314,7 +312,7 @@
             <li class="post-action">
                 
                     
-                    <a class="post-action-btn btn btn--default tooltip--top" href="/2016/05/16/snip/" data-tooltip="日常随手记" aria-label="NEXT: 日常随手记">
+                    <a class="post-action-btn btn btn--default tooltip--top" href="/2016/05/16/configuration-scheme/" data-tooltip="iOS Build Configuration + Scheme 的使用" aria-label="NEXT: iOS Build Configuration + Scheme 的使用">
                 
                     <span class="hide-xs hide-sm text-small icon-mr">NEXT</span>
                     <i class="fa fa-angle-right" aria-hidden="true"></i>
@@ -333,7 +331,7 @@
             
             <li class="post-action hide-xs">
                 <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://hilen.github.io/2016/08/10/mantle-extension/" title="Share on Facebook">
-                    <i class="fa fa-facebook-official" aria-hidden="true"></i>
+                    <i class="fab fa-facebook" aria-hidden="true"></i>
                 </a>
             </li>
         
@@ -341,15 +339,7 @@
             
             <li class="post-action hide-xs">
                 <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=http://hilen.github.io/2016/08/10/mantle-extension/" title="Share on Twitter">
-                    <i class="fa fa-twitter" aria-hidden="true"></i>
-                </a>
-            </li>
-        
-            
-            
-            <li class="post-action hide-xs">
-                <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=http://hilen.github.io/2016/08/10/mantle-extension/" title="Share on Google+">
-                    <i class="fa fa-google-plus" aria-hidden="true"></i>
+                    <i class="fab fa-twitter" aria-hidden="true"></i>
                 </a>
             </li>
         
@@ -357,15 +347,31 @@
             
             <li class="post-action hide-xs">
                 <a class="post-action-btn btn btn--default" target="new" href="http://service.weibo.com/share/share.php?&amp;title=http://hilen.github.io/2016/08/10/mantle-extension/" title="Share on Weibo">
-                    <i class="fa fa-weibo" aria-hidden="true"></i>
+                    <i class="fab fa-weibo" aria-hidden="true"></i>
+                </a>
+            </li>
+        
+            
+            
+            <li class="post-action hide-xs">
+                <a class="post-action-btn btn btn--default" target="new" href="http://connect.qq.com/widget/shareqq/index.html?url=http://hilen.github.io/2016/08/10/mantle-extension/&amp;title=Mantle 的增强" title="Share on QQ">
+                    <i class="fab fa-qq" aria-hidden="true"></i>
+                </a>
+            </li>
+        
+            
+            
+            <li class="post-action hide-xs">
+                <a class="post-action-btn btn btn--default" target="new" href="http://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=http://hilen.github.io/2016/08/10/mantle-extension/" title="Share on Qzone">
+                    <i class="fa fa-star" aria-hidden="true"></i>
                 </a>
             </li>
         
         
             
                 <li class="post-action">
-                    <a class="post-action-btn btn btn--default" href="#disqus_thread">
-                        <i class="fa fa-comment-o"></i>
+                    <a class="post-action-btn btn btn--default" href="#gitalk">
+                         <i class="fa fa-comment"></i>
                     </a>
                 </li>
             
@@ -384,9 +390,8 @@
         
         
             
-                <div id="disqus_thread">
-    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-</div>
+                <div id="gitalk"></div>
+
             
         
     </div>
@@ -396,7 +401,7 @@
 
                 <footer id="footer" class="main-content-wrap">
     <span class="copyrights">
-        Copyrights &copy; 2018 Hilen. All Rights Reserved.
+        Copyrights &copy; 2019 Hilen. All Rights Reserved.
     </span>
 </footer>
 
@@ -418,7 +423,7 @@
             <li class="post-action">
                 
                     
-                    <a class="post-action-btn btn btn--default tooltip--top" href="/2016/05/16/snip/" data-tooltip="日常随手记" aria-label="NEXT: 日常随手记">
+                    <a class="post-action-btn btn btn--default tooltip--top" href="/2016/05/16/configuration-scheme/" data-tooltip="iOS Build Configuration + Scheme 的使用" aria-label="NEXT: iOS Build Configuration + Scheme 的使用">
                 
                     <span class="hide-xs hide-sm text-small icon-mr">NEXT</span>
                     <i class="fa fa-angle-right" aria-hidden="true"></i>
@@ -437,7 +442,7 @@
             
             <li class="post-action hide-xs">
                 <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://hilen.github.io/2016/08/10/mantle-extension/" title="Share on Facebook">
-                    <i class="fa fa-facebook-official" aria-hidden="true"></i>
+                    <i class="fab fa-facebook" aria-hidden="true"></i>
                 </a>
             </li>
         
@@ -445,15 +450,7 @@
             
             <li class="post-action hide-xs">
                 <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=http://hilen.github.io/2016/08/10/mantle-extension/" title="Share on Twitter">
-                    <i class="fa fa-twitter" aria-hidden="true"></i>
-                </a>
-            </li>
-        
-            
-            
-            <li class="post-action hide-xs">
-                <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=http://hilen.github.io/2016/08/10/mantle-extension/" title="Share on Google+">
-                    <i class="fa fa-google-plus" aria-hidden="true"></i>
+                    <i class="fab fa-twitter" aria-hidden="true"></i>
                 </a>
             </li>
         
@@ -461,15 +458,31 @@
             
             <li class="post-action hide-xs">
                 <a class="post-action-btn btn btn--default" target="new" href="http://service.weibo.com/share/share.php?&amp;title=http://hilen.github.io/2016/08/10/mantle-extension/" title="Share on Weibo">
-                    <i class="fa fa-weibo" aria-hidden="true"></i>
+                    <i class="fab fa-weibo" aria-hidden="true"></i>
+                </a>
+            </li>
+        
+            
+            
+            <li class="post-action hide-xs">
+                <a class="post-action-btn btn btn--default" target="new" href="http://connect.qq.com/widget/shareqq/index.html?url=http://hilen.github.io/2016/08/10/mantle-extension/&amp;title=Mantle 的增强" title="Share on QQ">
+                    <i class="fab fa-qq" aria-hidden="true"></i>
+                </a>
+            </li>
+        
+            
+            
+            <li class="post-action hide-xs">
+                <a class="post-action-btn btn btn--default" target="new" href="http://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=http://hilen.github.io/2016/08/10/mantle-extension/" title="Share on Qzone">
+                    <i class="fa fa-star" aria-hidden="true"></i>
                 </a>
             </li>
         
         
             
                 <li class="post-action">
-                    <a class="post-action-btn btn btn--default" href="#disqus_thread">
-                        <i class="fa fa-comment-o"></i>
+                    <a class="post-action-btn btn btn--default" href="#gitalk">
+                         <i class="fa fa-comment"></i>
                     </a>
                 </li>
             
@@ -486,44 +499,54 @@
 
 
                 </div>
-                <div id="share-options-bar" class="share-options-bar" data-behavior="2">
-    <i id="btn-close-shareoptions" class="fa fa-close"></i>
-    <ul class="share-options">
-        
+                
+    <div id="share-options-bar" class="share-options-bar" data-behavior="2">
+        <i id="btn-close-shareoptions" class="fa fa-times"></i>
+        <ul class="share-options">
             
+                
+                
+                <li class="share-option">
+                    <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://hilen.github.io/2016/08/10/mantle-extension/">
+                        <i class="fab fa-facebook" aria-hidden="true"></i><span>Share on Facebook</span>
+                    </a>
+                </li>
             
-            <li class="share-option">
-                <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://hilen.github.io/2016/08/10/mantle-extension/">
-                    <i class="fa fa-facebook-official" aria-hidden="true"></i><span>Share on Facebook</span>
-                </a>
-            </li>
-        
+                
+                
+                <li class="share-option">
+                    <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=http://hilen.github.io/2016/08/10/mantle-extension/">
+                        <i class="fab fa-twitter" aria-hidden="true"></i><span>Share on Twitter</span>
+                    </a>
+                </li>
             
+                
+                
+                <li class="share-option">
+                    <a class="share-option-btn" target="new" href="http://service.weibo.com/share/share.php?&amp;title=http://hilen.github.io/2016/08/10/mantle-extension/">
+                        <i class="fab fa-weibo" aria-hidden="true"></i><span>Share on Weibo</span>
+                    </a>
+                </li>
             
-            <li class="share-option">
-                <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=http://hilen.github.io/2016/08/10/mantle-extension/">
-                    <i class="fa fa-twitter" aria-hidden="true"></i><span>Share on Twitter</span>
-                </a>
-            </li>
-        
+                
+                
+                <li class="share-option">
+                    <a class="share-option-btn" target="new" href="http://connect.qq.com/widget/shareqq/index.html?url=http://hilen.github.io/2016/08/10/mantle-extension/&amp;title=Mantle 的增强">
+                        <i class="fab fa-qq" aria-hidden="true"></i><span>Share on QQ</span>
+                    </a>
+                </li>
             
+                
+                
+                <li class="share-option">
+                    <a class="share-option-btn" target="new" href="http://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=http://hilen.github.io/2016/08/10/mantle-extension/">
+                        <i class="fa fa-star" aria-hidden="true"></i><span>Share on Qzone</span>
+                    </a>
+                </li>
             
-            <li class="share-option">
-                <a class="share-option-btn" target="new" href="https://plus.google.com/share?url=http://hilen.github.io/2016/08/10/mantle-extension/">
-                    <i class="fa fa-google-plus" aria-hidden="true"></i><span>Share on Google+</span>
-                </a>
-            </li>
-        
-            
-            
-            <li class="share-option">
-                <a class="share-option-btn" target="new" href="http://service.weibo.com/share/share.php?&amp;title=http://hilen.github.io/2016/08/10/mantle-extension/">
-                    <i class="fa fa-weibo" aria-hidden="true"></i><span>Share on Weibo</span>
-                </a>
-            </li>
-        
-    </ul>
-</div>
+        </ul>
+    </div>
+
 
             
         </div>
@@ -537,14 +560,14 @@
 <div id="about">
     <div id="about-card">
         <div id="about-btn-close">
-            <i class="fa fa-remove"></i>
+            <i class="fa fa-times"></i>
         </div>
         
-            <img id="about-card-picture" src="https://gw.alicdn.com/tfs/TB1YReFr1uSBuNjy1XcXXcYjFXa-400-400.jpg" alt="Author&#39;s picture"/>
+            <img id="about-card-picture" src="https://gw.alicdn.com/tfs/TB1XyOtdUuF3KVjSZK9XXbVtXXa-328-312.png" alt="Author&#39;s picture"/>
         
             <h4 id="about-card-name">Hilen</h4>
         
-            <div id="about-card-bio"><p>Hi，我是 Hilen</p>
+            <div id="about-card-bio"><p>author.bio</p>
 </div>
         
         
@@ -557,7 +580,7 @@
         
         
             <div id="about-card-location">
-                <i class="fa fa-map-marker"></i>
+                <i class="fa fa-map-marker-alt"></i>
                 <br/>
                 Hangzhou
             </div>
@@ -567,29 +590,32 @@
 
         
         
-<div id="cover" style="background-image:url('https://gw.alicdn.com/tfs/TB1FPrdr9BYBeNjy0FeXXbnmFXa-2000-1163.jpg');"></div>
+<div id="cover" style="background-image:url('/assets/images/wow.jpg');"></div>
         <!--SCRIPTS-->
-<script src="/assets/js/script-ohioetczfrp0f3mmkfj9rcsdmagaqsxy1pdxbhh7e6dwqofhfw4guyh6fiyg.min.js"></script>
+<script src="/assets/js/jquery.js"></script>
+<script src="/assets/js/jquery.fancybox.js"></script>
+<script src="/assets/js/thumbs.js"></script>
+<script src="/assets/js/tranquilpeak.js"></script>
 <!--SCRIPTS END-->
 
-    
-        <script>
-             var disqus_config = function () {
-                 this.page.url = 'http://hilen.github.io/2016/08/10/mantle-extension/';
-                 
-                    this.page.identifier = '2016/08/10/mantle-extension/';
-                 
-             };
-            (function() {
-                var d = document, s = d.createElement('script');
-                var disqus_shortname = 'hilen';
-                s.src = '//' + disqus_shortname + '.disqus.com/embed.js';
 
-                s.setAttribute('data-timestamp', +new Date());
-                (d.head || d.body).appendChild(s);
-            })();
+    
+        <script src="/assets/js/gitalk.js"></script>
+        <script type="text/javascript">
+          (function() {
+            new Gitalk({
+              clientID: '80541e9a2b6f4a2e0d7c',
+              clientSecret: '6f312d28e3603e25dc49fc1ef25a3d4b51e2fe09',
+              repo: 'hilen.github.io',
+              owner: 'hilen',
+              admin: ['hilen'],
+              id: '2016/08/10/mantle-extension/',
+              ...{"language":"cn","perPage":15,"distractionFreeMode":false,"enableHotKey":true,"pagerDirection":"first"}
+            }).render('gitalk')
+          })()
         </script>
     
+
 
 
 

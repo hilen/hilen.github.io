@@ -13,7 +13,7 @@
     
     
     
-    <script type="application/ld+json">{"@context":"http://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"Hilen","sameAs":["https://github.com/","mailto:loktarlai@gmail.com"],"image":"https://gw.alicdn.com/tfs/TB1XyOtdUuF3KVjSZK9XXbVtXXa-328-312.png"},"articleBody":"Sublime Text 是一个代码编辑器。Sublime Text 是由程序员 Jon Skinner 于 2008 年 1 月份所开发出来，它最初被设计为一个具有丰富扩展功能的 Vim。它具有漂亮的用户界面和强大的功能，例如代码缩略图，Python 的插件，代码段等。还可自定义键绑定，菜单和工具栏等等内容。\n\n安装从 https://www.sublimetext.com/3 下载并且拖拽到 Application 文件夹内。\nSublime Text 比较强大的就是它的插件了，那么这里就要提到 Package Control 这个插件管理包了。安装方法： 使用 Ctrl + ` 快捷键或者通过 View -&gt; Show Console 菜单打开命令行。然后输入\n1import urllib.request,os,hashlib; h = &apos;df21e130d211cfc94d9b0905775a7c0f&apos; + &apos;1e3d39e33b79698005270310898eea76&apos;; pf = &apos;Package Control.sublime-package&apos;; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); by = urllib.request.urlopen( &apos;http://packagecontrol.io/&apos; + pf.replace(&apos; &apos;, &apos;%20&apos;)).read(); dh = hashlib.sha256(by).hexdigest(); print(&apos;Error validating download (got %s instead of %s), please try manual install&apos; % (dh, h)) if dh != h else open(os.path.join( ipp, pf), &apos;wb&apos; ).write(by)\n以上内容在 https://packagecontrol.io/installation 可以找到，最好以官方为准。\n使用打开 ⌘ + shift + p  打开，你会看到这样一个界面。那么恭喜你，安装成功。\n配置123456789101112131415161718192021222324252627282930313233343536373839404142434445&#123;\t// 代码提示\t&quot;auto_complete&quot;: true,\t// 设置光标闪动方式,&quot;smooth&quot;, &quot;phase&quot;, &quot;blink&quot;, &quot;wide&quot;,&quot;solid&quot;.\t&quot;caret_style&quot;: &quot;wide&quot;,\t&quot;default_encoding&quot;: &quot;UTF-8&quot;,\t// 每一行结束的时候用什么字符做终止符\t&quot;default_line_ending&quot;: &quot;system&quot;,\t&quot;default_new_file_syntax&quot;: &quot;Packages/Text/Objective-C.tmLanguage&quot;,\t// 是否显示代码折叠按钮\t&quot;fold_buttons&quot;: true,\t&quot;font_face&quot;: &quot;Monaco&quot;,\t&quot;font_size&quot;: 16.0,\t&quot;ignored_packages&quot;:\t[\t\t&quot;Vintage&quot;\t],\t&quot;highlight_line&quot;: true,   &quot;highlight_modified_tabs&quot;: true,\t&quot;line_numbers&quot;: true,\t&quot;line_padding_bottom&quot;: 1,\t&quot;line_padding_top&quot;: 1,\t&quot;soda_folder_icons&quot;: true,\t&quot;tab_size&quot;: 4,\t//主题相关\t&quot;theme&quot;: &quot;Soda Dark 3.sublime-theme&quot;,\t// 为true时，保存文件时会删除每行结束后多余的空格\t&quot;trim_trailing_white_space_on_save&quot;: true,\t&quot;use_current_file_syntax&quot;: true,\t&quot;word_wrap&quot;: true,\t&quot;update_check&quot;: false&#125;\n主题\nSoda\n\n插件\nMarkdown\nPlainTasks:\nSideBarEnhancements\nMarkdown Preview\n代码提示插件 SublimeCodeIntel\nGitGutter: A Sublime Text 2/3 plugin to see git diff in gutter\n\nReference\nSublimeText3常用快捷键和优秀插件（亲测） - manfredHu - 博客园\n\n","dateCreated":"2016-10-12T10:37:29+08:00","dateModified":"2016-11-22T20:48:57+08:00","datePublished":"2016-10-12T10:37:29+08:00","description":"Sublime Text 是一个代码编辑器。Sublime Text 是由程序员 Jon Skinner 于 2008 年 1 月份所开发出来，它最初被设计为一个具有丰富扩展功能的 Vim。它具有漂亮的用户界面和强大的功能，例如代码缩略图，Python 的插件，代码段等。还可自定义键绑定，菜单和工具栏等等内容。","headline":"Sublime Text 3 配置","image":[],"mainEntityOfPage":{"@type":"WebPage","@id":"http://hilen.github.io/2016/10/12/sublime-config/"},"publisher":{"@type":"Organization","name":"Hilen","sameAs":["https://github.com/","mailto:loktarlai@gmail.com"],"image":"https://gw.alicdn.com/tfs/TB1XyOtdUuF3KVjSZK9XXbVtXXa-328-312.png","logo":{"@type":"ImageObject","url":"https://gw.alicdn.com/tfs/TB1XyOtdUuF3KVjSZK9XXbVtXXa-328-312.png"}},"url":"http://hilen.github.io/2016/10/12/sublime-config/","keywords":"tutorial"}</script>
+    <script type="application/ld+json">{"@context":"http://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"Hilen","sameAs":["https://github.com/","mailto:loktarlai@gmail.com"],"image":"https://gw.alicdn.com/tfs/TB1XyOtdUuF3KVjSZK9XXbVtXXa-328-312.png"},"articleBody":"Sublime Text 是一个代码编辑器。Sublime Text 是由程序员 Jon Skinner 于 2008 年 1 月份所开发出来，它最初被设计为一个具有丰富扩展功能的 Vim。它具有漂亮的用户界面和强大的功能，例如代码缩略图，Python 的插件，代码段等。还可自定义键绑定，菜单和工具栏等等内容。\n\n安装从 https://www.sublimetext.com/3 下载并且拖拽到 Application 文件夹内。\nSublime Text 比较强大的就是它的插件了，那么这里就要提到 Package Control 这个插件管理包了。安装方法： 使用 Ctrl + ` 快捷键或者通过 View -&gt; Show Console 菜单打开命令行。然后输入\n1import urllib.request,os,hashlib; h = &apos;df21e130d211cfc94d9b0905775a7c0f&apos; + &apos;1e3d39e33b79698005270310898eea76&apos;; pf = &apos;Package Control.sublime-package&apos;; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); by = urllib.request.urlopen( &apos;http://packagecontrol.io/&apos; + pf.replace(&apos; &apos;, &apos;%20&apos;)).read(); dh = hashlib.sha256(by).hexdigest(); print(&apos;Error validating download (got %s instead of %s), please try manual install&apos; % (dh, h)) if dh != h else open(os.path.join( ipp, pf), &apos;wb&apos; ).write(by)\n以上内容在 https://packagecontrol.io/installation 可以找到，最好以官方为准。\n使用打开 ⌘ + shift + p  打开，你会看到这样一个界面。那么恭喜你，安装成功。\n配置123456789101112131415161718192021222324252627282930313233343536373839404142434445&#123;\t// 代码提示\t&quot;auto_complete&quot;: true,\t// 设置光标闪动方式,&quot;smooth&quot;, &quot;phase&quot;, &quot;blink&quot;, &quot;wide&quot;,&quot;solid&quot;.\t&quot;caret_style&quot;: &quot;wide&quot;,\t&quot;default_encoding&quot;: &quot;UTF-8&quot;,\t// 每一行结束的时候用什么字符做终止符\t&quot;default_line_ending&quot;: &quot;system&quot;,\t&quot;default_new_file_syntax&quot;: &quot;Packages/Text/Objective-C.tmLanguage&quot;,\t// 是否显示代码折叠按钮\t&quot;fold_buttons&quot;: true,\t&quot;font_face&quot;: &quot;Monaco&quot;,\t&quot;font_size&quot;: 16.0,\t&quot;ignored_packages&quot;:\t[\t\t&quot;Vintage&quot;\t],\t&quot;highlight_line&quot;: true,   &quot;highlight_modified_tabs&quot;: true,\t&quot;line_numbers&quot;: true,\t&quot;line_padding_bottom&quot;: 1,\t&quot;line_padding_top&quot;: 1,\t&quot;soda_folder_icons&quot;: true,\t&quot;tab_size&quot;: 4,\t//主题相关\t&quot;theme&quot;: &quot;Soda Dark 3.sublime-theme&quot;,\t// 为true时，保存文件时会删除每行结束后多余的空格\t&quot;trim_trailing_white_space_on_save&quot;: true,\t&quot;use_current_file_syntax&quot;: true,\t&quot;word_wrap&quot;: true,\t&quot;update_check&quot;: false&#125;\n主题\nSoda\n\n插件\nMarkdown\nPlainTasks:\nSideBarEnhancements\nMarkdown Preview\n代码提示插件 SublimeCodeIntel\nGitGutter: A Sublime Text 2/3 plugin to see git diff in gutter\n\nReference\nSublimeText3常用快捷键和优秀插件（亲测） - manfredHu - 博客园\n\n","dateCreated":"2016-10-12T10:37:29+08:00","dateModified":"2019-06-22T20:10:39+08:00","datePublished":"2016-10-12T10:37:29+08:00","description":"Sublime Text 是一个代码编辑器。Sublime Text 是由程序员 Jon Skinner 于 2008 年 1 月份所开发出来，它最初被设计为一个具有丰富扩展功能的 Vim。它具有漂亮的用户界面和强大的功能，例如代码缩略图，Python 的插件，代码段等。还可自定义键绑定，菜单和工具栏等等内容。","headline":"Sublime Text 3 配置","image":["https://gw.alicdn.com/tfs/TB1io_Ya2Bj_uVjSZFpXXc0SXXa-400-400.png"],"mainEntityOfPage":{"@type":"WebPage","@id":"http://hilen.github.io/2016/10/12/sublime-config/"},"publisher":{"@type":"Organization","name":"Hilen","sameAs":["https://github.com/","mailto:loktarlai@gmail.com"],"image":"https://gw.alicdn.com/tfs/TB1XyOtdUuF3KVjSZK9XXbVtXXa-328-312.png","logo":{"@type":"ImageObject","url":"https://gw.alicdn.com/tfs/TB1XyOtdUuF3KVjSZK9XXbVtXXa-328-312.png"}},"url":"http://hilen.github.io/2016/10/12/sublime-config/","keywords":"tutorial","thumbnailUrl":"https://gw.alicdn.com/tfs/TB1io_Ya2Bj_uVjSZFpXXc0SXXa-400-400.png"}</script>
     <meta name="description" content="Sublime Text 是一个代码编辑器。Sublime Text 是由程序员 Jon Skinner 于 2008 年 1 月份所开发出来，它最初被设计为一个具有丰富扩展功能的 Vim。它具有漂亮的用户界面和强大的功能，例如代码缩略图，Python 的插件，代码段等。还可自定义键绑定，菜单和工具栏等等内容。">
 <meta name="keywords" content="Sublime Text">
 <meta property="og:type" content="blog">
@@ -23,7 +23,7 @@
 <meta property="og:description" content="Sublime Text 是一个代码编辑器。Sublime Text 是由程序员 Jon Skinner 于 2008 年 1 月份所开发出来，它最初被设计为一个具有丰富扩展功能的 Vim。它具有漂亮的用户界面和强大的功能，例如代码缩略图，Python 的插件，代码段等。还可自定义键绑定，菜单和工具栏等等内容。">
 <meta property="og:locale" content="en">
 <meta property="og:image" content="http://ww1.sinaimg.cn/large/6a011e49gw1f8paq3el2uj21ao104agz.jpg">
-<meta property="og:updated_time" content="2016-11-22T12:48:57.000Z">
+<meta property="og:updated_time" content="2019-06-22T12:10:39.684Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Sublime Text 3 配置">
 <meta name="twitter:description" content="Sublime Text 是一个代码编辑器。Sublime Text 是由程序员 Jon Skinner 于 2008 年 1 月份所开发出来，它最初被设计为一个具有丰富扩展功能的 Vim。它具有漂亮的用户界面和强大的功能，例如代码缩略图，Python 的插件，代码段等。还可自定义键绑定，菜单和工具栏等等内容。">
@@ -36,13 +36,13 @@
         <meta property="og:image" content="https://gw.alicdn.com/tfs/TB1XyOtdUuF3KVjSZK9XXbVtXXa-328-312.png"/>
     
     
+        <meta property="og:image" content="https://gw.alicdn.com/tfs/TB1io_Ya2Bj_uVjSZFpXXc0SXXa-400-400.png"/>
+        <meta class="swiftype" name="image" data-type="enum" content="https://gw.alicdn.com/tfs/TB1io_Ya2Bj_uVjSZFpXXc0SXXa-400-400.png"/>
+    
     
     
     <!--STYLES-->
-    <link rel="stylesheet" href="/assets/css/all.css">
-    <link rel="stylesheet" href="/assets/css/jquery.fancybox.css">
-    <link rel="stylesheet" href="/assets/css/thumbs.css">
-    <link rel="stylesheet" href="/assets/css/tranquilpeak.css">
+    <link rel="stylesheet" href="/assets/css/style-prlyw8bljh8adlaqd7mmrnnm0dcfu8pyxokklesb2r4hd81gecp0zls5qd81.min.css">
     <!--STYLES END-->
     
 
@@ -175,7 +175,7 @@
                 <li class="sidebar-button">
                     
                         <a  class="sidebar-button-link "
-                             href="#about"
+                             href="/about"
                             
                             title="About"
                         >
@@ -580,12 +580,9 @@
 
         
         
-<div id="cover" style="background-image:url('/assets/images/wow.jpg');"></div>
+<div id="cover" style="background-image:url('https://gw.alicdn.com/tfs/TB1mgqqdL1H3KVjSZFBXXbSMXXa-2000-1163.jpg');"></div>
         <!--SCRIPTS-->
-<script src="/assets/js/jquery.js"></script>
-<script src="/assets/js/jquery.fancybox.js"></script>
-<script src="/assets/js/thumbs.js"></script>
-<script src="/assets/js/tranquilpeak.js"></script>
+<script src="/assets/js/script-vjjrmgwekmcye8xbyjq3dxzidv9bmuiamqa3ng5kwhnv1zegl99krcvvbkio.min.js"></script>
 <!--SCRIPTS END-->
 
 

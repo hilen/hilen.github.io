@@ -13,7 +13,7 @@
     
     
     
-    <script type="application/ld+json">{"@context":"http://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"Hilen","sameAs":["https://github.com/","mailto:loktarlai@gmail.com"],"image":"https://gw.alicdn.com/tfs/TB1XyOtdUuF3KVjSZK9XXbVtXXa-328-312.png"},"articleBody":"在日常的 iOS 开发中，我们经常会使用到不同的网络环境切换问题，比如：\n\n\nQA 需要你给出一个带有环境切换的功能的安装文件\nApp Store 需要你上传面向用户环境的 Release 的安装文件\n灰度测试的时候又需要你给出带有个别功能的安装文件\n\n面对以上需求，也许你会针对不同的包给出不同的宏定义，比如 #define QA_TEST ,#define APP_STORE, #define GRAY_TEST，然后针对不同的宏定义在里面进行不同的参数修改。但是如果各个业务方来频繁的找你，也许手动的修改这些文件会让你崩溃。\n接下来提供一个解决方案，专门针对这种不同的环境或编译需求使用的无侵入，无修改，无痛的三无解决方案。名字叫：Build Configuration + Scheme\n关于 Build Configuration 的官方解释。关于 Scheme 的官方解释。\n接下来的步骤可以实现上面所描述的功能。\n1. 添加不同的 Configuration在 Project -&gt; Info -&gt; Configuration 里，复制一个\n2. 设置 Preprocessor Macros在 Target -&gt; Build Settings -&gt; Preprocessor Macros 里添加自己的宏，比如你可以这样：\n3. 可以畅快的使用了接下来在你的代码中可以随便使用了\n1234567#ifdef DEBUG    NSLog(@\"Debug\");##endif#ifdef TEST    NSLog(@\"Test\");##endif\n\n4. 选择你要的 Scheme\nEnjoy\nReference：\n\nhttps://developer.apple.com/library/ios/recipes/xcode_help-project_editor/Articles/BasingBuildConfigurationsonConfigurationFiles.html\n\n","dateCreated":"2016-05-16T14:11:35+08:00","dateModified":"2016-10-24T17:54:19+08:00","datePublished":"2016-05-16T14:11:35+08:00","description":"在日常的 iOS 开发中，我们经常会使用到不同的网络环境切换问题，比如：","headline":"iOS Build Configuration + Scheme 的使用","image":[],"mainEntityOfPage":{"@type":"WebPage","@id":"http://hilen.github.io/2016/05/16/configuration-scheme/"},"publisher":{"@type":"Organization","name":"Hilen","sameAs":["https://github.com/","mailto:loktarlai@gmail.com"],"image":"https://gw.alicdn.com/tfs/TB1XyOtdUuF3KVjSZK9XXbVtXXa-328-312.png","logo":{"@type":"ImageObject","url":"https://gw.alicdn.com/tfs/TB1XyOtdUuF3KVjSZK9XXbVtXXa-328-312.png"}},"url":"http://hilen.github.io/2016/05/16/configuration-scheme/","keywords":"tutorial, iOS"}</script>
+    <script type="application/ld+json">{"@context":"http://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"Hilen","sameAs":["https://github.com/hilen","mailto:laihailong@hotmail.com"],"image":"https://gw.alicdn.com/tfs/TB1XyOtdUuF3KVjSZK9XXbVtXXa-328-312.png"},"articleBody":"在日常的 iOS 开发中，我们经常会使用到不同的网络环境切换问题，比如：\n\n\nQA 需要你给出一个带有环境切换的功能的安装文件\nApp Store 需要你上传面向用户环境的 Release 的安装文件\n灰度测试的时候又需要你给出带有个别功能的安装文件\n\n面对以上需求，也许你会针对不同的包给出不同的宏定义，比如 #define QA_TEST ,#define APP_STORE, #define GRAY_TEST，然后针对不同的宏定义在里面进行不同的参数修改。但是如果各个业务方来频繁的找你，也许手动的修改这些文件会让你崩溃。\n接下来提供一个解决方案，专门针对这种不同的环境或编译需求使用的无侵入，无修改，无痛的三无解决方案。名字叫：Build Configuration + Scheme\n关于 Build Configuration 的官方解释。关于 Scheme 的官方解释。\n接下来的步骤可以实现上面所描述的功能。\n1. 添加不同的 Configuration在 Project -&gt; Info -&gt; Configuration 里，复制一个\n2. 设置 Preprocessor Macros在 Target -&gt; Build Settings -&gt; Preprocessor Macros 里添加自己的宏，比如你可以这样：\n3. 可以畅快的使用了接下来在你的代码中可以随便使用了\n1234567#ifdef DEBUG    NSLog(@\"Debug\");##endif#ifdef TEST    NSLog(@\"Test\");##endif\n\n4. 选择你要的 Scheme\nEnjoy\nReference：\n\nhttps://developer.apple.com/library/ios/recipes/xcode_help-project_editor/Articles/BasingBuildConfigurationsonConfigurationFiles.html\n\n","dateCreated":"2016-05-16T14:11:35+08:00","dateModified":"2016-10-24T17:54:19+08:00","datePublished":"2016-05-16T14:11:35+08:00","description":"在日常的 iOS 开发中，我们经常会使用到不同的网络环境切换问题，比如：","headline":"iOS Build Configuration + Scheme 的使用","image":[],"mainEntityOfPage":{"@type":"WebPage","@id":"http://hilen.github.io/2016/05/16/configuration-scheme/"},"publisher":{"@type":"Organization","name":"Hilen","sameAs":["https://github.com/hilen","mailto:laihailong@hotmail.com"],"image":"https://gw.alicdn.com/tfs/TB1XyOtdUuF3KVjSZK9XXbVtXXa-328-312.png","logo":{"@type":"ImageObject","url":"https://gw.alicdn.com/tfs/TB1XyOtdUuF3KVjSZK9XXbVtXXa-328-312.png"}},"url":"http://hilen.github.io/2016/05/16/configuration-scheme/","keywords":"tutorial, iOS"}</script>
     <meta name="description" content="在日常的 iOS 开发中，我们经常会使用到不同的网络环境切换问题，比如：">
 <meta name="keywords" content="Build Configuration,Scheme">
 <meta property="og:type" content="blog">
@@ -42,7 +42,7 @@
     
     
     <!--STYLES-->
-    <link rel="stylesheet" href="/assets/css/style-keiak9bnhfq56rf63tzezbgnxqthksopnaxoazoqrj9brjkfdzqcbuxzocuv.min.css">
+    <link rel="stylesheet" href="/assets/css/style-vbqinavchah6jcimxa37wftwhydi8kc2ftser2fa0eoiv73ho0hbggaqec63.min.css">
     <!--STYLES END-->
     
 
@@ -191,7 +191,7 @@
             
                 <li class="sidebar-button">
                     
-                        <a  class="sidebar-button-link " href="https://github.com/" target="_blank" rel="noopener" title="GitHub">
+                        <a  class="sidebar-button-link " href="https://github.com/hilen" target="_blank" rel="noopener" title="GitHub">
                     
                         <i class="sidebar-button-icon fab fa-github" aria-hidden="true"></i>
                         <span class="sidebar-button-desc">GitHub</span>
@@ -200,7 +200,7 @@
             
                 <li class="sidebar-button">
                     
-                        <a  class="sidebar-button-link " href="mailto:loktarlai@gmail.com" target="_blank" rel="noopener" title="Mail">
+                        <a  class="sidebar-button-link " href="mailto:laihailong@hotmail.com" target="_blank" rel="noopener" title="Mail">
                     
                         <i class="sidebar-button-icon fa fa-envelope" aria-hidden="true"></i>
                         <span class="sidebar-button-desc">Mail</span>
@@ -582,7 +582,7 @@
         
 <div id="cover" style="background-image:url('https://gw.alicdn.com/tfs/TB1mgqqdL1H3KVjSZFBXXbSMXXa-2000-1163.jpg');"></div>
         <!--SCRIPTS-->
-<script src="/assets/js/script-9regiosuwknbd6gt5cd8vh4z0fwjxrusnqiaycs3ukyynnok4omguy8irstu.min.js"></script>
+<script src="/assets/js/script-igzblvgl1l41iig8exswdesnuhryopm3ddgxzqifmyvvtmgnzp5rkhrihgie.min.js"></script>
 <!--SCRIPTS END-->
 
 

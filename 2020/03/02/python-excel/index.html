@@ -1,0 +1,738 @@
+
+<!DOCTYPE html>
+<html lang="en">
+    
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="generator" content="Hilen&#39;s Blog">
+    <title>使用 Python 库来操作 Excel（xlrd 和 xlwt） - Hilen&#39;s Blog</title>
+    <meta name="author" content="Hilen">
+    
+    
+    
+    <script type="application/ld+json">{"@context":"http://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"Hilen","sameAs":["https://github.com/hilen","mailto:laihailong@hotmail.com"],"image":"https://gw.alicdn.com/tfs/TB1XyOtdUuF3KVjSZK9XXbVtXXa-328-312.png"},"articleBody":"前些天，一个朋友咨询我说是否擅长操作 Excel，并且把两个 Excel 的文档发给我了。认真的听了下他的诉求，大致是需要把 A 文档的数据匹配到 B 文档，并且补充到 B 文档里，两个表哥加起来共有 5 万多行的记录，这如果人肉操作怎么着也需要好几个小时。于是我开始着手 Google 看下 python 对于 excel 如果进行操作，现学现卖，最后完工。接下来就记录下这愉快的过程。\n\n需求分析先来看看下这两个表格的内容，A 表格有 4.5w 行，有 40 多列数据， B 表格有 6000 多行，30 多列的数据，需求是 B 表格中有一列 贷款目前状态 的数据来自 A 表，并且会涉及到重复，条件为以身份证筛选，再以姓名为基准做匹配。接下来我会脱敏举例一个 demo 进行说明。A 表格：\n\n\n\n序号\n姓名\n性别\n身份证\n地址\n是否失信\n担保人\n经放人\n借款方式\n贷款状态\n\n\n\n\n0\n张三\n男\nxxxxx\nxxx\nxxx\nxxxxx\nxxx\nxxx\n核销\n\n\n1\n李四\n\nxxxxx\nxxx\nxxx\nxxxxx\nxxx\nxxx\n置换\n\n\n2\n王五\n女\nxxxxx\nxxx\nxxx\nxxxxx\nxxx\nxxx\n核销\n\n\n\nB 表格：\n\n\n\n序号\n姓名\n性别\n身份证\n地址\n是否失信\n贷款状态\n\n\n\n\n0\n赵六\n男\nxxxxx\nxxx\nxxx\n???\n\n\n1\n张三\n\nxxxxx\nxxx\nxxx\n???\n\n\n2\n李四\n女\nxxxxx\nxxx\nxxx\n???\n\n\n\n根据以上模拟的 Excel 表格，我们需要根据名称把表格 A 的贷款状态（10列）输入到表格 B 的最后一列的贷款状态。\nPython 操作 Excel 方案介绍当 Google 一下，你会发现 Python 操作 Excel 还是有几种方法的，这里我只介绍使用 xlrd 和 xlwt，我的电脑环境为 macOS - Version 10.15.3 (19D76)，Python 版本为 Python 2.7.10 (default, Jul 30 2019, 21:28:59)。接下来是依赖库的说明。\n首先介绍下 xlrd 库，它主要是用来读取 Excel 的内容，可以通过执行 pip install xlrd 来进行安装，然后在 python 脚本里通过执行 &gt;&gt;&gt; import xlrd 和 &gt;&gt;&gt; help(xlrd) 可以看到 xlrd 的帮助信息，里面有 xlrd 包中的一些模块以及一些成员变量、常量、函数。具体的 xlrd API 使用说明，这个文档里都有\n其次介绍下 xlwt，它主要是用来对 Excel 进行编辑的，可以通过执行 pip install xlwt 来安装，同样这个文档里也都有包含 xlwt 的 API 使用说明。\n注意：xlrd 模块：可读取 .xls 和 .xlsx 后缀表格\n\nxlwt 模块：可写入 .xls 表格，但不支持对 .xlsx 文件的写入操作\n\n基本 API读取工作表：workbook.sheets()：工作表实例构成的 list，可通过索引读取工作表workbook.save()：保存修改的工作表worksheet = workbook.sheet_by_name(‘xxx’) ：通过名字打开工作簿worksheet = workbook.sheet_by_index(i) ：通过编号为 i（索引从 0 开始）的工作簿打开工作表\n读取单元格内容：注意 xlrd 库对于读取 Excel 工作簿的行和列索引都是从 0 开始row = worksheet.row_values(i) ：读取第 i 行中的所有内容，返回一个 listcol = worksheet.col_values(k) ：读取第 k 列中的内容，返回一个 listcell= worksheet.cell_value(r, c)：读取第 i 行第 k 列单元格内容workbook.get_sheet(0).write(i, k, source)：获取 i 行，k 列的内容，并将内容替换为 source\n代码编写examplepython12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455565758#!/usr/bin/env python# -*- coding: utf-8 -*-import fileinputimport sysimport osimport xlrd # 读 excelimport xlwt # 写 excelimport jsonfrom xlutils.copy import copy # 文件 copyreload(sys)sys.setdefaultencoding('utf8')  # 解决中文字符串输出问题START_ROW = 3 # 从 0 开始计数，前 4 行有标题和说明，真正的数据从第四行开始# 元数据表 Aa_workbook = xlrd.open_workbook(\"a_table.xls\")a_sheet = a_workbook.sheet_by_index(0)print \"元数据表行数：\" + str(a_sheet.nrows)print \"元数据表列数：\" + str(a_sheet.ncols)# 目标编辑表 Bb_workbook = xlrd.open_workbook(\"b_table.xls\")b_sheet = b_workbook.sheet_by_index(0)print \"目标数据表行数：\" + str(b_sheet.nrows)print \"目标数据表列数：\" + str(b_sheet.ncols)# 复制一下表格 B 文件，作为最后的编辑表final_workbook = copy(xlrd.open_workbook('b_table.xls'))# 根据名称从 A 表里找出匹配的内容def match_from_table_a(name):    source = \"****************\"    for index in range(START_ROW, a_sheet.nrows):        onerow = a_sheet.row_values(index)        if name == onerow[1]: # 姓名匹配            # print str(onerow[1]) +\"---\"+ str(onerow[10])            source = onerow[10]            break;    return source# 循环便利目标表 Bdef loop_target_xls():    for b_index in range(START_ROW, b_sheet.nrows):        one_row = b_sheet.row_values(b_index)        # string2 = json.dumps(one_row, ensure_ascii=False)        # print str(b_index)+\" row : \"+ (string2)        target_name = one_row[1]        print str(b_index) + \":\" +target_name        # 找寻字符串        source = match_from_table_a(target_name)        final_workbook.get_sheet(0).write(b_index, 6, source)    final_workbook.save('c_table.xls')  # 保存为新的 C 表格if __name__ == '__main__':    loop_target_xls()\n当以上文件和代码执行完毕后，会得到一个新文件：\nC 表格：\n\n\n\n序号\n姓名\n性别\n身份证\n地址\n是否失信\n贷款状态\n\n\n\n\n0\n赵六\n男\nxxxxx\nxxx\nxxx\n???\n\n\n1\n张三\n\nxxxxx\nxxx\nxxx\n核销\n\n\n2\n李四\n女\nxxxxx\nxxx\nxxx\n置换\n\n\n\n以上内容就是 Ptyhon 库 xlrd 和 xlwt 对 Excel 文件编写的简单内容，Enjoy， 😄\n","dateCreated":"2020-03-02T11:24:32+08:00","dateModified":"2020-03-03T16:05:33+08:00","datePublished":"2020-03-02T11:24:32+08:00","description":"前些天，一个朋友咨询我说是否擅长操作 Excel，并且把两个 Excel 的文档发给我了。认真的听了下他的诉求，大致是需要把 A 文档的数据匹配到 B 文档，并且补充到 B 文档里，两个表哥加起来共有 5 万多行的记录，这如果人肉操作怎么着也需要好几个小时。于是我开始着手 Google 看下 python 对于 excel 如果进行操作，现学现卖，最后完工。接下来就记录下这愉快的过程。","headline":"使用 Python 库来操作 Excel（xlrd 和 xlwt）","image":["https://is2-ssl.mzstatic.com/image/thumb/Purple123/v4/8f/76/52/8f76520d-6360-d5bb-4191-bc57cee68bfc/XCEL.png/1200x630bb.png"],"mainEntityOfPage":{"@type":"WebPage","@id":"http://hilen.github.io/2020/03/02/python-excel/"},"publisher":{"@type":"Organization","name":"Hilen","sameAs":["https://github.com/hilen","mailto:laihailong@hotmail.com"],"image":"https://gw.alicdn.com/tfs/TB1XyOtdUuF3KVjSZK9XXbVtXXa-328-312.png","logo":{"@type":"ImageObject","url":"https://gw.alicdn.com/tfs/TB1XyOtdUuF3KVjSZK9XXbVtXXa-328-312.png"}},"url":"http://hilen.github.io/2020/03/02/python-excel/","keywords":"python","thumbnailUrl":"https://is2-ssl.mzstatic.com/image/thumb/Purple123/v4/8f/76/52/8f76520d-6360-d5bb-4191-bc57cee68bfc/XCEL.png/1200x630bb.png"}</script>
+    <meta name="description" content="前些天，一个朋友咨询我说是否擅长操作 Excel，并且把两个 Excel 的文档发给我了。认真的听了下他的诉求，大致是需要把 A 文档的数据匹配到 B 文档，并且补充到 B 文档里，两个表哥加起来共有 5 万多行的记录，这如果人肉操作怎么着也需要好几个小时。于是我开始着手 Google 看下 python 对于 excel 如果进行操作，现学现卖，最后完工。接下来就记录下这愉快的过程。">
+<meta name="keywords" content="python">
+<meta property="og:type" content="blog">
+<meta property="og:title" content="使用 Python 库来操作 Excel（xlrd 和 xlwt）">
+<meta property="og:url" content="http://hilen.github.io/2020/03/02/python-excel/index.html">
+<meta property="og:site_name" content="Hilen&#39;s Blog">
+<meta property="og:description" content="前些天，一个朋友咨询我说是否擅长操作 Excel，并且把两个 Excel 的文档发给我了。认真的听了下他的诉求，大致是需要把 A 文档的数据匹配到 B 文档，并且补充到 B 文档里，两个表哥加起来共有 5 万多行的记录，这如果人肉操作怎么着也需要好几个小时。于是我开始着手 Google 看下 python 对于 excel 如果进行操作，现学现卖，最后完工。接下来就记录下这愉快的过程。">
+<meta property="og:locale" content="en">
+<meta property="og:updated_time" content="2020-03-03T08:05:33.560Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="使用 Python 库来操作 Excel（xlrd 和 xlwt）">
+<meta name="twitter:description" content="前些天，一个朋友咨询我说是否擅长操作 Excel，并且把两个 Excel 的文档发给我了。认真的听了下他的诉求，大致是需要把 A 文档的数据匹配到 B 文档，并且补充到 B 文档里，两个表哥加起来共有 5 万多行的记录，这如果人肉操作怎么着也需要好几个小时。于是我开始着手 Google 看下 python 对于 excel 如果进行操作，现学现卖，最后完工。接下来就记录下这愉快的过程。">
+    
+    
+        
+    
+    
+        <meta property="og:image" content="https://gw.alicdn.com/tfs/TB1XyOtdUuF3KVjSZK9XXbVtXXa-328-312.png"/>
+    
+    
+        <meta property="og:image" content="https://is2-ssl.mzstatic.com/image/thumb/Purple123/v4/8f/76/52/8f76520d-6360-d5bb-4191-bc57cee68bfc/XCEL.png/1200x630bb.png"/>
+        <meta class="swiftype" name="image" data-type="enum" content="https://is2-ssl.mzstatic.com/image/thumb/Purple123/v4/8f/76/52/8f76520d-6360-d5bb-4191-bc57cee68bfc/XCEL.png/1200x630bb.png"/>
+    
+    
+    
+    <!--STYLES-->
+    <link rel="stylesheet" href="/assets/css/style-vbqinavchah6jcimxa37wftwhydi8kc2ftser2fa0eoiv73ho0hbggaqec63.min.css">
+    <!--STYLES END-->
+    
+
+    
+
+    
+        
+            <link rel="stylesheet" href="/assets/css/gitalk.css">
+        
+    
+</head>
+
+    <body>
+        <div id="blog">
+            <!-- Define author's picture -->
+
+
+    
+        
+            
+        
+    
+
+<header id="header" data-behavior="2">
+    <i id="btn-open-sidebar" class="fa fa-lg fa-bars"></i>
+    <div class="header-title">
+        <a class="header-title-link" href="/ ">Hilen&#39;s Blog</a>
+    </div>
+    
+        
+            <a  class="header-right-picture "
+                href="#about">
+        
+        
+            <img class="header-picture" src="https://gw.alicdn.com/tfs/TB1XyOtdUuF3KVjSZK9XXbVtXXa-328-312.png" alt="Author&#39;s picture"/>
+        
+        </a>
+    
+</header>
+
+            <!-- Define author's picture -->
+
+
+
+        
+    
+
+<nav id="sidebar" data-behavior="2">
+    <div class="sidebar-container">
+        
+            <div class="sidebar-profile">
+                <a href="/#about">
+                    <img class="sidebar-profile-picture" src="https://gw.alicdn.com/tfs/TB1XyOtdUuF3KVjSZK9XXbVtXXa-328-312.png" alt="Author&#39;s picture"/>
+                </a>
+                <h4 class="sidebar-profile-name">Hilen</h4>
+                
+                    <h5 class="sidebar-profile-bio"><p>author.bio</p>
+</h5>
+                
+            </div>
+        
+        
+            <ul class="sidebar-buttons">
+            
+                <li class="sidebar-button">
+                    
+                        <a  class="sidebar-button-link "
+                             href="/ "
+                            
+                            title="Home"
+                        >
+                    
+                        <i class="sidebar-button-icon fa fa-home" aria-hidden="true"></i>
+                        <span class="sidebar-button-desc">Home</span>
+                    </a>
+            </li>
+            
+                <li class="sidebar-button">
+                    
+                        <a  class="sidebar-button-link "
+                             href="/all-categories"
+                            
+                            title="Categories"
+                        >
+                    
+                        <i class="sidebar-button-icon fa fa-bookmark" aria-hidden="true"></i>
+                        <span class="sidebar-button-desc">Categories</span>
+                    </a>
+            </li>
+            
+                <li class="sidebar-button">
+                    
+                        <a  class="sidebar-button-link "
+                             href="/all-tags"
+                            
+                            title="Tags"
+                        >
+                    
+                        <i class="sidebar-button-icon fa fa-tags" aria-hidden="true"></i>
+                        <span class="sidebar-button-desc">Tags</span>
+                    </a>
+            </li>
+            
+                <li class="sidebar-button">
+                    
+                        <a  class="sidebar-button-link "
+                             href="/all-archives"
+                            
+                            title="Archives"
+                        >
+                    
+                        <i class="sidebar-button-icon fa fa-archive" aria-hidden="true"></i>
+                        <span class="sidebar-button-desc">Archives</span>
+                    </a>
+            </li>
+            
+                <li class="sidebar-button">
+                    
+                        <a  class="sidebar-button-link open-algolia-search"
+                             href="#search"
+                            
+                            title="Search"
+                        >
+                    
+                        <i class="sidebar-button-icon fa fa-search" aria-hidden="true"></i>
+                        <span class="sidebar-button-desc">Search</span>
+                    </a>
+            </li>
+            
+                <li class="sidebar-button">
+                    
+                        <a  class="sidebar-button-link "
+                             href="/about"
+                            
+                            title="About"
+                        >
+                    
+                        <i class="sidebar-button-icon fa fa-question" aria-hidden="true"></i>
+                        <span class="sidebar-button-desc">About</span>
+                    </a>
+            </li>
+            
+        </ul>
+        
+            <ul class="sidebar-buttons">
+            
+                <li class="sidebar-button">
+                    
+                        <a  class="sidebar-button-link " href="https://github.com/hilen" target="_blank" rel="noopener" title="GitHub">
+                    
+                        <i class="sidebar-button-icon fab fa-github" aria-hidden="true"></i>
+                        <span class="sidebar-button-desc">GitHub</span>
+                    </a>
+            </li>
+            
+                <li class="sidebar-button">
+                    
+                        <a  class="sidebar-button-link " href="mailto:laihailong@hotmail.com" target="_blank" rel="noopener" title="Mail">
+                    
+                        <i class="sidebar-button-icon fa fa-envelope" aria-hidden="true"></i>
+                        <span class="sidebar-button-desc">Mail</span>
+                    </a>
+            </li>
+            
+        </ul>
+        
+    </div>
+</nav>
+
+            
+            <div id="main" data-behavior="2"
+                 class="
+                        hasCoverMetaIn
+                        ">
+                
+<article class="post">
+    
+    
+        <div class="post-header main-content-wrap text-left">
+    
+        <h1 class="post-title">
+            使用 Python 库来操作 Excel（xlrd 和 xlwt）
+        </h1>
+    
+    
+        <div class="post-meta">
+    <time datetime="2020-03-02T11:24:32+08:00">
+	
+		    Mar 02, 2020
+    	
+    </time>
+    
+        <span>in </span>
+        
+    <a class="category-link" href="/categories/随笔/">随笔</a>
+
+
+    
+</div>
+
+    
+</div>
+
+    
+    <div class="post-content markdown">
+        <div class="main-content-wrap">
+            <p>前些天，一个朋友咨询我说是否擅长操作 Excel，并且把两个 Excel 的文档发给我了。认真的听了下他的诉求，大致是需要把 A 文档的数据匹配到 B 文档，并且补充到 B 文档里，两个表哥加起来共有 5 万多行的记录，这如果人肉操作怎么着也需要好几个小时。于是我开始着手 Google 看下 python 对于 excel 如果进行操作，现学现卖，最后完工。接下来就记录下这愉快的过程。</p>
+<a id="more"></a>
+<h1 id="需求分析"><a href="#需求分析" class="headerlink" title="需求分析"></a>需求分析</h1><p>先来看看下这两个表格的内容，A 表格有 4.5w 行，有 40 多列数据， B 表格有 6000 多行，30 多列的数据，需求是 B 表格中有一列 <code>贷款目前状态</code> 的数据来自 A 表，并且会涉及到重复，条件为以身份证筛选，再以姓名为基准做匹配。接下来我会脱敏举例一个 demo 进行说明。<br>A 表格：</p>
+<table>
+<thead>
+<tr>
+<th>序号</th>
+<th>姓名</th>
+<th>性别</th>
+<th>身份证</th>
+<th>地址</th>
+<th>是否失信</th>
+<th>担保人</th>
+<th>经放人</th>
+<th>借款方式</th>
+<th>贷款状态</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>张三</td>
+<td>男</td>
+<td>xxxxx</td>
+<td>xxx</td>
+<td>xxx</td>
+<td>xxxxx</td>
+<td>xxx</td>
+<td>xxx</td>
+<td>核销</td>
+</tr>
+<tr>
+<td>1</td>
+<td>李四</td>
+<td></td>
+<td>xxxxx</td>
+<td>xxx</td>
+<td>xxx</td>
+<td>xxxxx</td>
+<td>xxx</td>
+<td>xxx</td>
+<td>置换</td>
+</tr>
+<tr>
+<td>2</td>
+<td>王五</td>
+<td>女</td>
+<td>xxxxx</td>
+<td>xxx</td>
+<td>xxx</td>
+<td>xxxxx</td>
+<td>xxx</td>
+<td>xxx</td>
+<td>核销</td>
+</tr>
+</tbody>
+</table>
+<p>B 表格：</p>
+<table>
+<thead>
+<tr>
+<th>序号</th>
+<th>姓名</th>
+<th>性别</th>
+<th>身份证</th>
+<th>地址</th>
+<th>是否失信</th>
+<th>贷款状态</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>赵六</td>
+<td>男</td>
+<td>xxxxx</td>
+<td>xxx</td>
+<td>xxx</td>
+<td>???</td>
+</tr>
+<tr>
+<td>1</td>
+<td>张三</td>
+<td></td>
+<td>xxxxx</td>
+<td>xxx</td>
+<td>xxx</td>
+<td>???</td>
+</tr>
+<tr>
+<td>2</td>
+<td>李四</td>
+<td>女</td>
+<td>xxxxx</td>
+<td>xxx</td>
+<td>xxx</td>
+<td>???</td>
+</tr>
+</tbody>
+</table>
+<p>根据以上模拟的 Excel 表格，我们需要根据名称把表格 A 的贷款状态（10列）输入到表格 B 的最后一列的贷款状态。</p>
+<h1 id="Python-操作-Excel-方案介绍"><a href="#Python-操作-Excel-方案介绍" class="headerlink" title="Python 操作 Excel 方案介绍"></a>Python 操作 Excel 方案介绍</h1><p>当 Google 一下，你会发现 Python 操作 Excel 还是有几种方法的，这里我只介绍使用 <a href="https://pypi.org/project/xlrd/" target="_blank" rel="noopener">xlrd</a> 和 <a href="https://pypi.org/project/xlwt" target="_blank" rel="noopener">xlwt</a>，我的电脑环境为 <code>macOS - Version 10.15.3 (19D76)</code>，Python 版本为 <code>Python 2.7.10 (default, Jul 30 2019, 21:28:59)</code>。接下来是依赖库的说明。</p>
+<p>首先介绍下 <a href="https://pypi.org/project/xlrd/" target="_blank" rel="noopener">xlrd</a> 库，它主要是用来读取 Excel 的内容，可以通过执行 <code>pip install xlrd</code> 来进行安装，然后在 python 脚本里通过执行 <code>&gt;&gt;&gt; import xlrd</code> 和 <code>&gt;&gt;&gt; help(xlrd)</code> 可以看到 xlrd 的帮助信息，里面有 xlrd 包中的一些模块以及一些成员变量、常量、函数。具体的 xlrd API 使用说明，<a href="https://xlrd.readthedocs.io/en/latest/api.html" target="_blank" rel="noopener">这个文档</a>里都有</p>
+<p>其次介绍下 <a href="https://pypi.org/project/xlwt/" target="_blank" rel="noopener">xlwt</a>，它主要是用来对 Excel 进行编辑的，可以通过执行 <code>pip install xlwt</code> 来安装，同样<a href="https://xlwt.readthedocs.io/en/latest/api.html" target="_blank" rel="noopener">这个文档</a>里也都有包含 xlwt 的 API 使用说明。</p>
+<p>注意：<br><div class="alert danger no-icon"><p>xlrd 模块：可读取 .xls 和 .xlsx 后缀表格</p>
+</div></p>
+<div class="alert danger no-icon"><p>xlwt 模块：可写入 .xls 表格，但不支持对 .xlsx 文件的写入操作</p>
+</div>
+<h1 id="基本-API"><a href="#基本-API" class="headerlink" title="基本 API"></a>基本 API</h1><h4 id="读取工作表："><a href="#读取工作表：" class="headerlink" title="读取工作表："></a>读取工作表：</h4><p>workbook.sheets()：工作表实例构成的 list，可通过索引读取工作表<br>workbook.save()：保存修改的工作表<br>worksheet = workbook.sheet_by_name(‘xxx’) ：通过名字打开工作簿<br>worksheet = workbook.sheet_by_index(i) ：通过编号为 i（索引从 0 开始）的工作簿打开工作表</p>
+<h4 id="读取单元格内容："><a href="#读取单元格内容：" class="headerlink" title="读取单元格内容："></a>读取单元格内容：</h4><p>注意 xlrd 库对于读取 Excel 工作簿的行和列索引都是从 0 开始<br>row = worksheet.row_values(i) ：读取第 i 行中的所有内容，返回一个 list<br>col = worksheet.col_values(k) ：读取第 k 列中的内容，返回一个 list<br>cell= worksheet.cell_value(r, c)：读取第 i 行第 k 列单元格内容<br>workbook.get_sheet(0).write(i, k, source)：获取 i 行，k 列的内容，并将内容替换为 source</p>
+<h1 id="代码编写"><a href="#代码编写" class="headerlink" title="代码编写"></a>代码编写</h1><figure class="codeblock codeblock--tabbed"><figcaption><span>example</span><ul class="tabs"><li class="tab active">python</li></ul></figcaption><div class="tabs-content"><figure class="highlight python" style="display: block;"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/env python</span></span><br><span class="line"><span class="comment"># -*- coding: utf-8 -*-</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> fileinput</span><br><span class="line"><span class="keyword">import</span> sys</span><br><span class="line"><span class="keyword">import</span> os</span><br><span class="line"><span class="keyword">import</span> xlrd <span class="comment"># 读 excel</span></span><br><span class="line"><span class="keyword">import</span> xlwt <span class="comment"># 写 excel</span></span><br><span class="line"><span class="keyword">import</span> json</span><br><span class="line"><span class="keyword">from</span> xlutils.copy <span class="keyword">import</span> copy <span class="comment"># 文件 copy</span></span><br><span class="line"></span><br><span class="line">reload(sys)</span><br><span class="line">sys.setdefaultencoding(<span class="string">'utf8'</span>)  <span class="comment"># 解决中文字符串输出问题</span></span><br><span class="line"></span><br><span class="line">START_ROW = <span class="number">3</span> <span class="comment"># 从 0 开始计数，前 4 行有标题和说明，真正的数据从第四行开始</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 元数据表 A</span></span><br><span class="line">a_workbook = xlrd.open_workbook(<span class="string">"a_table.xls"</span>)</span><br><span class="line">a_sheet = a_workbook.sheet_by_index(<span class="number">0</span>)</span><br><span class="line"><span class="keyword">print</span> <span class="string">"元数据表行数："</span> + str(a_sheet.nrows)</span><br><span class="line"><span class="keyword">print</span> <span class="string">"元数据表列数："</span> + str(a_sheet.ncols)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 目标编辑表 B</span></span><br><span class="line">b_workbook = xlrd.open_workbook(<span class="string">"b_table.xls"</span>)</span><br><span class="line">b_sheet = b_workbook.sheet_by_index(<span class="number">0</span>)</span><br><span class="line"><span class="keyword">print</span> <span class="string">"目标数据表行数："</span> + str(b_sheet.nrows)</span><br><span class="line"><span class="keyword">print</span> <span class="string">"目标数据表列数："</span> + str(b_sheet.ncols)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 复制一下表格 B 文件，作为最后的编辑表</span></span><br><span class="line">final_workbook = copy(xlrd.open_workbook(<span class="string">'b_table.xls'</span>))</span><br><span class="line"></span><br><span class="line"><span class="comment"># 根据名称从 A 表里找出匹配的内容</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">match_from_table_a</span><span class="params">(name)</span>:</span></span><br><span class="line">    source = <span class="string">"****************"</span></span><br><span class="line">    <span class="keyword">for</span> index <span class="keyword">in</span> range(START_ROW, a_sheet.nrows):</span><br><span class="line">        onerow = a_sheet.row_values(index)</span><br><span class="line">        <span class="keyword">if</span> name == onerow[<span class="number">1</span>]: <span class="comment"># 姓名匹配</span></span><br><span class="line">            <span class="comment"># print str(onerow[1]) +"---"+ str(onerow[10])</span></span><br><span class="line">            source = onerow[<span class="number">10</span>]</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">    <span class="keyword">return</span> source</span><br><span class="line"></span><br><span class="line"><span class="comment"># 循环便利目标表 B</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">loop_target_xls</span><span class="params">()</span>:</span></span><br><span class="line">    <span class="keyword">for</span> b_index <span class="keyword">in</span> range(START_ROW, b_sheet.nrows):</span><br><span class="line">        one_row = b_sheet.row_values(b_index)</span><br><span class="line">        <span class="comment"># string2 = json.dumps(one_row, ensure_ascii=False)</span></span><br><span class="line">        <span class="comment"># print str(b_index)+" row : "+ (string2)</span></span><br><span class="line">        target_name = one_row[<span class="number">1</span>]</span><br><span class="line">        <span class="keyword">print</span> str(b_index) + <span class="string">":"</span> +target_name</span><br><span class="line"></span><br><span class="line">        <span class="comment"># 找寻字符串</span></span><br><span class="line">        source = match_from_table_a(target_name)</span><br><span class="line">        final_workbook.get_sheet(<span class="number">0</span>).write(b_index, <span class="number">6</span>, source)</span><br><span class="line">    final_workbook.save(<span class="string">'c_table.xls'</span>)  <span class="comment"># 保存为新的 C 表格</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</span><br><span class="line">    loop_target_xls()</span><br></pre></td></tr></tbody></table></figure></div></figure>
+<p>当以上文件和代码执行完毕后，会得到一个新文件：</p>
+<p>C 表格：</p>
+<table>
+<thead>
+<tr>
+<th>序号</th>
+<th>姓名</th>
+<th>性别</th>
+<th>身份证</th>
+<th>地址</th>
+<th>是否失信</th>
+<th>贷款状态</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>赵六</td>
+<td>男</td>
+<td>xxxxx</td>
+<td>xxx</td>
+<td>xxx</td>
+<td>???</td>
+</tr>
+<tr>
+<td>1</td>
+<td>张三</td>
+<td></td>
+<td>xxxxx</td>
+<td>xxx</td>
+<td>xxx</td>
+<td>核销</td>
+</tr>
+<tr>
+<td>2</td>
+<td>李四</td>
+<td>女</td>
+<td>xxxxx</td>
+<td>xxx</td>
+<td>xxx</td>
+<td>置换</td>
+</tr>
+</tbody>
+</table>
+<p>以上内容就是 Ptyhon 库 <a href="https://pypi.org/project/xlrd/" target="_blank" rel="noopener">xlrd</a> 和 <a href="https://pypi.org/project/xlwt" target="_blank" rel="noopener">xlwt</a> 对 Excel 文件编写的简单内容，Enjoy， 😄</p>
+
+            
+
+
+        </div>
+    </div>
+    <div id="post-footer" class="post-footer main-content-wrap">
+        
+            <div class="post-footer-tags">
+                <span class="text-color-light text-small">TAGGED IN</span><br/>
+                
+    <a class="tag tag--primary tag--small t-link" href="/tags/python/">python</a>
+
+            </div>
+        
+        
+            <div class="post-actions-wrap">
+    <nav>
+        <ul class="post-actions post-action-nav">
+            <li class="post-action">
+                
+                    <a class="post-action-btn btn btn--disabled">
+                
+                    <i class="fa fa-angle-left" aria-hidden="true"></i>
+                    <span class="hide-xs hide-sm text-small icon-ml">PREVIOUS</span>
+                </a>
+            </li>
+            <li class="post-action">
+                
+                    
+                    <a class="post-action-btn btn btn--default tooltip--top" href="/2020/02/24/jichanghefeiji/" data-tooltip="给女盆友的科学上网介绍（待补充）" aria-label="NEXT: 给女盆友的科学上网介绍（待补充）">
+                
+                    <span class="hide-xs hide-sm text-small icon-mr">NEXT</span>
+                    <i class="fa fa-angle-right" aria-hidden="true"></i>
+                </a>
+            </li>
+        </ul>
+    </nav>
+    <ul class="post-actions post-action-share">
+        <li class="post-action hide-lg hide-md hide-sm">
+            <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions" aria-label="Share this post">
+                <i class="fa fa-share-alt" aria-hidden="true"></i>
+            </a>
+        </li>
+        
+            
+            
+            <li class="post-action hide-xs">
+                <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://hilen.github.io/2020/03/02/python-excel/" title="Share on Facebook">
+                    <i class="fab fa-facebook" aria-hidden="true"></i>
+                </a>
+            </li>
+        
+            
+            
+            <li class="post-action hide-xs">
+                <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=http://hilen.github.io/2020/03/02/python-excel/" title="Share on Twitter">
+                    <i class="fab fa-twitter" aria-hidden="true"></i>
+                </a>
+            </li>
+        
+            
+            
+            <li class="post-action hide-xs">
+                <a class="post-action-btn btn btn--default" target="new" href="http://service.weibo.com/share/share.php?&amp;title=http://hilen.github.io/2020/03/02/python-excel/" title="Share on Weibo">
+                    <i class="fab fa-weibo" aria-hidden="true"></i>
+                </a>
+            </li>
+        
+            
+            
+            <li class="post-action hide-xs">
+                <a class="post-action-btn btn btn--default" target="new" href="http://connect.qq.com/widget/shareqq/index.html?url=http://hilen.github.io/2020/03/02/python-excel/&amp;title=使用 Python 库来操作 Excel（xlrd 和 xlwt）" title="Share on QQ">
+                    <i class="fab fa-qq" aria-hidden="true"></i>
+                </a>
+            </li>
+        
+            
+            
+            <li class="post-action hide-xs">
+                <a class="post-action-btn btn btn--default" target="new" href="http://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=http://hilen.github.io/2020/03/02/python-excel/" title="Share on Qzone">
+                    <i class="fa fa-star" aria-hidden="true"></i>
+                </a>
+            </li>
+        
+        
+            
+                <li class="post-action">
+                    <a class="post-action-btn btn btn--default" href="#gitalk">
+                         <i class="fa fa-comment"></i>
+                    </a>
+                </li>
+            
+        
+        <li class="post-action">
+            
+                <a class="post-action-btn btn btn--default" href="#" aria-label="Back to top">
+            
+                <i class="fa fa-list" aria-hidden="true"></i>
+            </a>
+        </li>
+    </ul>
+</div>
+
+
+        
+        
+            
+                <div id="gitalk"></div>
+
+            
+        
+    </div>
+</article>
+
+
+
+                <footer id="footer" class="main-content-wrap">
+    <span class="copyrights">
+        Copyrights &copy; 2020 Hilen. All Rights Reserved.
+    </span>
+</footer>
+
+            </div>
+            
+                <div id="bottom-bar" class="post-bottom-bar" data-behavior="2">
+                    <div class="post-actions-wrap">
+    <nav>
+        <ul class="post-actions post-action-nav">
+            <li class="post-action">
+                
+                    <a class="post-action-btn btn btn--disabled">
+                
+                    <i class="fa fa-angle-left" aria-hidden="true"></i>
+                    <span class="hide-xs hide-sm text-small icon-ml">PREVIOUS</span>
+                </a>
+            </li>
+            <li class="post-action">
+                
+                    
+                    <a class="post-action-btn btn btn--default tooltip--top" href="/2020/02/24/jichanghefeiji/" data-tooltip="给女盆友的科学上网介绍（待补充）" aria-label="NEXT: 给女盆友的科学上网介绍（待补充）">
+                
+                    <span class="hide-xs hide-sm text-small icon-mr">NEXT</span>
+                    <i class="fa fa-angle-right" aria-hidden="true"></i>
+                </a>
+            </li>
+        </ul>
+    </nav>
+    <ul class="post-actions post-action-share">
+        <li class="post-action hide-lg hide-md hide-sm">
+            <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions" aria-label="Share this post">
+                <i class="fa fa-share-alt" aria-hidden="true"></i>
+            </a>
+        </li>
+        
+            
+            
+            <li class="post-action hide-xs">
+                <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://hilen.github.io/2020/03/02/python-excel/" title="Share on Facebook">
+                    <i class="fab fa-facebook" aria-hidden="true"></i>
+                </a>
+            </li>
+        
+            
+            
+            <li class="post-action hide-xs">
+                <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=http://hilen.github.io/2020/03/02/python-excel/" title="Share on Twitter">
+                    <i class="fab fa-twitter" aria-hidden="true"></i>
+                </a>
+            </li>
+        
+            
+            
+            <li class="post-action hide-xs">
+                <a class="post-action-btn btn btn--default" target="new" href="http://service.weibo.com/share/share.php?&amp;title=http://hilen.github.io/2020/03/02/python-excel/" title="Share on Weibo">
+                    <i class="fab fa-weibo" aria-hidden="true"></i>
+                </a>
+            </li>
+        
+            
+            
+            <li class="post-action hide-xs">
+                <a class="post-action-btn btn btn--default" target="new" href="http://connect.qq.com/widget/shareqq/index.html?url=http://hilen.github.io/2020/03/02/python-excel/&amp;title=使用 Python 库来操作 Excel（xlrd 和 xlwt）" title="Share on QQ">
+                    <i class="fab fa-qq" aria-hidden="true"></i>
+                </a>
+            </li>
+        
+            
+            
+            <li class="post-action hide-xs">
+                <a class="post-action-btn btn btn--default" target="new" href="http://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=http://hilen.github.io/2020/03/02/python-excel/" title="Share on Qzone">
+                    <i class="fa fa-star" aria-hidden="true"></i>
+                </a>
+            </li>
+        
+        
+            
+                <li class="post-action">
+                    <a class="post-action-btn btn btn--default" href="#gitalk">
+                         <i class="fa fa-comment"></i>
+                    </a>
+                </li>
+            
+        
+        <li class="post-action">
+            
+                <a class="post-action-btn btn btn--default" href="#" aria-label="Back to top">
+            
+                <i class="fa fa-list" aria-hidden="true"></i>
+            </a>
+        </li>
+    </ul>
+</div>
+
+
+                </div>
+                
+    <div id="share-options-bar" class="share-options-bar" data-behavior="2">
+        <i id="btn-close-shareoptions" class="fa fa-times"></i>
+        <ul class="share-options">
+            
+                
+                
+                <li class="share-option">
+                    <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://hilen.github.io/2020/03/02/python-excel/">
+                        <i class="fab fa-facebook" aria-hidden="true"></i><span>Share on Facebook</span>
+                    </a>
+                </li>
+            
+                
+                
+                <li class="share-option">
+                    <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=http://hilen.github.io/2020/03/02/python-excel/">
+                        <i class="fab fa-twitter" aria-hidden="true"></i><span>Share on Twitter</span>
+                    </a>
+                </li>
+            
+                
+                
+                <li class="share-option">
+                    <a class="share-option-btn" target="new" href="http://service.weibo.com/share/share.php?&amp;title=http://hilen.github.io/2020/03/02/python-excel/">
+                        <i class="fab fa-weibo" aria-hidden="true"></i><span>Share on Weibo</span>
+                    </a>
+                </li>
+            
+                
+                
+                <li class="share-option">
+                    <a class="share-option-btn" target="new" href="http://connect.qq.com/widget/shareqq/index.html?url=http://hilen.github.io/2020/03/02/python-excel/&amp;title=使用 Python 库来操作 Excel（xlrd 和 xlwt）">
+                        <i class="fab fa-qq" aria-hidden="true"></i><span>Share on QQ</span>
+                    </a>
+                </li>
+            
+                
+                
+                <li class="share-option">
+                    <a class="share-option-btn" target="new" href="http://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=http://hilen.github.io/2020/03/02/python-excel/">
+                        <i class="fa fa-star" aria-hidden="true"></i><span>Share on Qzone</span>
+                    </a>
+                </li>
+            
+        </ul>
+    </div>
+
+
+            
+        </div>
+        
+
+
+    
+        
+    
+
+<div id="about">
+    <div id="about-card">
+        <div id="about-btn-close">
+            <i class="fa fa-times"></i>
+        </div>
+        
+            <img id="about-card-picture" src="https://gw.alicdn.com/tfs/TB1XyOtdUuF3KVjSZK9XXbVtXXa-328-312.png" alt="Author&#39;s picture"/>
+        
+            <h4 id="about-card-name">Hilen</h4>
+        
+            <div id="about-card-bio"><p>author.bio</p>
+</div>
+        
+        
+            <div id="about-card-job">
+                <i class="fa fa-briefcase"></i>
+                <br/>
+                <p>author.job</p>
+
+            </div>
+        
+        
+            <div id="about-card-location">
+                <i class="fa fa-map-marker-alt"></i>
+                <br/>
+                Hangzhou
+            </div>
+        
+    </div>
+</div>
+
+        
+        
+<div id="cover" style="background-image:url('https://gw.alicdn.com/tfs/TB1KrCsp4D1gK0jSZFsXXbldVXa-4802-3202.jpg');"></div>
+        <!--SCRIPTS-->
+<script src="/assets/js/script-igzblvgl1l41iig8exswdesnuhryopm3ddgxzqifmyvvtmgnzp5rkhrihgie.min.js"></script>
+<!--SCRIPTS END-->
+
+
+    
+        <script src="/assets/js/gitalk.js"></script>
+        <script type="text/javascript">
+          (function() {
+            new Gitalk({
+              clientID: '80541e9a2b6f4a2e0d7c',
+              clientSecret: '6f312d28e3603e25dc49fc1ef25a3d4b51e2fe09',
+              repo: 'hilen.github.io',
+              owner: 'hilen',
+              admin: ['hilen'],
+              id: '2020/03/02/python-excel/',
+              ...{"language":"cn","perPage":15,"distractionFreeMode":false,"enableHotKey":true,"pagerDirection":"first"}
+            }).render('gitalk')
+          })()
+        </script>
+    
+
+
+
+
+    </body>
+</html>

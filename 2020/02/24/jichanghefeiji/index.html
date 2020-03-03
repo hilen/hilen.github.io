@@ -6,31 +6,29 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="generator" content="Hilen&#39;s Blog">
-    <title>iOS Build Configuration + Scheme 的使用 - Hilen&#39;s Blog</title>
+    <title>给女盆友的科学上网介绍（待补充） - Hilen&#39;s Blog</title>
     <meta name="author" content="Hilen">
     
-        <meta name="keywords" content="Build Configuration,Scheme">
+        <meta name="keywords" content="翻墙,机场">
     
     
     
-    <script type="application/ld+json">{"@context":"http://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"Hilen","sameAs":["https://github.com/hilen","mailto:laihailong@hotmail.com"],"image":"https://gw.alicdn.com/tfs/TB1XyOtdUuF3KVjSZK9XXbVtXXa-328-312.png"},"articleBody":"在日常的 iOS 开发中，我们经常会使用到不同的网络环境切换问题，比如：\n\n\nQA 需要你给出一个带有环境切换的功能的安装文件\nApp Store 需要你上传面向用户环境的 Release 的安装文件\n灰度测试的时候又需要你给出带有个别功能的安装文件\n\n面对以上需求，也许你会针对不同的包给出不同的宏定义，比如 #define QA_TEST ,#define APP_STORE, #define GRAY_TEST，然后针对不同的宏定义在里面进行不同的参数修改。但是如果各个业务方来频繁的找你，也许手动的修改这些文件会让你崩溃。\n接下来提供一个解决方案，专门针对这种不同的环境或编译需求使用的无侵入，无修改，无痛的三无解决方案。名字叫：Build Configuration + Scheme\n关于 Build Configuration 的官方解释。关于 Scheme 的官方解释。\n接下来的步骤可以实现上面所描述的功能。\n1. 添加不同的 Configuration在 Project -&gt; Info -&gt; Configuration 里，复制一个\n2. 设置 Preprocessor Macros在 Target -&gt; Build Settings -&gt; Preprocessor Macros 里添加自己的宏，比如你可以这样：\n3. 可以畅快的使用了接下来在你的代码中可以随便使用了\n1234567#ifdef DEBUG    NSLog(@\"Debug\");##endif#ifdef TEST    NSLog(@\"Test\");##endif\n\n4. 选择你要的 Scheme\nEnjoy\nReference：\n\nhttps://developer.apple.com/library/ios/recipes/xcode_help-project_editor/Articles/BasingBuildConfigurationsonConfigurationFiles.html\n\n","dateCreated":"2016-05-16T14:11:35+08:00","dateModified":"2020-03-03T16:06:15+08:00","datePublished":"2016-05-16T14:11:35+08:00","description":"在日常的 iOS 开发中，我们经常会使用到不同的网络环境切换问题，比如：","headline":"iOS Build Configuration + Scheme 的使用","image":[],"mainEntityOfPage":{"@type":"WebPage","@id":"http://hilen.github.io/2016/05/16/configuration-scheme/"},"publisher":{"@type":"Organization","name":"Hilen","sameAs":["https://github.com/hilen","mailto:laihailong@hotmail.com"],"image":"https://gw.alicdn.com/tfs/TB1XyOtdUuF3KVjSZK9XXbVtXXa-328-312.png","logo":{"@type":"ImageObject","url":"https://gw.alicdn.com/tfs/TB1XyOtdUuF3KVjSZK9XXbVtXXa-328-312.png"}},"url":"http://hilen.github.io/2016/05/16/configuration-scheme/","keywords":"iOS"}</script>
-    <meta name="description" content="在日常的 iOS 开发中，我们经常会使用到不同的网络环境切换问题，比如：">
-<meta name="keywords" content="Build Configuration,Scheme">
+    <script type="application/ld+json">{"@context":"http://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"Hilen","sameAs":["https://github.com/hilen","mailto:laihailong@hotmail.com"],"image":"https://gw.alicdn.com/tfs/TB1XyOtdUuF3KVjSZK9XXbVtXXa-328-312.png"},"articleBody":"\n这是一篇简单介绍科学上网的文章，主要是给不太了解相关内容的同学，特别是女盆友。文章中会有简单的科普，介绍和使用方法。\n\n什么是科学上网？为什么要科学上网？\n看到上图，对于大多数人科学上网的诉求是想看一些有用，好玩，有意义的内容。比如 Google：搜索你想要的答案；Instagram：浏览别人的美好生活和分享自己的故事； TikTok：看看国外的友人是怎么花式玩抖音的；YouTube：可以看到全世界人民的想法和生活；Netflix，HBO，HULU：追你想要看的国外电视剧。这里不一一列举了，太多太多了。如果在国内想要浏览以上内容，那你就必须有工具才可以。\n方法选择我们暂且定义科学上网有两步，第一步要有飞机（飞机 = App/客户端），第二步要有机场能够给飞机提供起飞的环境（机场 = 流量）。在这个条件下，你可能会认为有些应用下载后不需要所谓的机场啊\nVPN关于线路\nShadowsocks 和 VmessEnjoy 😆\n","dateCreated":"2020-02-24T19:11:35+08:00","dateModified":"2020-03-03T16:05:33+08:00","datePublished":"2020-02-24T19:11:35+08:00","description":"\n这是一篇简单介绍科学上网的文章，主要是给不太了解相关内容的同学，特别是女盆友。文章中会有简单的科普，介绍和使用方法。","headline":"给女盆友的科学上网介绍（待补充）","image":["http://ww1.sinaimg.cn/mw690/6a011e49ly1gcgsmgvpktj20b40b4gn5.jpg"],"mainEntityOfPage":{"@type":"WebPage","@id":"http://hilen.github.io/2020/02/24/jichanghefeiji/"},"publisher":{"@type":"Organization","name":"Hilen","sameAs":["https://github.com/hilen","mailto:laihailong@hotmail.com"],"image":"https://gw.alicdn.com/tfs/TB1XyOtdUuF3KVjSZK9XXbVtXXa-328-312.png","logo":{"@type":"ImageObject","url":"https://gw.alicdn.com/tfs/TB1XyOtdUuF3KVjSZK9XXbVtXXa-328-312.png"}},"url":"http://hilen.github.io/2020/02/24/jichanghefeiji/","keywords":"随笔","thumbnailUrl":"http://ww1.sinaimg.cn/mw690/6a011e49ly1gcgsmgvpktj20b40b4gn5.jpg"}</script>
+    <meta name="description" content="这是一篇简单介绍科学上网的文章，主要是给不太了解相关内容的同学，特别是女盆友。文章中会有简单的科普，介绍和使用方法。">
+<meta name="keywords" content="翻墙,机场">
 <meta property="og:type" content="blog">
-<meta property="og:title" content="iOS Build Configuration + Scheme 的使用">
-<meta property="og:url" content="http://hilen.github.io/2016/05/16/configuration-scheme/index.html">
+<meta property="og:title" content="给女盆友的科学上网介绍（待补充）">
+<meta property="og:url" content="http://hilen.github.io/2020/02/24/jichanghefeiji/index.html">
 <meta property="og:site_name" content="Hilen&#39;s Blog">
-<meta property="og:description" content="在日常的 iOS 开发中，我们经常会使用到不同的网络环境切换问题，比如：">
+<meta property="og:description" content="这是一篇简单介绍科学上网的文章，主要是给不太了解相关内容的同学，特别是女盆友。文章中会有简单的科普，介绍和使用方法。">
 <meta property="og:locale" content="en">
-<meta property="og:image" content="http://ww1.sinaimg.cn/large/6a011e49gw1f67fm00645j21j80iin0b.jpg">
-<meta property="og:image" content="http://ww1.sinaimg.cn/large/6a011e49gw1f67fm00645j21j80iin0b.jpg">
-<meta property="og:image" content="http://ww1.sinaimg.cn/large/6a011e49gw1f67fqfa7zej21kw0usdo5.jpg">
-<meta property="og:image" content="http://ww1.sinaimg.cn/large/6a011e49gw1f67fr9d270j21kw0us0x9.jpg">
-<meta property="og:updated_time" content="2020-03-03T08:06:15.426Z">
+<meta property="og:image" content="http://ww1.sinaimg.cn/large/6a011e49ly1gc8nsier08j22k01ds4qp.jpg">
+<meta property="og:image" content="http://ww1.sinaimg.cn/large/6a011e49ly1gc8mixtbymj20vq0zk76z.jpg">
+<meta property="og:updated_time" content="2020-03-03T08:05:33.600Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="iOS Build Configuration + Scheme 的使用">
-<meta name="twitter:description" content="在日常的 iOS 开发中，我们经常会使用到不同的网络环境切换问题，比如：">
-<meta name="twitter:image" content="http://ww1.sinaimg.cn/large/6a011e49gw1f67fm00645j21j80iin0b.jpg">
+<meta name="twitter:title" content="给女盆友的科学上网介绍（待补充）">
+<meta name="twitter:description" content="这是一篇简单介绍科学上网的文章，主要是给不太了解相关内容的同学，特别是女盆友。文章中会有简单的科普，介绍和使用方法。">
+<meta name="twitter:image" content="http://ww1.sinaimg.cn/large/6a011e49ly1gc8nsier08j22k01ds4qp.jpg">
     
     
         
@@ -38,6 +36,9 @@
     
         <meta property="og:image" content="https://gw.alicdn.com/tfs/TB1XyOtdUuF3KVjSZK9XXbVtXXa-328-312.png"/>
     
+    
+        <meta property="og:image" content="http://ww1.sinaimg.cn/mw690/6a011e49ly1gcgsmgvpktj20b40b4gn5.jpg"/>
+        <meta class="swiftype" name="image" data-type="enum" content="http://ww1.sinaimg.cn/mw690/6a011e49ly1gcgsmgvpktj20b40b4gn5.jpg"/>
     
     
     
@@ -224,20 +225,20 @@
         <div class="post-header main-content-wrap text-left">
     
         <h1 class="post-title">
-            iOS Build Configuration + Scheme 的使用
+            给女盆友的科学上网介绍（待补充）
         </h1>
     
     
         <div class="post-meta">
-    <time datetime="2016-05-16T14:11:35+08:00">
+    <time datetime="2020-02-24T19:11:35+08:00">
 	
-		    May 16, 2016
+		    Feb 24, 2020
     	
     </time>
     
         <span>in </span>
         
-    <a class="category-link" href="/categories/iOS/">iOS</a>
+    <a class="category-link" href="/categories/随笔/">随笔</a>
 
 
     
@@ -249,28 +250,14 @@
     
     <div class="post-content markdown">
         <div class="main-content-wrap">
-            <p>在日常的 iOS 开发中，我们经常会使用到不同的网络环境切换问题，比如：</p>
+            <h1 id="table-of-contents">Table of Contents</h1><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#什么是科学上网？"><span class="toc-text">什么是科学上网？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#为什么要科学上网？"><span class="toc-text">为什么要科学上网？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#方法选择"><span class="toc-text">方法选择</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#VPN"><span class="toc-text">VPN</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#关于线路"><span class="toc-text">关于线路</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Shadowsocks-和-Vmess"><span class="toc-text">Shadowsocks 和 Vmess</span></a></li></ol></li></ol>
+<p>这是一篇简单介绍科学上网的文章，主要是给不太了解相关内容的同学，特别是女盆友。文章中会有简单的科普，介绍和使用方法。</p>
 <a id="more"></a>
-<ul>
-<li>QA 需要你给出一个带有环境切换的功能的安装文件</li>
-<li>App Store 需要你上传面向用户环境的 Release 的安装文件</li>
-<li>灰度测试的时候又需要你给出带有个别功能的安装文件</li>
-</ul>
-<p>面对以上需求，也许你会针对不同的包给出不同的宏定义，比如 <code>#define QA_TEST</code> ,<code>#define APP_STORE</code>, <code>#define GRAY_TEST</code>，然后针对不同的宏定义在里面进行不同的参数修改。但是如果各个业务方来频繁的找你，也许手动的修改这些文件会让你崩溃。</p>
-<p>接下来提供一个解决方案，专门针对这种不同的环境或编译需求使用的无侵入，无修改，无痛的三无解决方案。名字叫：Build Configuration + Scheme</p>
-<p>关于 <a href="https://developer.apple.com/library/ios/recipes/xcode_help-project_editor/Articles/BasingBuildConfigurationsonConfigurationFiles.html" target="_blank" rel="noopener">Build Configuration</a> 的官方解释。<br>关于 <a href="https://developer.apple.com/library/ios/recipes/xcode_help-scheme_editor/Articles/SchemeDialog.html#//apple_ref/doc/uid/TP40010402-CH1-SW1" target="_blank" rel="noopener">Scheme</a> 的官方解释。</p>
-<p>接下来的步骤可以实现上面所描述的功能。</p>
-<h3 id="1-添加不同的-Configuration"><a href="#1-添加不同的-Configuration" class="headerlink" title="1. 添加不同的 Configuration"></a>1. 添加不同的 Configuration</h3><p>在 Project -&gt; Info -&gt; Configuration 里，复制一个<br><div class="figure nocaption" style="width:100%;"><a class="fancybox" href="http://ww1.sinaimg.cn/large/6a011e49gw1f67fm00645j21j80iin0b.jpg" title data-caption data-fancybox="default" target="_blank" rel="noopener"><img class="fig-img" src="http://ww1.sinaimg.cn/large/6a011e49gw1f67fm00645j21j80iin0b.jpg" style="width:100%;height:100%;" alt></a></div></p>
-<h3 id="2-设置-Preprocessor-Macros"><a href="#2-设置-Preprocessor-Macros" class="headerlink" title="2. 设置 Preprocessor Macros"></a>2. 设置 Preprocessor Macros</h3><p>在 Target -&gt; Build Settings -&gt; Preprocessor Macros 里添加自己的宏，比如你可以这样：<br><div class="figure right" style="width:100%;"><a class="fancybox" href="http://ww1.sinaimg.cn/large/6a011e49gw1f67fm00645j21j80iin0b.jpg" title data-caption data-fancybox="default" target="_blank" rel="noopener"><img class="fig-img" src="http://ww1.sinaimg.cn/large/6a011e49gw1f67fm00645j21j80iin0b.jpg" style="width:100%;height:100%;" alt></a></div><div style="clear:both;"></div></p>
-<h3 id="3-可以畅快的使用了"><a href="#3-可以畅快的使用了" class="headerlink" title="3. 可以畅快的使用了"></a>3. 可以畅快的使用了</h3><p>接下来在你的代码中可以随便使用了</p>
-<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#ifdef DEBUG</span></span><br><span class="line">    <span class="built_in">NSLog</span>(<span class="string">@"Debug"</span>);</span><br><span class="line"><span class="meta">##endif</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#ifdef TEST</span></span><br><span class="line">    <span class="built_in">NSLog</span>(<span class="string">@"Test"</span>);</span><br><span class="line"><span class="meta">##endif</span></span><br></pre></td></tr></table></figure>
-<div class="figure right" style="width:100%;"><a class="fancybox" href="http://ww1.sinaimg.cn/large/6a011e49gw1f67fqfa7zej21kw0usdo5.jpg" title data-caption data-fancybox="default" target="_blank" rel="noopener"><img class="fig-img" src="http://ww1.sinaimg.cn/large/6a011e49gw1f67fqfa7zej21kw0usdo5.jpg" style="width:100%;height:100%;" alt></a></div><div style="clear:both;"></div>
-<h3 id="4-选择你要的-Scheme"><a href="#4-选择你要的-Scheme" class="headerlink" title="4. 选择你要的 Scheme"></a>4. 选择你要的 Scheme</h3><div class="figure right" style="width:100%;"><a class="fancybox" href="http://ww1.sinaimg.cn/large/6a011e49gw1f67fr9d270j21kw0us0x9.jpg" title data-caption data-fancybox="default" target="_blank" rel="noopener"><img class="fig-img" src="http://ww1.sinaimg.cn/large/6a011e49gw1f67fr9d270j21kw0us0x9.jpg" style="width:100%;height:100%;" alt></a></div><div style="clear:both;"></div>
-<p>Enjoy</p>
-<p>Reference：</p>
-<ul>
-<li><a href="https://developer.apple.com/library/ios/recipes/xcode_help-project_editor/Articles/BasingBuildConfigurationsonConfigurationFiles.html" target="_blank" rel="noopener">https://developer.apple.com/library/ios/recipes/xcode_help-project_editor/Articles/BasingBuildConfigurationsonConfigurationFiles.html</a></li>
-</ul>
+<h2 id="什么是科学上网？"><a href="#什么是科学上网？" class="headerlink" title="什么是科学上网？"></a>什么是科学上网？</h2><h2 id="为什么要科学上网？"><a href="#为什么要科学上网？" class="headerlink" title="为什么要科学上网？"></a>为什么要科学上网？</h2><div class="figure " style="width:100%;"><a class="fancybox" href="http://ww1.sinaimg.cn/large/6a011e49ly1gc8nsier08j22k01ds4qp.jpg" title data-caption data-fancybox="v" target="_blank" rel="noopener"><img class="fig-img" src="http://ww1.sinaimg.cn/large/6a011e49ly1gc8nsier08j22k01ds4qp.jpg" style="width:100%;height:100%;" alt></a></div>
+<p>看到上图，对于大多数人科学上网的诉求是想看一些有用，好玩，有意义的内容。比如 Google：搜索你想要的答案；Instagram：浏览别人的美好生活和分享自己的故事； TikTok：看看国外的友人是怎么花式玩抖音的；YouTube：可以看到全世界人民的想法和生活；Netflix，HBO，HULU：追你想要看的国外电视剧。这里不一一列举了，太多太多了。如果在国内想要浏览以上内容，那你就必须有工具才可以。</p>
+<h2 id="方法选择"><a href="#方法选择" class="headerlink" title="方法选择"></a>方法选择</h2><p>我们暂且定义科学上网有两步，第一步要有飞机（飞机 = App/客户端），第二步要有机场能够给飞机提供起飞的环境（机场 = 流量）。<br>在这个条件下，你可能会认为有些应用下载后不需要所谓的机场啊</p>
+<h3 id="VPN"><a href="#VPN" class="headerlink" title="VPN"></a>VPN</h3><h3 id="关于线路"><a href="#关于线路" class="headerlink" title="关于线路"></a>关于线路</h3><div class="figure " style="width:80%;"><a class="fancybox" href="http://ww1.sinaimg.cn/large/6a011e49ly1gc8mixtbymj20vq0zk76z.jpg" title data-caption data-fancybox="v" target="_blank" rel="noopener"><img class="fig-img" src="http://ww1.sinaimg.cn/large/6a011e49ly1gc8mixtbymj20vq0zk76z.jpg" style="width:80%;height:80%;" alt></a></div>
+<h3 id="Shadowsocks-和-Vmess"><a href="#Shadowsocks-和-Vmess" class="headerlink" title="Shadowsocks 和 Vmess"></a>Shadowsocks 和 Vmess</h3><p>Enjoy 😆</p>
 
             
 
@@ -282,7 +269,7 @@
             <div class="post-footer-tags">
                 <span class="text-color-light text-small">TAGGED IN</span><br/>
                 
-    <a class="tag tag--primary tag--small t-link" href="/tags/iOS/">iOS</a>
+    <a class="tag tag--primary tag--small t-link" href="/tags/随笔/">随笔</a>
 
             </div>
         
@@ -293,7 +280,7 @@
             <li class="post-action">
                 
                     
-                    <a class="post-action-btn btn btn--default tooltip--top" href="/2016/05/16/tranquilpeak-theme-tutorial/" data-tooltip="Tranquilpeak 主题的使用方法" aria-label="PREVIOUS: Tranquilpeak 主题的使用方法">
+                    <a class="post-action-btn btn btn--default tooltip--top" href="/2020/03/02/python-excel/" data-tooltip="使用 Python 库来操作 Excel（xlrd 和 xlwt）" aria-label="PREVIOUS: 使用 Python 库来操作 Excel（xlrd 和 xlwt）">
                 
                     <i class="fa fa-angle-left" aria-hidden="true"></i>
                     <span class="hide-xs hide-sm text-small icon-ml">PREVIOUS</span>
@@ -302,7 +289,7 @@
             <li class="post-action">
                 
                     
-                    <a class="post-action-btn btn btn--default tooltip--top" href="/2015/12/01/reveal-loader-jailbreak/" data-tooltip="Reveal 1.6.3 和 Reveal Loader" aria-label="NEXT: Reveal 1.6.3 和 Reveal Loader">
+                    <a class="post-action-btn btn btn--default tooltip--top" href="/2019/06/30/ruanluyou/" data-tooltip="Mac 下软路由的安装和使用" aria-label="NEXT: Mac 下软路由的安装和使用">
                 
                     <span class="hide-xs hide-sm text-small icon-mr">NEXT</span>
                     <i class="fa fa-angle-right" aria-hidden="true"></i>
@@ -320,7 +307,7 @@
             
             
             <li class="post-action hide-xs">
-                <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://hilen.github.io/2016/05/16/configuration-scheme/" title="Share on Facebook">
+                <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://hilen.github.io/2020/02/24/jichanghefeiji/" title="Share on Facebook">
                     <i class="fab fa-facebook" aria-hidden="true"></i>
                 </a>
             </li>
@@ -328,7 +315,7 @@
             
             
             <li class="post-action hide-xs">
-                <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=http://hilen.github.io/2016/05/16/configuration-scheme/" title="Share on Twitter">
+                <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=http://hilen.github.io/2020/02/24/jichanghefeiji/" title="Share on Twitter">
                     <i class="fab fa-twitter" aria-hidden="true"></i>
                 </a>
             </li>
@@ -336,7 +323,7 @@
             
             
             <li class="post-action hide-xs">
-                <a class="post-action-btn btn btn--default" target="new" href="http://service.weibo.com/share/share.php?&amp;title=http://hilen.github.io/2016/05/16/configuration-scheme/" title="Share on Weibo">
+                <a class="post-action-btn btn btn--default" target="new" href="http://service.weibo.com/share/share.php?&amp;title=http://hilen.github.io/2020/02/24/jichanghefeiji/" title="Share on Weibo">
                     <i class="fab fa-weibo" aria-hidden="true"></i>
                 </a>
             </li>
@@ -344,7 +331,7 @@
             
             
             <li class="post-action hide-xs">
-                <a class="post-action-btn btn btn--default" target="new" href="http://connect.qq.com/widget/shareqq/index.html?url=http://hilen.github.io/2016/05/16/configuration-scheme/&amp;title=iOS Build Configuration + Scheme 的使用" title="Share on QQ">
+                <a class="post-action-btn btn btn--default" target="new" href="http://connect.qq.com/widget/shareqq/index.html?url=http://hilen.github.io/2020/02/24/jichanghefeiji/&amp;title=给女盆友的科学上网介绍（待补充）" title="Share on QQ">
                     <i class="fab fa-qq" aria-hidden="true"></i>
                 </a>
             </li>
@@ -352,7 +339,7 @@
             
             
             <li class="post-action hide-xs">
-                <a class="post-action-btn btn btn--default" target="new" href="http://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=http://hilen.github.io/2016/05/16/configuration-scheme/" title="Share on Qzone">
+                <a class="post-action-btn btn btn--default" target="new" href="http://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=http://hilen.github.io/2020/02/24/jichanghefeiji/" title="Share on Qzone">
                     <i class="fa fa-star" aria-hidden="true"></i>
                 </a>
             </li>
@@ -368,7 +355,7 @@
         
         <li class="post-action">
             
-                <a class="post-action-btn btn btn--default" href="#" aria-label="Back to top">
+                <a class="post-action-btn btn btn--default" href="#table-of-contents" aria-label="Table of Contents">
             
                 <i class="fa fa-list" aria-hidden="true"></i>
             </a>
@@ -404,7 +391,7 @@
             <li class="post-action">
                 
                     
-                    <a class="post-action-btn btn btn--default tooltip--top" href="/2016/05/16/tranquilpeak-theme-tutorial/" data-tooltip="Tranquilpeak 主题的使用方法" aria-label="PREVIOUS: Tranquilpeak 主题的使用方法">
+                    <a class="post-action-btn btn btn--default tooltip--top" href="/2020/03/02/python-excel/" data-tooltip="使用 Python 库来操作 Excel（xlrd 和 xlwt）" aria-label="PREVIOUS: 使用 Python 库来操作 Excel（xlrd 和 xlwt）">
                 
                     <i class="fa fa-angle-left" aria-hidden="true"></i>
                     <span class="hide-xs hide-sm text-small icon-ml">PREVIOUS</span>
@@ -413,7 +400,7 @@
             <li class="post-action">
                 
                     
-                    <a class="post-action-btn btn btn--default tooltip--top" href="/2015/12/01/reveal-loader-jailbreak/" data-tooltip="Reveal 1.6.3 和 Reveal Loader" aria-label="NEXT: Reveal 1.6.3 和 Reveal Loader">
+                    <a class="post-action-btn btn btn--default tooltip--top" href="/2019/06/30/ruanluyou/" data-tooltip="Mac 下软路由的安装和使用" aria-label="NEXT: Mac 下软路由的安装和使用">
                 
                     <span class="hide-xs hide-sm text-small icon-mr">NEXT</span>
                     <i class="fa fa-angle-right" aria-hidden="true"></i>
@@ -431,7 +418,7 @@
             
             
             <li class="post-action hide-xs">
-                <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://hilen.github.io/2016/05/16/configuration-scheme/" title="Share on Facebook">
+                <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://hilen.github.io/2020/02/24/jichanghefeiji/" title="Share on Facebook">
                     <i class="fab fa-facebook" aria-hidden="true"></i>
                 </a>
             </li>
@@ -439,7 +426,7 @@
             
             
             <li class="post-action hide-xs">
-                <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=http://hilen.github.io/2016/05/16/configuration-scheme/" title="Share on Twitter">
+                <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=http://hilen.github.io/2020/02/24/jichanghefeiji/" title="Share on Twitter">
                     <i class="fab fa-twitter" aria-hidden="true"></i>
                 </a>
             </li>
@@ -447,7 +434,7 @@
             
             
             <li class="post-action hide-xs">
-                <a class="post-action-btn btn btn--default" target="new" href="http://service.weibo.com/share/share.php?&amp;title=http://hilen.github.io/2016/05/16/configuration-scheme/" title="Share on Weibo">
+                <a class="post-action-btn btn btn--default" target="new" href="http://service.weibo.com/share/share.php?&amp;title=http://hilen.github.io/2020/02/24/jichanghefeiji/" title="Share on Weibo">
                     <i class="fab fa-weibo" aria-hidden="true"></i>
                 </a>
             </li>
@@ -455,7 +442,7 @@
             
             
             <li class="post-action hide-xs">
-                <a class="post-action-btn btn btn--default" target="new" href="http://connect.qq.com/widget/shareqq/index.html?url=http://hilen.github.io/2016/05/16/configuration-scheme/&amp;title=iOS Build Configuration + Scheme 的使用" title="Share on QQ">
+                <a class="post-action-btn btn btn--default" target="new" href="http://connect.qq.com/widget/shareqq/index.html?url=http://hilen.github.io/2020/02/24/jichanghefeiji/&amp;title=给女盆友的科学上网介绍（待补充）" title="Share on QQ">
                     <i class="fab fa-qq" aria-hidden="true"></i>
                 </a>
             </li>
@@ -463,7 +450,7 @@
             
             
             <li class="post-action hide-xs">
-                <a class="post-action-btn btn btn--default" target="new" href="http://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=http://hilen.github.io/2016/05/16/configuration-scheme/" title="Share on Qzone">
+                <a class="post-action-btn btn btn--default" target="new" href="http://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=http://hilen.github.io/2020/02/24/jichanghefeiji/" title="Share on Qzone">
                     <i class="fa fa-star" aria-hidden="true"></i>
                 </a>
             </li>
@@ -479,7 +466,7 @@
         
         <li class="post-action">
             
-                <a class="post-action-btn btn btn--default" href="#" aria-label="Back to top">
+                <a class="post-action-btn btn btn--default" href="#table-of-contents" aria-label="Table of Contents">
             
                 <i class="fa fa-list" aria-hidden="true"></i>
             </a>
@@ -497,7 +484,7 @@
                 
                 
                 <li class="share-option">
-                    <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://hilen.github.io/2016/05/16/configuration-scheme/">
+                    <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://hilen.github.io/2020/02/24/jichanghefeiji/">
                         <i class="fab fa-facebook" aria-hidden="true"></i><span>Share on Facebook</span>
                     </a>
                 </li>
@@ -505,7 +492,7 @@
                 
                 
                 <li class="share-option">
-                    <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=http://hilen.github.io/2016/05/16/configuration-scheme/">
+                    <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=http://hilen.github.io/2020/02/24/jichanghefeiji/">
                         <i class="fab fa-twitter" aria-hidden="true"></i><span>Share on Twitter</span>
                     </a>
                 </li>
@@ -513,7 +500,7 @@
                 
                 
                 <li class="share-option">
-                    <a class="share-option-btn" target="new" href="http://service.weibo.com/share/share.php?&amp;title=http://hilen.github.io/2016/05/16/configuration-scheme/">
+                    <a class="share-option-btn" target="new" href="http://service.weibo.com/share/share.php?&amp;title=http://hilen.github.io/2020/02/24/jichanghefeiji/">
                         <i class="fab fa-weibo" aria-hidden="true"></i><span>Share on Weibo</span>
                     </a>
                 </li>
@@ -521,7 +508,7 @@
                 
                 
                 <li class="share-option">
-                    <a class="share-option-btn" target="new" href="http://connect.qq.com/widget/shareqq/index.html?url=http://hilen.github.io/2016/05/16/configuration-scheme/&amp;title=iOS Build Configuration + Scheme 的使用">
+                    <a class="share-option-btn" target="new" href="http://connect.qq.com/widget/shareqq/index.html?url=http://hilen.github.io/2020/02/24/jichanghefeiji/&amp;title=给女盆友的科学上网介绍（待补充）">
                         <i class="fab fa-qq" aria-hidden="true"></i><span>Share on QQ</span>
                     </a>
                 </li>
@@ -529,7 +516,7 @@
                 
                 
                 <li class="share-option">
-                    <a class="share-option-btn" target="new" href="http://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=http://hilen.github.io/2016/05/16/configuration-scheme/">
+                    <a class="share-option-btn" target="new" href="http://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=http://hilen.github.io/2020/02/24/jichanghefeiji/">
                         <i class="fa fa-star" aria-hidden="true"></i><span>Share on Qzone</span>
                     </a>
                 </li>
@@ -596,7 +583,7 @@
               repo: 'hilen.github.io',
               owner: 'hilen',
               admin: ['hilen'],
-              id: '2016/05/16/configuration-scheme/',
+              id: '2020/02/24/jichanghefeiji/',
               ...{"language":"cn","perPage":15,"distractionFreeMode":false,"enableHotKey":true,"pagerDirection":"first"}
             }).render('gitalk')
           })()

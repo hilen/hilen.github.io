@@ -1,27 +1,27 @@
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-cn">
     
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="generator" content="Hilen&#39;s Blog">
-    <title>Sublime Text 3 配置 - Hilen&#39;s Blog</title>
+    <meta name="generator" content="Hilen Blog">
+    <title>Sublime Text 3 配置 - Hilen Blog</title>
     <meta name="author" content="Hilen">
     
         <meta name="keywords" content="Sublime Text">
     
     
     
-    <script type="application/ld+json">{"@context":"http://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"Hilen","sameAs":["https://github.com/hilen","mailto:laihailong@hotmail.com"],"image":"https://gw.alicdn.com/tfs/TB1XyOtdUuF3KVjSZK9XXbVtXXa-328-312.png"},"articleBody":"Sublime Text 是一个代码编辑器。Sublime Text 是由程序员 Jon Skinner 于 2008 年 1 月份所开发出来，它最初被设计为一个具有丰富扩展功能的 Vim。它具有漂亮的用户界面和强大的功能，例如代码缩略图，Python 的插件，代码段等。还可自定义键绑定，菜单和工具栏等等内容。\n\n安装从 https://www.sublimetext.com/3 下载并且拖拽到 Application 文件夹内。\nSublime Text 比较强大的就是它的插件了，那么这里就要提到 Package Control 这个插件管理包了。安装方法： 使用 Ctrl + ` 快捷键或者通过 View -&gt; Show Console 菜单打开命令行。然后输入\n1import urllib.request,os,hashlib; h = &apos;df21e130d211cfc94d9b0905775a7c0f&apos; + &apos;1e3d39e33b79698005270310898eea76&apos;; pf = &apos;Package Control.sublime-package&apos;; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); by = urllib.request.urlopen( &apos;http://packagecontrol.io/&apos; + pf.replace(&apos; &apos;, &apos;%20&apos;)).read(); dh = hashlib.sha256(by).hexdigest(); print(&apos;Error validating download (got %s instead of %s), please try manual install&apos; % (dh, h)) if dh != h else open(os.path.join( ipp, pf), &apos;wb&apos; ).write(by)\n以上内容在 https://packagecontrol.io/installation 可以找到，最好以官方为准。\n使用打开 ⌘ + shift + p  打开，你会看到这样一个界面。那么恭喜你，安装成功。\n配置123456789101112131415161718192021222324252627282930313233343536373839404142434445&#123;\t// 代码提示\t&quot;auto_complete&quot;: true,\t// 设置光标闪动方式,&quot;smooth&quot;, &quot;phase&quot;, &quot;blink&quot;, &quot;wide&quot;,&quot;solid&quot;.\t&quot;caret_style&quot;: &quot;wide&quot;,\t&quot;default_encoding&quot;: &quot;UTF-8&quot;,\t// 每一行结束的时候用什么字符做终止符\t&quot;default_line_ending&quot;: &quot;system&quot;,\t&quot;default_new_file_syntax&quot;: &quot;Packages/Text/Objective-C.tmLanguage&quot;,\t// 是否显示代码折叠按钮\t&quot;fold_buttons&quot;: true,\t&quot;font_face&quot;: &quot;Monaco&quot;,\t&quot;font_size&quot;: 16.0,\t&quot;ignored_packages&quot;:\t[\t\t&quot;Vintage&quot;\t],\t&quot;highlight_line&quot;: true,   &quot;highlight_modified_tabs&quot;: true,\t&quot;line_numbers&quot;: true,\t&quot;line_padding_bottom&quot;: 1,\t&quot;line_padding_top&quot;: 1,\t&quot;soda_folder_icons&quot;: true,\t&quot;tab_size&quot;: 4,\t//主题相关\t&quot;theme&quot;: &quot;Soda Dark 3.sublime-theme&quot;,\t// 为true时，保存文件时会删除每行结束后多余的空格\t&quot;trim_trailing_white_space_on_save&quot;: true,\t&quot;use_current_file_syntax&quot;: true,\t&quot;word_wrap&quot;: true,\t&quot;update_check&quot;: false&#125;\n主题\nSoda\n\n插件\nMarkdown\nPlainTasks:\nSideBarEnhancements\nMarkdown Preview\n代码提示插件 SublimeCodeIntel\nGitGutter: A Sublime Text 2/3 plugin to see git diff in gutter\n\nReference\nSublimeText3常用快捷键和优秀插件（亲测） - manfredHu - 博客园\n\n","dateCreated":"2016-10-12T10:37:29+08:00","dateModified":"2020-03-03T16:05:33+08:00","datePublished":"2016-10-12T10:37:29+08:00","description":"Sublime Text 是一个代码编辑器。Sublime Text 是由程序员 Jon Skinner 于 2008 年 1 月份所开发出来，它最初被设计为一个具有丰富扩展功能的 Vim。它具有漂亮的用户界面和强大的功能，例如代码缩略图，Python 的插件，代码段等。还可自定义键绑定，菜单和工具栏等等内容。","headline":"Sublime Text 3 配置","image":["https://gw.alicdn.com/tfs/TB1io_Ya2Bj_uVjSZFpXXc0SXXa-400-400.png"],"mainEntityOfPage":{"@type":"WebPage","@id":"http://hilen.github.io/2016/10/12/sublime-config/"},"publisher":{"@type":"Organization","name":"Hilen","sameAs":["https://github.com/hilen","mailto:laihailong@hotmail.com"],"image":"https://gw.alicdn.com/tfs/TB1XyOtdUuF3KVjSZK9XXbVtXXa-328-312.png","logo":{"@type":"ImageObject","url":"https://gw.alicdn.com/tfs/TB1XyOtdUuF3KVjSZK9XXbVtXXa-328-312.png"}},"url":"http://hilen.github.io/2016/10/12/sublime-config/","keywords":"随笔","thumbnailUrl":"https://gw.alicdn.com/tfs/TB1io_Ya2Bj_uVjSZFpXXc0SXXa-400-400.png"}</script>
+    <script type="application/ld+json">{"@context":"http://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"Hilen","sameAs":["https://github.com/hilen","mailto:lhlazxyq@gmail.com"],"image":"https://ww1.sinaimg.cn/mw690/6a011e49ly1gn956xudhcj20fo0fogm7.jpg"},"articleBody":"Sublime Text 是一个代码编辑器。Sublime Text 是由程序员 Jon Skinner 于 2008 年 1 月份所开发出来，它最初被设计为一个具有丰富扩展功能的 Vim。它具有漂亮的用户界面和强大的功能，例如代码缩略图，Python 的插件，代码段等。还可自定义键绑定，菜单和工具栏等等内容。\n\n安装从 https://www.sublimetext.com/3 下载并且拖拽到 Application 文件夹内。\nSublime Text 比较强大的就是它的插件了，那么这里就要提到 Package Control 这个插件管理包了。安装方法： 使用 Ctrl + ` 快捷键或者通过 View -&gt; Show Console 菜单打开命令行。然后输入\n1import urllib.request,os,hashlib; h = &apos;df21e130d211cfc94d9b0905775a7c0f&apos; + &apos;1e3d39e33b79698005270310898eea76&apos;; pf = &apos;Package Control.sublime-package&apos;; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); by = urllib.request.urlopen( &apos;http://packagecontrol.io/&apos; + pf.replace(&apos; &apos;, &apos;%20&apos;)).read(); dh = hashlib.sha256(by).hexdigest(); print(&apos;Error validating download (got %s instead of %s), please try manual install&apos; % (dh, h)) if dh != h else open(os.path.join( ipp, pf), &apos;wb&apos; ).write(by)\n以上内容在 https://packagecontrol.io/installation 可以找到，最好以官方为准。\n使用打开 ⌘ + shift + p  打开，你会看到这样一个界面。那么恭喜你，安装成功。\n配置123456789101112131415161718192021222324252627282930313233343536373839404142434445&#123;\t// 代码提示\t&quot;auto_complete&quot;: true,\t// 设置光标闪动方式,&quot;smooth&quot;, &quot;phase&quot;, &quot;blink&quot;, &quot;wide&quot;,&quot;solid&quot;.\t&quot;caret_style&quot;: &quot;wide&quot;,\t&quot;default_encoding&quot;: &quot;UTF-8&quot;,\t// 每一行结束的时候用什么字符做终止符\t&quot;default_line_ending&quot;: &quot;system&quot;,\t&quot;default_new_file_syntax&quot;: &quot;Packages/Text/Objective-C.tmLanguage&quot;,\t// 是否显示代码折叠按钮\t&quot;fold_buttons&quot;: true,\t&quot;font_face&quot;: &quot;Monaco&quot;,\t&quot;font_size&quot;: 16.0,\t&quot;ignored_packages&quot;:\t[\t\t&quot;Vintage&quot;\t],\t&quot;highlight_line&quot;: true,   &quot;highlight_modified_tabs&quot;: true,\t&quot;line_numbers&quot;: true,\t&quot;line_padding_bottom&quot;: 1,\t&quot;line_padding_top&quot;: 1,\t&quot;soda_folder_icons&quot;: true,\t&quot;tab_size&quot;: 4,\t//主题相关\t&quot;theme&quot;: &quot;Soda Dark 3.sublime-theme&quot;,\t// 为true时，保存文件时会删除每行结束后多余的空格\t&quot;trim_trailing_white_space_on_save&quot;: true,\t&quot;use_current_file_syntax&quot;: true,\t&quot;word_wrap&quot;: true,\t&quot;update_check&quot;: false&#125;\n主题\nSoda\n\n插件\nMarkdown\nPlainTasks:\nSideBarEnhancements\nMarkdown Preview\n代码提示插件 SublimeCodeIntel\nGitGutter: A Sublime Text 2/3 plugin to see git diff in gutter\n\nReference\nSublimeText3常用快捷键和优秀插件（亲测） - manfredHu - 博客园\n\n","dateCreated":"2016-10-12T10:37:29+08:00","dateModified":"2020-03-03T16:05:33+08:00","datePublished":"2016-10-12T10:37:29+08:00","description":"Sublime Text 是一个代码编辑器。Sublime Text 是由程序员 Jon Skinner 于 2008 年 1 月份所开发出来，它最初被设计为一个具有丰富扩展功能的 Vim。它具有漂亮的用户界面和强大的功能，例如代码缩略图，Python 的插件，代码段等。还可自定义键绑定，菜单和工具栏等等内容。","headline":"Sublime Text 3 配置","image":["https://gw.alicdn.com/tfs/TB1io_Ya2Bj_uVjSZFpXXc0SXXa-400-400.png"],"mainEntityOfPage":{"@type":"WebPage","@id":"http://hilen.github.io/2016/10/12/sublime-config/"},"publisher":{"@type":"Organization","name":"Hilen","sameAs":["https://github.com/hilen","mailto:lhlazxyq@gmail.com"],"image":"https://ww1.sinaimg.cn/mw690/6a011e49ly1gn956xudhcj20fo0fogm7.jpg","logo":{"@type":"ImageObject","url":"https://ww1.sinaimg.cn/mw690/6a011e49ly1gn956xudhcj20fo0fogm7.jpg"}},"url":"http://hilen.github.io/2016/10/12/sublime-config/","keywords":"随笔","thumbnailUrl":"https://gw.alicdn.com/tfs/TB1io_Ya2Bj_uVjSZFpXXc0SXXa-400-400.png"}</script>
     <meta name="description" content="Sublime Text 是一个代码编辑器。Sublime Text 是由程序员 Jon Skinner 于 2008 年 1 月份所开发出来，它最初被设计为一个具有丰富扩展功能的 Vim。它具有漂亮的用户界面和强大的功能，例如代码缩略图，Python 的插件，代码段等。还可自定义键绑定，菜单和工具栏等等内容。">
 <meta name="keywords" content="Sublime Text">
 <meta property="og:type" content="blog">
 <meta property="og:title" content="Sublime Text 3 配置">
 <meta property="og:url" content="http://hilen.github.io/2016/10/12/sublime-config/index.html">
-<meta property="og:site_name" content="Hilen&#39;s Blog">
+<meta property="og:site_name" content="Hilen Blog">
 <meta property="og:description" content="Sublime Text 是一个代码编辑器。Sublime Text 是由程序员 Jon Skinner 于 2008 年 1 月份所开发出来，它最初被设计为一个具有丰富扩展功能的 Vim。它具有漂亮的用户界面和强大的功能，例如代码缩略图，Python 的插件，代码段等。还可自定义键绑定，菜单和工具栏等等内容。">
-<meta property="og:locale" content="en">
+<meta property="og:locale" content="zh-cn">
 <meta property="og:image" content="http://ww1.sinaimg.cn/large/6a011e49gw1f8paq3el2uj21ao104agz.jpg">
 <meta property="og:updated_time" content="2020-03-03T08:05:33.000Z">
 <meta name="twitter:card" content="summary">
@@ -33,7 +33,7 @@
         
     
     
-        <meta property="og:image" content="https://gw.alicdn.com/tfs/TB1XyOtdUuF3KVjSZK9XXbVtXXa-328-312.png"/>
+        <meta property="og:image" content="https://ww1.sinaimg.cn/mw690/6a011e49ly1gn956xudhcj20fo0fogm7.jpg"/>
     
     
         <meta property="og:image" content="https://gw.alicdn.com/tfs/TB1io_Ya2Bj_uVjSZFpXXc0SXXa-400-400.png"/>
@@ -42,7 +42,7 @@
     
     
     <!--STYLES-->
-    <link rel="stylesheet" href="/assets/css/style-vbqinavchah6jcimxa37wftwhydi8kc2ftser2fa0eoiv73ho0hbggaqec63.min.css">
+    <link rel="stylesheet" href="/assets/css/style-mhajaau9mrcpkpcfu9rq8rdkzf3tgyxu5tslo8ekowdwbu2g30unzxgzmxwq.min.css">
     <!--STYLES END-->
     
 
@@ -69,15 +69,24 @@
 <header id="header" data-behavior="2">
     <i id="btn-open-sidebar" class="fa fa-lg fa-bars"></i>
     <div class="header-title">
-        <a class="header-title-link" href="/ ">Hilen&#39;s Blog</a>
+        <a
+            class="header-title-link"
+            href="/"
+            aria-label=""
+        >
+            Hilen Blog
+        </a>
     </div>
     
         
-            <a  class="header-right-picture "
-                href="#about">
+            <a
+                class="header-right-picture "
+                href="#about"
+                aria-label="打开链接: /#about"
+            >
         
         
-            <img class="header-picture" src="https://gw.alicdn.com/tfs/TB1XyOtdUuF3KVjSZK9XXbVtXXa-328-312.png" alt="Author&#39;s picture"/>
+            <img class="header-picture" src="https://ww1.sinaimg.cn/mw690/6a011e49ly1gn956xudhcj20fo0fogm7.jpg" alt="作者的图片"/>
         
         </a>
     
@@ -94,8 +103,11 @@
     <div class="sidebar-container">
         
             <div class="sidebar-profile">
-                <a href="/#about">
-                    <img class="sidebar-profile-picture" src="https://gw.alicdn.com/tfs/TB1XyOtdUuF3KVjSZK9XXbVtXXa-328-312.png" alt="Author&#39;s picture"/>
+                <a
+                    href="/#about"
+                    aria-label="阅读有关作者的更多信息"
+                >
+                    <img class="sidebar-profile-picture" src="https://ww1.sinaimg.cn/mw690/6a011e49ly1gn956xudhcj20fo0fogm7.jpg" alt="作者的图片"/>
                 </a>
                 <h4 class="sidebar-profile-name">Hilen</h4>
                 
@@ -109,79 +121,85 @@
             
                 <li class="sidebar-button">
                     
-                        <a  class="sidebar-button-link "
-                             href="/ "
+                        <a
+                            class="sidebar-button-link "
+                            href="/"
                             
-                            title="Home"
+                            rel="noopener"
+                            title="首页"
                         >
-                    
                         <i class="sidebar-button-icon fa fa-home" aria-hidden="true"></i>
-                        <span class="sidebar-button-desc">Home</span>
+                        <span class="sidebar-button-desc">首页</span>
                     </a>
             </li>
             
                 <li class="sidebar-button">
                     
-                        <a  class="sidebar-button-link "
-                             href="/all-categories"
+                        <a
+                            class="sidebar-button-link "
+                            href="/all-categories"
                             
-                            title="Categories"
+                            rel="noopener"
+                            title="分类"
                         >
-                    
                         <i class="sidebar-button-icon fa fa-bookmark" aria-hidden="true"></i>
-                        <span class="sidebar-button-desc">Categories</span>
+                        <span class="sidebar-button-desc">分类</span>
                     </a>
             </li>
             
                 <li class="sidebar-button">
                     
-                        <a  class="sidebar-button-link "
-                             href="/all-tags"
+                        <a
+                            class="sidebar-button-link "
+                            href="/all-tags"
                             
-                            title="Tags"
+                            rel="noopener"
+                            title="标签"
                         >
-                    
                         <i class="sidebar-button-icon fa fa-tags" aria-hidden="true"></i>
-                        <span class="sidebar-button-desc">Tags</span>
+                        <span class="sidebar-button-desc">标签</span>
                     </a>
             </li>
             
                 <li class="sidebar-button">
                     
-                        <a  class="sidebar-button-link "
-                             href="/all-archives"
+                        <a
+                            class="sidebar-button-link "
+                            href="/all-archives"
                             
-                            title="Archives"
+                            rel="noopener"
+                            title="归档"
                         >
-                    
                         <i class="sidebar-button-icon fa fa-archive" aria-hidden="true"></i>
-                        <span class="sidebar-button-desc">Archives</span>
+                        <span class="sidebar-button-desc">归档</span>
                     </a>
             </li>
             
                 <li class="sidebar-button">
                     
-                        <a  class="sidebar-button-link open-algolia-search"
-                             href="#search"
+                        <a
+                            class="sidebar-button-link open-algolia-search"
+                            href="#search"
                             
-                            title="Search"
+                            rel="noopener"
+                            title="搜索"
                         >
-                    
                         <i class="sidebar-button-icon fa fa-search" aria-hidden="true"></i>
-                        <span class="sidebar-button-desc">Search</span>
+                        <span class="sidebar-button-desc">搜索</span>
                     </a>
             </li>
             
                 <li class="sidebar-button">
                     
-                        <a  class="sidebar-button-link "
-                             href="/about"
+                        <a
+                            class="sidebar-button-link "
+                            href="/about"
                             
-                            title="About"
+                            rel="noopener"
+                            title="关于"
                         >
-                    
                         <i class="sidebar-button-icon fa fa-question" aria-hidden="true"></i>
-                        <span class="sidebar-button-desc">About</span>
+                        <span class="sidebar-button-desc">关于</span>
                     </a>
             </li>
             
@@ -191,8 +209,15 @@
             
                 <li class="sidebar-button">
                     
-                        <a  class="sidebar-button-link " href="https://github.com/hilen" target="_blank" rel="noopener" title="GitHub">
-                    
+                        <a
+                            class="sidebar-button-link "
+                            href="https://github.com/hilen"
+                            
+                                target="_blank"
+                            
+                            rel="noopener"
+                            title="GitHub"
+                        >
                         <i class="sidebar-button-icon fab fa-github" aria-hidden="true"></i>
                         <span class="sidebar-button-desc">GitHub</span>
                     </a>
@@ -200,10 +225,17 @@
             
                 <li class="sidebar-button">
                     
-                        <a  class="sidebar-button-link " href="mailto:laihailong@hotmail.com" target="_blank" rel="noopener" title="Mail">
-                    
+                        <a
+                            class="sidebar-button-link "
+                            href="mailto:lhlazxyq@gmail.com"
+                            
+                                target="_blank"
+                            
+                            rel="noopener"
+                            title="邮箱"
+                        >
                         <i class="sidebar-button-icon fa fa-envelope" aria-hidden="true"></i>
-                        <span class="sidebar-button-desc">Mail</span>
+                        <span class="sidebar-button-desc">邮箱</span>
                     </a>
             </li>
             
@@ -231,11 +263,11 @@
         <div class="post-meta">
     <time datetime="2016-10-12T10:37:29+08:00">
 	
-		    Oct 12, 2016
+		    10月 12, 2016
     	
     </time>
     
-        <span>in </span>
+        <span>发布在 </span>
         
     <a class="category-link" href="/categories/随笔/">随笔</a>
 
@@ -280,7 +312,7 @@
     <div id="post-footer" class="post-footer main-content-wrap">
         
             <div class="post-footer-tags">
-                <span class="text-color-light text-small">TAGGED IN</span><br/>
+                <span class="text-color-light text-small">标签</span><br/>
                 
     <a class="tag tag--primary tag--small t-link" href="/tags/随笔/">随笔</a>
 
@@ -293,26 +325,40 @@
             <li class="post-action">
                 
                     
-                    <a class="post-action-btn btn btn--default tooltip--top" href="/2016/10/24/ruby-cocoapods/" data-tooltip="macOS Sierra 安装 rbenv 管理器 和 CocoaPods" aria-label="PREVIOUS: macOS Sierra 安装 rbenv 管理器 和 CocoaPods">
-                
-                    <i class="fa fa-angle-left" aria-hidden="true"></i>
-                    <span class="hide-xs hide-sm text-small icon-ml">PREVIOUS</span>
-                </a>
+                <a
+                    class="post-action-btn btn btn--default tooltip--top"
+                    href="/2016/10/24/ruby-cocoapods/"
+                    data-tooltip="macOS Sierra 安装 rbenv 管理器 和 CocoaPods"
+                    aria-label="上一篇: macOS Sierra 安装 rbenv 管理器 和 CocoaPods"
+                >
+                    
+                        <i class="fa fa-angle-left" aria-hidden="true"></i>
+                        <span class="hide-xs hide-sm text-small icon-ml">上一篇</span>
+                    </a>
             </li>
             <li class="post-action">
                 
                     
-                    <a class="post-action-btn btn btn--default tooltip--top" href="/2016/08/10/mantle-extension/" data-tooltip="Mantle 的增强" aria-label="NEXT: Mantle 的增强">
-                
-                    <span class="hide-xs hide-sm text-small icon-mr">NEXT</span>
-                    <i class="fa fa-angle-right" aria-hidden="true"></i>
-                </a>
+                <a
+                    class="post-action-btn btn btn--default tooltip--top"
+                    href="/2016/08/10/mantle-extension/"
+                    data-tooltip="Mantle 的增强"
+                    aria-label="下一篇: Mantle 的增强"
+                >
+                    
+                        <span class="hide-xs hide-sm text-small icon-mr">下一篇</span>
+                        <i class="fa fa-angle-right" aria-hidden="true"></i>
+                    </a>
             </li>
         </ul>
     </nav>
     <ul class="post-actions post-action-share">
         <li class="post-action hide-lg hide-md hide-sm">
-            <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions" aria-label="Share this post">
+            <a
+                class="post-action-btn btn btn--default btn-open-shareoptions"
+                href="#btn-open-shareoptions"
+                aria-label="Diesen Beitrag teilen"
+            >
                 <i class="fa fa-share-alt" aria-hidden="true"></i>
             </a>
         </li>
@@ -320,7 +366,12 @@
             
             
             <li class="post-action hide-xs">
-                <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://hilen.github.io/2016/10/12/sublime-config/" title="Share on Facebook">
+                <a
+                    class="post-action-btn btn btn--default"
+                    target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://hilen.github.io/2016/10/12/sublime-config/"
+                    title="分享到 Facebook"
+                    aria-label="分享到 Facebook"
+                >
                     <i class="fab fa-facebook" aria-hidden="true"></i>
                 </a>
             </li>
@@ -328,7 +379,12 @@
             
             
             <li class="post-action hide-xs">
-                <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=http://hilen.github.io/2016/10/12/sublime-config/" title="Share on Twitter">
+                <a
+                    class="post-action-btn btn btn--default"
+                    target="new" href="https://twitter.com/intent/tweet?text=http://hilen.github.io/2016/10/12/sublime-config/"
+                    title="分享到 Twitter"
+                    aria-label="分享到 Twitter"
+                >
                     <i class="fab fa-twitter" aria-hidden="true"></i>
                 </a>
             </li>
@@ -336,7 +392,12 @@
             
             
             <li class="post-action hide-xs">
-                <a class="post-action-btn btn btn--default" target="new" href="http://service.weibo.com/share/share.php?&amp;title=http://hilen.github.io/2016/10/12/sublime-config/" title="Share on Weibo">
+                <a
+                    class="post-action-btn btn btn--default"
+                    target="new" href="http://service.weibo.com/share/share.php?&amp;title=http://hilen.github.io/2016/10/12/sublime-config/"
+                    title="分享到 Weibo"
+                    aria-label="分享到 Weibo"
+                >
                     <i class="fab fa-weibo" aria-hidden="true"></i>
                 </a>
             </li>
@@ -344,7 +405,12 @@
             
             
             <li class="post-action hide-xs">
-                <a class="post-action-btn btn btn--default" target="new" href="http://connect.qq.com/widget/shareqq/index.html?url=http://hilen.github.io/2016/10/12/sublime-config/&amp;title=Sublime Text 3 配置" title="Share on QQ">
+                <a
+                    class="post-action-btn btn btn--default"
+                    target="new" href="http://connect.qq.com/widget/shareqq/index.html?url=http://hilen.github.io/2016/10/12/sublime-config/&amp;title=Sublime Text 3 配置"
+                    title="分享到 QQ"
+                    aria-label="分享到 QQ"
+                >
                     <i class="fab fa-qq" aria-hidden="true"></i>
                 </a>
             </li>
@@ -352,7 +418,12 @@
             
             
             <li class="post-action hide-xs">
-                <a class="post-action-btn btn btn--default" target="new" href="http://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=http://hilen.github.io/2016/10/12/sublime-config/" title="Share on Qzone">
+                <a
+                    class="post-action-btn btn btn--default"
+                    target="new" href="http://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=http://hilen.github.io/2016/10/12/sublime-config/"
+                    title="分享到 Qzone"
+                    aria-label="分享到 Qzone"
+                >
                     <i class="fa fa-star" aria-hidden="true"></i>
                 </a>
             </li>
@@ -360,15 +431,19 @@
         
             
                 <li class="post-action">
-                    <a class="post-action-btn btn btn--default" href="#gitalk">
-                         <i class="fa fa-comment"></i>
+                    <a
+                        class="post-action-btn btn btn--default"
+                        href="#gitalk"
+                        aria-label="Kommentieren"
+                    >
+                        <i class="fa fa-comment"></i>
                     </a>
                 </li>
             
         
         <li class="post-action">
             
-                <a class="post-action-btn btn btn--default" href="#" aria-label="Back to top">
+                <a class="post-action-btn btn btn--default" href="#" aria-label="Nach oben">
             
                 <i class="fa fa-list" aria-hidden="true"></i>
             </a>
@@ -391,7 +466,7 @@
 
                 <footer id="footer" class="main-content-wrap">
     <span class="copyrights">
-        Copyrights &copy; 2020 Hilen. All Rights Reserved.
+        Copyrights &copy; 2021 Hilen. All Rights Reserved.
     </span>
 </footer>
 
@@ -404,26 +479,40 @@
             <li class="post-action">
                 
                     
-                    <a class="post-action-btn btn btn--default tooltip--top" href="/2016/10/24/ruby-cocoapods/" data-tooltip="macOS Sierra 安装 rbenv 管理器 和 CocoaPods" aria-label="PREVIOUS: macOS Sierra 安装 rbenv 管理器 和 CocoaPods">
-                
-                    <i class="fa fa-angle-left" aria-hidden="true"></i>
-                    <span class="hide-xs hide-sm text-small icon-ml">PREVIOUS</span>
-                </a>
+                <a
+                    class="post-action-btn btn btn--default tooltip--top"
+                    href="/2016/10/24/ruby-cocoapods/"
+                    data-tooltip="macOS Sierra 安装 rbenv 管理器 和 CocoaPods"
+                    aria-label="上一篇: macOS Sierra 安装 rbenv 管理器 和 CocoaPods"
+                >
+                    
+                        <i class="fa fa-angle-left" aria-hidden="true"></i>
+                        <span class="hide-xs hide-sm text-small icon-ml">上一篇</span>
+                    </a>
             </li>
             <li class="post-action">
                 
                     
-                    <a class="post-action-btn btn btn--default tooltip--top" href="/2016/08/10/mantle-extension/" data-tooltip="Mantle 的增强" aria-label="NEXT: Mantle 的增强">
-                
-                    <span class="hide-xs hide-sm text-small icon-mr">NEXT</span>
-                    <i class="fa fa-angle-right" aria-hidden="true"></i>
-                </a>
+                <a
+                    class="post-action-btn btn btn--default tooltip--top"
+                    href="/2016/08/10/mantle-extension/"
+                    data-tooltip="Mantle 的增强"
+                    aria-label="下一篇: Mantle 的增强"
+                >
+                    
+                        <span class="hide-xs hide-sm text-small icon-mr">下一篇</span>
+                        <i class="fa fa-angle-right" aria-hidden="true"></i>
+                    </a>
             </li>
         </ul>
     </nav>
     <ul class="post-actions post-action-share">
         <li class="post-action hide-lg hide-md hide-sm">
-            <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions" aria-label="Share this post">
+            <a
+                class="post-action-btn btn btn--default btn-open-shareoptions"
+                href="#btn-open-shareoptions"
+                aria-label="Diesen Beitrag teilen"
+            >
                 <i class="fa fa-share-alt" aria-hidden="true"></i>
             </a>
         </li>
@@ -431,7 +520,12 @@
             
             
             <li class="post-action hide-xs">
-                <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://hilen.github.io/2016/10/12/sublime-config/" title="Share on Facebook">
+                <a
+                    class="post-action-btn btn btn--default"
+                    target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://hilen.github.io/2016/10/12/sublime-config/"
+                    title="分享到 Facebook"
+                    aria-label="分享到 Facebook"
+                >
                     <i class="fab fa-facebook" aria-hidden="true"></i>
                 </a>
             </li>
@@ -439,7 +533,12 @@
             
             
             <li class="post-action hide-xs">
-                <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=http://hilen.github.io/2016/10/12/sublime-config/" title="Share on Twitter">
+                <a
+                    class="post-action-btn btn btn--default"
+                    target="new" href="https://twitter.com/intent/tweet?text=http://hilen.github.io/2016/10/12/sublime-config/"
+                    title="分享到 Twitter"
+                    aria-label="分享到 Twitter"
+                >
                     <i class="fab fa-twitter" aria-hidden="true"></i>
                 </a>
             </li>
@@ -447,7 +546,12 @@
             
             
             <li class="post-action hide-xs">
-                <a class="post-action-btn btn btn--default" target="new" href="http://service.weibo.com/share/share.php?&amp;title=http://hilen.github.io/2016/10/12/sublime-config/" title="Share on Weibo">
+                <a
+                    class="post-action-btn btn btn--default"
+                    target="new" href="http://service.weibo.com/share/share.php?&amp;title=http://hilen.github.io/2016/10/12/sublime-config/"
+                    title="分享到 Weibo"
+                    aria-label="分享到 Weibo"
+                >
                     <i class="fab fa-weibo" aria-hidden="true"></i>
                 </a>
             </li>
@@ -455,7 +559,12 @@
             
             
             <li class="post-action hide-xs">
-                <a class="post-action-btn btn btn--default" target="new" href="http://connect.qq.com/widget/shareqq/index.html?url=http://hilen.github.io/2016/10/12/sublime-config/&amp;title=Sublime Text 3 配置" title="Share on QQ">
+                <a
+                    class="post-action-btn btn btn--default"
+                    target="new" href="http://connect.qq.com/widget/shareqq/index.html?url=http://hilen.github.io/2016/10/12/sublime-config/&amp;title=Sublime Text 3 配置"
+                    title="分享到 QQ"
+                    aria-label="分享到 QQ"
+                >
                     <i class="fab fa-qq" aria-hidden="true"></i>
                 </a>
             </li>
@@ -463,7 +572,12 @@
             
             
             <li class="post-action hide-xs">
-                <a class="post-action-btn btn btn--default" target="new" href="http://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=http://hilen.github.io/2016/10/12/sublime-config/" title="Share on Qzone">
+                <a
+                    class="post-action-btn btn btn--default"
+                    target="new" href="http://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=http://hilen.github.io/2016/10/12/sublime-config/"
+                    title="分享到 Qzone"
+                    aria-label="分享到 Qzone"
+                >
                     <i class="fa fa-star" aria-hidden="true"></i>
                 </a>
             </li>
@@ -471,15 +585,19 @@
         
             
                 <li class="post-action">
-                    <a class="post-action-btn btn btn--default" href="#gitalk">
-                         <i class="fa fa-comment"></i>
+                    <a
+                        class="post-action-btn btn btn--default"
+                        href="#gitalk"
+                        aria-label="Kommentieren"
+                    >
+                        <i class="fa fa-comment"></i>
                     </a>
                 </li>
             
         
         <li class="post-action">
             
-                <a class="post-action-btn btn btn--default" href="#" aria-label="Back to top">
+                <a class="post-action-btn btn btn--default" href="#" aria-label="Nach oben">
             
                 <i class="fa fa-list" aria-hidden="true"></i>
             </a>
@@ -497,40 +615,65 @@
                 
                 
                 <li class="share-option">
-                    <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://hilen.github.io/2016/10/12/sublime-config/">
-                        <i class="fab fa-facebook" aria-hidden="true"></i><span>Share on Facebook</span>
+                    <a
+                        class="share-option-btn"
+                        target="new"
+                        href="https://www.facebook.com/sharer/sharer.php?u=http://hilen.github.io/2016/10/12/sublime-config/"
+                        aria-label="分享到 Facebook"
+                    >
+                        <i class="fab fa-facebook" aria-hidden="true"></i><span>分享到 Facebook</span>
                     </a>
                 </li>
             
                 
                 
                 <li class="share-option">
-                    <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=http://hilen.github.io/2016/10/12/sublime-config/">
-                        <i class="fab fa-twitter" aria-hidden="true"></i><span>Share on Twitter</span>
+                    <a
+                        class="share-option-btn"
+                        target="new"
+                        href="https://twitter.com/intent/tweet?text=http://hilen.github.io/2016/10/12/sublime-config/"
+                        aria-label="分享到 Twitter"
+                    >
+                        <i class="fab fa-twitter" aria-hidden="true"></i><span>分享到 Twitter</span>
                     </a>
                 </li>
             
                 
                 
                 <li class="share-option">
-                    <a class="share-option-btn" target="new" href="http://service.weibo.com/share/share.php?&amp;title=http://hilen.github.io/2016/10/12/sublime-config/">
-                        <i class="fab fa-weibo" aria-hidden="true"></i><span>Share on Weibo</span>
+                    <a
+                        class="share-option-btn"
+                        target="new"
+                        href="http://service.weibo.com/share/share.php?&amp;title=http://hilen.github.io/2016/10/12/sublime-config/"
+                        aria-label="分享到 Weibo"
+                    >
+                        <i class="fab fa-weibo" aria-hidden="true"></i><span>分享到 Weibo</span>
                     </a>
                 </li>
             
                 
                 
                 <li class="share-option">
-                    <a class="share-option-btn" target="new" href="http://connect.qq.com/widget/shareqq/index.html?url=http://hilen.github.io/2016/10/12/sublime-config/&amp;title=Sublime Text 3 配置">
-                        <i class="fab fa-qq" aria-hidden="true"></i><span>Share on QQ</span>
+                    <a
+                        class="share-option-btn"
+                        target="new"
+                        href="http://connect.qq.com/widget/shareqq/index.html?url=http://hilen.github.io/2016/10/12/sublime-config/&amp;title=Sublime Text 3 配置"
+                        aria-label="分享到 QQ"
+                    >
+                        <i class="fab fa-qq" aria-hidden="true"></i><span>分享到 QQ</span>
                     </a>
                 </li>
             
                 
                 
                 <li class="share-option">
-                    <a class="share-option-btn" target="new" href="http://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=http://hilen.github.io/2016/10/12/sublime-config/">
-                        <i class="fa fa-star" aria-hidden="true"></i><span>Share on Qzone</span>
+                    <a
+                        class="share-option-btn"
+                        target="new"
+                        href="http://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=http://hilen.github.io/2016/10/12/sublime-config/"
+                        aria-label="分享到 Qzone"
+                    >
+                        <i class="fa fa-star" aria-hidden="true"></i><span>分享到 Qzone</span>
                     </a>
                 </li>
             
@@ -553,7 +696,7 @@
             <i class="fa fa-times"></i>
         </div>
         
-            <img id="about-card-picture" src="https://gw.alicdn.com/tfs/TB1XyOtdUuF3KVjSZK9XXbVtXXa-328-312.png" alt="Author&#39;s picture"/>
+            <img id="about-card-picture" src="https://ww1.sinaimg.cn/mw690/6a011e49ly1gn956xudhcj20fo0fogm7.jpg" alt="作者的图片"/>
         
             <h4 id="about-card-name">Hilen</h4>
         
@@ -580,9 +723,9 @@
 
         
         
-<div id="cover" style="background-image:url('https://gw.alicdn.com/tfs/TB1KrCsp4D1gK0jSZFsXXbldVXa-4802-3202.jpg');"></div>
+<div id="cover" style="background-image:url('https://gw.alicdn.com/imgextra/i1/O1CN01KiroJ31iilxjOVyse_!!6000000004447-0-tps-3486-2334.jpg');"></div>
         <!--SCRIPTS-->
-<script src="/assets/js/script-igzblvgl1l41iig8exswdesnuhryopm3ddgxzqifmyvvtmgnzp5rkhrihgie.min.js"></script>
+<script src="/assets/js/script-7iimeqy8tedt9p7vxozrafnfybmsfzzhcjkhhn9jijx9cw3xxk4iyge9sp6e.min.js"></script>
 <!--SCRIPTS END-->
 
 
@@ -597,7 +740,7 @@
               owner: 'hilen',
               admin: ['hilen'],
               id: '2016/10/12/sublime-config/',
-              ...{"language":"cn","perPage":15,"distractionFreeMode":false,"enableHotKey":true,"pagerDirection":"first"}
+              ...{"language":"zh-cn","perPage":15,"distractionFreeMode":false,"enableHotKey":true,"pagerDirection":"first"}
             }).render('gitalk')
           })()
         </script>

@@ -1,25 +1,25 @@
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-cn">
     
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="generator" content="Hilen&#39;s Blog">
-    <title>Reveal 1.6.3 和 Reveal Loader - Hilen&#39;s Blog</title>
+    <meta name="generator" content="Hilen Blog">
+    <title>Reveal 1.6.3 和 Reveal Loader - Hilen Blog</title>
     <meta name="author" content="Hilen">
     
     
     
-    <script type="application/ld+json">{"@context":"http://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"Hilen","sameAs":["https://github.com/hilen","mailto:laihailong@hotmail.com"],"image":"https://gw.alicdn.com/tfs/TB1XyOtdUuF3KVjSZK9XXbVtXXa-328-312.png"},"articleBody":"前几天我在越狱手机上的装 Reveal Loader，手机也越狱了，版本也对了。但是每次重启都是白苹果，那明晃晃的白苹果，就快闪瞎了我的28k 钛合金🐶眼，开始怀疑是手机系统版本和越狱不兼容导致的的问题，于是差点就要重新刷机。但是想想还是没有刷，因为太麻烦，很耽误时间。然后….哈哈，卖个关子，最后成功运行了，在这里记录一下。\n\n准备工作\n一台已越狱的 iPhone 手机 ，可以从这里找到越狱信息和工具，（我的设备是：iPhone 5，iOS8.1.3）\nReveal App，（我的版本号是 1.6.3，请支持正版 XD ）\n\n开始(1,2,3 都是坑，可以选择直接看 4)Step1在 Cydia 应用商店里面找到 OpenSSH ，然后安装。\nStep2\n使用 OpenSSH 连接你的越狱设备。\n终端里输入：ssh root@192.168.1.123 (IP 地址请在设备里的 Wi-Fi 信息里找到)\n输入密码alpine（OpenSSL 的默认密码），确认设备已链接，可以访问设备里的文件目录。\n\n1注意：手机和电脑必须在同一个 Wi-Fi 网络环境下，\nStep3打开 Reveal-&gt;Help-&gt;Show Reveal Library in Finder，会有两个文件， libReveal.dylib 和 Reveal.framework 拷贝一下路径\n然后重新打开一个终端界面，不要连接 OpenSSL ，确认后执行以下命令：\n1234567scp /Applications/Reveal.app/Contents/SharedSupport/iOS-Libraries/libReveal.dylib root@192.168.1.123:/Library/MobileSubstrate/DynamicLibraries/scp -r /Applications/Reveal.app/Contents/SharedSupport/iOS-Libraries/Reveal.framework root@192.168.1.123:/System/Library/Frameworks/scp /Applications/Reveal.app/Contents/SharedSupport/iOS-Libraries/libReveal.dylib root@172.17.66.29:/Library/RHRevealLoader/这三步主要是把 Reveal 的核心文件存放在手机内\n好的，网上有一种方法是把 plist 文件也写入 DynamicLibraries 文件夹内，但是这种过于麻烦。我就没这么干，接下来呢，我就在 Cydia 应用商店里面找到 Reveal Loader ，然后安装，重启设备，然后成功重启设备啦，哈哈，马上就可以掀开各大 App 的底裤看个遍了！结果死机白苹果了！！！苹果了，果了。。\n喂，慢着，不要急，也不要慌。看下一步\nStep4（重要）白苹果了是吧？请按住 home 键和锁屏键，等待设备重新启动，启动的一瞬间按住音量 + 键，坚持大概 20 秒。恭喜你，手机复活了！\n接下来用 OpenSSH 连接手机，删除原来的libReveal.dylib 和 Reveal.framework两个文件，并且删除 Reveal Loader，这时发现手机可以重新启动了。所以原因也许是这些文件造成的。\n重复 Step3，拷贝libReveal.dylib 和 Reveal.framework到设备内，接下来在你的 Mac 文本内。把刚才闲麻烦的步骤重复一下，也就是那个 plist 文件，内容如下，可以随便写一个不存在的 bundle。命名为 libReveal.plist，然后放在桌面上123456&#123;     Filter = &#123;         Bundles = (        \t&quot;com.hilen.yourapp&quot;;        );&#125;\n打开终端，执行\n1scp /Users/hilen/Desktop/libReveal.plist root@192.168.1.123:/Library/MobileSubstrate/DynamicLibraries/\n然后去安装Reveal Loader，重启设备。OK，你可以浏览其他 App 的内容了。以下是 App Store 的预览，Enjoy\n\n","dateCreated":"2015-12-01T11:24:32+08:00","dateModified":"2020-03-03T16:05:51+08:00","datePublished":"2015-12-01T11:24:32+08:00","description":"前几天我在越狱手机上的装 Reveal Loader，手机也越狱了，版本也对了。但是每次重启都是白苹果，那明晃晃的白苹果，就快闪瞎了我的28k 钛合金🐶眼，开始怀疑是手机系统版本和越狱不兼容导致的的问题，于是差点就要重新刷机。但是想想还是没有刷，因为太麻烦，很耽误时间。然后….哈哈，卖个关子，最后成功运行了，在这里记录一下。","headline":"Reveal 1.6.3 和 Reveal Loader","image":[],"mainEntityOfPage":{"@type":"WebPage","@id":"http://hilen.github.io/2015/12/01/reveal-loader-jailbreak/"},"publisher":{"@type":"Organization","name":"Hilen","sameAs":["https://github.com/hilen","mailto:laihailong@hotmail.com"],"image":"https://gw.alicdn.com/tfs/TB1XyOtdUuF3KVjSZK9XXbVtXXa-328-312.png","logo":{"@type":"ImageObject","url":"https://gw.alicdn.com/tfs/TB1XyOtdUuF3KVjSZK9XXbVtXXa-328-312.png"}},"url":"http://hilen.github.io/2015/12/01/reveal-loader-jailbreak/","keywords":"iOS"}</script>
+    <script type="application/ld+json">{"@context":"http://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"Hilen","sameAs":["https://github.com/hilen","mailto:lhlazxyq@gmail.com"],"image":"https://ww1.sinaimg.cn/mw690/6a011e49ly1gn956xudhcj20fo0fogm7.jpg"},"articleBody":"前几天我在越狱手机上的装 Reveal Loader，手机也越狱了，版本也对了。但是每次重启都是白苹果，那明晃晃的白苹果，就快闪瞎了我的28k 钛合金🐶眼，开始怀疑是手机系统版本和越狱不兼容导致的的问题，于是差点就要重新刷机。但是想想还是没有刷，因为太麻烦，很耽误时间。然后….哈哈，卖个关子，最后成功运行了，在这里记录一下。\n\n准备工作\n一台已越狱的 iPhone 手机 ，可以从这里找到越狱信息和工具，（我的设备是：iPhone 5，iOS8.1.3）\nReveal App，（我的版本号是 1.6.3，请支持正版 XD ）\n\n开始(1,2,3 都是坑，可以选择直接看 4)Step1在 Cydia 应用商店里面找到 OpenSSH ，然后安装。\nStep2\n使用 OpenSSH 连接你的越狱设备。\n终端里输入：ssh root@192.168.1.123 (IP 地址请在设备里的 Wi-Fi 信息里找到)\n输入密码alpine（OpenSSL 的默认密码），确认设备已链接，可以访问设备里的文件目录。\n\n1注意：手机和电脑必须在同一个 Wi-Fi 网络环境下，\nStep3打开 Reveal-&gt;Help-&gt;Show Reveal Library in Finder，会有两个文件， libReveal.dylib 和 Reveal.framework 拷贝一下路径\n然后重新打开一个终端界面，不要连接 OpenSSL ，确认后执行以下命令：\n1234567scp /Applications/Reveal.app/Contents/SharedSupport/iOS-Libraries/libReveal.dylib root@192.168.1.123:/Library/MobileSubstrate/DynamicLibraries/scp -r /Applications/Reveal.app/Contents/SharedSupport/iOS-Libraries/Reveal.framework root@192.168.1.123:/System/Library/Frameworks/scp /Applications/Reveal.app/Contents/SharedSupport/iOS-Libraries/libReveal.dylib root@172.17.66.29:/Library/RHRevealLoader/这三步主要是把 Reveal 的核心文件存放在手机内\n好的，网上有一种方法是把 plist 文件也写入 DynamicLibraries 文件夹内，但是这种过于麻烦。我就没这么干，接下来呢，我就在 Cydia 应用商店里面找到 Reveal Loader ，然后安装，重启设备，然后成功重启设备啦，哈哈，马上就可以掀开各大 App 的底裤看个遍了！结果死机白苹果了！！！苹果了，果了。。\n喂，慢着，不要急，也不要慌。看下一步\nStep4（重要）白苹果了是吧？请按住 home 键和锁屏键，等待设备重新启动，启动的一瞬间按住音量 + 键，坚持大概 20 秒。恭喜你，手机复活了！\n接下来用 OpenSSH 连接手机，删除原来的libReveal.dylib 和 Reveal.framework两个文件，并且删除 Reveal Loader，这时发现手机可以重新启动了。所以原因也许是这些文件造成的。\n重复 Step3，拷贝libReveal.dylib 和 Reveal.framework到设备内，接下来在你的 Mac 文本内。把刚才闲麻烦的步骤重复一下，也就是那个 plist 文件，内容如下，可以随便写一个不存在的 bundle。命名为 libReveal.plist，然后放在桌面上123456&#123;     Filter = &#123;         Bundles = (        \t&quot;com.hilen.yourapp&quot;;        );&#125;\n打开终端，执行\n1scp /Users/hilen/Desktop/libReveal.plist root@192.168.1.123:/Library/MobileSubstrate/DynamicLibraries/\n然后去安装Reveal Loader，重启设备。OK，你可以浏览其他 App 的内容了。以下是 App Store 的预览，Enjoy\n\n","dateCreated":"2015-12-01T11:24:32+08:00","dateModified":"2020-03-03T16:05:51+08:00","datePublished":"2015-12-01T11:24:32+08:00","description":"前几天我在越狱手机上的装 Reveal Loader，手机也越狱了，版本也对了。但是每次重启都是白苹果，那明晃晃的白苹果，就快闪瞎了我的28k 钛合金🐶眼，开始怀疑是手机系统版本和越狱不兼容导致的的问题，于是差点就要重新刷机。但是想想还是没有刷，因为太麻烦，很耽误时间。然后….哈哈，卖个关子，最后成功运行了，在这里记录一下。","headline":"Reveal 1.6.3 和 Reveal Loader","image":[],"mainEntityOfPage":{"@type":"WebPage","@id":"http://hilen.github.io/2015/12/01/reveal-loader-jailbreak/"},"publisher":{"@type":"Organization","name":"Hilen","sameAs":["https://github.com/hilen","mailto:lhlazxyq@gmail.com"],"image":"https://ww1.sinaimg.cn/mw690/6a011e49ly1gn956xudhcj20fo0fogm7.jpg","logo":{"@type":"ImageObject","url":"https://ww1.sinaimg.cn/mw690/6a011e49ly1gn956xudhcj20fo0fogm7.jpg"}},"url":"http://hilen.github.io/2015/12/01/reveal-loader-jailbreak/","keywords":"iOS"}</script>
     <meta name="description" content="前几天我在越狱手机上的装 Reveal Loader，手机也越狱了，版本也对了。但是每次重启都是白苹果，那明晃晃的白苹果，就快闪瞎了我的28k 钛合金🐶眼，开始怀疑是手机系统版本和越狱不兼容导致的的问题，于是差点就要重新刷机。但是想想还是没有刷，因为太麻烦，很耽误时间。然后….哈哈，卖个关子，最后成功运行了，在这里记录一下。">
 <meta name="keywords" content="iOS">
 <meta property="og:type" content="blog">
 <meta property="og:title" content="Reveal 1.6.3 和 Reveal Loader">
 <meta property="og:url" content="http://hilen.github.io/2015/12/01/reveal-loader-jailbreak/index.html">
-<meta property="og:site_name" content="Hilen&#39;s Blog">
+<meta property="og:site_name" content="Hilen Blog">
 <meta property="og:description" content="前几天我在越狱手机上的装 Reveal Loader，手机也越狱了，版本也对了。但是每次重启都是白苹果，那明晃晃的白苹果，就快闪瞎了我的28k 钛合金🐶眼，开始怀疑是手机系统版本和越狱不兼容导致的的问题，于是差点就要重新刷机。但是想想还是没有刷，因为太麻烦，很耽误时间。然后….哈哈，卖个关子，最后成功运行了，在这里记录一下。">
-<meta property="og:locale" content="en">
+<meta property="og:locale" content="zh-cn">
 <meta property="og:image" content="http://ww3.sinaimg.cn/large/6a011e49gw1eyk3r7s8rvj21520rgwma.jpg">
 <meta property="og:updated_time" content="2020-03-03T08:05:51.000Z">
 <meta name="twitter:card" content="summary">
@@ -31,13 +31,13 @@
         
     
     
-        <meta property="og:image" content="https://gw.alicdn.com/tfs/TB1XyOtdUuF3KVjSZK9XXbVtXXa-328-312.png"/>
+        <meta property="og:image" content="https://ww1.sinaimg.cn/mw690/6a011e49ly1gn956xudhcj20fo0fogm7.jpg"/>
     
     
     
     
     <!--STYLES-->
-    <link rel="stylesheet" href="/assets/css/style-vbqinavchah6jcimxa37wftwhydi8kc2ftser2fa0eoiv73ho0hbggaqec63.min.css">
+    <link rel="stylesheet" href="/assets/css/style-mhajaau9mrcpkpcfu9rq8rdkzf3tgyxu5tslo8ekowdwbu2g30unzxgzmxwq.min.css">
     <!--STYLES END-->
     
 
@@ -64,15 +64,24 @@
 <header id="header" data-behavior="5">
     <i id="btn-open-sidebar" class="fa fa-lg fa-bars"></i>
     <div class="header-title">
-        <a class="header-title-link" href="/ ">Hilen&#39;s Blog</a>
+        <a
+            class="header-title-link"
+            href="/"
+            aria-label=""
+        >
+            Hilen Blog
+        </a>
     </div>
     
         
-            <a  class="header-right-picture "
-                href="#about">
+            <a
+                class="header-right-picture "
+                href="#about"
+                aria-label="打开链接: /#about"
+            >
         
         
-            <img class="header-picture" src="https://gw.alicdn.com/tfs/TB1XyOtdUuF3KVjSZK9XXbVtXXa-328-312.png" alt="Author&#39;s picture"/>
+            <img class="header-picture" src="https://ww1.sinaimg.cn/mw690/6a011e49ly1gn956xudhcj20fo0fogm7.jpg" alt="作者的图片"/>
         
         </a>
     
@@ -89,8 +98,11 @@
     <div class="sidebar-container">
         
             <div class="sidebar-profile">
-                <a href="/#about">
-                    <img class="sidebar-profile-picture" src="https://gw.alicdn.com/tfs/TB1XyOtdUuF3KVjSZK9XXbVtXXa-328-312.png" alt="Author&#39;s picture"/>
+                <a
+                    href="/#about"
+                    aria-label="阅读有关作者的更多信息"
+                >
+                    <img class="sidebar-profile-picture" src="https://ww1.sinaimg.cn/mw690/6a011e49ly1gn956xudhcj20fo0fogm7.jpg" alt="作者的图片"/>
                 </a>
                 <h4 class="sidebar-profile-name">Hilen</h4>
                 
@@ -104,79 +116,85 @@
             
                 <li class="sidebar-button">
                     
-                        <a  class="sidebar-button-link "
-                             href="/ "
+                        <a
+                            class="sidebar-button-link "
+                            href="/"
                             
-                            title="Home"
+                            rel="noopener"
+                            title="首页"
                         >
-                    
                         <i class="sidebar-button-icon fa fa-home" aria-hidden="true"></i>
-                        <span class="sidebar-button-desc">Home</span>
+                        <span class="sidebar-button-desc">首页</span>
                     </a>
             </li>
             
                 <li class="sidebar-button">
                     
-                        <a  class="sidebar-button-link "
-                             href="/all-categories"
+                        <a
+                            class="sidebar-button-link "
+                            href="/all-categories"
                             
-                            title="Categories"
+                            rel="noopener"
+                            title="分类"
                         >
-                    
                         <i class="sidebar-button-icon fa fa-bookmark" aria-hidden="true"></i>
-                        <span class="sidebar-button-desc">Categories</span>
+                        <span class="sidebar-button-desc">分类</span>
                     </a>
             </li>
             
                 <li class="sidebar-button">
                     
-                        <a  class="sidebar-button-link "
-                             href="/all-tags"
+                        <a
+                            class="sidebar-button-link "
+                            href="/all-tags"
                             
-                            title="Tags"
+                            rel="noopener"
+                            title="标签"
                         >
-                    
                         <i class="sidebar-button-icon fa fa-tags" aria-hidden="true"></i>
-                        <span class="sidebar-button-desc">Tags</span>
+                        <span class="sidebar-button-desc">标签</span>
                     </a>
             </li>
             
                 <li class="sidebar-button">
                     
-                        <a  class="sidebar-button-link "
-                             href="/all-archives"
+                        <a
+                            class="sidebar-button-link "
+                            href="/all-archives"
                             
-                            title="Archives"
+                            rel="noopener"
+                            title="归档"
                         >
-                    
                         <i class="sidebar-button-icon fa fa-archive" aria-hidden="true"></i>
-                        <span class="sidebar-button-desc">Archives</span>
+                        <span class="sidebar-button-desc">归档</span>
                     </a>
             </li>
             
                 <li class="sidebar-button">
                     
-                        <a  class="sidebar-button-link open-algolia-search"
-                             href="#search"
+                        <a
+                            class="sidebar-button-link open-algolia-search"
+                            href="#search"
                             
-                            title="Search"
+                            rel="noopener"
+                            title="搜索"
                         >
-                    
                         <i class="sidebar-button-icon fa fa-search" aria-hidden="true"></i>
-                        <span class="sidebar-button-desc">Search</span>
+                        <span class="sidebar-button-desc">搜索</span>
                     </a>
             </li>
             
                 <li class="sidebar-button">
                     
-                        <a  class="sidebar-button-link "
-                             href="/about"
+                        <a
+                            class="sidebar-button-link "
+                            href="/about"
                             
-                            title="About"
+                            rel="noopener"
+                            title="关于"
                         >
-                    
                         <i class="sidebar-button-icon fa fa-question" aria-hidden="true"></i>
-                        <span class="sidebar-button-desc">About</span>
+                        <span class="sidebar-button-desc">关于</span>
                     </a>
             </li>
             
@@ -186,8 +204,15 @@
             
                 <li class="sidebar-button">
                     
-                        <a  class="sidebar-button-link " href="https://github.com/hilen" target="_blank" rel="noopener" title="GitHub">
-                    
+                        <a
+                            class="sidebar-button-link "
+                            href="https://github.com/hilen"
+                            
+                                target="_blank"
+                            
+                            rel="noopener"
+                            title="GitHub"
+                        >
                         <i class="sidebar-button-icon fab fa-github" aria-hidden="true"></i>
                         <span class="sidebar-button-desc">GitHub</span>
                     </a>
@@ -195,10 +220,17 @@
             
                 <li class="sidebar-button">
                     
-                        <a  class="sidebar-button-link " href="mailto:laihailong@hotmail.com" target="_blank" rel="noopener" title="Mail">
-                    
+                        <a
+                            class="sidebar-button-link "
+                            href="mailto:lhlazxyq@gmail.com"
+                            
+                                target="_blank"
+                            
+                            rel="noopener"
+                            title="邮箱"
+                        >
                         <i class="sidebar-button-icon fa fa-envelope" aria-hidden="true"></i>
-                        <span class="sidebar-button-desc">Mail</span>
+                        <span class="sidebar-button-desc">邮箱</span>
                     </a>
             </li>
             
@@ -226,11 +258,11 @@
         <div class="post-meta">
     <time datetime="2015-12-01T11:24:32+08:00">
 	
-		    Dec 01, 2015
+		    12月 01, 2015
     	
     </time>
     
-        <span>in </span>
+        <span>发布在 </span>
         
     <a class="category-link" href="/categories/iOS/">iOS</a>
 
@@ -278,7 +310,7 @@
     <div id="post-footer" class="post-footer main-content-wrap">
         
             <div class="post-footer-tags">
-                <span class="text-color-light text-small">TAGGED IN</span><br/>
+                <span class="text-color-light text-small">标签</span><br/>
                 
     <a class="tag tag--primary tag--small t-link" href="/tags/iOS/">iOS</a>
 
@@ -291,26 +323,40 @@
             <li class="post-action">
                 
                     
-                    <a class="post-action-btn btn btn--default tooltip--top" href="/2016/05/16/tranquilpeak-theme-tutorial/" data-tooltip="Tranquilpeak 主题的使用方法" aria-label="PREVIOUS: Tranquilpeak 主题的使用方法">
-                
-                    <i class="fa fa-angle-left" aria-hidden="true"></i>
-                    <span class="hide-xs hide-sm text-small icon-ml">PREVIOUS</span>
-                </a>
+                <a
+                    class="post-action-btn btn btn--default tooltip--top"
+                    href="/2016/05/16/tranquilpeak-theme-tutorial/"
+                    data-tooltip="Tranquilpeak 主题的使用方法"
+                    aria-label="上一篇: Tranquilpeak 主题的使用方法"
+                >
+                    
+                        <i class="fa fa-angle-left" aria-hidden="true"></i>
+                        <span class="hide-xs hide-sm text-small icon-ml">上一篇</span>
+                    </a>
             </li>
             <li class="post-action">
                 
                     
-                    <a class="post-action-btn btn btn--default tooltip--top" href="/2015/10/04/hello-world/" data-tooltip="Hello World" aria-label="NEXT: Hello World">
-                
-                    <span class="hide-xs hide-sm text-small icon-mr">NEXT</span>
-                    <i class="fa fa-angle-right" aria-hidden="true"></i>
-                </a>
+                <a
+                    class="post-action-btn btn btn--default tooltip--top"
+                    href="/2015/10/04/hello-world/"
+                    data-tooltip="Hello World"
+                    aria-label="下一篇: Hello World"
+                >
+                    
+                        <span class="hide-xs hide-sm text-small icon-mr">下一篇</span>
+                        <i class="fa fa-angle-right" aria-hidden="true"></i>
+                    </a>
             </li>
         </ul>
     </nav>
     <ul class="post-actions post-action-share">
         <li class="post-action hide-lg hide-md hide-sm">
-            <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions" aria-label="Share this post">
+            <a
+                class="post-action-btn btn btn--default btn-open-shareoptions"
+                href="#btn-open-shareoptions"
+                aria-label="Diesen Beitrag teilen"
+            >
                 <i class="fa fa-share-alt" aria-hidden="true"></i>
             </a>
         </li>
@@ -318,7 +364,12 @@
             
             
             <li class="post-action hide-xs">
-                <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://hilen.github.io/2015/12/01/reveal-loader-jailbreak/" title="Share on Facebook">
+                <a
+                    class="post-action-btn btn btn--default"
+                    target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://hilen.github.io/2015/12/01/reveal-loader-jailbreak/"
+                    title="分享到 Facebook"
+                    aria-label="分享到 Facebook"
+                >
                     <i class="fab fa-facebook" aria-hidden="true"></i>
                 </a>
             </li>
@@ -326,7 +377,12 @@
             
             
             <li class="post-action hide-xs">
-                <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=http://hilen.github.io/2015/12/01/reveal-loader-jailbreak/" title="Share on Twitter">
+                <a
+                    class="post-action-btn btn btn--default"
+                    target="new" href="https://twitter.com/intent/tweet?text=http://hilen.github.io/2015/12/01/reveal-loader-jailbreak/"
+                    title="分享到 Twitter"
+                    aria-label="分享到 Twitter"
+                >
                     <i class="fab fa-twitter" aria-hidden="true"></i>
                 </a>
             </li>
@@ -334,7 +390,12 @@
             
             
             <li class="post-action hide-xs">
-                <a class="post-action-btn btn btn--default" target="new" href="http://service.weibo.com/share/share.php?&amp;title=http://hilen.github.io/2015/12/01/reveal-loader-jailbreak/" title="Share on Weibo">
+                <a
+                    class="post-action-btn btn btn--default"
+                    target="new" href="http://service.weibo.com/share/share.php?&amp;title=http://hilen.github.io/2015/12/01/reveal-loader-jailbreak/"
+                    title="分享到 Weibo"
+                    aria-label="分享到 Weibo"
+                >
                     <i class="fab fa-weibo" aria-hidden="true"></i>
                 </a>
             </li>
@@ -342,7 +403,12 @@
             
             
             <li class="post-action hide-xs">
-                <a class="post-action-btn btn btn--default" target="new" href="http://connect.qq.com/widget/shareqq/index.html?url=http://hilen.github.io/2015/12/01/reveal-loader-jailbreak/&amp;title=Reveal 1.6.3 和 Reveal Loader" title="Share on QQ">
+                <a
+                    class="post-action-btn btn btn--default"
+                    target="new" href="http://connect.qq.com/widget/shareqq/index.html?url=http://hilen.github.io/2015/12/01/reveal-loader-jailbreak/&amp;title=Reveal 1.6.3 和 Reveal Loader"
+                    title="分享到 QQ"
+                    aria-label="分享到 QQ"
+                >
                     <i class="fab fa-qq" aria-hidden="true"></i>
                 </a>
             </li>
@@ -350,7 +416,12 @@
             
             
             <li class="post-action hide-xs">
-                <a class="post-action-btn btn btn--default" target="new" href="http://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=http://hilen.github.io/2015/12/01/reveal-loader-jailbreak/" title="Share on Qzone">
+                <a
+                    class="post-action-btn btn btn--default"
+                    target="new" href="http://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=http://hilen.github.io/2015/12/01/reveal-loader-jailbreak/"
+                    title="分享到 Qzone"
+                    aria-label="分享到 Qzone"
+                >
                     <i class="fa fa-star" aria-hidden="true"></i>
                 </a>
             </li>
@@ -358,15 +429,19 @@
         
             
                 <li class="post-action">
-                    <a class="post-action-btn btn btn--default" href="#gitalk">
-                         <i class="fa fa-comment"></i>
+                    <a
+                        class="post-action-btn btn btn--default"
+                        href="#gitalk"
+                        aria-label="Kommentieren"
+                    >
+                        <i class="fa fa-comment"></i>
                     </a>
                 </li>
             
         
         <li class="post-action">
             
-                <a class="post-action-btn btn btn--default" href="#" aria-label="Back to top">
+                <a class="post-action-btn btn btn--default" href="#" aria-label="Nach oben">
             
                 <i class="fa fa-list" aria-hidden="true"></i>
             </a>
@@ -389,7 +464,7 @@
 
                 <footer id="footer" class="main-content-wrap">
     <span class="copyrights">
-        Copyrights &copy; 2020 Hilen. All Rights Reserved.
+        Copyrights &copy; 2021 Hilen. All Rights Reserved.
     </span>
 </footer>
 
@@ -402,26 +477,40 @@
             <li class="post-action">
                 
                     
-                    <a class="post-action-btn btn btn--default tooltip--top" href="/2016/05/16/tranquilpeak-theme-tutorial/" data-tooltip="Tranquilpeak 主题的使用方法" aria-label="PREVIOUS: Tranquilpeak 主题的使用方法">
-                
-                    <i class="fa fa-angle-left" aria-hidden="true"></i>
-                    <span class="hide-xs hide-sm text-small icon-ml">PREVIOUS</span>
-                </a>
+                <a
+                    class="post-action-btn btn btn--default tooltip--top"
+                    href="/2016/05/16/tranquilpeak-theme-tutorial/"
+                    data-tooltip="Tranquilpeak 主题的使用方法"
+                    aria-label="上一篇: Tranquilpeak 主题的使用方法"
+                >
+                    
+                        <i class="fa fa-angle-left" aria-hidden="true"></i>
+                        <span class="hide-xs hide-sm text-small icon-ml">上一篇</span>
+                    </a>
             </li>
             <li class="post-action">
                 
                     
-                    <a class="post-action-btn btn btn--default tooltip--top" href="/2015/10/04/hello-world/" data-tooltip="Hello World" aria-label="NEXT: Hello World">
-                
-                    <span class="hide-xs hide-sm text-small icon-mr">NEXT</span>
-                    <i class="fa fa-angle-right" aria-hidden="true"></i>
-                </a>
+                <a
+                    class="post-action-btn btn btn--default tooltip--top"
+                    href="/2015/10/04/hello-world/"
+                    data-tooltip="Hello World"
+                    aria-label="下一篇: Hello World"
+                >
+                    
+                        <span class="hide-xs hide-sm text-small icon-mr">下一篇</span>
+                        <i class="fa fa-angle-right" aria-hidden="true"></i>
+                    </a>
             </li>
         </ul>
     </nav>
     <ul class="post-actions post-action-share">
         <li class="post-action hide-lg hide-md hide-sm">
-            <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions" aria-label="Share this post">
+            <a
+                class="post-action-btn btn btn--default btn-open-shareoptions"
+                href="#btn-open-shareoptions"
+                aria-label="Diesen Beitrag teilen"
+            >
                 <i class="fa fa-share-alt" aria-hidden="true"></i>
             </a>
         </li>
@@ -429,7 +518,12 @@
             
             
             <li class="post-action hide-xs">
-                <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://hilen.github.io/2015/12/01/reveal-loader-jailbreak/" title="Share on Facebook">
+                <a
+                    class="post-action-btn btn btn--default"
+                    target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://hilen.github.io/2015/12/01/reveal-loader-jailbreak/"
+                    title="分享到 Facebook"
+                    aria-label="分享到 Facebook"
+                >
                     <i class="fab fa-facebook" aria-hidden="true"></i>
                 </a>
             </li>
@@ -437,7 +531,12 @@
             
             
             <li class="post-action hide-xs">
-                <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=http://hilen.github.io/2015/12/01/reveal-loader-jailbreak/" title="Share on Twitter">
+                <a
+                    class="post-action-btn btn btn--default"
+                    target="new" href="https://twitter.com/intent/tweet?text=http://hilen.github.io/2015/12/01/reveal-loader-jailbreak/"
+                    title="分享到 Twitter"
+                    aria-label="分享到 Twitter"
+                >
                     <i class="fab fa-twitter" aria-hidden="true"></i>
                 </a>
             </li>
@@ -445,7 +544,12 @@
             
             
             <li class="post-action hide-xs">
-                <a class="post-action-btn btn btn--default" target="new" href="http://service.weibo.com/share/share.php?&amp;title=http://hilen.github.io/2015/12/01/reveal-loader-jailbreak/" title="Share on Weibo">
+                <a
+                    class="post-action-btn btn btn--default"
+                    target="new" href="http://service.weibo.com/share/share.php?&amp;title=http://hilen.github.io/2015/12/01/reveal-loader-jailbreak/"
+                    title="分享到 Weibo"
+                    aria-label="分享到 Weibo"
+                >
                     <i class="fab fa-weibo" aria-hidden="true"></i>
                 </a>
             </li>
@@ -453,7 +557,12 @@
             
             
             <li class="post-action hide-xs">
-                <a class="post-action-btn btn btn--default" target="new" href="http://connect.qq.com/widget/shareqq/index.html?url=http://hilen.github.io/2015/12/01/reveal-loader-jailbreak/&amp;title=Reveal 1.6.3 和 Reveal Loader" title="Share on QQ">
+                <a
+                    class="post-action-btn btn btn--default"
+                    target="new" href="http://connect.qq.com/widget/shareqq/index.html?url=http://hilen.github.io/2015/12/01/reveal-loader-jailbreak/&amp;title=Reveal 1.6.3 和 Reveal Loader"
+                    title="分享到 QQ"
+                    aria-label="分享到 QQ"
+                >
                     <i class="fab fa-qq" aria-hidden="true"></i>
                 </a>
             </li>
@@ -461,7 +570,12 @@
             
             
             <li class="post-action hide-xs">
-                <a class="post-action-btn btn btn--default" target="new" href="http://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=http://hilen.github.io/2015/12/01/reveal-loader-jailbreak/" title="Share on Qzone">
+                <a
+                    class="post-action-btn btn btn--default"
+                    target="new" href="http://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=http://hilen.github.io/2015/12/01/reveal-loader-jailbreak/"
+                    title="分享到 Qzone"
+                    aria-label="分享到 Qzone"
+                >
                     <i class="fa fa-star" aria-hidden="true"></i>
                 </a>
             </li>
@@ -469,15 +583,19 @@
         
             
                 <li class="post-action">
-                    <a class="post-action-btn btn btn--default" href="#gitalk">
-                         <i class="fa fa-comment"></i>
+                    <a
+                        class="post-action-btn btn btn--default"
+                        href="#gitalk"
+                        aria-label="Kommentieren"
+                    >
+                        <i class="fa fa-comment"></i>
                     </a>
                 </li>
             
         
         <li class="post-action">
             
-                <a class="post-action-btn btn btn--default" href="#" aria-label="Back to top">
+                <a class="post-action-btn btn btn--default" href="#" aria-label="Nach oben">
             
                 <i class="fa fa-list" aria-hidden="true"></i>
             </a>
@@ -495,40 +613,65 @@
                 
                 
                 <li class="share-option">
-                    <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://hilen.github.io/2015/12/01/reveal-loader-jailbreak/">
-                        <i class="fab fa-facebook" aria-hidden="true"></i><span>Share on Facebook</span>
+                    <a
+                        class="share-option-btn"
+                        target="new"
+                        href="https://www.facebook.com/sharer/sharer.php?u=http://hilen.github.io/2015/12/01/reveal-loader-jailbreak/"
+                        aria-label="分享到 Facebook"
+                    >
+                        <i class="fab fa-facebook" aria-hidden="true"></i><span>分享到 Facebook</span>
                     </a>
                 </li>
             
                 
                 
                 <li class="share-option">
-                    <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=http://hilen.github.io/2015/12/01/reveal-loader-jailbreak/">
-                        <i class="fab fa-twitter" aria-hidden="true"></i><span>Share on Twitter</span>
+                    <a
+                        class="share-option-btn"
+                        target="new"
+                        href="https://twitter.com/intent/tweet?text=http://hilen.github.io/2015/12/01/reveal-loader-jailbreak/"
+                        aria-label="分享到 Twitter"
+                    >
+                        <i class="fab fa-twitter" aria-hidden="true"></i><span>分享到 Twitter</span>
                     </a>
                 </li>
             
                 
                 
                 <li class="share-option">
-                    <a class="share-option-btn" target="new" href="http://service.weibo.com/share/share.php?&amp;title=http://hilen.github.io/2015/12/01/reveal-loader-jailbreak/">
-                        <i class="fab fa-weibo" aria-hidden="true"></i><span>Share on Weibo</span>
+                    <a
+                        class="share-option-btn"
+                        target="new"
+                        href="http://service.weibo.com/share/share.php?&amp;title=http://hilen.github.io/2015/12/01/reveal-loader-jailbreak/"
+                        aria-label="分享到 Weibo"
+                    >
+                        <i class="fab fa-weibo" aria-hidden="true"></i><span>分享到 Weibo</span>
                     </a>
                 </li>
             
                 
                 
                 <li class="share-option">
-                    <a class="share-option-btn" target="new" href="http://connect.qq.com/widget/shareqq/index.html?url=http://hilen.github.io/2015/12/01/reveal-loader-jailbreak/&amp;title=Reveal 1.6.3 和 Reveal Loader">
-                        <i class="fab fa-qq" aria-hidden="true"></i><span>Share on QQ</span>
+                    <a
+                        class="share-option-btn"
+                        target="new"
+                        href="http://connect.qq.com/widget/shareqq/index.html?url=http://hilen.github.io/2015/12/01/reveal-loader-jailbreak/&amp;title=Reveal 1.6.3 和 Reveal Loader"
+                        aria-label="分享到 QQ"
+                    >
+                        <i class="fab fa-qq" aria-hidden="true"></i><span>分享到 QQ</span>
                     </a>
                 </li>
             
                 
                 
                 <li class="share-option">
-                    <a class="share-option-btn" target="new" href="http://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=http://hilen.github.io/2015/12/01/reveal-loader-jailbreak/">
-                        <i class="fa fa-star" aria-hidden="true"></i><span>Share on Qzone</span>
+                    <a
+                        class="share-option-btn"
+                        target="new"
+                        href="http://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=http://hilen.github.io/2015/12/01/reveal-loader-jailbreak/"
+                        aria-label="分享到 Qzone"
+                    >
+                        <i class="fa fa-star" aria-hidden="true"></i><span>分享到 Qzone</span>
                     </a>
                 </li>
             
@@ -551,7 +694,7 @@
             <i class="fa fa-times"></i>
         </div>
         
-            <img id="about-card-picture" src="https://gw.alicdn.com/tfs/TB1XyOtdUuF3KVjSZK9XXbVtXXa-328-312.png" alt="Author&#39;s picture"/>
+            <img id="about-card-picture" src="https://ww1.sinaimg.cn/mw690/6a011e49ly1gn956xudhcj20fo0fogm7.jpg" alt="作者的图片"/>
         
             <h4 id="about-card-name">Hilen</h4>
         
@@ -578,9 +721,9 @@
 
         
         
-<div id="cover" style="background-image:url('https://gw.alicdn.com/tfs/TB1KrCsp4D1gK0jSZFsXXbldVXa-4802-3202.jpg');"></div>
+<div id="cover" style="background-image:url('https://gw.alicdn.com/imgextra/i1/O1CN01KiroJ31iilxjOVyse_!!6000000004447-0-tps-3486-2334.jpg');"></div>
         <!--SCRIPTS-->
-<script src="/assets/js/script-igzblvgl1l41iig8exswdesnuhryopm3ddgxzqifmyvvtmgnzp5rkhrihgie.min.js"></script>
+<script src="/assets/js/script-7iimeqy8tedt9p7vxozrafnfybmsfzzhcjkhhn9jijx9cw3xxk4iyge9sp6e.min.js"></script>
 <!--SCRIPTS END-->
 
 
@@ -595,7 +738,7 @@
               owner: 'hilen',
               admin: ['hilen'],
               id: '2015/12/01/reveal-loader-jailbreak/',
-              ...{"language":"cn","perPage":15,"distractionFreeMode":false,"enableHotKey":true,"pagerDirection":"first"}
+              ...{"language":"zh-cn","perPage":15,"distractionFreeMode":false,"enableHotKey":true,"pagerDirection":"first"}
             }).render('gitalk')
           })()
         </script>

@@ -1,27 +1,27 @@
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-cn">
     
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="generator" content="Hilen&#39;s Blog">
-    <title>iOS Build Configuration + Scheme 的使用 - Hilen&#39;s Blog</title>
+    <meta name="generator" content="Hilen Blog">
+    <title>iOS Build Configuration + Scheme 的使用 - Hilen Blog</title>
     <meta name="author" content="Hilen">
     
         <meta name="keywords" content="Build Configuration,Scheme">
     
     
     
-    <script type="application/ld+json">{"@context":"http://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"Hilen","sameAs":["https://github.com/hilen","mailto:laihailong@hotmail.com"],"image":"https://gw.alicdn.com/tfs/TB1XyOtdUuF3KVjSZK9XXbVtXXa-328-312.png"},"articleBody":"在日常的 iOS 开发中，我们经常会使用到不同的网络环境切换问题，比如：\n\n\nQA 需要你给出一个带有环境切换的功能的安装文件\nApp Store 需要你上传面向用户环境的 Release 的安装文件\n灰度测试的时候又需要你给出带有个别功能的安装文件\n\n面对以上需求，也许你会针对不同的包给出不同的宏定义，比如 #define QA_TEST ,#define APP_STORE, #define GRAY_TEST，然后针对不同的宏定义在里面进行不同的参数修改。但是如果各个业务方来频繁的找你，也许手动的修改这些文件会让你崩溃。\n接下来提供一个解决方案，专门针对这种不同的环境或编译需求使用的无侵入，无修改，无痛的三无解决方案。名字叫：Build Configuration + Scheme\n关于 Build Configuration 的官方解释。关于 Scheme 的官方解释。\n接下来的步骤可以实现上面所描述的功能。\n1. 添加不同的 Configuration在 Project -&gt; Info -&gt; Configuration 里，复制一个\n2. 设置 Preprocessor Macros在 Target -&gt; Build Settings -&gt; Preprocessor Macros 里添加自己的宏，比如你可以这样：\n3. 可以畅快的使用了接下来在你的代码中可以随便使用了\n1234567#ifdef DEBUG    NSLog(@\"Debug\");##endif#ifdef TEST    NSLog(@\"Test\");##endif\n\n4. 选择你要的 Scheme\nEnjoy\nReference：\n\nhttps://developer.apple.com/library/ios/recipes/xcode_help-project_editor/Articles/BasingBuildConfigurationsonConfigurationFiles.html\n\n","dateCreated":"2016-05-16T14:11:35+08:00","dateModified":"2020-03-03T16:06:15+08:00","datePublished":"2016-05-16T14:11:35+08:00","description":"在日常的 iOS 开发中，我们经常会使用到不同的网络环境切换问题，比如：","headline":"iOS Build Configuration + Scheme 的使用","image":[],"mainEntityOfPage":{"@type":"WebPage","@id":"http://hilen.github.io/2016/05/16/configuration-scheme/"},"publisher":{"@type":"Organization","name":"Hilen","sameAs":["https://github.com/hilen","mailto:laihailong@hotmail.com"],"image":"https://gw.alicdn.com/tfs/TB1XyOtdUuF3KVjSZK9XXbVtXXa-328-312.png","logo":{"@type":"ImageObject","url":"https://gw.alicdn.com/tfs/TB1XyOtdUuF3KVjSZK9XXbVtXXa-328-312.png"}},"url":"http://hilen.github.io/2016/05/16/configuration-scheme/","keywords":"iOS"}</script>
+    <script type="application/ld+json">{"@context":"http://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"Hilen","sameAs":["https://github.com/hilen","mailto:lhlazxyq@gmail.com"],"image":"https://ww1.sinaimg.cn/mw690/6a011e49ly1gn956xudhcj20fo0fogm7.jpg"},"articleBody":"在日常的 iOS 开发中，我们经常会使用到不同的网络环境切换问题，比如：\n\n\nQA 需要你给出一个带有环境切换的功能的安装文件\nApp Store 需要你上传面向用户环境的 Release 的安装文件\n灰度测试的时候又需要你给出带有个别功能的安装文件\n\n面对以上需求，也许你会针对不同的包给出不同的宏定义，比如 #define QA_TEST ,#define APP_STORE, #define GRAY_TEST，然后针对不同的宏定义在里面进行不同的参数修改。但是如果各个业务方来频繁的找你，也许手动的修改这些文件会让你崩溃。\n接下来提供一个解决方案，专门针对这种不同的环境或编译需求使用的无侵入，无修改，无痛的三无解决方案。名字叫：Build Configuration + Scheme\n关于 Build Configuration 的官方解释。关于 Scheme 的官方解释。\n接下来的步骤可以实现上面所描述的功能。\n1. 添加不同的 Configuration在 Project -&gt; Info -&gt; Configuration 里，复制一个\n2. 设置 Preprocessor Macros在 Target -&gt; Build Settings -&gt; Preprocessor Macros 里添加自己的宏，比如你可以这样：\n3. 可以畅快的使用了接下来在你的代码中可以随便使用了\n1234567#ifdef DEBUG    NSLog(@\"Debug\");##endif#ifdef TEST    NSLog(@\"Test\");##endif\n\n4. 选择你要的 Scheme\nEnjoy\nReference：\n\nhttps://developer.apple.com/library/ios/recipes/xcode_help-project_editor/Articles/BasingBuildConfigurationsonConfigurationFiles.html\n\n","dateCreated":"2016-05-16T14:11:35+08:00","dateModified":"2020-03-03T16:06:15+08:00","datePublished":"2016-05-16T14:11:35+08:00","description":"在日常的 iOS 开发中，我们经常会使用到不同的网络环境切换问题，比如：","headline":"iOS Build Configuration + Scheme 的使用","image":[],"mainEntityOfPage":{"@type":"WebPage","@id":"http://hilen.github.io/2016/05/16/configuration-scheme/"},"publisher":{"@type":"Organization","name":"Hilen","sameAs":["https://github.com/hilen","mailto:lhlazxyq@gmail.com"],"image":"https://ww1.sinaimg.cn/mw690/6a011e49ly1gn956xudhcj20fo0fogm7.jpg","logo":{"@type":"ImageObject","url":"https://ww1.sinaimg.cn/mw690/6a011e49ly1gn956xudhcj20fo0fogm7.jpg"}},"url":"http://hilen.github.io/2016/05/16/configuration-scheme/","keywords":"iOS"}</script>
     <meta name="description" content="在日常的 iOS 开发中，我们经常会使用到不同的网络环境切换问题，比如：">
 <meta name="keywords" content="Build Configuration,Scheme">
 <meta property="og:type" content="blog">
 <meta property="og:title" content="iOS Build Configuration + Scheme 的使用">
 <meta property="og:url" content="http://hilen.github.io/2016/05/16/configuration-scheme/index.html">
-<meta property="og:site_name" content="Hilen&#39;s Blog">
+<meta property="og:site_name" content="Hilen Blog">
 <meta property="og:description" content="在日常的 iOS 开发中，我们经常会使用到不同的网络环境切换问题，比如：">
-<meta property="og:locale" content="en">
+<meta property="og:locale" content="zh-cn">
 <meta property="og:image" content="http://ww1.sinaimg.cn/large/6a011e49gw1f67fm00645j21j80iin0b.jpg">
 <meta property="og:image" content="http://ww1.sinaimg.cn/large/6a011e49gw1f67fm00645j21j80iin0b.jpg">
 <meta property="og:image" content="http://ww1.sinaimg.cn/large/6a011e49gw1f67fqfa7zej21kw0usdo5.jpg">
@@ -36,13 +36,13 @@
         
     
     
-        <meta property="og:image" content="https://gw.alicdn.com/tfs/TB1XyOtdUuF3KVjSZK9XXbVtXXa-328-312.png"/>
+        <meta property="og:image" content="https://ww1.sinaimg.cn/mw690/6a011e49ly1gn956xudhcj20fo0fogm7.jpg"/>
     
     
     
     
     <!--STYLES-->
-    <link rel="stylesheet" href="/assets/css/style-vbqinavchah6jcimxa37wftwhydi8kc2ftser2fa0eoiv73ho0hbggaqec63.min.css">
+    <link rel="stylesheet" href="/assets/css/style-mhajaau9mrcpkpcfu9rq8rdkzf3tgyxu5tslo8ekowdwbu2g30unzxgzmxwq.min.css">
     <!--STYLES END-->
     
 
@@ -69,15 +69,24 @@
 <header id="header" data-behavior="2">
     <i id="btn-open-sidebar" class="fa fa-lg fa-bars"></i>
     <div class="header-title">
-        <a class="header-title-link" href="/ ">Hilen&#39;s Blog</a>
+        <a
+            class="header-title-link"
+            href="/"
+            aria-label=""
+        >
+            Hilen Blog
+        </a>
     </div>
     
         
-            <a  class="header-right-picture "
-                href="#about">
+            <a
+                class="header-right-picture "
+                href="#about"
+                aria-label="打开链接: /#about"
+            >
         
         
-            <img class="header-picture" src="https://gw.alicdn.com/tfs/TB1XyOtdUuF3KVjSZK9XXbVtXXa-328-312.png" alt="Author&#39;s picture"/>
+            <img class="header-picture" src="https://ww1.sinaimg.cn/mw690/6a011e49ly1gn956xudhcj20fo0fogm7.jpg" alt="作者的图片"/>
         
         </a>
     
@@ -94,8 +103,11 @@
     <div class="sidebar-container">
         
             <div class="sidebar-profile">
-                <a href="/#about">
-                    <img class="sidebar-profile-picture" src="https://gw.alicdn.com/tfs/TB1XyOtdUuF3KVjSZK9XXbVtXXa-328-312.png" alt="Author&#39;s picture"/>
+                <a
+                    href="/#about"
+                    aria-label="阅读有关作者的更多信息"
+                >
+                    <img class="sidebar-profile-picture" src="https://ww1.sinaimg.cn/mw690/6a011e49ly1gn956xudhcj20fo0fogm7.jpg" alt="作者的图片"/>
                 </a>
                 <h4 class="sidebar-profile-name">Hilen</h4>
                 
@@ -109,79 +121,85 @@
             
                 <li class="sidebar-button">
                     
-                        <a  class="sidebar-button-link "
-                             href="/ "
+                        <a
+                            class="sidebar-button-link "
+                            href="/"
                             
-                            title="Home"
+                            rel="noopener"
+                            title="首页"
                         >
-                    
                         <i class="sidebar-button-icon fa fa-home" aria-hidden="true"></i>
-                        <span class="sidebar-button-desc">Home</span>
+                        <span class="sidebar-button-desc">首页</span>
                     </a>
             </li>
             
                 <li class="sidebar-button">
                     
-                        <a  class="sidebar-button-link "
-                             href="/all-categories"
+                        <a
+                            class="sidebar-button-link "
+                            href="/all-categories"
                             
-                            title="Categories"
+                            rel="noopener"
+                            title="分类"
                         >
-                    
                         <i class="sidebar-button-icon fa fa-bookmark" aria-hidden="true"></i>
-                        <span class="sidebar-button-desc">Categories</span>
+                        <span class="sidebar-button-desc">分类</span>
                     </a>
             </li>
             
                 <li class="sidebar-button">
                     
-                        <a  class="sidebar-button-link "
-                             href="/all-tags"
+                        <a
+                            class="sidebar-button-link "
+                            href="/all-tags"
                             
-                            title="Tags"
+                            rel="noopener"
+                            title="标签"
                         >
-                    
                         <i class="sidebar-button-icon fa fa-tags" aria-hidden="true"></i>
-                        <span class="sidebar-button-desc">Tags</span>
+                        <span class="sidebar-button-desc">标签</span>
                     </a>
             </li>
             
                 <li class="sidebar-button">
                     
-                        <a  class="sidebar-button-link "
-                             href="/all-archives"
+                        <a
+                            class="sidebar-button-link "
+                            href="/all-archives"
                             
-                            title="Archives"
+                            rel="noopener"
+                            title="归档"
                         >
-                    
                         <i class="sidebar-button-icon fa fa-archive" aria-hidden="true"></i>
-                        <span class="sidebar-button-desc">Archives</span>
+                        <span class="sidebar-button-desc">归档</span>
                     </a>
             </li>
             
                 <li class="sidebar-button">
                     
-                        <a  class="sidebar-button-link open-algolia-search"
-                             href="#search"
+                        <a
+                            class="sidebar-button-link open-algolia-search"
+                            href="#search"
                             
-                            title="Search"
+                            rel="noopener"
+                            title="搜索"
                         >
-                    
                         <i class="sidebar-button-icon fa fa-search" aria-hidden="true"></i>
-                        <span class="sidebar-button-desc">Search</span>
+                        <span class="sidebar-button-desc">搜索</span>
                     </a>
             </li>
             
                 <li class="sidebar-button">
                     
-                        <a  class="sidebar-button-link "
-                             href="/about"
+                        <a
+                            class="sidebar-button-link "
+                            href="/about"
                             
-                            title="About"
+                            rel="noopener"
+                            title="关于"
                         >
-                    
                         <i class="sidebar-button-icon fa fa-question" aria-hidden="true"></i>
-                        <span class="sidebar-button-desc">About</span>
+                        <span class="sidebar-button-desc">关于</span>
                     </a>
             </li>
             
@@ -191,8 +209,15 @@
             
                 <li class="sidebar-button">
                     
-                        <a  class="sidebar-button-link " href="https://github.com/hilen" target="_blank" rel="noopener" title="GitHub">
-                    
+                        <a
+                            class="sidebar-button-link "
+                            href="https://github.com/hilen"
+                            
+                                target="_blank"
+                            
+                            rel="noopener"
+                            title="GitHub"
+                        >
                         <i class="sidebar-button-icon fab fa-github" aria-hidden="true"></i>
                         <span class="sidebar-button-desc">GitHub</span>
                     </a>
@@ -200,10 +225,17 @@
             
                 <li class="sidebar-button">
                     
-                        <a  class="sidebar-button-link " href="mailto:laihailong@hotmail.com" target="_blank" rel="noopener" title="Mail">
-                    
+                        <a
+                            class="sidebar-button-link "
+                            href="mailto:lhlazxyq@gmail.com"
+                            
+                                target="_blank"
+                            
+                            rel="noopener"
+                            title="邮箱"
+                        >
                         <i class="sidebar-button-icon fa fa-envelope" aria-hidden="true"></i>
-                        <span class="sidebar-button-desc">Mail</span>
+                        <span class="sidebar-button-desc">邮箱</span>
                     </a>
             </li>
             
@@ -231,11 +263,11 @@
         <div class="post-meta">
     <time datetime="2016-05-16T14:11:35+08:00">
 	
-		    May 16, 2016
+		    5月 16, 2016
     	
     </time>
     
-        <span>in </span>
+        <span>发布在 </span>
         
     <a class="category-link" href="/categories/iOS/">iOS</a>
 
@@ -280,7 +312,7 @@
     <div id="post-footer" class="post-footer main-content-wrap">
         
             <div class="post-footer-tags">
-                <span class="text-color-light text-small">TAGGED IN</span><br/>
+                <span class="text-color-light text-small">标签</span><br/>
                 
     <a class="tag tag--primary tag--small t-link" href="/tags/iOS/">iOS</a>
 
@@ -293,26 +325,40 @@
             <li class="post-action">
                 
                     
-                    <a class="post-action-btn btn btn--default tooltip--top" href="/2016/08/10/mantle-extension/" data-tooltip="Mantle 的增强" aria-label="PREVIOUS: Mantle 的增强">
-                
-                    <i class="fa fa-angle-left" aria-hidden="true"></i>
-                    <span class="hide-xs hide-sm text-small icon-ml">PREVIOUS</span>
-                </a>
+                <a
+                    class="post-action-btn btn btn--default tooltip--top"
+                    href="/2016/08/10/mantle-extension/"
+                    data-tooltip="Mantle 的增强"
+                    aria-label="上一篇: Mantle 的增强"
+                >
+                    
+                        <i class="fa fa-angle-left" aria-hidden="true"></i>
+                        <span class="hide-xs hide-sm text-small icon-ml">上一篇</span>
+                    </a>
             </li>
             <li class="post-action">
                 
                     
-                    <a class="post-action-btn btn btn--default tooltip--top" href="/2016/05/16/tranquilpeak-theme-tutorial/" data-tooltip="Tranquilpeak 主题的使用方法" aria-label="NEXT: Tranquilpeak 主题的使用方法">
-                
-                    <span class="hide-xs hide-sm text-small icon-mr">NEXT</span>
-                    <i class="fa fa-angle-right" aria-hidden="true"></i>
-                </a>
+                <a
+                    class="post-action-btn btn btn--default tooltip--top"
+                    href="/2016/05/16/tranquilpeak-theme-tutorial/"
+                    data-tooltip="Tranquilpeak 主题的使用方法"
+                    aria-label="下一篇: Tranquilpeak 主题的使用方法"
+                >
+                    
+                        <span class="hide-xs hide-sm text-small icon-mr">下一篇</span>
+                        <i class="fa fa-angle-right" aria-hidden="true"></i>
+                    </a>
             </li>
         </ul>
     </nav>
     <ul class="post-actions post-action-share">
         <li class="post-action hide-lg hide-md hide-sm">
-            <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions" aria-label="Share this post">
+            <a
+                class="post-action-btn btn btn--default btn-open-shareoptions"
+                href="#btn-open-shareoptions"
+                aria-label="Diesen Beitrag teilen"
+            >
                 <i class="fa fa-share-alt" aria-hidden="true"></i>
             </a>
         </li>
@@ -320,7 +366,12 @@
             
             
             <li class="post-action hide-xs">
-                <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://hilen.github.io/2016/05/16/configuration-scheme/" title="Share on Facebook">
+                <a
+                    class="post-action-btn btn btn--default"
+                    target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://hilen.github.io/2016/05/16/configuration-scheme/"
+                    title="分享到 Facebook"
+                    aria-label="分享到 Facebook"
+                >
                     <i class="fab fa-facebook" aria-hidden="true"></i>
                 </a>
             </li>
@@ -328,7 +379,12 @@
             
             
             <li class="post-action hide-xs">
-                <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=http://hilen.github.io/2016/05/16/configuration-scheme/" title="Share on Twitter">
+                <a
+                    class="post-action-btn btn btn--default"
+                    target="new" href="https://twitter.com/intent/tweet?text=http://hilen.github.io/2016/05/16/configuration-scheme/"
+                    title="分享到 Twitter"
+                    aria-label="分享到 Twitter"
+                >
                     <i class="fab fa-twitter" aria-hidden="true"></i>
                 </a>
             </li>
@@ -336,7 +392,12 @@
             
             
             <li class="post-action hide-xs">
-                <a class="post-action-btn btn btn--default" target="new" href="http://service.weibo.com/share/share.php?&amp;title=http://hilen.github.io/2016/05/16/configuration-scheme/" title="Share on Weibo">
+                <a
+                    class="post-action-btn btn btn--default"
+                    target="new" href="http://service.weibo.com/share/share.php?&amp;title=http://hilen.github.io/2016/05/16/configuration-scheme/"
+                    title="分享到 Weibo"
+                    aria-label="分享到 Weibo"
+                >
                     <i class="fab fa-weibo" aria-hidden="true"></i>
                 </a>
             </li>
@@ -344,7 +405,12 @@
             
             
             <li class="post-action hide-xs">
-                <a class="post-action-btn btn btn--default" target="new" href="http://connect.qq.com/widget/shareqq/index.html?url=http://hilen.github.io/2016/05/16/configuration-scheme/&amp;title=iOS Build Configuration + Scheme 的使用" title="Share on QQ">
+                <a
+                    class="post-action-btn btn btn--default"
+                    target="new" href="http://connect.qq.com/widget/shareqq/index.html?url=http://hilen.github.io/2016/05/16/configuration-scheme/&amp;title=iOS Build Configuration + Scheme 的使用"
+                    title="分享到 QQ"
+                    aria-label="分享到 QQ"
+                >
                     <i class="fab fa-qq" aria-hidden="true"></i>
                 </a>
             </li>
@@ -352,7 +418,12 @@
             
             
             <li class="post-action hide-xs">
-                <a class="post-action-btn btn btn--default" target="new" href="http://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=http://hilen.github.io/2016/05/16/configuration-scheme/" title="Share on Qzone">
+                <a
+                    class="post-action-btn btn btn--default"
+                    target="new" href="http://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=http://hilen.github.io/2016/05/16/configuration-scheme/"
+                    title="分享到 Qzone"
+                    aria-label="分享到 Qzone"
+                >
                     <i class="fa fa-star" aria-hidden="true"></i>
                 </a>
             </li>
@@ -360,15 +431,19 @@
         
             
                 <li class="post-action">
-                    <a class="post-action-btn btn btn--default" href="#gitalk">
-                         <i class="fa fa-comment"></i>
+                    <a
+                        class="post-action-btn btn btn--default"
+                        href="#gitalk"
+                        aria-label="Kommentieren"
+                    >
+                        <i class="fa fa-comment"></i>
                     </a>
                 </li>
             
         
         <li class="post-action">
             
-                <a class="post-action-btn btn btn--default" href="#" aria-label="Back to top">
+                <a class="post-action-btn btn btn--default" href="#" aria-label="Nach oben">
             
                 <i class="fa fa-list" aria-hidden="true"></i>
             </a>
@@ -391,7 +466,7 @@
 
                 <footer id="footer" class="main-content-wrap">
     <span class="copyrights">
-        Copyrights &copy; 2020 Hilen. All Rights Reserved.
+        Copyrights &copy; 2021 Hilen. All Rights Reserved.
     </span>
 </footer>
 
@@ -404,26 +479,40 @@
             <li class="post-action">
                 
                     
-                    <a class="post-action-btn btn btn--default tooltip--top" href="/2016/08/10/mantle-extension/" data-tooltip="Mantle 的增强" aria-label="PREVIOUS: Mantle 的增强">
-                
-                    <i class="fa fa-angle-left" aria-hidden="true"></i>
-                    <span class="hide-xs hide-sm text-small icon-ml">PREVIOUS</span>
-                </a>
+                <a
+                    class="post-action-btn btn btn--default tooltip--top"
+                    href="/2016/08/10/mantle-extension/"
+                    data-tooltip="Mantle 的增强"
+                    aria-label="上一篇: Mantle 的增强"
+                >
+                    
+                        <i class="fa fa-angle-left" aria-hidden="true"></i>
+                        <span class="hide-xs hide-sm text-small icon-ml">上一篇</span>
+                    </a>
             </li>
             <li class="post-action">
                 
                     
-                    <a class="post-action-btn btn btn--default tooltip--top" href="/2016/05/16/tranquilpeak-theme-tutorial/" data-tooltip="Tranquilpeak 主题的使用方法" aria-label="NEXT: Tranquilpeak 主题的使用方法">
-                
-                    <span class="hide-xs hide-sm text-small icon-mr">NEXT</span>
-                    <i class="fa fa-angle-right" aria-hidden="true"></i>
-                </a>
+                <a
+                    class="post-action-btn btn btn--default tooltip--top"
+                    href="/2016/05/16/tranquilpeak-theme-tutorial/"
+                    data-tooltip="Tranquilpeak 主题的使用方法"
+                    aria-label="下一篇: Tranquilpeak 主题的使用方法"
+                >
+                    
+                        <span class="hide-xs hide-sm text-small icon-mr">下一篇</span>
+                        <i class="fa fa-angle-right" aria-hidden="true"></i>
+                    </a>
             </li>
         </ul>
     </nav>
     <ul class="post-actions post-action-share">
         <li class="post-action hide-lg hide-md hide-sm">
-            <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions" aria-label="Share this post">
+            <a
+                class="post-action-btn btn btn--default btn-open-shareoptions"
+                href="#btn-open-shareoptions"
+                aria-label="Diesen Beitrag teilen"
+            >
                 <i class="fa fa-share-alt" aria-hidden="true"></i>
             </a>
         </li>
@@ -431,7 +520,12 @@
             
             
             <li class="post-action hide-xs">
-                <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://hilen.github.io/2016/05/16/configuration-scheme/" title="Share on Facebook">
+                <a
+                    class="post-action-btn btn btn--default"
+                    target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://hilen.github.io/2016/05/16/configuration-scheme/"
+                    title="分享到 Facebook"
+                    aria-label="分享到 Facebook"
+                >
                     <i class="fab fa-facebook" aria-hidden="true"></i>
                 </a>
             </li>
@@ -439,7 +533,12 @@
             
             
             <li class="post-action hide-xs">
-                <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=http://hilen.github.io/2016/05/16/configuration-scheme/" title="Share on Twitter">
+                <a
+                    class="post-action-btn btn btn--default"
+                    target="new" href="https://twitter.com/intent/tweet?text=http://hilen.github.io/2016/05/16/configuration-scheme/"
+                    title="分享到 Twitter"
+                    aria-label="分享到 Twitter"
+                >
                     <i class="fab fa-twitter" aria-hidden="true"></i>
                 </a>
             </li>
@@ -447,7 +546,12 @@
             
             
             <li class="post-action hide-xs">
-                <a class="post-action-btn btn btn--default" target="new" href="http://service.weibo.com/share/share.php?&amp;title=http://hilen.github.io/2016/05/16/configuration-scheme/" title="Share on Weibo">
+                <a
+                    class="post-action-btn btn btn--default"
+                    target="new" href="http://service.weibo.com/share/share.php?&amp;title=http://hilen.github.io/2016/05/16/configuration-scheme/"
+                    title="分享到 Weibo"
+                    aria-label="分享到 Weibo"
+                >
                     <i class="fab fa-weibo" aria-hidden="true"></i>
                 </a>
             </li>
@@ -455,7 +559,12 @@
             
             
             <li class="post-action hide-xs">
-                <a class="post-action-btn btn btn--default" target="new" href="http://connect.qq.com/widget/shareqq/index.html?url=http://hilen.github.io/2016/05/16/configuration-scheme/&amp;title=iOS Build Configuration + Scheme 的使用" title="Share on QQ">
+                <a
+                    class="post-action-btn btn btn--default"
+                    target="new" href="http://connect.qq.com/widget/shareqq/index.html?url=http://hilen.github.io/2016/05/16/configuration-scheme/&amp;title=iOS Build Configuration + Scheme 的使用"
+                    title="分享到 QQ"
+                    aria-label="分享到 QQ"
+                >
                     <i class="fab fa-qq" aria-hidden="true"></i>
                 </a>
             </li>
@@ -463,7 +572,12 @@
             
             
             <li class="post-action hide-xs">
-                <a class="post-action-btn btn btn--default" target="new" href="http://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=http://hilen.github.io/2016/05/16/configuration-scheme/" title="Share on Qzone">
+                <a
+                    class="post-action-btn btn btn--default"
+                    target="new" href="http://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=http://hilen.github.io/2016/05/16/configuration-scheme/"
+                    title="分享到 Qzone"
+                    aria-label="分享到 Qzone"
+                >
                     <i class="fa fa-star" aria-hidden="true"></i>
                 </a>
             </li>
@@ -471,15 +585,19 @@
         
             
                 <li class="post-action">
-                    <a class="post-action-btn btn btn--default" href="#gitalk">
-                         <i class="fa fa-comment"></i>
+                    <a
+                        class="post-action-btn btn btn--default"
+                        href="#gitalk"
+                        aria-label="Kommentieren"
+                    >
+                        <i class="fa fa-comment"></i>
                     </a>
                 </li>
             
         
         <li class="post-action">
             
-                <a class="post-action-btn btn btn--default" href="#" aria-label="Back to top">
+                <a class="post-action-btn btn btn--default" href="#" aria-label="Nach oben">
             
                 <i class="fa fa-list" aria-hidden="true"></i>
             </a>
@@ -497,40 +615,65 @@
                 
                 
                 <li class="share-option">
-                    <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://hilen.github.io/2016/05/16/configuration-scheme/">
-                        <i class="fab fa-facebook" aria-hidden="true"></i><span>Share on Facebook</span>
+                    <a
+                        class="share-option-btn"
+                        target="new"
+                        href="https://www.facebook.com/sharer/sharer.php?u=http://hilen.github.io/2016/05/16/configuration-scheme/"
+                        aria-label="分享到 Facebook"
+                    >
+                        <i class="fab fa-facebook" aria-hidden="true"></i><span>分享到 Facebook</span>
                     </a>
                 </li>
             
                 
                 
                 <li class="share-option">
-                    <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=http://hilen.github.io/2016/05/16/configuration-scheme/">
-                        <i class="fab fa-twitter" aria-hidden="true"></i><span>Share on Twitter</span>
+                    <a
+                        class="share-option-btn"
+                        target="new"
+                        href="https://twitter.com/intent/tweet?text=http://hilen.github.io/2016/05/16/configuration-scheme/"
+                        aria-label="分享到 Twitter"
+                    >
+                        <i class="fab fa-twitter" aria-hidden="true"></i><span>分享到 Twitter</span>
                     </a>
                 </li>
             
                 
                 
                 <li class="share-option">
-                    <a class="share-option-btn" target="new" href="http://service.weibo.com/share/share.php?&amp;title=http://hilen.github.io/2016/05/16/configuration-scheme/">
-                        <i class="fab fa-weibo" aria-hidden="true"></i><span>Share on Weibo</span>
+                    <a
+                        class="share-option-btn"
+                        target="new"
+                        href="http://service.weibo.com/share/share.php?&amp;title=http://hilen.github.io/2016/05/16/configuration-scheme/"
+                        aria-label="分享到 Weibo"
+                    >
+                        <i class="fab fa-weibo" aria-hidden="true"></i><span>分享到 Weibo</span>
                     </a>
                 </li>
             
                 
                 
                 <li class="share-option">
-                    <a class="share-option-btn" target="new" href="http://connect.qq.com/widget/shareqq/index.html?url=http://hilen.github.io/2016/05/16/configuration-scheme/&amp;title=iOS Build Configuration + Scheme 的使用">
-                        <i class="fab fa-qq" aria-hidden="true"></i><span>Share on QQ</span>
+                    <a
+                        class="share-option-btn"
+                        target="new"
+                        href="http://connect.qq.com/widget/shareqq/index.html?url=http://hilen.github.io/2016/05/16/configuration-scheme/&amp;title=iOS Build Configuration + Scheme 的使用"
+                        aria-label="分享到 QQ"
+                    >
+                        <i class="fab fa-qq" aria-hidden="true"></i><span>分享到 QQ</span>
                     </a>
                 </li>
             
                 
                 
                 <li class="share-option">
-                    <a class="share-option-btn" target="new" href="http://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=http://hilen.github.io/2016/05/16/configuration-scheme/">
-                        <i class="fa fa-star" aria-hidden="true"></i><span>Share on Qzone</span>
+                    <a
+                        class="share-option-btn"
+                        target="new"
+                        href="http://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=http://hilen.github.io/2016/05/16/configuration-scheme/"
+                        aria-label="分享到 Qzone"
+                    >
+                        <i class="fa fa-star" aria-hidden="true"></i><span>分享到 Qzone</span>
                     </a>
                 </li>
             
@@ -553,7 +696,7 @@
             <i class="fa fa-times"></i>
         </div>
         
-            <img id="about-card-picture" src="https://gw.alicdn.com/tfs/TB1XyOtdUuF3KVjSZK9XXbVtXXa-328-312.png" alt="Author&#39;s picture"/>
+            <img id="about-card-picture" src="https://ww1.sinaimg.cn/mw690/6a011e49ly1gn956xudhcj20fo0fogm7.jpg" alt="作者的图片"/>
         
             <h4 id="about-card-name">Hilen</h4>
         
@@ -580,9 +723,9 @@
 
         
         
-<div id="cover" style="background-image:url('https://gw.alicdn.com/tfs/TB1KrCsp4D1gK0jSZFsXXbldVXa-4802-3202.jpg');"></div>
+<div id="cover" style="background-image:url('https://gw.alicdn.com/imgextra/i1/O1CN01KiroJ31iilxjOVyse_!!6000000004447-0-tps-3486-2334.jpg');"></div>
         <!--SCRIPTS-->
-<script src="/assets/js/script-igzblvgl1l41iig8exswdesnuhryopm3ddgxzqifmyvvtmgnzp5rkhrihgie.min.js"></script>
+<script src="/assets/js/script-7iimeqy8tedt9p7vxozrafnfybmsfzzhcjkhhn9jijx9cw3xxk4iyge9sp6e.min.js"></script>
 <!--SCRIPTS END-->
 
 
@@ -597,7 +740,7 @@
               owner: 'hilen',
               admin: ['hilen'],
               id: '2016/05/16/configuration-scheme/',
-              ...{"language":"cn","perPage":15,"distractionFreeMode":false,"enableHotKey":true,"pagerDirection":"first"}
+              ...{"language":"zh-cn","perPage":15,"distractionFreeMode":false,"enableHotKey":true,"pagerDirection":"first"}
             }).render('gitalk')
           })()
         </script>

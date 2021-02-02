@@ -1,25 +1,25 @@
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-cn">
     
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="generator" content="Hilen&#39;s Blog">
-    <title>macOS Sierra 安装 rbenv 管理器 和 CocoaPods - Hilen&#39;s Blog</title>
+    <meta name="generator" content="Hilen Blog">
+    <title>macOS Sierra 安装 rbenv 管理器 和 CocoaPods - Hilen Blog</title>
     <meta name="author" content="Hilen">
     
     
     
-    <script type="application/ld+json">{"@context":"http://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"Hilen","sameAs":["https://github.com/hilen","mailto:laihailong@hotmail.com"],"image":"https://gw.alicdn.com/tfs/TB1XyOtdUuF3KVjSZK9XXbVtXXa-328-312.png"},"articleBody":"CocoaPods 是 iOS 日常开发所使用的包管理器，它把 Rails 里的 Gem 带进了 macOS 中，让 iOS 和 macOS 管理自己的第三方依赖。接下来介绍几个概念：rbenv：管理 Ruby 版本的内容rails：著名开发框架。详细看 https://ruby-china.github.io/rails-guides/bundle：是 rails 框架里面安装 Gemfile 指定的各种库的工具。在配置文件 gemfile 里说明你的应用依赖哪些第三方包，他自动帮你下载安装多个包，并且会下载这些包依赖的包gem：是 ruby 的其中一个“程序”叫 RubyGems，在终端使用的 gem 命令，是指通过 RubyGems 管理 Gem 包pod：是 CocoaPods 的管理 iOS 的第三方库工具\n接下来介绍一下具体的 CocoaPods 安装流程，首先你需要一台 Mac [doge]\n基于 rbenv 来安装 CocoaPods\n安装 brew：$ /usr/bin/ruby -e &quot;$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)&quot;\n\n安装 rbenv：$ brew install rbenv\n\n安装 ruby-build：$ git clone https://github.com/rbenv/ruby-build.git ~/.rbenv/plugins/ruby-build\n\n安装 ruby-china 镜像：$ git clone https://github.com/andorchen/rbenv-china-mirror.git ~/.rbenv/plugins/rbenv-china-mirror\n\n使用 rbenv 安装 ruby 版本：$ rbenv install 2.2.3。你可以选择安装自己需要的版本。\n然后在 ~/.zsh_rc 里添加：\n123# rbenv init 需要export PATH=&quot;$HOME/.rbenv/bin:$PATH&quot;eval &quot;$(rbenv init -)&quot;\n注意是 bash 用户是在 ~/.bashrc 里, zsh 用户是 ~/.zshrc ，然后重启终端\n\n设置全局的 ruby 版本：$ rbenv global 2.2.3\n\n去掉原生的 gem 源，替换为 ruby-china 源： $ gem sources --add https://gems.ruby-china.org/ --remove https://rubygems.org/\n更新 gem 版本：$ gem update --system\n\n安装所需要的 CocoaPods 版本：$ gem install cocoapods -v 1.1.0, 不要用 sudo。系统大约会给你安装 20 个左右 gems，都是 cocoapods 所依赖的内容\n\n$ which pod 得到信息是： $ /Users/yourusername/.rbenv/shims/pod\n\n安装 bundler：$ gem install bundler\n\n\n首次使用的速度问题当你运行 pod setup 的时候可能会看到这样的信息：123456[Enchanting] pod setupSetting up CocoaPods master repo[!] /usr/bin/git clone https://github.com/CocoaPods/Specs.git master --depth=1Cloning into &apos;master&apos;...fatal: unable to access &apos;https://github.com/CocoaPods/Specs.git/&apos;: transfer closed with outstanding read data remaining\n原因是：master 的 podspec 文件都托管在 https://github.com/CocoaPods/Specs 上面。当执行 pod setup 或者 pod install 的时候，CocoaPods 自动把托管在 github 上的文件下载到本地的 ~/.cocoapods/repos 目录下，但是因为这个索引文件非常大，所以第一次更新时非常慢。\n解决办法（默认你已经有了 shadowsocks）挂代理：git config --global http.https://github.com.proxy socks5://127.0.0.1:1080取消代理：git config --global --unset http.https://github.com.proxy然后再进行 pod setup，这次速度就会快很多。\n另外当运行 Xcode 的时候，可能会报 ruby 相关的错误。因为当前 macOS Sierra 使用的是 oh-my-zsh 的命令终端管理，但是 Xcode 本身跑的是 .bash 而非 .zshrc 里的内容。所以需要加上下面这句话，使得 Xcode 在运行的时候跑的是 local 的Ruby 环境，也就是 /Users/xxxxxxx/.rbenv/shims/ruby 下的版本。打开 ~/.bash_profile，添加下面这行：1export PATH=&quot;$HOME/.rbenv/shims:$HOME/.rbenv/bin:$PATH&quot;\nReference：\n\nhttps://ruby-china.org/wiki/rbenv-guide\n\nEnjoy.\n","dateCreated":"2016-10-24T17:25:07+08:00","dateModified":"2020-03-03T16:05:59+08:00","datePublished":"2016-10-24T17:25:07+08:00","description":"CocoaPods 是 iOS 日常开发所使用的包管理器，它把 Rails 里的 Gem 带进了 macOS 中，让 iOS 和 macOS 管理自己的第三方依赖。接下来介绍几个概念：rbenv：管理 Ruby 版本的内容","headline":"macOS Sierra 安装 rbenv 管理器 和 CocoaPods","image":["https://cdn.iconscout.com/icon/free/png-256/cocoapods-283067.png"],"mainEntityOfPage":{"@type":"WebPage","@id":"http://hilen.github.io/2016/10/24/ruby-cocoapods/"},"publisher":{"@type":"Organization","name":"Hilen","sameAs":["https://github.com/hilen","mailto:laihailong@hotmail.com"],"image":"https://gw.alicdn.com/tfs/TB1XyOtdUuF3KVjSZK9XXbVtXXa-328-312.png","logo":{"@type":"ImageObject","url":"https://gw.alicdn.com/tfs/TB1XyOtdUuF3KVjSZK9XXbVtXXa-328-312.png"}},"url":"http://hilen.github.io/2016/10/24/ruby-cocoapods/","keywords":"iOS, Ruby","thumbnailUrl":"https://cdn.iconscout.com/icon/free/png-256/cocoapods-283067.png"}</script>
+    <script type="application/ld+json">{"@context":"http://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"Hilen","sameAs":["https://github.com/hilen","mailto:lhlazxyq@gmail.com"],"image":"https://ww1.sinaimg.cn/mw690/6a011e49ly1gn956xudhcj20fo0fogm7.jpg"},"articleBody":"CocoaPods 是 iOS 日常开发所使用的包管理器，它把 Rails 里的 Gem 带进了 macOS 中，让 iOS 和 macOS 管理自己的第三方依赖。接下来介绍几个概念：rbenv：管理 Ruby 版本的内容rails：著名开发框架。详细看 https://ruby-china.github.io/rails-guides/bundle：是 rails 框架里面安装 Gemfile 指定的各种库的工具。在配置文件 gemfile 里说明你的应用依赖哪些第三方包，他自动帮你下载安装多个包，并且会下载这些包依赖的包gem：是 ruby 的其中一个“程序”叫 RubyGems，在终端使用的 gem 命令，是指通过 RubyGems 管理 Gem 包pod：是 CocoaPods 的管理 iOS 的第三方库工具\n接下来介绍一下具体的 CocoaPods 安装流程，首先你需要一台 Mac [doge]\n基于 rbenv 来安装 CocoaPods\n安装 brew：$ /usr/bin/ruby -e &quot;$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)&quot;\n\n安装 rbenv：$ brew install rbenv\n\n安装 ruby-build：$ git clone https://github.com/rbenv/ruby-build.git ~/.rbenv/plugins/ruby-build\n\n安装 ruby-china 镜像：$ git clone https://github.com/andorchen/rbenv-china-mirror.git ~/.rbenv/plugins/rbenv-china-mirror\n\n使用 rbenv 安装 ruby 版本：$ rbenv install 2.2.3。你可以选择安装自己需要的版本。\n然后在 ~/.zsh_rc 里添加：\n123# rbenv init 需要export PATH=&quot;$HOME/.rbenv/bin:$PATH&quot;eval &quot;$(rbenv init -)&quot;\n注意是 bash 用户是在 ~/.bashrc 里, zsh 用户是 ~/.zshrc ，然后重启终端\n\n设置全局的 ruby 版本：$ rbenv global 2.2.3\n\n去掉原生的 gem 源，替换为 ruby-china 源： $ gem sources --add https://gems.ruby-china.org/ --remove https://rubygems.org/\n更新 gem 版本：$ gem update --system\n\n安装所需要的 CocoaPods 版本：$ gem install cocoapods -v 1.1.0, 不要用 sudo。系统大约会给你安装 20 个左右 gems，都是 cocoapods 所依赖的内容\n\n$ which pod 得到信息是： $ /Users/yourusername/.rbenv/shims/pod\n\n安装 bundler：$ gem install bundler\n\n\n首次使用的速度问题当你运行 pod setup 的时候可能会看到这样的信息：123456[Enchanting] pod setupSetting up CocoaPods master repo[!] /usr/bin/git clone https://github.com/CocoaPods/Specs.git master --depth=1Cloning into &apos;master&apos;...fatal: unable to access &apos;https://github.com/CocoaPods/Specs.git/&apos;: transfer closed with outstanding read data remaining\n原因是：master 的 podspec 文件都托管在 https://github.com/CocoaPods/Specs 上面。当执行 pod setup 或者 pod install 的时候，CocoaPods 自动把托管在 github 上的文件下载到本地的 ~/.cocoapods/repos 目录下，但是因为这个索引文件非常大，所以第一次更新时非常慢。\n解决办法（默认你已经有了 shadowsocks）挂代理：git config --global http.https://github.com.proxy socks5://127.0.0.1:1080取消代理：git config --global --unset http.https://github.com.proxy然后再进行 pod setup，这次速度就会快很多。\n另外当运行 Xcode 的时候，可能会报 ruby 相关的错误。因为当前 macOS Sierra 使用的是 oh-my-zsh 的命令终端管理，但是 Xcode 本身跑的是 .bash 而非 .zshrc 里的内容。所以需要加上下面这句话，使得 Xcode 在运行的时候跑的是 local 的Ruby 环境，也就是 /Users/xxxxxxx/.rbenv/shims/ruby 下的版本。打开 ~/.bash_profile，添加下面这行：1export PATH=&quot;$HOME/.rbenv/shims:$HOME/.rbenv/bin:$PATH&quot;\nReference：\n\nhttps://ruby-china.org/wiki/rbenv-guide\n\nEnjoy.\n","dateCreated":"2016-10-24T17:25:07+08:00","dateModified":"2020-03-03T16:05:59+08:00","datePublished":"2016-10-24T17:25:07+08:00","description":"CocoaPods 是 iOS 日常开发所使用的包管理器，它把 Rails 里的 Gem 带进了 macOS 中，让 iOS 和 macOS 管理自己的第三方依赖。接下来介绍几个概念：rbenv：管理 Ruby 版本的内容","headline":"macOS Sierra 安装 rbenv 管理器 和 CocoaPods","image":["https://cdn.iconscout.com/icon/free/png-256/cocoapods-283067.png"],"mainEntityOfPage":{"@type":"WebPage","@id":"http://hilen.github.io/2016/10/24/ruby-cocoapods/"},"publisher":{"@type":"Organization","name":"Hilen","sameAs":["https://github.com/hilen","mailto:lhlazxyq@gmail.com"],"image":"https://ww1.sinaimg.cn/mw690/6a011e49ly1gn956xudhcj20fo0fogm7.jpg","logo":{"@type":"ImageObject","url":"https://ww1.sinaimg.cn/mw690/6a011e49ly1gn956xudhcj20fo0fogm7.jpg"}},"url":"http://hilen.github.io/2016/10/24/ruby-cocoapods/","keywords":"iOS, Ruby","thumbnailUrl":"https://cdn.iconscout.com/icon/free/png-256/cocoapods-283067.png"}</script>
     <meta name="description" content="CocoaPods 是 iOS 日常开发所使用的包管理器，它把 Rails 里的 Gem 带进了 macOS 中，让 iOS 和 macOS 管理自己的第三方依赖。接下来介绍几个概念：rbenv：管理 Ruby 版本的内容">
 <meta name="keywords" content="iOS,Ruby">
 <meta property="og:type" content="blog">
 <meta property="og:title" content="macOS Sierra 安装 rbenv 管理器 和 CocoaPods">
 <meta property="og:url" content="http://hilen.github.io/2016/10/24/ruby-cocoapods/index.html">
-<meta property="og:site_name" content="Hilen&#39;s Blog">
+<meta property="og:site_name" content="Hilen Blog">
 <meta property="og:description" content="CocoaPods 是 iOS 日常开发所使用的包管理器，它把 Rails 里的 Gem 带进了 macOS 中，让 iOS 和 macOS 管理自己的第三方依赖。接下来介绍几个概念：rbenv：管理 Ruby 版本的内容">
-<meta property="og:locale" content="en">
+<meta property="og:locale" content="zh-cn">
 <meta property="og:updated_time" content="2020-03-03T08:05:59.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="macOS Sierra 安装 rbenv 管理器 和 CocoaPods">
@@ -29,7 +29,7 @@
         
     
     
-        <meta property="og:image" content="https://gw.alicdn.com/tfs/TB1XyOtdUuF3KVjSZK9XXbVtXXa-328-312.png"/>
+        <meta property="og:image" content="https://ww1.sinaimg.cn/mw690/6a011e49ly1gn956xudhcj20fo0fogm7.jpg"/>
     
     
         <meta property="og:image" content="https://cdn.iconscout.com/icon/free/png-256/cocoapods-283067.png"/>
@@ -38,7 +38,7 @@
     
     
     <!--STYLES-->
-    <link rel="stylesheet" href="/assets/css/style-vbqinavchah6jcimxa37wftwhydi8kc2ftser2fa0eoiv73ho0hbggaqec63.min.css">
+    <link rel="stylesheet" href="/assets/css/style-mhajaau9mrcpkpcfu9rq8rdkzf3tgyxu5tslo8ekowdwbu2g30unzxgzmxwq.min.css">
     <!--STYLES END-->
     
 
@@ -65,15 +65,24 @@
 <header id="header" data-behavior="2">
     <i id="btn-open-sidebar" class="fa fa-lg fa-bars"></i>
     <div class="header-title">
-        <a class="header-title-link" href="/ ">Hilen&#39;s Blog</a>
+        <a
+            class="header-title-link"
+            href="/"
+            aria-label=""
+        >
+            Hilen Blog
+        </a>
     </div>
     
         
-            <a  class="header-right-picture "
-                href="#about">
+            <a
+                class="header-right-picture "
+                href="#about"
+                aria-label="打开链接: /#about"
+            >
         
         
-            <img class="header-picture" src="https://gw.alicdn.com/tfs/TB1XyOtdUuF3KVjSZK9XXbVtXXa-328-312.png" alt="Author&#39;s picture"/>
+            <img class="header-picture" src="https://ww1.sinaimg.cn/mw690/6a011e49ly1gn956xudhcj20fo0fogm7.jpg" alt="作者的图片"/>
         
         </a>
     
@@ -90,8 +99,11 @@
     <div class="sidebar-container">
         
             <div class="sidebar-profile">
-                <a href="/#about">
-                    <img class="sidebar-profile-picture" src="https://gw.alicdn.com/tfs/TB1XyOtdUuF3KVjSZK9XXbVtXXa-328-312.png" alt="Author&#39;s picture"/>
+                <a
+                    href="/#about"
+                    aria-label="阅读有关作者的更多信息"
+                >
+                    <img class="sidebar-profile-picture" src="https://ww1.sinaimg.cn/mw690/6a011e49ly1gn956xudhcj20fo0fogm7.jpg" alt="作者的图片"/>
                 </a>
                 <h4 class="sidebar-profile-name">Hilen</h4>
                 
@@ -105,79 +117,85 @@
             
                 <li class="sidebar-button">
                     
-                        <a  class="sidebar-button-link "
-                             href="/ "
+                        <a
+                            class="sidebar-button-link "
+                            href="/"
                             
-                            title="Home"
+                            rel="noopener"
+                            title="首页"
                         >
-                    
                         <i class="sidebar-button-icon fa fa-home" aria-hidden="true"></i>
-                        <span class="sidebar-button-desc">Home</span>
+                        <span class="sidebar-button-desc">首页</span>
                     </a>
             </li>
             
                 <li class="sidebar-button">
                     
-                        <a  class="sidebar-button-link "
-                             href="/all-categories"
+                        <a
+                            class="sidebar-button-link "
+                            href="/all-categories"
                             
-                            title="Categories"
+                            rel="noopener"
+                            title="分类"
                         >
-                    
                         <i class="sidebar-button-icon fa fa-bookmark" aria-hidden="true"></i>
-                        <span class="sidebar-button-desc">Categories</span>
+                        <span class="sidebar-button-desc">分类</span>
                     </a>
             </li>
             
                 <li class="sidebar-button">
                     
-                        <a  class="sidebar-button-link "
-                             href="/all-tags"
+                        <a
+                            class="sidebar-button-link "
+                            href="/all-tags"
                             
-                            title="Tags"
+                            rel="noopener"
+                            title="标签"
                         >
-                    
                         <i class="sidebar-button-icon fa fa-tags" aria-hidden="true"></i>
-                        <span class="sidebar-button-desc">Tags</span>
+                        <span class="sidebar-button-desc">标签</span>
                     </a>
             </li>
             
                 <li class="sidebar-button">
                     
-                        <a  class="sidebar-button-link "
-                             href="/all-archives"
+                        <a
+                            class="sidebar-button-link "
+                            href="/all-archives"
                             
-                            title="Archives"
+                            rel="noopener"
+                            title="归档"
                         >
-                    
                         <i class="sidebar-button-icon fa fa-archive" aria-hidden="true"></i>
-                        <span class="sidebar-button-desc">Archives</span>
+                        <span class="sidebar-button-desc">归档</span>
                     </a>
             </li>
             
                 <li class="sidebar-button">
                     
-                        <a  class="sidebar-button-link open-algolia-search"
-                             href="#search"
+                        <a
+                            class="sidebar-button-link open-algolia-search"
+                            href="#search"
                             
-                            title="Search"
+                            rel="noopener"
+                            title="搜索"
                         >
-                    
                         <i class="sidebar-button-icon fa fa-search" aria-hidden="true"></i>
-                        <span class="sidebar-button-desc">Search</span>
+                        <span class="sidebar-button-desc">搜索</span>
                     </a>
             </li>
             
                 <li class="sidebar-button">
                     
-                        <a  class="sidebar-button-link "
-                             href="/about"
+                        <a
+                            class="sidebar-button-link "
+                            href="/about"
                             
-                            title="About"
+                            rel="noopener"
+                            title="关于"
                         >
-                    
                         <i class="sidebar-button-icon fa fa-question" aria-hidden="true"></i>
-                        <span class="sidebar-button-desc">About</span>
+                        <span class="sidebar-button-desc">关于</span>
                     </a>
             </li>
             
@@ -187,8 +205,15 @@
             
                 <li class="sidebar-button">
                     
-                        <a  class="sidebar-button-link " href="https://github.com/hilen" target="_blank" rel="noopener" title="GitHub">
-                    
+                        <a
+                            class="sidebar-button-link "
+                            href="https://github.com/hilen"
+                            
+                                target="_blank"
+                            
+                            rel="noopener"
+                            title="GitHub"
+                        >
                         <i class="sidebar-button-icon fab fa-github" aria-hidden="true"></i>
                         <span class="sidebar-button-desc">GitHub</span>
                     </a>
@@ -196,10 +221,17 @@
             
                 <li class="sidebar-button">
                     
-                        <a  class="sidebar-button-link " href="mailto:laihailong@hotmail.com" target="_blank" rel="noopener" title="Mail">
-                    
+                        <a
+                            class="sidebar-button-link "
+                            href="mailto:lhlazxyq@gmail.com"
+                            
+                                target="_blank"
+                            
+                            rel="noopener"
+                            title="邮箱"
+                        >
                         <i class="sidebar-button-icon fa fa-envelope" aria-hidden="true"></i>
-                        <span class="sidebar-button-desc">Mail</span>
+                        <span class="sidebar-button-desc">邮箱</span>
                     </a>
             </li>
             
@@ -227,11 +259,11 @@
         <div class="post-meta">
     <time datetime="2016-10-24T17:25:07+08:00">
 	
-		    Oct 24, 2016
+		    10月 24, 2016
     	
     </time>
     
-        <span>in </span>
+        <span>发布在 </span>
         
     <a class="category-link" href="/categories/iOS/">iOS</a>
 
@@ -291,7 +323,7 @@
     <div id="post-footer" class="post-footer main-content-wrap">
         
             <div class="post-footer-tags">
-                <span class="text-color-light text-small">TAGGED IN</span><br/>
+                <span class="text-color-light text-small">标签</span><br/>
                 
     <a class="tag tag--primary tag--small t-link" href="/tags/Ruby/">Ruby</a> <a class="tag tag--primary tag--small t-link" href="/tags/iOS/">iOS</a>
 
@@ -304,26 +336,40 @@
             <li class="post-action">
                 
                     
-                    <a class="post-action-btn btn btn--default tooltip--top" href="/2017/03/15/ios-app-skeleton/" data-tooltip="开发一个 iOS 应用你所需要做些什么呢？" aria-label="PREVIOUS: 开发一个 iOS 应用你所需要做些什么呢？">
-                
-                    <i class="fa fa-angle-left" aria-hidden="true"></i>
-                    <span class="hide-xs hide-sm text-small icon-ml">PREVIOUS</span>
-                </a>
+                <a
+                    class="post-action-btn btn btn--default tooltip--top"
+                    href="/2017/03/15/ios-app-skeleton/"
+                    data-tooltip="开发一个 iOS 应用你所需要做些什么呢？"
+                    aria-label="上一篇: 开发一个 iOS 应用你所需要做些什么呢？"
+                >
+                    
+                        <i class="fa fa-angle-left" aria-hidden="true"></i>
+                        <span class="hide-xs hide-sm text-small icon-ml">上一篇</span>
+                    </a>
             </li>
             <li class="post-action">
                 
                     
-                    <a class="post-action-btn btn btn--default tooltip--top" href="/2016/10/12/sublime-config/" data-tooltip="Sublime Text 3 配置" aria-label="NEXT: Sublime Text 3 配置">
-                
-                    <span class="hide-xs hide-sm text-small icon-mr">NEXT</span>
-                    <i class="fa fa-angle-right" aria-hidden="true"></i>
-                </a>
+                <a
+                    class="post-action-btn btn btn--default tooltip--top"
+                    href="/2016/10/12/sublime-config/"
+                    data-tooltip="Sublime Text 3 配置"
+                    aria-label="下一篇: Sublime Text 3 配置"
+                >
+                    
+                        <span class="hide-xs hide-sm text-small icon-mr">下一篇</span>
+                        <i class="fa fa-angle-right" aria-hidden="true"></i>
+                    </a>
             </li>
         </ul>
     </nav>
     <ul class="post-actions post-action-share">
         <li class="post-action hide-lg hide-md hide-sm">
-            <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions" aria-label="Share this post">
+            <a
+                class="post-action-btn btn btn--default btn-open-shareoptions"
+                href="#btn-open-shareoptions"
+                aria-label="Diesen Beitrag teilen"
+            >
                 <i class="fa fa-share-alt" aria-hidden="true"></i>
             </a>
         </li>
@@ -331,7 +377,12 @@
             
             
             <li class="post-action hide-xs">
-                <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://hilen.github.io/2016/10/24/ruby-cocoapods/" title="Share on Facebook">
+                <a
+                    class="post-action-btn btn btn--default"
+                    target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://hilen.github.io/2016/10/24/ruby-cocoapods/"
+                    title="分享到 Facebook"
+                    aria-label="分享到 Facebook"
+                >
                     <i class="fab fa-facebook" aria-hidden="true"></i>
                 </a>
             </li>
@@ -339,7 +390,12 @@
             
             
             <li class="post-action hide-xs">
-                <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=http://hilen.github.io/2016/10/24/ruby-cocoapods/" title="Share on Twitter">
+                <a
+                    class="post-action-btn btn btn--default"
+                    target="new" href="https://twitter.com/intent/tweet?text=http://hilen.github.io/2016/10/24/ruby-cocoapods/"
+                    title="分享到 Twitter"
+                    aria-label="分享到 Twitter"
+                >
                     <i class="fab fa-twitter" aria-hidden="true"></i>
                 </a>
             </li>
@@ -347,7 +403,12 @@
             
             
             <li class="post-action hide-xs">
-                <a class="post-action-btn btn btn--default" target="new" href="http://service.weibo.com/share/share.php?&amp;title=http://hilen.github.io/2016/10/24/ruby-cocoapods/" title="Share on Weibo">
+                <a
+                    class="post-action-btn btn btn--default"
+                    target="new" href="http://service.weibo.com/share/share.php?&amp;title=http://hilen.github.io/2016/10/24/ruby-cocoapods/"
+                    title="分享到 Weibo"
+                    aria-label="分享到 Weibo"
+                >
                     <i class="fab fa-weibo" aria-hidden="true"></i>
                 </a>
             </li>
@@ -355,7 +416,12 @@
             
             
             <li class="post-action hide-xs">
-                <a class="post-action-btn btn btn--default" target="new" href="http://connect.qq.com/widget/shareqq/index.html?url=http://hilen.github.io/2016/10/24/ruby-cocoapods/&amp;title=macOS Sierra 安装 rbenv 管理器 和 CocoaPods" title="Share on QQ">
+                <a
+                    class="post-action-btn btn btn--default"
+                    target="new" href="http://connect.qq.com/widget/shareqq/index.html?url=http://hilen.github.io/2016/10/24/ruby-cocoapods/&amp;title=macOS Sierra 安装 rbenv 管理器 和 CocoaPods"
+                    title="分享到 QQ"
+                    aria-label="分享到 QQ"
+                >
                     <i class="fab fa-qq" aria-hidden="true"></i>
                 </a>
             </li>
@@ -363,7 +429,12 @@
             
             
             <li class="post-action hide-xs">
-                <a class="post-action-btn btn btn--default" target="new" href="http://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=http://hilen.github.io/2016/10/24/ruby-cocoapods/" title="Share on Qzone">
+                <a
+                    class="post-action-btn btn btn--default"
+                    target="new" href="http://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=http://hilen.github.io/2016/10/24/ruby-cocoapods/"
+                    title="分享到 Qzone"
+                    aria-label="分享到 Qzone"
+                >
                     <i class="fa fa-star" aria-hidden="true"></i>
                 </a>
             </li>
@@ -371,15 +442,19 @@
         
             
                 <li class="post-action">
-                    <a class="post-action-btn btn btn--default" href="#gitalk">
-                         <i class="fa fa-comment"></i>
+                    <a
+                        class="post-action-btn btn btn--default"
+                        href="#gitalk"
+                        aria-label="Kommentieren"
+                    >
+                        <i class="fa fa-comment"></i>
                     </a>
                 </li>
             
         
         <li class="post-action">
             
-                <a class="post-action-btn btn btn--default" href="#" aria-label="Back to top">
+                <a class="post-action-btn btn btn--default" href="#" aria-label="Nach oben">
             
                 <i class="fa fa-list" aria-hidden="true"></i>
             </a>
@@ -402,7 +477,7 @@
 
                 <footer id="footer" class="main-content-wrap">
     <span class="copyrights">
-        Copyrights &copy; 2020 Hilen. All Rights Reserved.
+        Copyrights &copy; 2021 Hilen. All Rights Reserved.
     </span>
 </footer>
 
@@ -415,26 +490,40 @@
             <li class="post-action">
                 
                     
-                    <a class="post-action-btn btn btn--default tooltip--top" href="/2017/03/15/ios-app-skeleton/" data-tooltip="开发一个 iOS 应用你所需要做些什么呢？" aria-label="PREVIOUS: 开发一个 iOS 应用你所需要做些什么呢？">
-                
-                    <i class="fa fa-angle-left" aria-hidden="true"></i>
-                    <span class="hide-xs hide-sm text-small icon-ml">PREVIOUS</span>
-                </a>
+                <a
+                    class="post-action-btn btn btn--default tooltip--top"
+                    href="/2017/03/15/ios-app-skeleton/"
+                    data-tooltip="开发一个 iOS 应用你所需要做些什么呢？"
+                    aria-label="上一篇: 开发一个 iOS 应用你所需要做些什么呢？"
+                >
+                    
+                        <i class="fa fa-angle-left" aria-hidden="true"></i>
+                        <span class="hide-xs hide-sm text-small icon-ml">上一篇</span>
+                    </a>
             </li>
             <li class="post-action">
                 
                     
-                    <a class="post-action-btn btn btn--default tooltip--top" href="/2016/10/12/sublime-config/" data-tooltip="Sublime Text 3 配置" aria-label="NEXT: Sublime Text 3 配置">
-                
-                    <span class="hide-xs hide-sm text-small icon-mr">NEXT</span>
-                    <i class="fa fa-angle-right" aria-hidden="true"></i>
-                </a>
+                <a
+                    class="post-action-btn btn btn--default tooltip--top"
+                    href="/2016/10/12/sublime-config/"
+                    data-tooltip="Sublime Text 3 配置"
+                    aria-label="下一篇: Sublime Text 3 配置"
+                >
+                    
+                        <span class="hide-xs hide-sm text-small icon-mr">下一篇</span>
+                        <i class="fa fa-angle-right" aria-hidden="true"></i>
+                    </a>
             </li>
         </ul>
     </nav>
     <ul class="post-actions post-action-share">
         <li class="post-action hide-lg hide-md hide-sm">
-            <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions" aria-label="Share this post">
+            <a
+                class="post-action-btn btn btn--default btn-open-shareoptions"
+                href="#btn-open-shareoptions"
+                aria-label="Diesen Beitrag teilen"
+            >
                 <i class="fa fa-share-alt" aria-hidden="true"></i>
             </a>
         </li>
@@ -442,7 +531,12 @@
             
             
             <li class="post-action hide-xs">
-                <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://hilen.github.io/2016/10/24/ruby-cocoapods/" title="Share on Facebook">
+                <a
+                    class="post-action-btn btn btn--default"
+                    target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://hilen.github.io/2016/10/24/ruby-cocoapods/"
+                    title="分享到 Facebook"
+                    aria-label="分享到 Facebook"
+                >
                     <i class="fab fa-facebook" aria-hidden="true"></i>
                 </a>
             </li>
@@ -450,7 +544,12 @@
             
             
             <li class="post-action hide-xs">
-                <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=http://hilen.github.io/2016/10/24/ruby-cocoapods/" title="Share on Twitter">
+                <a
+                    class="post-action-btn btn btn--default"
+                    target="new" href="https://twitter.com/intent/tweet?text=http://hilen.github.io/2016/10/24/ruby-cocoapods/"
+                    title="分享到 Twitter"
+                    aria-label="分享到 Twitter"
+                >
                     <i class="fab fa-twitter" aria-hidden="true"></i>
                 </a>
             </li>
@@ -458,7 +557,12 @@
             
             
             <li class="post-action hide-xs">
-                <a class="post-action-btn btn btn--default" target="new" href="http://service.weibo.com/share/share.php?&amp;title=http://hilen.github.io/2016/10/24/ruby-cocoapods/" title="Share on Weibo">
+                <a
+                    class="post-action-btn btn btn--default"
+                    target="new" href="http://service.weibo.com/share/share.php?&amp;title=http://hilen.github.io/2016/10/24/ruby-cocoapods/"
+                    title="分享到 Weibo"
+                    aria-label="分享到 Weibo"
+                >
                     <i class="fab fa-weibo" aria-hidden="true"></i>
                 </a>
             </li>
@@ -466,7 +570,12 @@
             
             
             <li class="post-action hide-xs">
-                <a class="post-action-btn btn btn--default" target="new" href="http://connect.qq.com/widget/shareqq/index.html?url=http://hilen.github.io/2016/10/24/ruby-cocoapods/&amp;title=macOS Sierra 安装 rbenv 管理器 和 CocoaPods" title="Share on QQ">
+                <a
+                    class="post-action-btn btn btn--default"
+                    target="new" href="http://connect.qq.com/widget/shareqq/index.html?url=http://hilen.github.io/2016/10/24/ruby-cocoapods/&amp;title=macOS Sierra 安装 rbenv 管理器 和 CocoaPods"
+                    title="分享到 QQ"
+                    aria-label="分享到 QQ"
+                >
                     <i class="fab fa-qq" aria-hidden="true"></i>
                 </a>
             </li>
@@ -474,7 +583,12 @@
             
             
             <li class="post-action hide-xs">
-                <a class="post-action-btn btn btn--default" target="new" href="http://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=http://hilen.github.io/2016/10/24/ruby-cocoapods/" title="Share on Qzone">
+                <a
+                    class="post-action-btn btn btn--default"
+                    target="new" href="http://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=http://hilen.github.io/2016/10/24/ruby-cocoapods/"
+                    title="分享到 Qzone"
+                    aria-label="分享到 Qzone"
+                >
                     <i class="fa fa-star" aria-hidden="true"></i>
                 </a>
             </li>
@@ -482,15 +596,19 @@
         
             
                 <li class="post-action">
-                    <a class="post-action-btn btn btn--default" href="#gitalk">
-                         <i class="fa fa-comment"></i>
+                    <a
+                        class="post-action-btn btn btn--default"
+                        href="#gitalk"
+                        aria-label="Kommentieren"
+                    >
+                        <i class="fa fa-comment"></i>
                     </a>
                 </li>
             
         
         <li class="post-action">
             
-                <a class="post-action-btn btn btn--default" href="#" aria-label="Back to top">
+                <a class="post-action-btn btn btn--default" href="#" aria-label="Nach oben">
             
                 <i class="fa fa-list" aria-hidden="true"></i>
             </a>
@@ -508,40 +626,65 @@
                 
                 
                 <li class="share-option">
-                    <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://hilen.github.io/2016/10/24/ruby-cocoapods/">
-                        <i class="fab fa-facebook" aria-hidden="true"></i><span>Share on Facebook</span>
+                    <a
+                        class="share-option-btn"
+                        target="new"
+                        href="https://www.facebook.com/sharer/sharer.php?u=http://hilen.github.io/2016/10/24/ruby-cocoapods/"
+                        aria-label="分享到 Facebook"
+                    >
+                        <i class="fab fa-facebook" aria-hidden="true"></i><span>分享到 Facebook</span>
                     </a>
                 </li>
             
                 
                 
                 <li class="share-option">
-                    <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=http://hilen.github.io/2016/10/24/ruby-cocoapods/">
-                        <i class="fab fa-twitter" aria-hidden="true"></i><span>Share on Twitter</span>
+                    <a
+                        class="share-option-btn"
+                        target="new"
+                        href="https://twitter.com/intent/tweet?text=http://hilen.github.io/2016/10/24/ruby-cocoapods/"
+                        aria-label="分享到 Twitter"
+                    >
+                        <i class="fab fa-twitter" aria-hidden="true"></i><span>分享到 Twitter</span>
                     </a>
                 </li>
             
                 
                 
                 <li class="share-option">
-                    <a class="share-option-btn" target="new" href="http://service.weibo.com/share/share.php?&amp;title=http://hilen.github.io/2016/10/24/ruby-cocoapods/">
-                        <i class="fab fa-weibo" aria-hidden="true"></i><span>Share on Weibo</span>
+                    <a
+                        class="share-option-btn"
+                        target="new"
+                        href="http://service.weibo.com/share/share.php?&amp;title=http://hilen.github.io/2016/10/24/ruby-cocoapods/"
+                        aria-label="分享到 Weibo"
+                    >
+                        <i class="fab fa-weibo" aria-hidden="true"></i><span>分享到 Weibo</span>
                     </a>
                 </li>
             
                 
                 
                 <li class="share-option">
-                    <a class="share-option-btn" target="new" href="http://connect.qq.com/widget/shareqq/index.html?url=http://hilen.github.io/2016/10/24/ruby-cocoapods/&amp;title=macOS Sierra 安装 rbenv 管理器 和 CocoaPods">
-                        <i class="fab fa-qq" aria-hidden="true"></i><span>Share on QQ</span>
+                    <a
+                        class="share-option-btn"
+                        target="new"
+                        href="http://connect.qq.com/widget/shareqq/index.html?url=http://hilen.github.io/2016/10/24/ruby-cocoapods/&amp;title=macOS Sierra 安装 rbenv 管理器 和 CocoaPods"
+                        aria-label="分享到 QQ"
+                    >
+                        <i class="fab fa-qq" aria-hidden="true"></i><span>分享到 QQ</span>
                     </a>
                 </li>
             
                 
                 
                 <li class="share-option">
-                    <a class="share-option-btn" target="new" href="http://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=http://hilen.github.io/2016/10/24/ruby-cocoapods/">
-                        <i class="fa fa-star" aria-hidden="true"></i><span>Share on Qzone</span>
+                    <a
+                        class="share-option-btn"
+                        target="new"
+                        href="http://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=http://hilen.github.io/2016/10/24/ruby-cocoapods/"
+                        aria-label="分享到 Qzone"
+                    >
+                        <i class="fa fa-star" aria-hidden="true"></i><span>分享到 Qzone</span>
                     </a>
                 </li>
             
@@ -564,7 +707,7 @@
             <i class="fa fa-times"></i>
         </div>
         
-            <img id="about-card-picture" src="https://gw.alicdn.com/tfs/TB1XyOtdUuF3KVjSZK9XXbVtXXa-328-312.png" alt="Author&#39;s picture"/>
+            <img id="about-card-picture" src="https://ww1.sinaimg.cn/mw690/6a011e49ly1gn956xudhcj20fo0fogm7.jpg" alt="作者的图片"/>
         
             <h4 id="about-card-name">Hilen</h4>
         
@@ -591,9 +734,9 @@
 
         
         
-<div id="cover" style="background-image:url('https://gw.alicdn.com/tfs/TB1KrCsp4D1gK0jSZFsXXbldVXa-4802-3202.jpg');"></div>
+<div id="cover" style="background-image:url('https://gw.alicdn.com/imgextra/i1/O1CN01KiroJ31iilxjOVyse_!!6000000004447-0-tps-3486-2334.jpg');"></div>
         <!--SCRIPTS-->
-<script src="/assets/js/script-igzblvgl1l41iig8exswdesnuhryopm3ddgxzqifmyvvtmgnzp5rkhrihgie.min.js"></script>
+<script src="/assets/js/script-7iimeqy8tedt9p7vxozrafnfybmsfzzhcjkhhn9jijx9cw3xxk4iyge9sp6e.min.js"></script>
 <!--SCRIPTS END-->
 
 
@@ -608,7 +751,7 @@
               owner: 'hilen',
               admin: ['hilen'],
               id: '2016/10/24/ruby-cocoapods/',
-              ...{"language":"cn","perPage":15,"distractionFreeMode":false,"enableHotKey":true,"pagerDirection":"first"}
+              ...{"language":"zh-cn","perPage":15,"distractionFreeMode":false,"enableHotKey":true,"pagerDirection":"first"}
             }).render('gitalk')
           })()
         </script>

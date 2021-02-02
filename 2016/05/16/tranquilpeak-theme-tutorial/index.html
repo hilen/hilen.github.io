@@ -1,27 +1,27 @@
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-cn">
     
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="generator" content="Hilen&#39;s Blog">
-    <title>Tranquilpeak 主题的使用方法 - Hilen&#39;s Blog</title>
+    <meta name="generator" content="Hilen Blog">
+    <title>Tranquilpeak 主题的使用方法 - Hilen Blog</title>
     <meta name="author" content="Hilen">
     
         <meta name="keywords" content="Hexo,Tranquilpeak">
     
     
     
-    <script type="application/ld+json">{"@context":"http://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"Hilen","sameAs":["https://github.com/hilen","mailto:laihailong@hotmail.com"],"image":"https://gw.alicdn.com/tfs/TB1XyOtdUuF3KVjSZK9XXbVtXXa-328-312.png"},"articleBody":"上次更新：2019-06-23 01:35:28, Sun\n\n\nHexo 博客的 Tranquilpeak 主题 非常的赞，有非常多不错的功能可以让博客更漂亮，内容更丰富。\n\n自定义字体https://github.com/LouisBarranqueiro/hexo-theme-tranquilpeak/issues/194博主的 node.js 版本是 10.15.3，当修改完毕后，需要执行grunt buildProd 才可以生效\n标题以上的内容1234567891011121314151617181920disqusIdentifier: fdsF34ff34keywords:- javascript- hexoclearReading: truethumbnailImage: https://y.gtimg.cn/music/photo_new/T001R300x300M0000025NhlN2yWrP4.jpg?max_age=2592000thumbnailImagePosition: bottomautoThumbnailImage: yesmetaAlignment: centercoverImage: image-2.pngcoverCaption: &quot;A beautiful sunrise&quot;coverMeta: outcoverSize: fullcoverImage: image-2.pnggallery:    - image-3.jpg &quot;New York&quot;    - image-4.png &quot;Paris&quot;    - http://i.imgur.com/o9r19kD.jpg &quot;Dubai&quot;    - https://example.com/orignal.jpg https://example.com/thumbnail.jpg &quot;Sidney&quot;comments: false\n可以放大的图片1&#123;% image fancybox group:v http://ww1.sinaimg.cn/large/6a011e49gw1f67fm00645j21j80iin0b.jpg 100% 100% %&#125;\n魔兽世界哟\n横向铺满的图片1&#123;% wide_image https://ws1.sinaimg.cn/large/6a011e49ly1g4afcdg42qj20xc0ir0ye.jpg \"魔兽世界哟\" %&#125;\n魔兽世界哟\n\nMore\n\n提示或警告12345678910111213141516171819&#123;% alert danger %&#125; 这里 danger，标签中间可以输入内容&#123;% endalert %&#125;&#123;% alert info %&#125; 这是 info，标签中间可以输入内容&#123;% endalert %&#125;&#123;% alert success no-icon %&#125; 这是 success，标签中间可以输入内容&#123;% endalert %&#125;&#123;% alert no-icon %&#125; 这是 no-icon，标签中间可以输入内容&#123;% endalert %&#125;&#123;% alert warning %&#125; 这是 warning，标签中间可以输入内容&#123;% endalert %&#125;\n这里 danger，标签中间可以输入内容。可以在 danger 后加入 no-icon，就显示下面这样\n\n这里是 danger 的 no-icon 样式\n\n这是 info，标签中间可以输入内容\n\n这是 success，标签中间可以输入内容\n\n这是 no-icon，标签中间可以输入内容\n\n这是 warning，标签中间可以输入内容\n\n\nMore\n\n代码块1.JavaScript 和 CSS 的切换代码示例：12345678910&#123;% tabbed_codeblock 示例代码 http://example.com %&#125;      &lt;!-- tab js --&gt;          var test = &apos;test&apos;;      &lt;!-- endtab --&gt;      &lt;!-- tab css --&gt;          .btn &#123;              color: red;          &#125;      &lt;!-- endtab --&gt;&#123;% endtabbed_codeblock %&#125;\n示例代码jscss1var test = 'test';123.btn {    color: red;}\n2.Objective-C 代码块示范：123456&#123;% tabbed_codeblock  %&#125;&lt;!-- tab objc --&gt;      代码块&lt;!-- endtab --&gt;&#123;% endtabbed_codeblock %&#125;\nObjective-C示例代码objc1234567891011121314151617////  main.m//  01_HelloWorld////  Created by apple on 14-11-8.//  Copyright (c) 2014年 cc. All rights reserved.//#import &lt;Foundation/Foundation.h&gt;int main(int argc, const char * argv[]) {    @autoreleasepool {        printf(\"Hello, World!\\n\");        NSLog(@\"Hello, World!\");    }    return 0;}\n3.Java 代码块示范：12345&#123;% tabbed_codeblock Java示例代码 %&#125;&lt;!-- tab java --&gt;  your code&lt;!-- endtab --&gt;&#123;% endtabbed_codeblock %&#125;\nJava示例代码java12345678/* HelloWorld.java */public class HelloWorld {  public static void main(String[] args) {    System.out.println(\"Hello World!\");  }}\n\ncode 的高亮\n官方介绍的代码快\n主题介绍的代码快\n\n引用1234567&#123;% blockquote @纳格兰 https://hilen.github.io %&#125;NEW: DevDocs now comes with syntax highlighting. http://devdocs.io&#123;% endblockquote %&#125;&#123;% blockquote %&#125;这是一段引用的文字&#123;% endblockquote %&#125;\nNEW: DevDocs now comes with syntax highlighting. http://devdocs.io\n@纳格兰hilen.github.io\n这是一段引用的文字\n\n行内颜色12&lt;p&gt;这是一段文字，使用主题提供的&#123;% hl_text #00FFFF %&#125;特殊标签可以改变颜色 &#123;%  endhl_text %&#125;，请开始 &#123;% hl_text red %&#125;使用把！&#123;% endhl_text %&#125;&lt;/p&gt;\n这是一段文字，使用主题提供的特殊标签可以改变颜色 ，请开始 使用把！\n\nSed imperdiet urna et quam ultrices your highlighted text dignissim ultrices libero.\n\nYoutube 标签\n\nReference：\n\n主题的文档描述\ncode-block 相关解析\n\nEnjoy 😆\n","dateCreated":"2016-05-16T14:11:35+08:00","dateModified":"2020-03-03T16:05:33+08:00","datePublished":"2016-05-16T14:11:35+08:00","description":"上次更新：2019-06-23 01:35:28, Sun\n\n\nHexo 博客的 Tranquilpeak 主题 非常的赞，有非常多不错的功能可以让博客更漂亮，内容更丰富。","headline":"Tranquilpeak 主题的使用方法","image":[],"mainEntityOfPage":{"@type":"WebPage","@id":"http://hilen.github.io/2016/05/16/tranquilpeak-theme-tutorial/"},"publisher":{"@type":"Organization","name":"Hilen","sameAs":["https://github.com/hilen","mailto:laihailong@hotmail.com"],"image":"https://gw.alicdn.com/tfs/TB1XyOtdUuF3KVjSZK9XXbVtXXa-328-312.png","logo":{"@type":"ImageObject","url":"https://gw.alicdn.com/tfs/TB1XyOtdUuF3KVjSZK9XXbVtXXa-328-312.png"}},"url":"http://hilen.github.io/2016/05/16/tranquilpeak-theme-tutorial/","keywords":"随笔"}</script>
+    <script type="application/ld+json">{"@context":"http://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"Hilen","sameAs":["https://github.com/hilen","mailto:lhlazxyq@gmail.com"],"image":"https://ww1.sinaimg.cn/mw690/6a011e49ly1gn956xudhcj20fo0fogm7.jpg"},"articleBody":"上次更新：2019-06-23 01:35:28, Sun\n\n\nHexo 博客的 Tranquilpeak 主题 非常的赞，有非常多不错的功能可以让博客更漂亮，内容更丰富。\n\n自定义字体https://github.com/LouisBarranqueiro/hexo-theme-tranquilpeak/issues/194博主的 node.js 版本是 10.15.3，当修改完毕后，需要执行grunt buildProd 才可以生效\n标题以上的内容1234567891011121314151617181920disqusIdentifier: fdsF34ff34keywords:- javascript- hexoclearReading: truethumbnailImage: https://y.gtimg.cn/music/photo_new/T001R300x300M0000025NhlN2yWrP4.jpg?max_age=2592000thumbnailImagePosition: bottomautoThumbnailImage: yesmetaAlignment: centercoverImage: image-2.pngcoverCaption: &quot;A beautiful sunrise&quot;coverMeta: outcoverSize: fullcoverImage: image-2.pnggallery:    - image-3.jpg &quot;New York&quot;    - image-4.png &quot;Paris&quot;    - http://i.imgur.com/o9r19kD.jpg &quot;Dubai&quot;    - https://example.com/orignal.jpg https://example.com/thumbnail.jpg &quot;Sidney&quot;comments: false\n可以放大的图片1&#123;% image fancybox group:v http://ww1.sinaimg.cn/large/6a011e49gw1f67fm00645j21j80iin0b.jpg 100% 100% %&#125;\n魔兽世界哟\n横向铺满的图片1&#123;% wide_image https://ws1.sinaimg.cn/large/6a011e49ly1g4afcdg42qj20xc0ir0ye.jpg \"魔兽世界哟\" %&#125;\n魔兽世界哟\n\nMore\n\n提示或警告12345678910111213141516171819&#123;% alert danger %&#125; 这里 danger，标签中间可以输入内容&#123;% endalert %&#125;&#123;% alert info %&#125; 这是 info，标签中间可以输入内容&#123;% endalert %&#125;&#123;% alert success no-icon %&#125; 这是 success，标签中间可以输入内容&#123;% endalert %&#125;&#123;% alert no-icon %&#125; 这是 no-icon，标签中间可以输入内容&#123;% endalert %&#125;&#123;% alert warning %&#125; 这是 warning，标签中间可以输入内容&#123;% endalert %&#125;\n这里 danger，标签中间可以输入内容。可以在 danger 后加入 no-icon，就显示下面这样\n\n这里是 danger 的 no-icon 样式\n\n这是 info，标签中间可以输入内容\n\n这是 success，标签中间可以输入内容\n\n这是 no-icon，标签中间可以输入内容\n\n这是 warning，标签中间可以输入内容\n\n\nMore\n\n代码块1.JavaScript 和 CSS 的切换代码示例：12345678910&#123;% tabbed_codeblock 示例代码 http://example.com %&#125;      &lt;!-- tab js --&gt;          var test = &apos;test&apos;;      &lt;!-- endtab --&gt;      &lt;!-- tab css --&gt;          .btn &#123;              color: red;          &#125;      &lt;!-- endtab --&gt;&#123;% endtabbed_codeblock %&#125;\n示例代码jscss1var test = 'test';123.btn {    color: red;}\n2.Objective-C 代码块示范：123456&#123;% tabbed_codeblock  %&#125;&lt;!-- tab objc --&gt;      代码块&lt;!-- endtab --&gt;&#123;% endtabbed_codeblock %&#125;\nObjective-C示例代码objc1234567891011121314151617////  main.m//  01_HelloWorld////  Created by apple on 14-11-8.//  Copyright (c) 2014年 cc. All rights reserved.//#import &lt;Foundation/Foundation.h&gt;int main(int argc, const char * argv[]) {    @autoreleasepool {        printf(\"Hello, World!\\n\");        NSLog(@\"Hello, World!\");    }    return 0;}\n3.Java 代码块示范：12345&#123;% tabbed_codeblock Java示例代码 %&#125;&lt;!-- tab java --&gt;  your code&lt;!-- endtab --&gt;&#123;% endtabbed_codeblock %&#125;\nJava示例代码java12345678/* HelloWorld.java */public class HelloWorld {  public static void main(String[] args) {    System.out.println(\"Hello World!\");  }}\n\ncode 的高亮\n官方介绍的代码快\n主题介绍的代码快\n\n引用1234567&#123;% blockquote @纳格兰 https://hilen.github.io %&#125;NEW: DevDocs now comes with syntax highlighting. http://devdocs.io&#123;% endblockquote %&#125;&#123;% blockquote %&#125;这是一段引用的文字&#123;% endblockquote %&#125;\nNEW: DevDocs now comes with syntax highlighting. http://devdocs.io\n@纳格兰hilen.github.io\n这是一段引用的文字\n\n行内颜色12&lt;p&gt;这是一段文字，使用主题提供的&#123;% hl_text #00FFFF %&#125;特殊标签可以改变颜色 &#123;%  endhl_text %&#125;，请开始 &#123;% hl_text red %&#125;使用把！&#123;% endhl_text %&#125;&lt;/p&gt;\n这是一段文字，使用主题提供的特殊标签可以改变颜色 ，请开始 使用把！\n\nSed imperdiet urna et quam ultrices your highlighted text dignissim ultrices libero.\n\nYoutube 标签\n\nReference：\n\n主题的文档描述\ncode-block 相关解析\n\nEnjoy 😆\n","dateCreated":"2016-05-16T14:11:35+08:00","dateModified":"2020-03-03T16:05:33+08:00","datePublished":"2016-05-16T14:11:35+08:00","description":"上次更新：2019-06-23 01:35:28, Sun\n\n\nHexo 博客的 Tranquilpeak 主题 非常的赞，有非常多不错的功能可以让博客更漂亮，内容更丰富。","headline":"Tranquilpeak 主题的使用方法","image":[],"mainEntityOfPage":{"@type":"WebPage","@id":"http://hilen.github.io/2016/05/16/tranquilpeak-theme-tutorial/"},"publisher":{"@type":"Organization","name":"Hilen","sameAs":["https://github.com/hilen","mailto:lhlazxyq@gmail.com"],"image":"https://ww1.sinaimg.cn/mw690/6a011e49ly1gn956xudhcj20fo0fogm7.jpg","logo":{"@type":"ImageObject","url":"https://ww1.sinaimg.cn/mw690/6a011e49ly1gn956xudhcj20fo0fogm7.jpg"}},"url":"http://hilen.github.io/2016/05/16/tranquilpeak-theme-tutorial/","keywords":"随笔"}</script>
     <meta name="description" content="上次更新：2019-06-23 01:35:28, Sun   Hexo 博客的 Tranquilpeak 主题 非常的赞，有非常多不错的功能可以让博客更漂亮，内容更丰富。">
 <meta name="keywords" content="Hexo,Tranquilpeak">
 <meta property="og:type" content="blog">
 <meta property="og:title" content="Tranquilpeak 主题的使用方法">
 <meta property="og:url" content="http://hilen.github.io/2016/05/16/tranquilpeak-theme-tutorial/index.html">
-<meta property="og:site_name" content="Hilen&#39;s Blog">
+<meta property="og:site_name" content="Hilen Blog">
 <meta property="og:description" content="上次更新：2019-06-23 01:35:28, Sun   Hexo 博客的 Tranquilpeak 主题 非常的赞，有非常多不错的功能可以让博客更漂亮，内容更丰富。">
-<meta property="og:locale" content="en">
+<meta property="og:locale" content="zh-cn">
 <meta property="og:image" content="https://gw.alicdn.com/tfs/TB1Pgy4dL1H3KVjSZFBXXbSMXXa-2000-1422.png">
 <meta property="og:image" content="https://ws1.sinaimg.cn/large/6a011e49ly1g4afcdg42qj20xc0ir0ye.jpg">
 <meta property="og:updated_time" content="2020-03-03T08:05:33.000Z">
@@ -34,13 +34,13 @@
         
     
     
-        <meta property="og:image" content="https://gw.alicdn.com/tfs/TB1XyOtdUuF3KVjSZK9XXbVtXXa-328-312.png"/>
+        <meta property="og:image" content="https://ww1.sinaimg.cn/mw690/6a011e49ly1gn956xudhcj20fo0fogm7.jpg"/>
     
     
     
     
     <!--STYLES-->
-    <link rel="stylesheet" href="/assets/css/style-vbqinavchah6jcimxa37wftwhydi8kc2ftser2fa0eoiv73ho0hbggaqec63.min.css">
+    <link rel="stylesheet" href="/assets/css/style-mhajaau9mrcpkpcfu9rq8rdkzf3tgyxu5tslo8ekowdwbu2g30unzxgzmxwq.min.css">
     <!--STYLES END-->
     
 
@@ -67,15 +67,24 @@
 <header id="header" data-behavior="2">
     <i id="btn-open-sidebar" class="fa fa-lg fa-bars"></i>
     <div class="header-title">
-        <a class="header-title-link" href="/ ">Hilen&#39;s Blog</a>
+        <a
+            class="header-title-link"
+            href="/"
+            aria-label=""
+        >
+            Hilen Blog
+        </a>
     </div>
     
         
-            <a  class="header-right-picture "
-                href="#about">
+            <a
+                class="header-right-picture "
+                href="#about"
+                aria-label="打开链接: /#about"
+            >
         
         
-            <img class="header-picture" src="https://gw.alicdn.com/tfs/TB1XyOtdUuF3KVjSZK9XXbVtXXa-328-312.png" alt="Author&#39;s picture"/>
+            <img class="header-picture" src="https://ww1.sinaimg.cn/mw690/6a011e49ly1gn956xudhcj20fo0fogm7.jpg" alt="作者的图片"/>
         
         </a>
     
@@ -92,8 +101,11 @@
     <div class="sidebar-container">
         
             <div class="sidebar-profile">
-                <a href="/#about">
-                    <img class="sidebar-profile-picture" src="https://gw.alicdn.com/tfs/TB1XyOtdUuF3KVjSZK9XXbVtXXa-328-312.png" alt="Author&#39;s picture"/>
+                <a
+                    href="/#about"
+                    aria-label="阅读有关作者的更多信息"
+                >
+                    <img class="sidebar-profile-picture" src="https://ww1.sinaimg.cn/mw690/6a011e49ly1gn956xudhcj20fo0fogm7.jpg" alt="作者的图片"/>
                 </a>
                 <h4 class="sidebar-profile-name">Hilen</h4>
                 
@@ -107,79 +119,85 @@
             
                 <li class="sidebar-button">
                     
-                        <a  class="sidebar-button-link "
-                             href="/ "
+                        <a
+                            class="sidebar-button-link "
+                            href="/"
                             
-                            title="Home"
+                            rel="noopener"
+                            title="首页"
                         >
-                    
                         <i class="sidebar-button-icon fa fa-home" aria-hidden="true"></i>
-                        <span class="sidebar-button-desc">Home</span>
+                        <span class="sidebar-button-desc">首页</span>
                     </a>
             </li>
             
                 <li class="sidebar-button">
                     
-                        <a  class="sidebar-button-link "
-                             href="/all-categories"
+                        <a
+                            class="sidebar-button-link "
+                            href="/all-categories"
                             
-                            title="Categories"
+                            rel="noopener"
+                            title="分类"
                         >
-                    
                         <i class="sidebar-button-icon fa fa-bookmark" aria-hidden="true"></i>
-                        <span class="sidebar-button-desc">Categories</span>
+                        <span class="sidebar-button-desc">分类</span>
                     </a>
             </li>
             
                 <li class="sidebar-button">
                     
-                        <a  class="sidebar-button-link "
-                             href="/all-tags"
+                        <a
+                            class="sidebar-button-link "
+                            href="/all-tags"
                             
-                            title="Tags"
+                            rel="noopener"
+                            title="标签"
                         >
-                    
                         <i class="sidebar-button-icon fa fa-tags" aria-hidden="true"></i>
-                        <span class="sidebar-button-desc">Tags</span>
+                        <span class="sidebar-button-desc">标签</span>
                     </a>
             </li>
             
                 <li class="sidebar-button">
                     
-                        <a  class="sidebar-button-link "
-                             href="/all-archives"
+                        <a
+                            class="sidebar-button-link "
+                            href="/all-archives"
                             
-                            title="Archives"
+                            rel="noopener"
+                            title="归档"
                         >
-                    
                         <i class="sidebar-button-icon fa fa-archive" aria-hidden="true"></i>
-                        <span class="sidebar-button-desc">Archives</span>
+                        <span class="sidebar-button-desc">归档</span>
                     </a>
             </li>
             
                 <li class="sidebar-button">
                     
-                        <a  class="sidebar-button-link open-algolia-search"
-                             href="#search"
+                        <a
+                            class="sidebar-button-link open-algolia-search"
+                            href="#search"
                             
-                            title="Search"
+                            rel="noopener"
+                            title="搜索"
                         >
-                    
                         <i class="sidebar-button-icon fa fa-search" aria-hidden="true"></i>
-                        <span class="sidebar-button-desc">Search</span>
+                        <span class="sidebar-button-desc">搜索</span>
                     </a>
             </li>
             
                 <li class="sidebar-button">
                     
-                        <a  class="sidebar-button-link "
-                             href="/about"
+                        <a
+                            class="sidebar-button-link "
+                            href="/about"
                             
-                            title="About"
+                            rel="noopener"
+                            title="关于"
                         >
-                    
                         <i class="sidebar-button-icon fa fa-question" aria-hidden="true"></i>
-                        <span class="sidebar-button-desc">About</span>
+                        <span class="sidebar-button-desc">关于</span>
                     </a>
             </li>
             
@@ -189,8 +207,15 @@
             
                 <li class="sidebar-button">
                     
-                        <a  class="sidebar-button-link " href="https://github.com/hilen" target="_blank" rel="noopener" title="GitHub">
-                    
+                        <a
+                            class="sidebar-button-link "
+                            href="https://github.com/hilen"
+                            
+                                target="_blank"
+                            
+                            rel="noopener"
+                            title="GitHub"
+                        >
                         <i class="sidebar-button-icon fab fa-github" aria-hidden="true"></i>
                         <span class="sidebar-button-desc">GitHub</span>
                     </a>
@@ -198,10 +223,17 @@
             
                 <li class="sidebar-button">
                     
-                        <a  class="sidebar-button-link " href="mailto:laihailong@hotmail.com" target="_blank" rel="noopener" title="Mail">
-                    
+                        <a
+                            class="sidebar-button-link "
+                            href="mailto:lhlazxyq@gmail.com"
+                            
+                                target="_blank"
+                            
+                            rel="noopener"
+                            title="邮箱"
+                        >
                         <i class="sidebar-button-icon fa fa-envelope" aria-hidden="true"></i>
-                        <span class="sidebar-button-desc">Mail</span>
+                        <span class="sidebar-button-desc">邮箱</span>
                     </a>
             </li>
             
@@ -229,11 +261,11 @@
         <div class="post-meta">
     <time datetime="2016-05-16T14:11:35+08:00">
 	
-		    May 16, 2016
+		    5月 16, 2016
     	
     </time>
     
-        <span>in </span>
+        <span>发布在 </span>
         
     <a class="category-link" href="/categories/随笔/">随笔</a>
 
@@ -249,7 +281,7 @@
         <div class="main-content-wrap">
             <div class="alert info"><p>上次更新：2019-06-23 01:35:28, Sun</p>
 </div>
-<h1 id="table-of-contents">Table of Contents</h1><ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#自定义字体"><span class="toc-text">自定义字体</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#标题以上的内容"><span class="toc-text">标题以上的内容</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#可以放大的图片"><span class="toc-text">可以放大的图片</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#横向铺满的图片"><span class="toc-text">横向铺满的图片</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#提示或警告"><span class="toc-text">提示或警告</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#代码块"><span class="toc-text">代码块</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#引用"><span class="toc-text">引用</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#行内颜色"><span class="toc-text">行内颜色</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Youtube-标签"><span class="toc-text">Youtube 标签</span></a></li></ol>
+<h1 id="table-of-contents">目录</h1><ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#自定义字体"><span class="toc-text">自定义字体</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#标题以上的内容"><span class="toc-text">标题以上的内容</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#可以放大的图片"><span class="toc-text">可以放大的图片</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#横向铺满的图片"><span class="toc-text">横向铺满的图片</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#提示或警告"><span class="toc-text">提示或警告</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#代码块"><span class="toc-text">代码块</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#引用"><span class="toc-text">引用</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#行内颜色"><span class="toc-text">行内颜色</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Youtube-标签"><span class="toc-text">Youtube 标签</span></a></li></ol>
 <p>Hexo 博客的 Tranquilpeak <a href="https://github.com/LouisBarranqueiro/hexo-theme-tranquilpeak" target="_blank" rel="noopener">主题</a> 非常的赞，有非常多不错的功能可以让博客更漂亮，内容更丰富。</p>
 <a id="more"></a>
 <h3 id="自定义字体"><a href="#自定义字体" class="headerlink" title="自定义字体"></a>自定义字体</h3><p><a href="https://github.com/LouisBarranqueiro/hexo-theme-tranquilpeak/issues/194" target="_blank" rel="noopener">https://github.com/LouisBarranqueiro/hexo-theme-tranquilpeak/issues/194</a><br>博主的 node.js 版本是 10.15.3，当修改完毕后，需要执行<code>grunt buildProd</code> 才可以生效</p>
@@ -315,7 +347,7 @@
     <div id="post-footer" class="post-footer main-content-wrap">
         
             <div class="post-footer-tags">
-                <span class="text-color-light text-small">TAGGED IN</span><br/>
+                <span class="text-color-light text-small">标签</span><br/>
                 
     <a class="tag tag--primary tag--small t-link" href="/tags/随笔/">随笔</a>
 
@@ -328,26 +360,40 @@
             <li class="post-action">
                 
                     
-                    <a class="post-action-btn btn btn--default tooltip--top" href="/2016/05/16/configuration-scheme/" data-tooltip="iOS Build Configuration + Scheme 的使用" aria-label="PREVIOUS: iOS Build Configuration + Scheme 的使用">
-                
-                    <i class="fa fa-angle-left" aria-hidden="true"></i>
-                    <span class="hide-xs hide-sm text-small icon-ml">PREVIOUS</span>
-                </a>
+                <a
+                    class="post-action-btn btn btn--default tooltip--top"
+                    href="/2016/05/16/configuration-scheme/"
+                    data-tooltip="iOS Build Configuration + Scheme 的使用"
+                    aria-label="上一篇: iOS Build Configuration + Scheme 的使用"
+                >
+                    
+                        <i class="fa fa-angle-left" aria-hidden="true"></i>
+                        <span class="hide-xs hide-sm text-small icon-ml">上一篇</span>
+                    </a>
             </li>
             <li class="post-action">
                 
                     
-                    <a class="post-action-btn btn btn--default tooltip--top" href="/2015/12/01/reveal-loader-jailbreak/" data-tooltip="Reveal 1.6.3 和 Reveal Loader" aria-label="NEXT: Reveal 1.6.3 和 Reveal Loader">
-                
-                    <span class="hide-xs hide-sm text-small icon-mr">NEXT</span>
-                    <i class="fa fa-angle-right" aria-hidden="true"></i>
-                </a>
+                <a
+                    class="post-action-btn btn btn--default tooltip--top"
+                    href="/2015/12/01/reveal-loader-jailbreak/"
+                    data-tooltip="Reveal 1.6.3 和 Reveal Loader"
+                    aria-label="下一篇: Reveal 1.6.3 和 Reveal Loader"
+                >
+                    
+                        <span class="hide-xs hide-sm text-small icon-mr">下一篇</span>
+                        <i class="fa fa-angle-right" aria-hidden="true"></i>
+                    </a>
             </li>
         </ul>
     </nav>
     <ul class="post-actions post-action-share">
         <li class="post-action hide-lg hide-md hide-sm">
-            <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions" aria-label="Share this post">
+            <a
+                class="post-action-btn btn btn--default btn-open-shareoptions"
+                href="#btn-open-shareoptions"
+                aria-label="Diesen Beitrag teilen"
+            >
                 <i class="fa fa-share-alt" aria-hidden="true"></i>
             </a>
         </li>
@@ -355,7 +401,12 @@
             
             
             <li class="post-action hide-xs">
-                <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://hilen.github.io/2016/05/16/tranquilpeak-theme-tutorial/" title="Share on Facebook">
+                <a
+                    class="post-action-btn btn btn--default"
+                    target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://hilen.github.io/2016/05/16/tranquilpeak-theme-tutorial/"
+                    title="分享到 Facebook"
+                    aria-label="分享到 Facebook"
+                >
                     <i class="fab fa-facebook" aria-hidden="true"></i>
                 </a>
             </li>
@@ -363,7 +414,12 @@
             
             
             <li class="post-action hide-xs">
-                <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=http://hilen.github.io/2016/05/16/tranquilpeak-theme-tutorial/" title="Share on Twitter">
+                <a
+                    class="post-action-btn btn btn--default"
+                    target="new" href="https://twitter.com/intent/tweet?text=http://hilen.github.io/2016/05/16/tranquilpeak-theme-tutorial/"
+                    title="分享到 Twitter"
+                    aria-label="分享到 Twitter"
+                >
                     <i class="fab fa-twitter" aria-hidden="true"></i>
                 </a>
             </li>
@@ -371,7 +427,12 @@
             
             
             <li class="post-action hide-xs">
-                <a class="post-action-btn btn btn--default" target="new" href="http://service.weibo.com/share/share.php?&amp;title=http://hilen.github.io/2016/05/16/tranquilpeak-theme-tutorial/" title="Share on Weibo">
+                <a
+                    class="post-action-btn btn btn--default"
+                    target="new" href="http://service.weibo.com/share/share.php?&amp;title=http://hilen.github.io/2016/05/16/tranquilpeak-theme-tutorial/"
+                    title="分享到 Weibo"
+                    aria-label="分享到 Weibo"
+                >
                     <i class="fab fa-weibo" aria-hidden="true"></i>
                 </a>
             </li>
@@ -379,7 +440,12 @@
             
             
             <li class="post-action hide-xs">
-                <a class="post-action-btn btn btn--default" target="new" href="http://connect.qq.com/widget/shareqq/index.html?url=http://hilen.github.io/2016/05/16/tranquilpeak-theme-tutorial/&amp;title=Tranquilpeak 主题的使用方法" title="Share on QQ">
+                <a
+                    class="post-action-btn btn btn--default"
+                    target="new" href="http://connect.qq.com/widget/shareqq/index.html?url=http://hilen.github.io/2016/05/16/tranquilpeak-theme-tutorial/&amp;title=Tranquilpeak 主题的使用方法"
+                    title="分享到 QQ"
+                    aria-label="分享到 QQ"
+                >
                     <i class="fab fa-qq" aria-hidden="true"></i>
                 </a>
             </li>
@@ -387,7 +453,12 @@
             
             
             <li class="post-action hide-xs">
-                <a class="post-action-btn btn btn--default" target="new" href="http://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=http://hilen.github.io/2016/05/16/tranquilpeak-theme-tutorial/" title="Share on Qzone">
+                <a
+                    class="post-action-btn btn btn--default"
+                    target="new" href="http://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=http://hilen.github.io/2016/05/16/tranquilpeak-theme-tutorial/"
+                    title="分享到 Qzone"
+                    aria-label="分享到 Qzone"
+                >
                     <i class="fa fa-star" aria-hidden="true"></i>
                 </a>
             </li>
@@ -395,15 +466,19 @@
         
             
                 <li class="post-action">
-                    <a class="post-action-btn btn btn--default" href="#gitalk">
-                         <i class="fa fa-comment"></i>
+                    <a
+                        class="post-action-btn btn btn--default"
+                        href="#gitalk"
+                        aria-label="Kommentieren"
+                    >
+                        <i class="fa fa-comment"></i>
                     </a>
                 </li>
             
         
         <li class="post-action">
             
-                <a class="post-action-btn btn btn--default" href="#table-of-contents" aria-label="Table of Contents">
+                <a class="post-action-btn btn btn--default" href="#table-of-contents" aria-label="目录">
             
                 <i class="fa fa-list" aria-hidden="true"></i>
             </a>
@@ -426,7 +501,7 @@
 
                 <footer id="footer" class="main-content-wrap">
     <span class="copyrights">
-        Copyrights &copy; 2020 Hilen. All Rights Reserved.
+        Copyrights &copy; 2021 Hilen. All Rights Reserved.
     </span>
 </footer>
 
@@ -439,26 +514,40 @@
             <li class="post-action">
                 
                     
-                    <a class="post-action-btn btn btn--default tooltip--top" href="/2016/05/16/configuration-scheme/" data-tooltip="iOS Build Configuration + Scheme 的使用" aria-label="PREVIOUS: iOS Build Configuration + Scheme 的使用">
-                
-                    <i class="fa fa-angle-left" aria-hidden="true"></i>
-                    <span class="hide-xs hide-sm text-small icon-ml">PREVIOUS</span>
-                </a>
+                <a
+                    class="post-action-btn btn btn--default tooltip--top"
+                    href="/2016/05/16/configuration-scheme/"
+                    data-tooltip="iOS Build Configuration + Scheme 的使用"
+                    aria-label="上一篇: iOS Build Configuration + Scheme 的使用"
+                >
+                    
+                        <i class="fa fa-angle-left" aria-hidden="true"></i>
+                        <span class="hide-xs hide-sm text-small icon-ml">上一篇</span>
+                    </a>
             </li>
             <li class="post-action">
                 
                     
-                    <a class="post-action-btn btn btn--default tooltip--top" href="/2015/12/01/reveal-loader-jailbreak/" data-tooltip="Reveal 1.6.3 和 Reveal Loader" aria-label="NEXT: Reveal 1.6.3 和 Reveal Loader">
-                
-                    <span class="hide-xs hide-sm text-small icon-mr">NEXT</span>
-                    <i class="fa fa-angle-right" aria-hidden="true"></i>
-                </a>
+                <a
+                    class="post-action-btn btn btn--default tooltip--top"
+                    href="/2015/12/01/reveal-loader-jailbreak/"
+                    data-tooltip="Reveal 1.6.3 和 Reveal Loader"
+                    aria-label="下一篇: Reveal 1.6.3 和 Reveal Loader"
+                >
+                    
+                        <span class="hide-xs hide-sm text-small icon-mr">下一篇</span>
+                        <i class="fa fa-angle-right" aria-hidden="true"></i>
+                    </a>
             </li>
         </ul>
     </nav>
     <ul class="post-actions post-action-share">
         <li class="post-action hide-lg hide-md hide-sm">
-            <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions" aria-label="Share this post">
+            <a
+                class="post-action-btn btn btn--default btn-open-shareoptions"
+                href="#btn-open-shareoptions"
+                aria-label="Diesen Beitrag teilen"
+            >
                 <i class="fa fa-share-alt" aria-hidden="true"></i>
             </a>
         </li>
@@ -466,7 +555,12 @@
             
             
             <li class="post-action hide-xs">
-                <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://hilen.github.io/2016/05/16/tranquilpeak-theme-tutorial/" title="Share on Facebook">
+                <a
+                    class="post-action-btn btn btn--default"
+                    target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://hilen.github.io/2016/05/16/tranquilpeak-theme-tutorial/"
+                    title="分享到 Facebook"
+                    aria-label="分享到 Facebook"
+                >
                     <i class="fab fa-facebook" aria-hidden="true"></i>
                 </a>
             </li>
@@ -474,7 +568,12 @@
             
             
             <li class="post-action hide-xs">
-                <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=http://hilen.github.io/2016/05/16/tranquilpeak-theme-tutorial/" title="Share on Twitter">
+                <a
+                    class="post-action-btn btn btn--default"
+                    target="new" href="https://twitter.com/intent/tweet?text=http://hilen.github.io/2016/05/16/tranquilpeak-theme-tutorial/"
+                    title="分享到 Twitter"
+                    aria-label="分享到 Twitter"
+                >
                     <i class="fab fa-twitter" aria-hidden="true"></i>
                 </a>
             </li>
@@ -482,7 +581,12 @@
             
             
             <li class="post-action hide-xs">
-                <a class="post-action-btn btn btn--default" target="new" href="http://service.weibo.com/share/share.php?&amp;title=http://hilen.github.io/2016/05/16/tranquilpeak-theme-tutorial/" title="Share on Weibo">
+                <a
+                    class="post-action-btn btn btn--default"
+                    target="new" href="http://service.weibo.com/share/share.php?&amp;title=http://hilen.github.io/2016/05/16/tranquilpeak-theme-tutorial/"
+                    title="分享到 Weibo"
+                    aria-label="分享到 Weibo"
+                >
                     <i class="fab fa-weibo" aria-hidden="true"></i>
                 </a>
             </li>
@@ -490,7 +594,12 @@
             
             
             <li class="post-action hide-xs">
-                <a class="post-action-btn btn btn--default" target="new" href="http://connect.qq.com/widget/shareqq/index.html?url=http://hilen.github.io/2016/05/16/tranquilpeak-theme-tutorial/&amp;title=Tranquilpeak 主题的使用方法" title="Share on QQ">
+                <a
+                    class="post-action-btn btn btn--default"
+                    target="new" href="http://connect.qq.com/widget/shareqq/index.html?url=http://hilen.github.io/2016/05/16/tranquilpeak-theme-tutorial/&amp;title=Tranquilpeak 主题的使用方法"
+                    title="分享到 QQ"
+                    aria-label="分享到 QQ"
+                >
                     <i class="fab fa-qq" aria-hidden="true"></i>
                 </a>
             </li>
@@ -498,7 +607,12 @@
             
             
             <li class="post-action hide-xs">
-                <a class="post-action-btn btn btn--default" target="new" href="http://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=http://hilen.github.io/2016/05/16/tranquilpeak-theme-tutorial/" title="Share on Qzone">
+                <a
+                    class="post-action-btn btn btn--default"
+                    target="new" href="http://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=http://hilen.github.io/2016/05/16/tranquilpeak-theme-tutorial/"
+                    title="分享到 Qzone"
+                    aria-label="分享到 Qzone"
+                >
                     <i class="fa fa-star" aria-hidden="true"></i>
                 </a>
             </li>
@@ -506,15 +620,19 @@
         
             
                 <li class="post-action">
-                    <a class="post-action-btn btn btn--default" href="#gitalk">
-                         <i class="fa fa-comment"></i>
+                    <a
+                        class="post-action-btn btn btn--default"
+                        href="#gitalk"
+                        aria-label="Kommentieren"
+                    >
+                        <i class="fa fa-comment"></i>
                     </a>
                 </li>
             
         
         <li class="post-action">
             
-                <a class="post-action-btn btn btn--default" href="#table-of-contents" aria-label="Table of Contents">
+                <a class="post-action-btn btn btn--default" href="#table-of-contents" aria-label="目录">
             
                 <i class="fa fa-list" aria-hidden="true"></i>
             </a>
@@ -532,40 +650,65 @@
                 
                 
                 <li class="share-option">
-                    <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://hilen.github.io/2016/05/16/tranquilpeak-theme-tutorial/">
-                        <i class="fab fa-facebook" aria-hidden="true"></i><span>Share on Facebook</span>
+                    <a
+                        class="share-option-btn"
+                        target="new"
+                        href="https://www.facebook.com/sharer/sharer.php?u=http://hilen.github.io/2016/05/16/tranquilpeak-theme-tutorial/"
+                        aria-label="分享到 Facebook"
+                    >
+                        <i class="fab fa-facebook" aria-hidden="true"></i><span>分享到 Facebook</span>
                     </a>
                 </li>
             
                 
                 
                 <li class="share-option">
-                    <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=http://hilen.github.io/2016/05/16/tranquilpeak-theme-tutorial/">
-                        <i class="fab fa-twitter" aria-hidden="true"></i><span>Share on Twitter</span>
+                    <a
+                        class="share-option-btn"
+                        target="new"
+                        href="https://twitter.com/intent/tweet?text=http://hilen.github.io/2016/05/16/tranquilpeak-theme-tutorial/"
+                        aria-label="分享到 Twitter"
+                    >
+                        <i class="fab fa-twitter" aria-hidden="true"></i><span>分享到 Twitter</span>
                     </a>
                 </li>
             
                 
                 
                 <li class="share-option">
-                    <a class="share-option-btn" target="new" href="http://service.weibo.com/share/share.php?&amp;title=http://hilen.github.io/2016/05/16/tranquilpeak-theme-tutorial/">
-                        <i class="fab fa-weibo" aria-hidden="true"></i><span>Share on Weibo</span>
+                    <a
+                        class="share-option-btn"
+                        target="new"
+                        href="http://service.weibo.com/share/share.php?&amp;title=http://hilen.github.io/2016/05/16/tranquilpeak-theme-tutorial/"
+                        aria-label="分享到 Weibo"
+                    >
+                        <i class="fab fa-weibo" aria-hidden="true"></i><span>分享到 Weibo</span>
                     </a>
                 </li>
             
                 
                 
                 <li class="share-option">
-                    <a class="share-option-btn" target="new" href="http://connect.qq.com/widget/shareqq/index.html?url=http://hilen.github.io/2016/05/16/tranquilpeak-theme-tutorial/&amp;title=Tranquilpeak 主题的使用方法">
-                        <i class="fab fa-qq" aria-hidden="true"></i><span>Share on QQ</span>
+                    <a
+                        class="share-option-btn"
+                        target="new"
+                        href="http://connect.qq.com/widget/shareqq/index.html?url=http://hilen.github.io/2016/05/16/tranquilpeak-theme-tutorial/&amp;title=Tranquilpeak 主题的使用方法"
+                        aria-label="分享到 QQ"
+                    >
+                        <i class="fab fa-qq" aria-hidden="true"></i><span>分享到 QQ</span>
                     </a>
                 </li>
             
                 
                 
                 <li class="share-option">
-                    <a class="share-option-btn" target="new" href="http://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=http://hilen.github.io/2016/05/16/tranquilpeak-theme-tutorial/">
-                        <i class="fa fa-star" aria-hidden="true"></i><span>Share on Qzone</span>
+                    <a
+                        class="share-option-btn"
+                        target="new"
+                        href="http://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=http://hilen.github.io/2016/05/16/tranquilpeak-theme-tutorial/"
+                        aria-label="分享到 Qzone"
+                    >
+                        <i class="fa fa-star" aria-hidden="true"></i><span>分享到 Qzone</span>
                     </a>
                 </li>
             
@@ -588,7 +731,7 @@
             <i class="fa fa-times"></i>
         </div>
         
-            <img id="about-card-picture" src="https://gw.alicdn.com/tfs/TB1XyOtdUuF3KVjSZK9XXbVtXXa-328-312.png" alt="Author&#39;s picture"/>
+            <img id="about-card-picture" src="https://ww1.sinaimg.cn/mw690/6a011e49ly1gn956xudhcj20fo0fogm7.jpg" alt="作者的图片"/>
         
             <h4 id="about-card-name">Hilen</h4>
         
@@ -615,9 +758,9 @@
 
         
         
-<div id="cover" style="background-image:url('https://gw.alicdn.com/tfs/TB1KrCsp4D1gK0jSZFsXXbldVXa-4802-3202.jpg');"></div>
+<div id="cover" style="background-image:url('https://gw.alicdn.com/imgextra/i1/O1CN01KiroJ31iilxjOVyse_!!6000000004447-0-tps-3486-2334.jpg');"></div>
         <!--SCRIPTS-->
-<script src="/assets/js/script-igzblvgl1l41iig8exswdesnuhryopm3ddgxzqifmyvvtmgnzp5rkhrihgie.min.js"></script>
+<script src="/assets/js/script-7iimeqy8tedt9p7vxozrafnfybmsfzzhcjkhhn9jijx9cw3xxk4iyge9sp6e.min.js"></script>
 <!--SCRIPTS END-->
 
 
@@ -632,7 +775,7 @@
               owner: 'hilen',
               admin: ['hilen'],
               id: '2016/05/16/tranquilpeak-theme-tutorial/',
-              ...{"language":"cn","perPage":15,"distractionFreeMode":false,"enableHotKey":true,"pagerDirection":"first"}
+              ...{"language":"zh-cn","perPage":15,"distractionFreeMode":false,"enableHotKey":true,"pagerDirection":"first"}
             }).render('gitalk')
           })()
         </script>

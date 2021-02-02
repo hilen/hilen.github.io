@@ -13,7 +13,7 @@
     
     
     
-    <script type="application/ld+json">{"@context":"http://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"Hilen","sameAs":["https://github.com/hilen","mailto:lhlazxyq@gmail.com"],"image":"https://ww1.sinaimg.cn/mw690/6a011e49ly1gn956xudhcj20fo0fogm7.jpg"},"articleBody":"在日常的 iOS 开发中，我们经常会使用到不同的网络环境切换问题，比如：\n\n\nQA 需要你给出一个带有环境切换的功能的安装文件\nApp Store 需要你上传面向用户环境的 Release 的安装文件\n灰度测试的时候又需要你给出带有个别功能的安装文件\n\n面对以上需求，也许你会针对不同的包给出不同的宏定义，比如 #define QA_TEST ,#define APP_STORE, #define GRAY_TEST，然后针对不同的宏定义在里面进行不同的参数修改。但是如果各个业务方来频繁的找你，也许手动的修改这些文件会让你崩溃。\n接下来提供一个解决方案，专门针对这种不同的环境或编译需求使用的无侵入，无修改，无痛的三无解决方案。名字叫：Build Configuration + Scheme\n关于 Build Configuration 的官方解释。关于 Scheme 的官方解释。\n接下来的步骤可以实现上面所描述的功能。\n1. 添加不同的 Configuration在 Project -&gt; Info -&gt; Configuration 里，复制一个\n2. 设置 Preprocessor Macros在 Target -&gt; Build Settings -&gt; Preprocessor Macros 里添加自己的宏，比如你可以这样：\n3. 可以畅快的使用了接下来在你的代码中可以随便使用了\n1234567#ifdef DEBUG    NSLog(@\"Debug\");##endif#ifdef TEST    NSLog(@\"Test\");##endif\n\n4. 选择你要的 Scheme\nEnjoy\nReference：\n\nhttps://developer.apple.com/library/ios/recipes/xcode_help-project_editor/Articles/BasingBuildConfigurationsonConfigurationFiles.html\n\n","dateCreated":"2016-05-16T14:11:35+08:00","dateModified":"2020-03-03T16:06:15+08:00","datePublished":"2016-05-16T14:11:35+08:00","description":"在日常的 iOS 开发中，我们经常会使用到不同的网络环境切换问题，比如：","headline":"iOS Build Configuration + Scheme 的使用","image":[],"mainEntityOfPage":{"@type":"WebPage","@id":"http://hilen.github.io/2016/05/16/configuration-scheme/"},"publisher":{"@type":"Organization","name":"Hilen","sameAs":["https://github.com/hilen","mailto:lhlazxyq@gmail.com"],"image":"https://ww1.sinaimg.cn/mw690/6a011e49ly1gn956xudhcj20fo0fogm7.jpg","logo":{"@type":"ImageObject","url":"https://ww1.sinaimg.cn/mw690/6a011e49ly1gn956xudhcj20fo0fogm7.jpg"}},"url":"http://hilen.github.io/2016/05/16/configuration-scheme/","keywords":"iOS"}</script>
+    <script type="application/ld+json">{"@context":"http://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"Hilen","sameAs":["https://github.com/hilen","mailto:lhlazxyq@gmail.com"],"image":"https://gw.alicdn.com/imgextra/i2/O1CN014unoRt1tZ7O6n1igu_!!6000000005915-0-tps-564-564.jpg"},"articleBody":"在日常的 iOS 开发中，我们经常会使用到不同的网络环境切换问题，比如：\n\n\nQA 需要你给出一个带有环境切换的功能的安装文件\nApp Store 需要你上传面向用户环境的 Release 的安装文件\n灰度测试的时候又需要你给出带有个别功能的安装文件\n\n面对以上需求，也许你会针对不同的包给出不同的宏定义，比如 #define QA_TEST ,#define APP_STORE, #define GRAY_TEST，然后针对不同的宏定义在里面进行不同的参数修改。但是如果各个业务方来频繁的找你，也许手动的修改这些文件会让你崩溃。\n接下来提供一个解决方案，专门针对这种不同的环境或编译需求使用的无侵入，无修改，无痛的三无解决方案。名字叫：Build Configuration + Scheme\n关于 Build Configuration 的官方解释。关于 Scheme 的官方解释。\n接下来的步骤可以实现上面所描述的功能。\n1. 添加不同的 Configuration在 Project -&gt; Info -&gt; Configuration 里，复制一个\n2. 设置 Preprocessor Macros在 Target -&gt; Build Settings -&gt; Preprocessor Macros 里添加自己的宏，比如你可以这样：\n3. 可以畅快的使用了接下来在你的代码中可以随便使用了\n1234567#ifdef DEBUG    NSLog(@\"Debug\");##endif#ifdef TEST    NSLog(@\"Test\");##endif\n\n4. 选择你要的 Scheme\nEnjoy\nReference：\n\nhttps://developer.apple.com/library/ios/recipes/xcode_help-project_editor/Articles/BasingBuildConfigurationsonConfigurationFiles.html\n\n","dateCreated":"2016-05-16T14:11:35+08:00","dateModified":"2020-03-03T16:06:15+08:00","datePublished":"2016-05-16T14:11:35+08:00","description":"在日常的 iOS 开发中，我们经常会使用到不同的网络环境切换问题，比如：","headline":"iOS Build Configuration + Scheme 的使用","image":[],"mainEntityOfPage":{"@type":"WebPage","@id":"http://hilen.github.io/2016/05/16/configuration-scheme/"},"publisher":{"@type":"Organization","name":"Hilen","sameAs":["https://github.com/hilen","mailto:lhlazxyq@gmail.com"],"image":"https://gw.alicdn.com/imgextra/i2/O1CN014unoRt1tZ7O6n1igu_!!6000000005915-0-tps-564-564.jpg","logo":{"@type":"ImageObject","url":"https://gw.alicdn.com/imgextra/i2/O1CN014unoRt1tZ7O6n1igu_!!6000000005915-0-tps-564-564.jpg"}},"url":"http://hilen.github.io/2016/05/16/configuration-scheme/","keywords":"iOS"}</script>
     <meta name="description" content="在日常的 iOS 开发中，我们经常会使用到不同的网络环境切换问题，比如：">
 <meta name="keywords" content="Build Configuration,Scheme">
 <meta property="og:type" content="blog">
@@ -36,7 +36,7 @@
         
     
     
-        <meta property="og:image" content="https://ww1.sinaimg.cn/mw690/6a011e49ly1gn956xudhcj20fo0fogm7.jpg"/>
+        <meta property="og:image" content="https://gw.alicdn.com/imgextra/i2/O1CN014unoRt1tZ7O6n1igu_!!6000000005915-0-tps-564-564.jpg"/>
     
     
     
@@ -86,7 +86,7 @@
             >
         
         
-            <img class="header-picture" src="https://ww1.sinaimg.cn/mw690/6a011e49ly1gn956xudhcj20fo0fogm7.jpg" alt="作者的图片"/>
+            <img class="header-picture" src="https://gw.alicdn.com/imgextra/i2/O1CN014unoRt1tZ7O6n1igu_!!6000000005915-0-tps-564-564.jpg" alt="作者的图片"/>
         
         </a>
     
@@ -107,7 +107,7 @@
                     href="/#about"
                     aria-label="阅读有关作者的更多信息"
                 >
-                    <img class="sidebar-profile-picture" src="https://ww1.sinaimg.cn/mw690/6a011e49ly1gn956xudhcj20fo0fogm7.jpg" alt="作者的图片"/>
+                    <img class="sidebar-profile-picture" src="https://gw.alicdn.com/imgextra/i2/O1CN014unoRt1tZ7O6n1igu_!!6000000005915-0-tps-564-564.jpg" alt="作者的图片"/>
                 </a>
                 <h4 class="sidebar-profile-name">Hilen</h4>
                 
@@ -172,20 +172,6 @@
                         >
                         <i class="sidebar-button-icon fa fa-archive" aria-hidden="true"></i>
                         <span class="sidebar-button-desc">归档</span>
-                    </a>
-            </li>
-            
-                <li class="sidebar-button">
-                    
-                        <a
-                            class="sidebar-button-link open-algolia-search"
-                            href="#search"
-                            
-                            rel="noopener"
-                            title="搜索"
-                        >
-                        <i class="sidebar-button-icon fa fa-search" aria-hidden="true"></i>
-                        <span class="sidebar-button-desc">搜索</span>
                     </a>
             </li>
             
@@ -696,7 +682,7 @@
             <i class="fa fa-times"></i>
         </div>
         
-            <img id="about-card-picture" src="https://ww1.sinaimg.cn/mw690/6a011e49ly1gn956xudhcj20fo0fogm7.jpg" alt="作者的图片"/>
+            <img id="about-card-picture" src="https://gw.alicdn.com/imgextra/i2/O1CN014unoRt1tZ7O6n1igu_!!6000000005915-0-tps-564-564.jpg" alt="作者的图片"/>
         
             <h4 id="about-card-name">Hilen</h4>
         
@@ -723,7 +709,7 @@
 
         
         
-<div id="cover" style="background-image:url('https://gw.alicdn.com/imgextra/i1/O1CN01KiroJ31iilxjOVyse_!!6000000004447-0-tps-3486-2334.jpg');"></div>
+<div id="cover" style="background-image:url('https://gw.alicdn.com/imgextra/i1/O1CN01OBhUe01W1T7n2zIOc_!!6000000002728-0-tps-2000-1125.jpg');"></div>
         <!--SCRIPTS-->
 <script src="/assets/js/script-7iimeqy8tedt9p7vxozrafnfybmsfzzhcjkhhn9jijx9cw3xxk4iyge9sp6e.min.js"></script>
 <!--SCRIPTS END-->

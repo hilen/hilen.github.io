@@ -11,7 +11,7 @@
     
     
     
-    <script type="application/ld+json">{"@context":"http://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"Hilen","sameAs":["https://github.com/hilen","mailto:lhlazxyq@gmail.com"],"image":"https://ww1.sinaimg.cn/mw690/6a011e49ly1gn956xudhcj20fo0fogm7.jpg"},"articleBody":"前些天，一个朋友咨询我说是否擅长操作 Excel，并且把两个 Excel 的文档发给我了。认真的听了下他的诉求，大致是需要把 A 文档的数据匹配到 B 文档，并且补充到 B 文档里，两个表格加起来共有 5 万多行的记录，这如果人肉操作怎么着也需要好几个小时。于是我开始着手 Google 看下 python 对于 excel 如果进行操作，现学现卖，最后完工。接下来就记录下这愉快的过程。\n\n需求分析先来看看下这两个表格的内容，A 表格有 4.5w 行，有 40 多列数据， B 表格有 6000 多行，30 多列的数据，需求是 B 表格中有一列 贷款目前状态 的数据来自 A 表，并且会涉及到重复，条件为以身份证筛选，再以姓名为基准做匹配。接下来我会脱敏举例一个 demo 进行说明。A 表格：\n\n\n\n序号\n姓名\n性别\n身份证\n地址\n是否失信\n担保人\n经放人\n借款方式\n贷款状态\n\n\n\n\n0\n张三\n男\nxxxxx\nxxx\nxxx\nxxxxx\nxxx\nxxx\n核销\n\n\n1\n李四\n\nxxxxx\nxxx\nxxx\nxxxxx\nxxx\nxxx\n置换\n\n\n2\n王五\n女\nxxxxx\nxxx\nxxx\nxxxxx\nxxx\nxxx\n核销\n\n\n\nB 表格：\n\n\n\n序号\n姓名\n性别\n身份证\n地址\n是否失信\n贷款状态\n\n\n\n\n0\n赵六\n男\nxxxxx\nxxx\nxxx\n???\n\n\n1\n张三\n\nxxxxx\nxxx\nxxx\n???\n\n\n2\n李四\n女\nxxxxx\nxxx\nxxx\n???\n\n\n\n根据以上模拟的 Excel 表格，我们需要根据名称把表格 A 的贷款状态（10列）输入到表格 B 的最后一列的贷款状态。\nPython 操作 Excel 方案介绍当 Google 一下，你会发现 Python 操作 Excel 还是有几种方法的，这里我只介绍使用 xlrd 和 xlwt，我的电脑环境为 macOS - Version 10.15.3 (19D76)，Python 版本为 Python 2.7.10 (default, Jul 30 2019, 21:28:59)。接下来是依赖库的说明。\n首先介绍下 xlrd 库，它主要是用来读取 Excel 的内容，可以通过执行 pip install xlrd 来进行安装，然后在 python 脚本里通过执行 &gt;&gt;&gt; import xlrd 和 &gt;&gt;&gt; help(xlrd) 可以看到 xlrd 的帮助信息，里面有 xlrd 包中的一些模块以及一些成员变量、常量、函数。具体的 xlrd API 使用说明，这个文档里都有\n其次介绍下 xlwt，它主要是用来对 Excel 进行编辑的，可以通过执行 pip install xlwt 来安装，同样这个文档里也都有包含 xlwt 的 API 使用说明。\n注意：xlrd 模块：可读取 .xls 和 .xlsx 后缀表格\n\nxlwt 模块：可写入 .xls 表格，但不支持对 .xlsx 文件的写入操作\n\n基本 API读取工作表：workbook.sheets()：工作表实例构成的 list，可通过索引读取工作表workbook.save()：保存修改的工作表worksheet = workbook.sheet_by_name(‘xxx’) ：通过名字打开工作簿worksheet = workbook.sheet_by_index(i) ：通过编号为 i（索引从 0 开始）的工作簿打开工作表\n读取单元格内容：注意 xlrd 库对于读取 Excel 工作簿的行和列索引都是从 0 开始row = worksheet.row_values(i) ：读取第 i 行中的所有内容，返回一个 listcol = worksheet.col_values(k) ：读取第 k 列中的内容，返回一个 listcell= worksheet.cell_value(r, c)：读取第 i 行第 k 列单元格内容workbook.get_sheet(0).write(i, k, source)：获取 i 行，k 列的内容，并将内容替换为 source\n代码编写examplepython12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455565758#!/usr/bin/env python# -*- coding: utf-8 -*-import fileinputimport sysimport osimport xlrd # 读 excelimport xlwt # 写 excelimport jsonfrom xlutils.copy import copy # 文件 copyreload(sys)sys.setdefaultencoding('utf8')  # 解决中文字符串输出问题START_ROW = 3 # 从 0 开始计数，前 4 行有标题和说明，真正的数据从第四行开始# 元数据表 Aa_workbook = xlrd.open_workbook(\"a_table.xls\")a_sheet = a_workbook.sheet_by_index(0)print \"元数据表行数：\" + str(a_sheet.nrows)print \"元数据表列数：\" + str(a_sheet.ncols)# 目标编辑表 Bb_workbook = xlrd.open_workbook(\"b_table.xls\")b_sheet = b_workbook.sheet_by_index(0)print \"目标数据表行数：\" + str(b_sheet.nrows)print \"目标数据表列数：\" + str(b_sheet.ncols)# 复制一下表格 B 文件，作为最后的编辑表final_workbook = copy(xlrd.open_workbook('b_table.xls'))# 根据名称从 A 表里找出匹配的内容def match_from_table_a(name):    source = \"****************\"    for index in range(START_ROW, a_sheet.nrows):        onerow = a_sheet.row_values(index)        if name == onerow[1]: # 姓名匹配            # print str(onerow[1]) +\"---\"+ str(onerow[10])            source = onerow[10]            break;    return source# 循环便利目标表 Bdef loop_target_xls():    for b_index in range(START_ROW, b_sheet.nrows):        one_row = b_sheet.row_values(b_index)        # string2 = json.dumps(one_row, ensure_ascii=False)        # print str(b_index)+\" row : \"+ (string2)        target_name = one_row[1]        print str(b_index) + \":\" +target_name        # 找寻字符串        source = match_from_table_a(target_name)        final_workbook.get_sheet(0).write(b_index, 6, source)    final_workbook.save('c_table.xls')  # 保存为新的 C 表格if __name__ == '__main__':    loop_target_xls()\n当以上文件和代码执行完毕后，会得到一个新文件：\nC 表格：\n\n\n\n序号\n姓名\n性别\n身份证\n地址\n是否失信\n贷款状态\n\n\n\n\n0\n赵六\n男\nxxxxx\nxxx\nxxx\n???\n\n\n1\n张三\n\nxxxxx\nxxx\nxxx\n核销\n\n\n2\n李四\n女\nxxxxx\nxxx\nxxx\n置换\n\n\n\n以上内容就是 Ptyhon 库 xlrd 和 xlwt 对 Excel 文件编写的简单内容，Enjoy， 😄\n","dateCreated":"2020-03-02T11:24:32+08:00","dateModified":"2020-03-03T16:41:55+08:00","datePublished":"2020-03-02T11:24:32+08:00","description":"前些天，一个朋友咨询我说是否擅长操作 Excel，并且把两个 Excel 的文档发给我了。认真的听了下他的诉求，大致是需要把 A 文档的数据匹配到 B 文档，并且补充到 B 文档里，两个表格加起来共有 5 万多行的记录，这如果人肉操作怎么着也需要好几个小时。于是我开始着手 Google 看下 python 对于 excel 如果进行操作，现学现卖，最后完工。接下来就记录下这愉快的过程。","headline":"使用 Python 库来操作 Excel（xlrd 和 xlwt）","image":["https://is2-ssl.mzstatic.com/image/thumb/Purple123/v4/8f/76/52/8f76520d-6360-d5bb-4191-bc57cee68bfc/XCEL.png/1200x630bb.png"],"mainEntityOfPage":{"@type":"WebPage","@id":"http://hilen.github.io/2020/03/02/python-excel/"},"publisher":{"@type":"Organization","name":"Hilen","sameAs":["https://github.com/hilen","mailto:lhlazxyq@gmail.com"],"image":"https://ww1.sinaimg.cn/mw690/6a011e49ly1gn956xudhcj20fo0fogm7.jpg","logo":{"@type":"ImageObject","url":"https://ww1.sinaimg.cn/mw690/6a011e49ly1gn956xudhcj20fo0fogm7.jpg"}},"url":"http://hilen.github.io/2020/03/02/python-excel/","keywords":"python","thumbnailUrl":"https://is2-ssl.mzstatic.com/image/thumb/Purple123/v4/8f/76/52/8f76520d-6360-d5bb-4191-bc57cee68bfc/XCEL.png/1200x630bb.png"}</script>
+    <script type="application/ld+json">{"@context":"http://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"Hilen","sameAs":["https://github.com/hilen","mailto:lhlazxyq@gmail.com"],"image":"https://gw.alicdn.com/imgextra/i2/O1CN014unoRt1tZ7O6n1igu_!!6000000005915-0-tps-564-564.jpg"},"articleBody":"前些天，一个朋友咨询我说是否擅长操作 Excel，并且把两个 Excel 的文档发给我了。认真的听了下他的诉求，大致是需要把 A 文档的数据匹配到 B 文档，并且补充到 B 文档里，两个表格加起来共有 5 万多行的记录，这如果人肉操作怎么着也需要好几个小时。于是我开始着手 Google 看下 python 对于 excel 如果进行操作，现学现卖，最后完工。接下来就记录下这愉快的过程。\n\n需求分析先来看看下这两个表格的内容，A 表格有 4.5w 行，有 40 多列数据， B 表格有 6000 多行，30 多列的数据，需求是 B 表格中有一列 贷款目前状态 的数据来自 A 表，并且会涉及到重复，条件为以身份证筛选，再以姓名为基准做匹配。接下来我会脱敏举例一个 demo 进行说明。A 表格：\n\n\n\n序号\n姓名\n性别\n身份证\n地址\n是否失信\n担保人\n经放人\n借款方式\n贷款状态\n\n\n\n\n0\n张三\n男\nxxxxx\nxxx\nxxx\nxxxxx\nxxx\nxxx\n核销\n\n\n1\n李四\n\nxxxxx\nxxx\nxxx\nxxxxx\nxxx\nxxx\n置换\n\n\n2\n王五\n女\nxxxxx\nxxx\nxxx\nxxxxx\nxxx\nxxx\n核销\n\n\n\nB 表格：\n\n\n\n序号\n姓名\n性别\n身份证\n地址\n是否失信\n贷款状态\n\n\n\n\n0\n赵六\n男\nxxxxx\nxxx\nxxx\n???\n\n\n1\n张三\n\nxxxxx\nxxx\nxxx\n???\n\n\n2\n李四\n女\nxxxxx\nxxx\nxxx\n???\n\n\n\n根据以上模拟的 Excel 表格，我们需要根据名称把表格 A 的贷款状态（10列）输入到表格 B 的最后一列的贷款状态。\nPython 操作 Excel 方案介绍当 Google 一下，你会发现 Python 操作 Excel 还是有几种方法的，这里我只介绍使用 xlrd 和 xlwt，我的电脑环境为 macOS - Version 10.15.3 (19D76)，Python 版本为 Python 2.7.10 (default, Jul 30 2019, 21:28:59)。接下来是依赖库的说明。\n首先介绍下 xlrd 库，它主要是用来读取 Excel 的内容，可以通过执行 pip install xlrd 来进行安装，然后在 python 脚本里通过执行 &gt;&gt;&gt; import xlrd 和 &gt;&gt;&gt; help(xlrd) 可以看到 xlrd 的帮助信息，里面有 xlrd 包中的一些模块以及一些成员变量、常量、函数。具体的 xlrd API 使用说明，这个文档里都有\n其次介绍下 xlwt，它主要是用来对 Excel 进行编辑的，可以通过执行 pip install xlwt 来安装，同样这个文档里也都有包含 xlwt 的 API 使用说明。\n注意：xlrd 模块：可读取 .xls 和 .xlsx 后缀表格\n\nxlwt 模块：可写入 .xls 表格，但不支持对 .xlsx 文件的写入操作\n\n基本 API读取工作表：workbook.sheets()：工作表实例构成的 list，可通过索引读取工作表workbook.save()：保存修改的工作表worksheet = workbook.sheet_by_name(‘xxx’) ：通过名字打开工作簿worksheet = workbook.sheet_by_index(i) ：通过编号为 i（索引从 0 开始）的工作簿打开工作表\n读取单元格内容：注意 xlrd 库对于读取 Excel 工作簿的行和列索引都是从 0 开始row = worksheet.row_values(i) ：读取第 i 行中的所有内容，返回一个 listcol = worksheet.col_values(k) ：读取第 k 列中的内容，返回一个 listcell= worksheet.cell_value(r, c)：读取第 i 行第 k 列单元格内容workbook.get_sheet(0).write(i, k, source)：获取 i 行，k 列的内容，并将内容替换为 source\n代码编写examplepython12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455565758#!/usr/bin/env python# -*- coding: utf-8 -*-import fileinputimport sysimport osimport xlrd # 读 excelimport xlwt # 写 excelimport jsonfrom xlutils.copy import copy # 文件 copyreload(sys)sys.setdefaultencoding('utf8')  # 解决中文字符串输出问题START_ROW = 3 # 从 0 开始计数，前 4 行有标题和说明，真正的数据从第四行开始# 元数据表 Aa_workbook = xlrd.open_workbook(\"a_table.xls\")a_sheet = a_workbook.sheet_by_index(0)print \"元数据表行数：\" + str(a_sheet.nrows)print \"元数据表列数：\" + str(a_sheet.ncols)# 目标编辑表 Bb_workbook = xlrd.open_workbook(\"b_table.xls\")b_sheet = b_workbook.sheet_by_index(0)print \"目标数据表行数：\" + str(b_sheet.nrows)print \"目标数据表列数：\" + str(b_sheet.ncols)# 复制一下表格 B 文件，作为最后的编辑表final_workbook = copy(xlrd.open_workbook('b_table.xls'))# 根据名称从 A 表里找出匹配的内容def match_from_table_a(name):    source = \"****************\"    for index in range(START_ROW, a_sheet.nrows):        onerow = a_sheet.row_values(index)        if name == onerow[1]: # 姓名匹配            # print str(onerow[1]) +\"---\"+ str(onerow[10])            source = onerow[10]            break;    return source# 循环便利目标表 Bdef loop_target_xls():    for b_index in range(START_ROW, b_sheet.nrows):        one_row = b_sheet.row_values(b_index)        # string2 = json.dumps(one_row, ensure_ascii=False)        # print str(b_index)+\" row : \"+ (string2)        target_name = one_row[1]        print str(b_index) + \":\" +target_name        # 找寻字符串        source = match_from_table_a(target_name)        final_workbook.get_sheet(0).write(b_index, 6, source)    final_workbook.save('c_table.xls')  # 保存为新的 C 表格if __name__ == '__main__':    loop_target_xls()\n当以上文件和代码执行完毕后，会得到一个新文件：\nC 表格：\n\n\n\n序号\n姓名\n性别\n身份证\n地址\n是否失信\n贷款状态\n\n\n\n\n0\n赵六\n男\nxxxxx\nxxx\nxxx\n???\n\n\n1\n张三\n\nxxxxx\nxxx\nxxx\n核销\n\n\n2\n李四\n女\nxxxxx\nxxx\nxxx\n置换\n\n\n\n以上内容就是 Ptyhon 库 xlrd 和 xlwt 对 Excel 文件编写的简单内容，Enjoy， 😄\n","dateCreated":"2020-03-02T11:24:32+08:00","dateModified":"2020-03-03T16:41:55+08:00","datePublished":"2020-03-02T11:24:32+08:00","description":"前些天，一个朋友咨询我说是否擅长操作 Excel，并且把两个 Excel 的文档发给我了。认真的听了下他的诉求，大致是需要把 A 文档的数据匹配到 B 文档，并且补充到 B 文档里，两个表格加起来共有 5 万多行的记录，这如果人肉操作怎么着也需要好几个小时。于是我开始着手 Google 看下 python 对于 excel 如果进行操作，现学现卖，最后完工。接下来就记录下这愉快的过程。","headline":"使用 Python 库来操作 Excel（xlrd 和 xlwt）","image":["https://is2-ssl.mzstatic.com/image/thumb/Purple123/v4/8f/76/52/8f76520d-6360-d5bb-4191-bc57cee68bfc/XCEL.png/1200x630bb.png"],"mainEntityOfPage":{"@type":"WebPage","@id":"http://hilen.github.io/2020/03/02/python-excel/"},"publisher":{"@type":"Organization","name":"Hilen","sameAs":["https://github.com/hilen","mailto:lhlazxyq@gmail.com"],"image":"https://gw.alicdn.com/imgextra/i2/O1CN014unoRt1tZ7O6n1igu_!!6000000005915-0-tps-564-564.jpg","logo":{"@type":"ImageObject","url":"https://gw.alicdn.com/imgextra/i2/O1CN014unoRt1tZ7O6n1igu_!!6000000005915-0-tps-564-564.jpg"}},"url":"http://hilen.github.io/2020/03/02/python-excel/","keywords":"python","thumbnailUrl":"https://is2-ssl.mzstatic.com/image/thumb/Purple123/v4/8f/76/52/8f76520d-6360-d5bb-4191-bc57cee68bfc/XCEL.png/1200x630bb.png"}</script>
     <meta name="description" content="前些天，一个朋友咨询我说是否擅长操作 Excel，并且把两个 Excel 的文档发给我了。认真的听了下他的诉求，大致是需要把 A 文档的数据匹配到 B 文档，并且补充到 B 文档里，两个表格加起来共有 5 万多行的记录，这如果人肉操作怎么着也需要好几个小时。于是我开始着手 Google 看下 python 对于 excel 如果进行操作，现学现卖，最后完工。接下来就记录下这愉快的过程。">
 <meta name="keywords" content="python">
 <meta property="og:type" content="blog">
@@ -29,7 +29,7 @@
         
     
     
-        <meta property="og:image" content="https://ww1.sinaimg.cn/mw690/6a011e49ly1gn956xudhcj20fo0fogm7.jpg"/>
+        <meta property="og:image" content="https://gw.alicdn.com/imgextra/i2/O1CN014unoRt1tZ7O6n1igu_!!6000000005915-0-tps-564-564.jpg"/>
     
     
         <meta property="og:image" content="https://is2-ssl.mzstatic.com/image/thumb/Purple123/v4/8f/76/52/8f76520d-6360-d5bb-4191-bc57cee68bfc/XCEL.png/1200x630bb.png"/>
@@ -82,7 +82,7 @@
             >
         
         
-            <img class="header-picture" src="https://ww1.sinaimg.cn/mw690/6a011e49ly1gn956xudhcj20fo0fogm7.jpg" alt="作者的图片"/>
+            <img class="header-picture" src="https://gw.alicdn.com/imgextra/i2/O1CN014unoRt1tZ7O6n1igu_!!6000000005915-0-tps-564-564.jpg" alt="作者的图片"/>
         
         </a>
     
@@ -103,7 +103,7 @@
                     href="/#about"
                     aria-label="阅读有关作者的更多信息"
                 >
-                    <img class="sidebar-profile-picture" src="https://ww1.sinaimg.cn/mw690/6a011e49ly1gn956xudhcj20fo0fogm7.jpg" alt="作者的图片"/>
+                    <img class="sidebar-profile-picture" src="https://gw.alicdn.com/imgextra/i2/O1CN014unoRt1tZ7O6n1igu_!!6000000005915-0-tps-564-564.jpg" alt="作者的图片"/>
                 </a>
                 <h4 class="sidebar-profile-name">Hilen</h4>
                 
@@ -168,20 +168,6 @@
                         >
                         <i class="sidebar-button-icon fa fa-archive" aria-hidden="true"></i>
                         <span class="sidebar-button-desc">归档</span>
-                    </a>
-            </li>
-            
-                <li class="sidebar-button">
-                    
-                        <a
-                            class="sidebar-button-link open-algolia-search"
-                            href="#search"
-                            
-                            rel="noopener"
-                            title="搜索"
-                        >
-                        <i class="sidebar-button-icon fa fa-search" aria-hidden="true"></i>
-                        <span class="sidebar-button-desc">搜索</span>
                     </a>
             </li>
             
@@ -820,7 +806,7 @@
             <i class="fa fa-times"></i>
         </div>
         
-            <img id="about-card-picture" src="https://ww1.sinaimg.cn/mw690/6a011e49ly1gn956xudhcj20fo0fogm7.jpg" alt="作者的图片"/>
+            <img id="about-card-picture" src="https://gw.alicdn.com/imgextra/i2/O1CN014unoRt1tZ7O6n1igu_!!6000000005915-0-tps-564-564.jpg" alt="作者的图片"/>
         
             <h4 id="about-card-name">Hilen</h4>
         
@@ -847,7 +833,7 @@
 
         
         
-<div id="cover" style="background-image:url('https://gw.alicdn.com/imgextra/i1/O1CN01KiroJ31iilxjOVyse_!!6000000004447-0-tps-3486-2334.jpg');"></div>
+<div id="cover" style="background-image:url('https://gw.alicdn.com/imgextra/i1/O1CN01OBhUe01W1T7n2zIOc_!!6000000002728-0-tps-2000-1125.jpg');"></div>
         <!--SCRIPTS-->
 <script src="/assets/js/script-7iimeqy8tedt9p7vxozrafnfybmsfzzhcjkhhn9jijx9cw3xxk4iyge9sp6e.min.js"></script>
 <!--SCRIPTS END-->
